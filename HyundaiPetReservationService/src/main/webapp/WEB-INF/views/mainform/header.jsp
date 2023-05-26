@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link href="/thepet/resources/basic/css/menu.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous" ></script>
