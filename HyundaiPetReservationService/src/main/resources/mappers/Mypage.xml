@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="page">
+ 	
+ 	<!-- 여기에서 나중에 members.id는 세션에서 받아온 사람의 id -->
+ 	<select id="selectList" parameterType="Mypage" resultType="Mypage">
+ 		<![CDATA[
+ 		SELECT 
+    		locations.address, 
+    		locations.address_detail, 
+    		locations.dog_facilities, 
+    		reservations.reservation_date, 
+    		reservations.reservation_start_time, 
+    		reservations.reservation_end_time, 
+    		reservations.price_total, 
+    		reservations.customer_count,
+			dogs.id as dog_id,
+			members.id as id
+		FROM 
+   		 	members
+	JOIN 
+    	reservations ON members.id = reservations.member_id
+	JOIN 
+    	locations ON reservations.location_id = locations.id
+	JOIN 
+    	dogs ON dogs.id = reservations.member_id
+    	WHERE 
+    	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 이건 지난 예약 -->
+ 	<select id="selectList1" parameterType="Mypage" resultType="Mypage">
+ 		<![CDATA[
+ 		SELECT 
+    		locations.address, 
+    		locations.address_detail, 
+    		locations.dog_facilities, 
+    		reservations.reservation_date, 
+    		reservations.reservation_start_time, 
+    		reservations.reservation_end_time, 
+    		reservations.price_total, 
+    		reservations.customer_count,
+			dogs.id as dog_id,
+			reservations.id as reservation_id,
+			members.id as id
+		FROM 
+   		 	members
+	JOIN 
+    	reservations ON members.id = reservations.member_id
+	JOIN 
+    	locations ON reservations.location_id = locations.id
+	JOIN 
+    	dogs ON dogs.id = reservations.member_id
+    	WHERE 
+    	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 여기에서 나중에 members.id는 세션에서 받아온 사람의 id -->
+ 	<select id="cnt" parameterType="Mypage" resultType="int">
+ 		<![CDATA[
+ 		SELECT 
+    		count (*) as total
+		FROM 
+   		 	members
+	JOIN 
+    	reservations ON members.id = reservations.member_id
+	JOIN 
+    	locations ON reservations.location_id = locations.id
+	JOIN 
+    	dogs ON dogs.id = reservations.member_id
+    	WHERE 
+    	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 이건 지난예약 -->
+ 	<select id="cnt1" parameterType="Mypage" resultType="int">
+ 		<![CDATA[
+ 		SELECT 
+    		count (*) as total
+		FROM 
+   		 	members
+	JOIN 
+    	reservations ON members.id = reservations.member_id
+	JOIN 
+    	locations ON reservations.location_id = locations.id
+	JOIN 
+    	dogs ON dogs.id = reservations.member_id
+    	WHERE 
+    	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 리뷰 있는지 확인 -->
+ 	<select id="check" parameterType="int" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from reviews where reservation_id=#{reservid}
+ 		]]>
+ 	</select>
+ </mapper>

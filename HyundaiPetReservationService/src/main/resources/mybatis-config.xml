@@ -29,6 +29,7 @@
 		
 		 -->
 	<typeAliases>
+		<typeAlias alias="Mypage" type="com.hyundai.thepet.mypage.vo.ReservVO" />
 	</typeAliases>
 	
 </configuration>
