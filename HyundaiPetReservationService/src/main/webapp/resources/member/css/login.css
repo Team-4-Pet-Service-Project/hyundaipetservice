@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.login-wrap{
+	display:flex;
+	width: 580px;
+	justify-content:center;
+    height: 100%;
+}
+
+.login-container{
+	width: 300px;
+	display:flex;
+	justify-content:center;
+}
+
+.login-id{
+	display:flex;
+	justify-content:center;
+}
+
+.login-password{
+	display:flex;
+	
+}

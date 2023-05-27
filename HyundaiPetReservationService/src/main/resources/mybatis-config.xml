@@ -3,32 +3,18 @@
    PUBLIC "-//mybatis.org/DTD Config 3.0//EN" 
    "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
-	<!-- 
-		MyBatis가 동작할 때 어떻게 동작할지를 설정하는 내용이 포함된다.
-		상당히 많은 설정이 들어있다. 대부분 기본값으로 설정된 내용을 그대로 사용
-		아래부분만 일반적으로 설정해서 사용 
-	-->
+	<!-- MyBatis가 동작할 때 어떻게 동작할지를 설정하는 내용이 포함된다. 상당히 많은 설정이 들어있다. 대부분 기본값으로 
+		설정된 내용을 그대로 사용 아래부분만 일반적으로 설정해서 사용 -->
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
-		<!-- 
-			log4j 설정
-			Query가 실행될 때 마다 실행되는 SQL Query와 그 결과를 Log로 출력  
-		-->
-		<setting name="logImpl" value="LOG4J2"/>
+		<!-- log4j 설정 Query가 실행될 때 마다 실행되는 SQL Query와 그 결과를 Log로 출력 -->
+		<setting name="logImpl" value="LOG4J2" />
 	</settings>
 
-	<!-- 
-		타입 별칭은 자바 타입에 대한 좀더 짧은 이름을 설정하기 위해 사용합니다. 
-		오직 XML 설정에서만 사용되며, 타이핑을 줄이기 위해 사용합니다. 
-	-->
-		<!-- 
-			sql 사용할때 타입 별칭 사용시 해당 태그안에 추가
-			
-			ex)
-			<typeAlias alias="Member" type="spring.springweb.board.member.vo.MemberVO" />
-		
-		 -->
+	<!-- 타입 별칭은 자바 타입에 대한 좀더 짧은 이름을 설정하기 위해 사용합니다. 오직 XML 설정에서만 사용되며, 타이핑을 줄이기 
+		위해 사용합니다. -->
 	<typeAliases>
+		<typeAlias alias="Member" type="com.hyundai.thepet.member.vo.MemberVO" />
 	</typeAliases>
-	
+
 </configuration>
