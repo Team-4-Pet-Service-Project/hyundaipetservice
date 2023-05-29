@@ -1,24 +1,92 @@
 @charset "UTF-8";
 
-.login-wrap{
-	display:flex;
+.login-wrap {
 	width: 580px;
-	justify-content:center;
-    height: 100%;
+	height: 500px;
+	margin: 0 auto;
 }
 
-.login-container{
-	width: 300px;
-	display:flex;
-	justify-content:center;
+.login-container {
+	display: flex;
+	align-items: center;
+	margin-top: 50px;
 }
 
-.login-id{
-	display:flex;
-	justify-content:center;
+.login-id {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
 }
 
-.login-password{
+.login-password {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.login-box {
 	display:flex;
-	
+}
+
+/* 수정된 부분 시작 */
+.login-info {
+	width:300px;
+}
+
+.login-btn {
+	flex:1;
+}
+/* 수정된 부분 끝 */
+
+.page-title {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.member-id-block .btn-id-check {
+    margin-top: 22px;
+    width: 100px !important;
+}
+
+.form-block {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+label input {
+    width: 100%;
+}
+
+p.form-title {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #9a9a9a;
+    line-height: 1.1;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s cubic-bezier(0.25,0.1,0,1) 0s,-webkit-transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s;
+    transition: opacity 0.3s cubic-bezier(0.25,0.1,0,1) 0s,-webkit-transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s;
+    -o-transition: opacity 0.3s cubic-bezier(0.25,0.1,0,1) 0s,-o-transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s;
+    transition: opacity 0.3s cubic-bezier(0.25,0.1,0,1) 0s,transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s;
+    transition: opacity 0.3s cubic-bezier(0.25,0.1,0,1) 0s,transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s,-webkit-transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s,-o-transform 0.3s cubic-bezier(0.25,0.1,0,1) 0s;
+    -webkit-transform: translateY(-0.25rem);
+    -o-transform: translateY(-0.25rem);
+    transform: translateY(-0.25rem);
+}
+
+input[type=text], input[type=password] {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 8px 0;
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 13px;
+    color: #1e1e1e;
+    line-height: 1.1;
 }

@@ -18,11 +18,11 @@ import com.hyundai.thepet.member.vo.MemberVO;
 
 @Controller
 @RequestMapping(value = "member")
-@SessionAttributes(value = { "member" })
+// @SessionAttributes(value = { "member" })
 public class MemberController {
 
 	Logger log = LogManager.getLogger("case3");
-
+	
 	@Autowired
 	MemberService service;
 
@@ -51,7 +51,7 @@ public class MemberController {
 	
 	
 	
-	@GetMapping(value = "login")
+	@PostMapping(value = "login")
 	public String login(@ModelAttribute("member") MemberVO member, Model model) {
 
 		log.debug("login method : " + member);
@@ -69,6 +69,8 @@ public class MemberController {
 		return viewName;
 	}
 
+	
+	
 	@GetMapping(value = "register_bt")
 	public String register_bt() {
 		return "member/register";

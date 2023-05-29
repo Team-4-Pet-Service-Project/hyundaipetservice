@@ -4247,3 +4247,9 @@ body.product-detail footer {
         transform: translateX(100%);
     }
 }
+
+.page-title {
+	text-align:center;
+	font-size:30px;
+	font-weight: bold;
+}

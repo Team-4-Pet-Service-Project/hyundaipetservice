@@ -24,6 +24,9 @@
 				<div class="join-wrap">
 						<form id="joinForm" name="joinForm" action="/thepet/member/register" method="post">
 							<div class="xans-element- xans-member xans-member-join">
+								<div class="page-title">
+									<h1>회원가입</h1>								
+								</div>
 								<div class="title-block">
 									<h2>기본정보</h2>
 								</div>
@@ -32,7 +35,8 @@
 										<div class="member-id-block">
 											<div class="form-block">
 												<label class="ePlaceholderEach required" title="아이디*">
-													<p class="form-title">아이디*</p> <input id="member_id"
+													<p class="form-title">아이디*</p> 
+													<input id="member_id"
 													name="email" class="inputTypeText" placeholder="아이디*"
 													value="" type="text">
 													<div class="err-msg-system" id="idMsg"></div>
