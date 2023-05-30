@@ -3,6 +3,7 @@ package com.hyundai.thepet.member.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,10 @@ public class MemberController {
 	
 	@Autowired
 	MemberService service;
+	@Autowired
+	BCryptPasswordEncoder passEncoder;
+	
+	
 
 	@PostMapping(value = "register")
 	public String register(MemberVO member, RedirectAttributes rttr) {
@@ -65,9 +70,11 @@ public class MemberController {
 		String viewName = "";
 		if (result.getEmail() != "") {
 			model.addAttribute(member);
+			
+			// 메인 화면 가져오기
 			viewName = "member/html/login.html";
 		} else {
-			viewName = "redirect:/member/html/login.html";
+			viewName = "redirect:/member/login";
 		}
 		log.debug(viewName);
 		return viewName;

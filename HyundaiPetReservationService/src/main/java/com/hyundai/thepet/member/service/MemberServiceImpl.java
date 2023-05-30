@@ -1,8 +1,11 @@
 package com.hyundai.thepet.member.service;
 
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
@@ -22,6 +25,8 @@ public class MemberServiceImpl implements MemberService {
 	private PlatformTransactionManager transactionManger;
 	@Autowired
 	private MemberDAO dao;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public boolean register(MemberVO member) {
@@ -29,6 +34,7 @@ public class MemberServiceImpl implements MemberService {
 		TransactionStatus txStatus = transactionManger.getTransaction(new DefaultTransactionDefinition());
 
 		log.info("register service : ... " + member);
+		
 		
 		boolean result = false;
 		try {
@@ -60,6 +66,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(MemberVO member) {
 
+		
+		passwordEncoder.encode(member.getPassword());
+		
 		MemberVO result = new MemberVO();
 		try {
 			result = dao.login(member);
