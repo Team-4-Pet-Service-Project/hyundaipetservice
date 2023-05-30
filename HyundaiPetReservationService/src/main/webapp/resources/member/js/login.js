@@ -1,5 +1,4 @@
 // 로그인 form submit
-
 $(function() {
 	$('.btnLogin').on('click', loginSubmit);
 })
@@ -18,20 +17,21 @@ function loginSubmit(e) {
 	console.log(mem_id);
 	console.log(member_passwd);
 	
-	
 	if (mem_id === '') {
 		$("#idMsg").css("display", "block");
 		$("#idMsg").css("color", "red");
-		$("#loginMsg").css("display", "none");
-
+		
+		console.log("아이디 유효성 검사");
+		
 		flag = false;
 		return;
 	}
 	if (member_passwd === '') {
 		$("#pwMsg").css("display", "block");
 		$("#pwMsg").css("color", "red");
-		$("#pwMsg").css("display", "none");
 
+		console.log("비밀번호 유효성 검사");
+		
 		flag = false;
 		return;
 	}

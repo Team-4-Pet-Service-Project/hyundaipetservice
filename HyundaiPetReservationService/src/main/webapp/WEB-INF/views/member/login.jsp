@@ -42,9 +42,8 @@
 															<p class="form-title">아이디*</p> <input id="member_id"
 															name="email" class="inputTypeText" placeholder="아이디*"
 															value="" type="text" />
+														<div class="err-msg" id="idMsg" style="display: none;">아이디 항목은 필수 입력값입니다.</div>
 														</label>
-														<div class="err-msg" id="idMsg" style="display: none;">아이디
-															항목은 필수 입력값입니다.</div>
 													</div>
 													<div class="form-block">
 														<label class="password ePlaceholderEach required"
@@ -52,9 +51,8 @@
 															<p class="form-title">패스워드*</p> <input id="member_passwd"
 															name="password" autocomplete="off" value=""
 															type="password" placeholder="패스워드*">
+														<div class="err-msg" id="pwMsg" style="display: none;">패스워드 항목은 필수 입력값입니다.</div>
 														</label>
-														<div class="err-msg" id="pwMsg" style="display: none;">패스워드
-															항목은 필수 입력값입니다.</div>
 													</div>
 													<button class="btnLogin btn btn-lg btn-dark btn-full">
 														<span>로그인</span>
@@ -72,7 +70,7 @@
 															<p>아직 회원이 아니신가요?</p>
 															<p></p>
 														</div>
-														<a href="/member/register"
+														<a href="/thepet/member/register_bt"
 															class="btn btn-lg btn-white btn-full"> <span>회원가입
 																후 혜택받기</span>
 														</a>
