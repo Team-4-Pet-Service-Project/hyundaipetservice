@@ -8,55 +8,52 @@
  	<!-- 여기에서 나중에 members.id는 세션에서 받아온 사람의 id -->
  	<select id="selectList" parameterType="Mypage" resultType="Mypage">
  		<![CDATA[
- 		SELECT 
+ 		select 
     		locations.address, 
     		locations.address_detail, 
     		locations.dog_facilities, 
     		reservations.reservation_date, 
     		reservations.reservation_start_time, 
-    		reservations.reservation_end_time, 
-    		reservations.price_total, 
+    		reservations.reservation_end_time,
+    		reservations.price, 
     		reservations.customer_count,
-			dogs.id as dog_id,
-			members.id as id
-		FROM 
-   		 	members
-	JOIN 
+			reservations.dog_id as dog_id,
+			reservations.id as reservation_id,
+			members.id as id,
+            (select name from dogs where dogs.id=dog_id) as dog_name
+    	from 
+        	members
+		JOIN 
     	reservations ON members.id = reservations.member_id
-	JOIN 
+		JOIN
     	locations ON reservations.location_id = locations.id
-	JOIN 
-    	dogs ON dogs.id = reservations.member_id
-    	WHERE 
-    	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
+		where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
  		]]>
  	</select>
  	
  	<!-- 이건 지난 예약 -->
  	<select id="selectList1" parameterType="Mypage" resultType="Mypage">
  		<![CDATA[
- 		SELECT 
+ 		select 
     		locations.address, 
     		locations.address_detail, 
     		locations.dog_facilities, 
     		reservations.reservation_date, 
     		reservations.reservation_start_time, 
-    		reservations.reservation_end_time, 
-    		reservations.price_total, 
+    		reservations.reservation_end_time,
+    		reservations.price, 
     		reservations.customer_count,
-			dogs.id as dog_id,
+			reservations.dog_id as dog_id,
 			reservations.id as reservation_id,
-			members.id as id
-		FROM 
-   		 	members
-	JOIN 
+			members.id as id,
+            (select name from dogs where dogs.id=dog_id) as dog_name
+    	from 
+        	members
+		JOIN 
     	reservations ON members.id = reservations.member_id
-	JOIN 
+		JOIN
     	locations ON reservations.location_id = locations.id
-	JOIN 
-    	dogs ON dogs.id = reservations.member_id
-    	WHERE 
-    	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+		where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
  		]]>
  	</select>
  	
@@ -72,7 +69,7 @@
 	JOIN 
     	locations ON reservations.location_id = locations.id
 	JOIN 
-    	dogs ON dogs.id = reservations.member_id
+    	dogs ON dogs.id = reservations.dog_id
     	WHERE 
     	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
  		]]>
@@ -90,7 +87,7 @@
 	JOIN 
     	locations ON reservations.location_id = locations.id
 	JOIN 
-    	dogs ON dogs.id = reservations.member_id
+    	dogs ON dogs.id = reservations.dog_id
     	WHERE 
     	members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
  		]]>

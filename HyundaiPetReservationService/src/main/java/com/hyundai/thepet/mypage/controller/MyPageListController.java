@@ -32,9 +32,8 @@ public class MyPageListController {
 	@GetMapping(value = "reservlist")
 	public String ReservList(ReservVO reservVO, Model model) {
 		//여기 부분은 나중에 세션에서 값을 받아와야한다
-		reservVO.setId(21);		
+		reservVO.setId(1);		
 		List<ReservVO> vo = service.print(reservVO);
-		
 		//여기부분은 총 예약한 수를 구하기 위한 곳
 		int total = service.count(reservVO);
 		model.addAttribute("cnt",total);
@@ -49,23 +48,19 @@ public class MyPageListController {
         Map<String, Object> response = new HashMap<>();
         if(buttonId.equals("buttonA")) {
         	//여기 부분은 나중에 세션에서 값을 받아와야한다
-        	reservVO.setId(21);
+        	reservVO.setId(1);
     		List<ReservVO> vo = service.print(reservVO);
+    		
     		int cnt = service.count(reservVO);
     		response.put("cnt", cnt);
             response.put("reservList", vo);
             response.put("button", buttonId);
-            log.debug(vo);
-    		log.debug(cnt);
             return response;
         }else {
         	//여기 부분은 나중에 세션에서 값을 받아와야한다
-        	reservVO.setId(21);		
+        	reservVO.setId(1);		
     		List<ReservVO> vo = service.lastprint(reservVO);
     		int cnt = service.lastcount(reservVO);
-    		log.debug(vo);
-    		log.debug(cnt);
-    		
     		//여기는 리뷰작성에서 리뷰확인을 보여줄지 리뷰작성을 보여줄지
     		response.put("cnt", cnt);
             response.put("reservList", vo);
@@ -74,7 +69,7 @@ public class MyPageListController {
         }
     }
 	
-	//리뷰작성 or 리뷰확인
+	//리뷰작성 or 리뷰확인버튼 나오는 것(리뷰가 있는지 없는지 확인하느 로직)
 	@GetMapping(value = "reviewcheck")
 	@ResponseBody
 	public Map<String, Object> reviewCheck(@RequestParam("reservid") int reservid){

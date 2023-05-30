@@ -30,6 +30,9 @@
 		 -->
 	<typeAliases>
 		<typeAlias alias="Mypage" type="com.hyundai.thepet.mypage.vo.ReservVO" />
+		<typeAlias alias="Review" type="com.hyundai.thepet.review.vo.ReviewVO" />
+		<typeAlias alias="ReviewWrite" type="com.hyundai.thepet.review.vo.ReviewWriteVO" />
+		<typeAlias alias="Location" type="com.hyundai.thepet.review.vo.LocationVO" />
 	</typeAliases>
 	
 </configuration>

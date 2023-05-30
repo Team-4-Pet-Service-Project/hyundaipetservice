@@ -23,6 +23,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 업로드 관련 빈 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
+	
 	<!-- 일반적으로 Servlet WebApplicationContext 이 DI container는 Controller와 View와 
 		관련된 처리를 담당한다. -->
 	<context:component-scan

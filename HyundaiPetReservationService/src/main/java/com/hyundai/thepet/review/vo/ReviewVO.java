@@ -1,4 +1,4 @@
-package com.hyundai.thepet.mypage.vo;
+package com.hyundai.thepet.review.vo;
 
 import java.sql.Date;
 
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-// 이건 예약확인에서 목록 리스트를 불러올 때 필요한 VO
-public class ReservVO {
+public class ReviewVO {
 	private String address;
 	private String address_detail;
 	private String dog_facilities;

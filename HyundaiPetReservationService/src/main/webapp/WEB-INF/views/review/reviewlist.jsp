@@ -7,11 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
-<link rel="stylesheet" href="/thepet/resources/mypage/css/mypage.css">
+<link rel="stylesheet" href="/thepet/resources/review/css/reviewlist.css">
 <title>Insert title here</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="/thepet/resources/mypage/js/mypage.js"></script>
      
 </head>
 <body>
@@ -26,20 +25,18 @@
 			<div class="main_info">
                     <!-- 여기다가 구현 -->
                     
-                    <span>예약확인</span><br><br>
+                    <span>리뷰확인</span><br><br>
+                    <div class="first">
+                    	<div class="first_1">리뷰목록</div>
+                    	<div class="first_2"></div>
+                    </div>
                     
-                    <div class="button-container">
-        				<button id="buttonA" name="buttonA">예약목록</button>
-        				<button id="buttonB" name="buttonB">지난예약</button>
-    				</div><br><br>
-    				<div>
-    				
-    				</div>
- 					<div class = "cntt">총 ${cnt}건</div>
+                    <br><br>            
+                 	<div class = "cntt">총 ${cnt}건</div>
                  	<!--테이블-->
                  	<div class="table-container">
 	                 	<table class="board-table">
-							<thead id="theadA">
+							<thead>
 								    <tr>
 								        <th>위치</th>
 								        <th>구분</th>
@@ -47,39 +44,30 @@
 								        <th>예약견</th>
 								        <th>이용일자</th>
 								        <th>이용금액</th>
-								        <th>예약 상세</th>
-								        <th>예약 취소</th>
-								    </tr>
-								</thead>
-								
-								<thead id="theadB">
-								    <tr>
-								        <th>위치</th>
-								        <th>구분</th>
-								        <th>이용인원</th>
-								        <th>예약견</th>
-								        <th>이용일자</th>
-								        <th>이용금액</th>
-								        <th>리뷰작성</th>
+								        <th>리뷰상세</th>
+								        <th>리뷰삭제</th>
 								    </tr>
 								</thead>
 							<tbody>
-								<c:forEach var="reserv" items="${Reserv}">
+								<c:forEach var="review" items="${Review}">
 									<tr>
-										<td>${reserv.address} ${reserv.address_detail}</td>
-										<td>${reserv.dog_facilities}</td>
-										<td>${reserv.customer_count}</td>
-										<td>${reserv.dog_name}</td>
-										<td>${reserv.reservation_date}  ${reserv.reservation_start_time} ~ ${reserv.reservation_end_time}</td>
-										<td>${reserv.price}원</td>
+										<td>${review.address} ${review.address_detail}</td>
+										<td>${review.dog_facilities}</td>
+										<td>${review.customer_count}</td>
+										<td>${review.dog_name}</td>
+										<td>${review.reservation_date}  ${review.reservation_start_time} ~ ${review.reservation_end_time}</td>
+										<td>${review.price}원</td>
 										<td>
-											<form action="/reservation/detail?dog_id=${reserv.dog_id}" method="GET">
-  												<button type="submit">예약상세</button>
+											<form action="/thepet/review/datail2" method="GET">
+												<input type="hidden" name="review_id" value="${review.review_id}">
+												<input type="hidden" name="reservation_id" value="${review.reservation_id}">
+												<input type="hidden" name="id" value="${review.id}">
+												<button type="submit">리뷰상세</button>
 											</form>
 										</td>
 										<td>
 											<form action="/reservation/cancel" method="GET">
-  												<button type="submit">예약취소</button>
+  												<button type="submit">리뷰삭제</button>
 											</form>
 										</td>
 									</tr>

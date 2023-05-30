@@ -83,8 +83,9 @@ function updateTable(response) {
             row.append('<td>' + reserv.address + ' ' + reserv.address_detail + '</td>');
             row.append('<td>' + reserv.dog_facilities + '</td>');
             row.append('<td>' + reserv.customer_count + '</td>');
+            row.append('<td>' + reserv['dog_name'] + '</td>');
             row.append('<td>' + formattedDate + '  '+ reserv.reservation_start_time+' ~ ' + reserv.reservation_end_time +'</td>');
-            row.append('<td>' + reserv.price_total + '원' + '</td>');
+            row.append('<td>' + reserv.price + '원' + '</td>');
             row.append('<td><form action="/reservation/detail?dog_id=' + reserv.dog_id + '" method="GET"><button type="submit">예약상세</button></form></td>');
             row.append('<td><form action="/reservation/cancel" method="GET"><button type="submit">예약취소</button></form></td>');
             tbody.append(row);
@@ -93,8 +94,9 @@ function updateTable(response) {
             row.append('<td>' + reserv.address + ' ' + reserv.address_detail + '</td>');
             row.append('<td>' + reserv['dog_facilities'] + '</td>');
             row.append('<td>' + reserv['customer_count'] + '</td>');
+            row.append('<td>' + reserv['dog_name'] + '</td>');
             row.append('<td>' + formattedDate + '  '+ reserv.reservation_start_time+' ~ ' + reserv.reservation_end_time + '</td>');
-            row.append('<td>' + reserv['price_total'] + '원' + '</td>');
+            row.append('<td>' + reserv['price'] + '원' + '</td>');
             var buttonCell = $('<td></td>'); // 버튼을 담을 셀(td) 요소 생성
             $.ajax({
             	async: false, // 동기처리..
@@ -104,9 +106,9 @@ function updateTable(response) {
                 success: function(response) {
                 	console.log(response.check);
                     if (response.check>0) {
-                    	buttonCell.append('<form action="/review/write?dog_id=' + reserv.dog_id + '&id=' + reserv.id + '&reservation_id=' + reserv.reservation_id +'" method="GET"><button type="submit">리뷰확인</button></form>');
+                    	buttonCell.append('<form action="/thepet/review/detail1" method="GET"><input type="hidden" name="dog_id" value="' + reserv.dog_id + '"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservation_id" value="' + reserv.reservation_id + '"><button type="submit">리뷰확인</button></form>');
                     } else {
-                    	buttonCell.append('<form action="/review/write?dog_id=' + reserv.dog_id + '&reservation_id=' + reserv.reservation_id +'" method="GET"><button type="submit">리뷰작성</button></form>');
+                    	buttonCell.append('<form action="/thepet/review/write" method="GET"><input type="hidden" name="reservation_id" value="' + reserv.reservation_id + '"><input type="hidden" name="dog_facilities" value="' + reserv.dog_facilities + '"><input type="hidden" name="reservation_date" value="' + formattedDate + '"><input type="hidden" name="reservation_start_time" value="' + reserv.reservation_start_time + '"><input type="hidden" name="reservation_end_time" value="' + reserv.reservation_end_time + '"><button type="submit">리뷰작성</button></form>');
                     }
                     row.append(buttonCell); // 버튼 셀을 행에 추가합니다.
                 },

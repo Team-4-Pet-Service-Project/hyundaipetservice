@@ -14,7 +14,7 @@
 		<div class="category_container">
 			<p class="my_category">예약 현황</p>
 			<div class="check_menu">
-				<a href="#" class="detail_category">예약 확인</a> <a href="#"
+				<a href="/thepet/mypage/reservlist" class="detail_category">예약 확인</a> <a href="/thepet/review/list?id=1"
 					class="detail_category">리뷰 확인</a>
 			</div>
 			<p class="my_category">나의 정보</p>
