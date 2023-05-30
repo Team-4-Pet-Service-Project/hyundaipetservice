@@ -150,7 +150,8 @@ $(document).ready(function() {
 			str += "<div class='four_2'>";
 			str += "<input type='file' id='uploadFile' name='uploadFile'>";
 			str += "</div>";
-			str += "<input type='hidden' id='filename' name='filename' value=''>"
+			$("#uuid").remove();
+			$("#uploadpath").remove();
 			$("#uploadResult").append(str);
 		});
 	});

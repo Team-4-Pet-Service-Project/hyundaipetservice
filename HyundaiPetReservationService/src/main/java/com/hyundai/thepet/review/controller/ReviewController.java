@@ -49,10 +49,8 @@ public class ReviewController {
 	//(사이드바 누르면)리뷰확인리스트 보여주는 곳
 	@GetMapping(value="list")
 	public String ReviewList(ReviewVO reviewVO, Model model) {
-		log.debug("list:" + reviewVO);
 		List<ReviewVO> vo = service.reviewPrint(reviewVO);
 		int cnt = service.reviewCount(reviewVO);
-		log.debug("list:" + vo);
 		model.addAttribute("Review",vo);
 		model.addAttribute("cnt",cnt);
 		return "review/reviewlist";
@@ -124,7 +122,9 @@ public class ReviewController {
 		public String reviewComplete(ReviewWriteVO reviewWriteVO) {
 			log.debug("updatecom : " + reviewWriteVO);
 			//여기서 리뷰 업데이트하는 곳
+			//null인경우 이미지가 있었는데 삭제된 경우
 			
+			//uuid=""인 경우 원래 이미지가 없는 경우
 			
 			ReviewVO reviewVO = new ReviewVO();
 			//여기선 세션으로 아이디 값을 넣어줘야 한다

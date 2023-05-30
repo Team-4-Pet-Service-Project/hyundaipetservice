@@ -91,6 +91,8 @@
 			                    			<input type="hidden" name="reservation_id" value="${Review.reservation_id}">
 			                    			<input type="hidden" name="user_contents" value="${Review.user_contents}">
 			                    			<input type="hidden" name="filename" value="${path}">
+			                    			<input type="hidden" name="uuid" value="${Review1.uuid}">
+			                    			<input type="hidden" name="uploadpath" value="${Review1.uploadpath}">
 			                    			<input type="submit" value="수정">
 			                			</form>
 	                				</div>
