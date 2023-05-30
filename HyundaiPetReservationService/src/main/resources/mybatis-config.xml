@@ -21,14 +21,10 @@
 		타입 별칭은 자바 타입에 대한 좀더 짧은 이름을 설정하기 위해 사용합니다. 
 		오직 XML 설정에서만 사용되며, 타이핑을 줄이기 위해 사용합니다. 
 	-->
-		<!-- 
-			sql 사용할때 타입 별칭 사용시 해당 태그안에 추가
-			
-			ex)
-			<typeAlias alias="Member" type="spring.springweb.board.member.vo.MemberVO" />
-		
-		 -->
+
 	<typeAliases>
+		<typeAlias alias="Member" type="com.hyundai.thepet.member.vo.MemberVO" />
+		<typeAlias alias="Reservation" type="com.hyundai.thepet.message.vo.ReservationVO" />
 	</typeAliases>
 	
 </configuration>
