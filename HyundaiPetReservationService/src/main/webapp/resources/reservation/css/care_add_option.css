@@ -1,0 +1,25 @@
+.add_option_container {
+	width : 450px;
+	height: 240px;
+	
+	margin-top : 5%;
+}
+
+.add_option_h1 {
+	font-size : 30px;
+	font-weight: bold;
+}
+
+.add_option_messagebox {
+	width: 450px;
+	height: 150px;
+	
+	display: flex;
+	flex-direction : column;
+	justify-content: center;
+	align-items: center;
+}
+
+.add_message {
+	color : #828282;
+}

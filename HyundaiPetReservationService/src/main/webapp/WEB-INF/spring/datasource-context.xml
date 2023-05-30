@@ -31,7 +31,7 @@
 					ex)
 					<value>classpath:mappers/Member.xml</value>
 				 -->
-				
+				<value>classpath:mappers/Dog.xml</value>
 			</list>
 		</property>
 	</bean>

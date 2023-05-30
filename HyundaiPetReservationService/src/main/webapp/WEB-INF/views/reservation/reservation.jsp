@@ -11,7 +11,7 @@
 <script type="text/javascript" src="/thepet/resources/reservation/js/reservation.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<body style="display: flex; justify-content: center">
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/>
