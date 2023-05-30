@@ -15,4 +15,13 @@
 		FROM
 		MEMBERS WHERE email = #{email}
 	</select>
+	
+	<select id="login" resultType="Member">
+		SELECT email
+		FROM
+		MEMBERS WHERE email = #{email} AND password = #{password}
+	</select>
+	
+	
+	
 </mapper>

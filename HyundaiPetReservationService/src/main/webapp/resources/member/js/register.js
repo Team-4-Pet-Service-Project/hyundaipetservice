@@ -84,8 +84,7 @@ function frmSubmit() {
 		$("#name").focus();
 		return;
 	}
-	if ($("#birth_year").val() == '' || $("#birth_month").val() == ''
-			|| $("#birth_day").val() == '') {
+	if ($("#birth_year").val() == '' || $("#birth_month").val() == '' || $("#birth_day").val() == '') {
 		alert("생년월일을 입력해주세요.");
 		if ($("#birth_year").val() == '') {
 			$("#birth_year").focus();

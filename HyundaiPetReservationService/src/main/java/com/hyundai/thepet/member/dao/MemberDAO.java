@@ -8,4 +8,7 @@ public interface MemberDAO {
 
 	public String checkId(String email);
 
+	public MemberVO login(MemberVO member);
+
+
 }

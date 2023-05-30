@@ -1,35 +1,54 @@
-function loginSubmit() {
-	var mem_id = $("member_id").val();
-	var member_passwd = $("member_passwd").val();
+// 로그인 form submit
+
+$(function() {
+	$('.btnLogin').on('click', loginSubmit);
+})
+
+function loginSubmit(e) {
+	e.preventDefault();
 	
-	if (mem_id == '') {
-		alert("아이디를 입력해주세요.");
-		$("#member_id").focus();
+	var mem_id = $("#member_id").val();
+	var member_passwd = $("#member_passwd").val();
+		
+	let flag = true;
+	
+	$("#idMsg").css("display", "none");
+	$("#pwMsg").css("display", "none");
+	
+	console.log(mem_id);
+	console.log(member_passwd);
+	
+	
+	if (mem_id === '') {
+		$("#idMsg").css("display", "block");
+		$("#idMsg").css("color", "red");
+		$("#loginMsg").css("display", "none");
+
+		flag = false;
 		return;
 	}
-	if (member_passwd == '') {
-		alert("비밀번호를 입력해주세요.");
-		$("#member_passwd").focus();
+	if (member_passwd === '') {
+		$("#pwMsg").css("display", "block");
+		$("#pwMsg").css("color", "red");
+		$("#pwMsg").css("display", "none");
+
+		flag = false;
 		return;
-	}else{
-		$.ajax({
-			url : '/thepet/member/login',
-			data : {
-				email : mem_id,
-				password : member_passwd
-			},
-			type : 'post',
-			success : function(result) {
-				if(result != ){
-					$("#idMsg").text("이미 사용중인 아이디입니다.");
-					$("#idMsg").css("color", "red");
-				}else{
-				}
-			},
-			error : function(error){
-				console.log(error);
+	}
+
+	jQuery.ajax({
+		url  : "/thepet/member/login",
+		type : "POST",
+		data : $("#loginForm").serialize(),
+		success : function(result){
+			if(result){
+				console.log(result);
 			}
-		});
-	}
-	$("#loginForm").submit();
+		},
+		error : function(request, status, error){
+			console.log(error);
+			$("#loginMsg").css("display", "block");
+			$("#loginMsg").css("color", "red");
+		}
+	})
 }

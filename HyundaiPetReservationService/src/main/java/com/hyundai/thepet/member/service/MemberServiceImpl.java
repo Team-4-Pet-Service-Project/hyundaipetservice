@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.hyundai.thepet.member.dao.MemberDAO;
 import com.hyundai.thepet.member.vo.MemberVO;
 
 @Service
+@Transactional
 public class MemberServiceImpl implements MemberService {
 
 	Logger log = LogManager.getLogger("case3");
@@ -45,31 +47,25 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String checkId(String email) {
 		log.info("dao :... " + email);
-		String result = dao.checkId(email);
+		String result = "";
+		try {
+			result = dao.checkId(email);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		log.debug(result);
-
 		return result;
 	}
 
 	@Override
-	public boolean login(MemberVO member) {
+	public MemberVO login(MemberVO member) {
 
-		TransactionStatus txStatus = transactionManger.getTransaction(new DefaultTransactionDefinition());
-
-		boolean result = false;
+		MemberVO result = new MemberVO();
 		try {
-//			dao.login(member);
-			result = true;
-			log.debug("service : register" + result);
-			transactionManger.rollback(txStatus);
-
+			result = dao.login(member);
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = false;
-			transactionManger.rollback(txStatus);
 		}
-
-		log.debug("service : register" + result);
 
 		return result;
 	}

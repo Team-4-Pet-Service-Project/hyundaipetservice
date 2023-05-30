@@ -56,7 +56,7 @@
 													type="password" placeholder="비밀번호*">
 													<div class="info-msg">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합,
 														10자~16자)</div>
-													<div class="err-msg">비밀번호 항목은 필수 입력값입니다.</div>
+													<div class="err-msg" style="color:red;">비밀번호 항목은 필수 입력값입니다.</div>
 												</label>
 											</div>
 
@@ -94,29 +94,6 @@
 												</label>
 											</div>
 										</div>
-
-										<!-- <div>
-											<div class="form-block email-block flex-column-2">
-												<label class="ePlaceholderEach required" title="이메일*"
-													style="width: 75%;">
-													<p class="form-title">이메일*</p> <input id="email1"
-													name="email" value="" type="text" placeholder="이메일*">
-													<div class="err-msg-system" id="emailMsg"></div>
-													<div class="err-msg">이메일 항목은 필수 입력값입니다.</div>
-													<ul class="err-msg" id="result_send_verify_mobile_success"
-														style="display: none;">
-														<li>인증번호가 발송되었습니다.</li>
-													</ul>
-												</label>
-												<button type="button" id="mail-Check-Btn"
-													class="btn btn-md btn-white btn-135">인증번호받기</button>
-												<button type="button" id="btn_action_verify_mobile"
-													class="btn btn-md btn-white btn-135 "
-													onclick="memberVerifyMobile.joinSendVerificationNumber(); return false;"
-													style="display: none;">재전송</button>
-											</div>
-										</div> -->
-
 										<div class="">
 											<div class="form-block birthday-block">
 												<div class="birthday">

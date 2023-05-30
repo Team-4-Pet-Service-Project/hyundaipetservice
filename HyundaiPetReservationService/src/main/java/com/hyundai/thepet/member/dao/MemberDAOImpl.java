@@ -35,5 +35,14 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return result;
 	}
+
+	@Override
+	public MemberVO login(MemberVO member) {
+		String statement = "myMember.login";
+		MemberVO result = session.selectOne(statement, member); 
+		
+		return result;
+	}
+	
 	
 }

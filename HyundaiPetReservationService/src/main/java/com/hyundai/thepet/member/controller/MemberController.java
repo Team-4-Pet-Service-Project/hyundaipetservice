@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyundai.thepet.member.service.MemberService;
@@ -56,10 +55,15 @@ public class MemberController {
 
 		log.debug("login method : " + member);
 
-		boolean result = service.login(member);
+		MemberVO result = service.login(member);
+		
+		log.debug(result);
 
+		// 세션에 값 넣기
+		model.addAttribute(result);
+		
 		String viewName = "";
-		if (result) {
+		if (result.getEmail() != "") {
 			model.addAttribute(member);
 			viewName = "member/html/login.html";
 		} else {
