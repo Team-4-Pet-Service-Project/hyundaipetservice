@@ -1,4 +1,4 @@
- $(document).ready(function() {
+$(document).ready(function() {
       $('.rating i').on('click', function() {
         var selectedRate = parseInt($(this).data('rate'));
 
@@ -42,10 +42,12 @@
  //이미지 업로드 하는 부분
  $(document).ready(function() {
 	 var maxFileCount = 1; // 최대 파일 개수 설정
-	 var currentFileCount = 0; // 현재 파일 개수
+	 /*var currentFileCount = 0; // 현재 파일 개수*/	 
+	 sessionStorage.setItem("currentFileCount", 0); 
+	 
 	 $("input[type='file']").on("change", function(e){
-		 
-		 	if (currentFileCount >= maxFileCount) {
+		 	
+		 	if (sessionStorage.getItem("currentFileCount") >= maxFileCount) {
 		      alert("최대 " + maxFileCount + "개까지만 파일을 추가할 수 있습니다.");
 		      $("input[type='file']").val("");
 		      return;
@@ -64,9 +66,10 @@
 		    	type : 'POST',
 		    	dataType : 'json',
 		    	success : function(result){
-		    		console.log(result);
+		    		
 		    		showUploadImage(result);
-		    		currentFileCount++;
+		    		
+		    		sessionStorage.setItem("currentFileCount", 1);
 		    		currentImage = result.fileName;
 		    	},
 		    	error : function(result){
@@ -107,7 +110,7 @@
 	/* 파일 삭제 메서드 */
 	function deleteFile(){
 		let targetFile = $(".imgDeleteBtn").data("file");
-		
+
 		let targetDiv = $("#result_card");
 		
 		$.ajax({
@@ -118,7 +121,8 @@
 			success : function(result){
 				console.log(result);
 				targetDiv.remove();
-		        currentFileCount = 0;
+		        
+				sessionStorage.setItem("currentFileCount", 0);
 				$("input[type='file']").val("");
 			},
 			error : function(result){

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hyundai.thepet.mypage.vo.ReservVO;
 import com.hyundai.thepet.review.service.ReviewService;
@@ -38,7 +39,6 @@ public class ReviewController {
 	//리뷰작성 후 다시 리뷰확인 리스트로 가는 곳
 	@PostMapping(value = "writecheck")
 	public String ReviewWriteCheck(ReviewWriteVO reviewWriteVO) {
-		log.debug(reviewWriteVO);
 		service.reviewWrite(reviewWriteVO);
 		ReviewVO reviewVO = new ReviewVO();
 		//여기선 세션으로 아이디 값을 넣어줘야 한다
@@ -67,6 +67,7 @@ public class ReviewController {
 			model.addAttribute("Review",vo);
 			//여기에 review_id, filename, uploadpath, uuid
 			model.addAttribute("Review1",vo1);
+			
 			if(vo1==null) {
 				
 			}else {
@@ -87,7 +88,8 @@ public class ReviewController {
 			ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
 			vo.setReview_id(vo.getId());
 			ReviewWriteVO vo1 = service.reviewimgDetail(vo);
-			 
+			log.debug(vo);
+			log.debug(vo1);
 			model.addAttribute("Review",vo);
 			//여기에 review_id, filename, uploadpath, uuid
 			model.addAttribute("Review1",vo1);
@@ -122,10 +124,16 @@ public class ReviewController {
 		public String reviewComplete(ReviewWriteVO reviewWriteVO) {
 			log.debug("updatecom : " + reviewWriteVO);
 			//여기서 리뷰 업데이트하는 곳
+			service.reviewUpdate(reviewWriteVO);
 			//null인경우 이미지가 있었는데 삭제된 경우
-			
 			//uuid=""인 경우 원래 이미지가 없는 경우
-			
+			if(reviewWriteVO.getUuid()=="") {
+				
+			}else if(reviewWriteVO.getUuid()=="null") {
+				
+			}else {
+				
+			}
 			ReviewVO reviewVO = new ReviewVO();
 			//여기선 세션으로 아이디 값을 넣어줘야 한다
 			reviewVO.setId(1);

@@ -67,5 +67,22 @@ public class ReviewServiceImpl implements ReviewService{
 		return vo;
 	}
 
+	@Override
+	public void reviewUpdate(ReviewWriteVO reviewWriteVO) {
+		//Transaction시작
+		TransactionStatus txStatus =
+				transactionManager.getTransaction(
+						new DefaultTransactionDefinition());
+		try {
+			dao.reviewUpdate(reviewWriteVO);
+			transactionManager.commit(txStatus);
+		}catch (Exception e) {
+			transactionManager.rollback(txStatus);
+			e.printStackTrace();
+		}
+		
+		
+	}
+
 	
 }

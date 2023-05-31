@@ -3,6 +3,8 @@ package com.hyundai.thepet.review.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,8 @@ import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
 @Repository
 public class ReviewDAOImpl implements ReviewDAO{
+	
+	Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	private SqlSession session;
@@ -67,6 +71,12 @@ public class ReviewDAOImpl implements ReviewDAO{
 		String statement = "review.selectlocation";
 		LocationVO vo = session.selectOne(statement,locationVO);
 		return vo;
+	}
+
+	@Override
+	public void reviewUpdate(ReviewWriteVO reviewWriteVO) {
+		String statement = "review.update";
+		int a = session.update(statement, reviewWriteVO);
 	}
 
 	

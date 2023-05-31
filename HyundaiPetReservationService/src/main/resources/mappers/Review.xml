@@ -112,5 +112,19 @@
 			where reservations.id=#{reservation_id}
  		]]>
  	</select>
- 	
+ 	<!-- 리뷰 update하는 곳 -->
+ 	<update id="update" parameterType="ReviewWrite">
+ 		<![CDATA[
+ 			update reviews
+			set
+			created_time = sysdate,
+			user_contents = #{user_contents},
+			rate = #{rate},
+			service_bt = #{service_bt},
+			space_bt = #{space_bt},
+			clean_bt = #{clean_bt},
+			revisit_bt = #{revisit_bt}
+			where id = #{review_id}
+ 		]]>
+ 	</update>
  </mapper>
