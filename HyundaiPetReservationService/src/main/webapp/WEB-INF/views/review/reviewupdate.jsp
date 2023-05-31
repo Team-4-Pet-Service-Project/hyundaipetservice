@@ -29,9 +29,9 @@
                     
                      <input type="hidden" id="hidList" value="${Review.rate}" />
                     <form id="myForm"action="/thepet/review/updatecom" method="post">
-                    	<input type="hidden" name="reservation_id" value="${Review.reservation_id}">
+                    	<input type="hidden" name="reservationId" value="${Review.reservationId}">
 	                   	<input type="hidden" id="uuid" name="uuid" value="${Review.uuid}">
-	                   	<input type="hidden" name="review_id" value="${Review.review_id}">
+	                   	<input type="hidden" name="reviewId" value="${Review.reviewId}">
 	                   	<input type="hidden" id="uploadpath" name="uploadpath" value="${Review.uploadpath}">
 	                   <div class="start">
 	                    <div class="one">리뷰수정</div>
@@ -51,15 +51,15 @@
 	                    		<div >서비스</div>
 	                    		<div class="radio-container">
 	                        		<label class="radio-label" >
-	                        			<input class="radio-input" type="radio" name="service_bt" value="친절해요" ${Review.service_bt == '친절해요' ? 'checked' : ''}>
+	                        			<input class="radio-input" type="radio" name="serviceBt" value="친절해요" ${Review.serviceBt == '친절해요' ? 'checked' : ''}>
 	                           			<span class="radio-custom">친절해요</span>
 	                        		</label>
 	                        		<label class="radio-label"> 
-	                           			<input class="radio-input" type="radio" name="service_bt" value="그저 그래요" ${Review.service_bt == '그저 그래요' ? 'checked' : ''}> 
+	                           			<input class="radio-input" type="radio" name="serviceBt" value="그저 그래요" ${Review.serviceBt == '그저 그래요' ? 'checked' : ''}> 
 	                           			<span class="radio-custom">그저 그래요</span>
 	                        		</label> 
 	                        		<label class="radio-label"> 
-	                           			<input class="radio-input" type="radio" name="service_bt" value="불친절해요" ${Review.service_bt == '불친절해요' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="serviceBt" value="불친절해요" ${Review.serviceBt == '불친절해요' ? 'checked' : ''}>
 	          							<span class="radio-custom">불친절해요</span>
 	          							</label>
 	                     		</div>
@@ -69,15 +69,15 @@
 	                    		<div>공간</div>
 	                    		<div class="radio-container1">
 	                        		<label class="radio-label1"> 
-	                           			<input class="radio-input" type="radio" name="space_bt" value="넓어요" ${Review.space_bt == '넓어요' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="spaceBt" value="넓어요" ${Review.spaceBt == '넓어요' ? 'checked' : ''}>
 	                           			<span class="radio-custom1">넓어요</span>
 	                        		</label>
 	                        		<label class="radio-label1"> 
-	                           			<input class="radio-input" type="radio" name="space_bt" value="적당해요" ${Review.space_bt == '적당해요' ? 'checked' : ''}> 
+	                           			<input class="radio-input" type="radio" name="spaceBt" value="적당해요" ${Review.spaceBt == '적당해요' ? 'checked' : ''}> 
 	                           			<span class="radio-custom1">적당해요</span>
 	                        		</label> 
 	                        		<label class="radio-label1"> 
-	                           			<input class="radio-input" type="radio" name="space_bt" value="좁아요" ${Review.space_bt == '좁아요' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="spaceBt" value="좁아요" ${Review.spaceBt == '좁아요' ? 'checked' : ''}>
 	          							<span class="radio-custom1">좁아요</span>
 	          							</label>
 	                     		</div>
@@ -87,15 +87,15 @@
 	                    		<div>청결도</div>
 	                    		<div class="radio-container">
 	                        		<label class="radio-label1"> 
-	                           			<input class="radio-input" type="radio" name="clean_bt" value="쾌적해요" ${Review.clean_bt == '쾌적해요' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="cleanBt" value="쾌적해요" ${Review.cleanBt == '쾌적해요' ? 'checked' : ''}>
 	                           			<span class="radio-custom1">쾌적해요</span>
 	                        		</label>
 	                        		<label class="radio-label1"> 
-	                           			<input class="radio-input" type="radio" name="clean_bt" value="적당해요" ${Review.clean_bt == '적당해요' ? 'checked' : ''}> 
+	                           			<input class="radio-input" type="radio" name="cleanBt" value="적당해요" ${Review.cleanBt == '적당해요' ? 'checked' : ''}> 
 	                           			<span class="radio-custom1">적당해요</span>
 	                        		</label> 
 	                        		<label class="radio-label1"> 
-	                           			<input class="radio-input" type="radio" name="clean_bt" value="더러워요" ${Review.clean_bt == '더러워요' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="cleanBt" value="더러워요" ${Review.cleanBt == '더러워요' ? 'checked' : ''}>
 	          							<span class="radio-custom1">더러워요</span>
 	          							</label>
 	                     		</div>
@@ -105,15 +105,15 @@
 	                    		<div>재방문의사</div>
 	                    		<div class="radio-container2">
 	                        		<label class="radio-label"> 
-	                           			<input class="radio-input" type="radio" name="revisit_bt" value="무조건이죠" ${Review.revisit_bt == '무조건이죠' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="revisitBt" value="무조건이죠" ${Review.revisitBt == '무조건이죠' ? 'checked' : ''}>
 	                           			<span class="radio-custom">무조건이죠</span>
 	                        		</label>
 	                        		<label class="radio-label"> 
-	                           			<input class="radio-input" type="radio" name="revisit_bt" value="애매해요" ${Review.revisit_bt == '애매해요' ? 'checked' : ''}> 
+	                           			<input class="radio-input" type="radio" name="revisitBt" value="애매해요" ${Review.revisitBt == '애매해요' ? 'checked' : ''}> 
 	                           			<span class="radio-custom">애매해요</span>
 	                        		</label> 
 	                        		<label class="radio-label"> 
-	                           			<input class="radio-input" type="radio" name="revisit_bt" value="없어요" ${Review.revisit_bt == '없어요' ? 'checked' : ''}>
+	                           			<input class="radio-input" type="radio" name="revisitBt" value="없어요" ${Review.revisitBt == '없어요' ? 'checked' : ''}>
 	          							<span class="radio-custom">없어요</span>
 	          							</label>
 	                     		</div>
@@ -144,15 +144,15 @@
 	                    </div>
 	                    <div class="five">
 	                    	<div>이용시설</div>
-	                    	<div class="five_1">${Location.dog_facilities}</div>
+	                    	<div class="five_1">${Location.dogFacilities}</div>
 	                    </div>
 	                    <div class="six">
 	                    	<div>이용일자</div>
-	                    	<div class="six_1">${Location.reservation_date} ${Location.reservation_start_time} ~ ${Location.reservation_end_time}</div>
+	                    	<div class="six_1">${Location.reservationDate} ${Location.reservationStartTime} ~ ${Location.reservationEndTime}</div>
 	                    </div>
 	                    <div class="seven">
 	                    	<div>리뷰작성</div>
-	                    	<div class="seven_1"><textarea class="seven_1" name="user_contents" rows="8" cols="60" required>${Review.user_contents}</textarea></div>
+	                    	<div class="seven_1"><textarea class="seven_1" name="userContents" rows="8" cols="60" required>${Review.userContents}</textarea></div>
 	                    	<div class="eight"><input type="submit" value="리뷰 수정" onclick="validateForm(event)"></div>
 	                    </div> 
                    
