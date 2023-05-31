@@ -1,0 +1,41 @@
+.reservation_container {
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	height : 1000px;
+	width: 1600px;
+	border:1px solid black;
+}
+
+.reservation_form {
+	display:flex;
+	width : 1600px;
+	height : 900px;
+	border : 1px solid green;
+}
+
+.reservation_category {
+	display:flex;
+	flex-direction : column;
+	width : 130px;
+	height: 900px;
+	
+	border : 1px solid purple;
+}
+
+.category_box {
+	width: 130px;
+	height: 130px;
+	
+	border : 1px solid #B7B7B7;
+	
+	cursor: pointer;
+}
+
+.select_category {
+	background-color: #F6F6F6;
+}
+
+.non_select_category {
+	
+}
