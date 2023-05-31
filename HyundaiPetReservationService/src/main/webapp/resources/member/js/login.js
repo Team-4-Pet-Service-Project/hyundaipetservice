@@ -13,6 +13,8 @@ function loginSubmit(e) {
 	
 	$("#idMsg").css("display", "none");
 	$("#pwMsg").css("display", "none");
+	$("#loginMsg").css("display", "none");
+
 	
 	console.log(mem_id);
 	console.log(member_passwd);
@@ -24,7 +26,6 @@ function loginSubmit(e) {
 		console.log("아이디 유효성 검사");
 		
 		flag = false;
-		return;
 	}
 	if (member_passwd === '') {
 		$("#pwMsg").css("display", "block");
@@ -33,6 +34,8 @@ function loginSubmit(e) {
 		console.log("비밀번호 유효성 검사");
 		
 		flag = false;
+	}
+	if (flag === false){
 		return;
 	}
 

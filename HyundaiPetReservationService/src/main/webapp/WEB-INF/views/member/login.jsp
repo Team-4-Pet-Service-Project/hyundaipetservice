@@ -41,20 +41,21 @@
 														<label class="id ePlaceholderEach required" title="아이디*">
 															<p class="form-title">아이디*</p> <input id="member_id"
 															name="email" class="inputTypeText" placeholder="아이디*"
-															value="" type="text" />
-														<div class="err-msg" id="idMsg" style="display: none;">아이디 항목은 필수 입력값입니다.</div>
+															value="" type="text"/>
 														</label>
+														<div class="err-msg" id="idMsg" style="display: none;">아이디
+															항목은 필수 입력값입니다.</div>
 													</div>
 													<div class="form-block">
 														<label class="password ePlaceholderEach required"
 															title="패스워드*">
 															<p class="form-title">패스워드*</p> <input id="member_passwd"
 															name="password" autocomplete="off" value=""
-															type="password" placeholder="패스워드*">
-														<div class="err-msg" id="pwMsg" style="display: none;">패스워드 항목은 필수 입력값입니다.</div>
+															type="password" placeholder="패스워드*"/>
 														</label>
+														<div class="err-msg" id="pwMsg" style="display: none;">패스워드 항목은 필수 입력값입니다.</div>
 													</div>
-													<button class="btnLogin btn btn-lg btn-dark btn-full">
+													<button class="btnLogin btn btn-lg btn-dark btn-full" type="button">
 														<span>로그인</span>
 													</button>
 													<div class="find-block">
