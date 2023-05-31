@@ -31,6 +31,7 @@
                     <form id="myForm"action="/thepet/review/updatecom" method="post">
                     	<input type="hidden" name="reservation_id" value="${Review.reservation_id}">
 	                   	<input type="hidden" id="uuid" name="uuid" value="${Review.uuid}">
+	                   	<input type="hidden" name="review_id" value="${Review.review_id}">
 	                   	<input type="hidden" id="uploadpath" name="uploadpath" value="${Review.uploadpath}">
 	                   <div class="start">
 	                    <div class="one">리뷰수정</div>

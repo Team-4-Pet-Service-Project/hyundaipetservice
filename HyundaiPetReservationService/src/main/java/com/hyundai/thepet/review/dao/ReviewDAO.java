@@ -23,4 +23,6 @@ public interface ReviewDAO {
 	public ReviewWriteVO reviewimgDetail(ReviewWriteVO reviewWriteVO);
 
 	public LocationVO selectLocation(LocationVO locationVO);
+
+	public void reviewUpdate(ReviewWriteVO reviewWriteVO);
 }
