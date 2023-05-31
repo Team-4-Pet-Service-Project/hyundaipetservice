@@ -15,6 +15,7 @@
 			Query가 실행될 때 마다 실행되는 SQL Query와 그 결과를 Log로 출력  
 		-->
 		<setting name="logImpl" value="LOG4J2"/>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 
 	<!-- 
@@ -29,6 +30,7 @@
 		
 		 -->
 	<typeAliases>
+		<typeAlias alias="Dog" type="com.hyundai.thepet.dog.vo.DogVO" />
 	</typeAliases>
 	
 </configuration>
