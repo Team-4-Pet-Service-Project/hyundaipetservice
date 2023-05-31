@@ -50,60 +50,60 @@ header {
 
 .menu-trigger,
 .menu-trigger span {
-	display: inline-block;
-	transition: all .4s;
-	box-sizing: border-box;
+   display: inline-block;
+   transition: all .4s;
+   box-sizing: border-box;
 }
 
 .menu-trigger {
-	position: relative;
-	width: 50px;
-	height: 44px;
+   position: relative;
+   width: 50px;
+   height: 44px;
 }
 
 .menu-trigger span {
-	position: absolute;
-	left: 0;
-	width: 30px;
-	height: 4px;
-	border-radius: 4px;
+   position: absolute;
+   left: 0;
+   width: 30px;
+   height: 4px;
+   border-radius: 4px;
     background-color: #000000;
 }
 
 .menu-trigger span:nth-of-type(1) {
-	top: 10px;
+   top: 10px;
     left: 10px;
 }
 
 .menu-trigger span:nth-of-type(2) {
-	top: 20px;
+   top: 20px;
     left: 10px;
 }
 
 .menu-trigger span:nth-of-type(3) {
-	bottom: 10px;
+   bottom: 10px;
     left: 10px;
 }
 
-/* 2th bar 사라지고,  1st 3rd bar 회전하며 X  */
+/* 2th bar        ,  1st 3rd bar 회   玖  X  */
 
 .menu-trigger.active-3 {
-	-webkit-transform: rotate(360deg);
-	transform: rotate(360deg);
+   -webkit-transform: rotate(360deg);
+   transform: rotate(360deg);
 }
 
 .menu-trigger.active-3 span:nth-of-type(1) {
-	-webkit-transform: translateY(10px) rotate(-45deg);
-	transform: translateY(10px) rotate(-45deg);
+   -webkit-transform: translateY(10px) rotate(-45deg);
+   transform: translateY(10px) rotate(-45deg);
 }
 
 .menu-trigger.active-3 span:nth-of-type(2) {
-	-webkit-transform: translateY(0) rotate(45deg);
-	transform: translateY(0) rotate(45deg);
+   -webkit-transform: translateY(0) rotate(45deg);
+   transform: translateY(0) rotate(45deg);
 }
 
 .menu-trigger.active-3 span:nth-of-type(3) {
-	opacity: 0;
+   opacity: 0;
 }
 
 .menu_bar span {

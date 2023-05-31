@@ -26,11 +26,7 @@
 			value="classpath:mybatis-config.xml" />
 		<property name="mapperLocations">
 			<list>
-				<!-- mapper에 xml 추가할때마다 해당 해당 위치에 경로 추가 -->
-				<!-- 
-					ex)
-					<value>classpath:mappers/Member.xml</value>
-				 -->
+        <value>classpath:mappers/Member.xml</value>
 				<value>classpath:mappers/Sms.xml</value>
 				<value>classpath:mappers/Dog.xml</value>
 			</list>
