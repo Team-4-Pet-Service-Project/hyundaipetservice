@@ -137,7 +137,6 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		try {
 			dao.reviewDelete(reviewWriteVO);
-			log.debug("여기와??");
 			transactionManager.commit(txStatus);
 		}catch (Exception e) {
 			transactionManager.rollback(txStatus);
