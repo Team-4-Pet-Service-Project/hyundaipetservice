@@ -7,5 +7,6 @@ public interface MemberService {
 	public boolean register(MemberVO member);
 	public MemberVO login(MemberVO member);
 	public String checkId(String email);
+	public String checkPhone(String Phone);
 	
 }

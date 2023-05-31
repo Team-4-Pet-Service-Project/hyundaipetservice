@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyundai.thepet.member.service.MemberService;
@@ -18,6 +19,7 @@ import com.hyundai.thepet.member.vo.MemberVO;
 
 @Controller
 @RequestMapping(value = "member")
+@SessionAttributes(value= {"member"})
 public class MemberController {
 
 	Logger log = LogManager.getLogger("case3");
@@ -26,12 +28,13 @@ public class MemberController {
 	MemberService service;
 	
 	@PostMapping(value = "register")
+	@ResponseBody
 	public String register(MemberVO member, RedirectAttributes rttr) {
 
 		log.debug("register method : " + member);
 		service.register(member);
 		rttr.addFlashAttribute("member", member);
-
+		
 		return "redirect:/member/registerResult";
 	}
 	
@@ -46,12 +49,22 @@ public class MemberController {
 		return result;
 	}
 	
+	@PostMapping(value="checkPhone")
+	@ResponseBody
+	public String checkPhone(String phone) {
+		
+		log.debug("check id..... :  " + phone);
+		String result = service.checkPhone(phone);
+		log.debug("check id result : " + phone);
+		
+		return result;
+	}
+	
 	
 	
 	@PostMapping(value = "login")
 	@ResponseBody
 	public MemberVO login(@ModelAttribute("member") MemberVO member, Model model) {
-
 		log.debug("login method : " + member);
 
 		MemberVO result = service.login(member);
@@ -65,7 +78,6 @@ public class MemberController {
 		if (result.getEmail() != "") {
 			model.addAttribute(member);
 			
-			// 메인 화면 가져오기
 			viewName = "member/html/login.html";
 		} else {
 			viewName = "redirect:/member/login";
@@ -74,7 +86,6 @@ public class MemberController {
 		return result;
 	}
 
-	
 	
 	@GetMapping(value = "register_bt")
 	public String register_bt() {

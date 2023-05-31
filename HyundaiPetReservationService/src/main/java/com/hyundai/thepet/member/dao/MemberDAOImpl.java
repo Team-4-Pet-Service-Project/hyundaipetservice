@@ -33,6 +33,14 @@ public class MemberDAOImpl implements MemberDAO {
 		log.debug(result);
 		return result;
 	}
+	
+	@Override
+	public String checkPhone(String phone) {
+		String statement = "myMember.checkPhone";
+		String result = session.selectOne(statement, phone); 
+		log.debug(result);
+		return result;
+	}
 
 	@Override
 	public MemberVO login(MemberVO member) {
@@ -40,9 +48,4 @@ public class MemberDAOImpl implements MemberDAO {
 		MemberVO result = session.selectOne(statement, member); 
 		return result;
 	}
-	
-	
-	
-	
-	
 }
