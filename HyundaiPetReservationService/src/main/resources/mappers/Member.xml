@@ -23,11 +23,9 @@
 	</select>
 	
 	<select id="login" resultType="Member">
-		SELECT email
+		SELECT email, password
 		FROM
-		MEMBERS WHERE email = #{email} AND password = #{password}
+		MEMBERS WHERE email = #{email}
 	</select>
-	
-	
 	
 </mapper>

@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.util.PasswordDecryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,13 +28,12 @@ public class MemberServiceImpl implements MemberService {
 	public boolean register(MemberVO member) {
 
 		log.info("register service : ... " + member);
-
 		boolean result = false;
 		try {
 			String inputPw = member.getPassword();
 			String encodePw = passwordEncoder.encode(inputPw);
 			member.setPassword(encodePw);
-			
+
 			dao.register(member);
 			result = true;
 
@@ -42,7 +42,6 @@ public class MemberServiceImpl implements MemberService {
 			e.printStackTrace();
 			result = false;
 		}
-		
 		return result;
 	}
 
@@ -58,8 +57,6 @@ public class MemberServiceImpl implements MemberService {
 		log.debug(result);
 		return result;
 	}
-	
-	
 
 	@Override
 	public String checkPhone(String Phone) {
@@ -76,16 +73,28 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO login(MemberVO member) {
-
+		log.debug("service : " + member);
 		MemberVO result = new MemberVO();
 		try {
+			String inputPw = member.getPassword();
+			String encodePw = passwordEncoder.encode(inputPw);
+			
+			log.debug("service try - encodePw" + encodePw);
+			
 			result = dao.login(member);
-
+			
+			log.debug("DB에서 가져온 비밀번호 " + result.getPassword());
+			
+			if (passwordEncoder.matches(member.getPassword(), result.getPassword())) {
+				log.debug("service try - 비밀번호 성공");
+				return member;
+			}else {
+				log.debug("service try - 비밀번호 실패");
+				return null;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-
-		return result;
 	}
-
 }

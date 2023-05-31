@@ -11,8 +11,6 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 
-	
-
 	<typeAliases>
 		<typeAlias alias="Mypage" type="com.hyundai.thepet.mypage.vo.ReservVO" />
 		<typeAlias alias="Review" type="com.hyundai.thepet.review.vo.ReviewVO" />

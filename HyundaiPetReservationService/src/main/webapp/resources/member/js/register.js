@@ -159,6 +159,7 @@ function checkPhone() {
 	if ($("#mobile1").val() == '' || $("#mobile2").val() == ''
 			|| $("#mobile3").val() == '') {
 		
+
 		$("#phoneMsg").text("전화번호를 입력해주세요.");
 		$("#phoneMsg").css("color", "red");
 		
