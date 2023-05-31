@@ -1,7 +1,5 @@
 package com.hyundai.thepet.member.dao;
 
-import java.util.Optional;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,11 +28,9 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public String checkId(String email) {
-		
 		String statement = "myMember.checkId";
 		String result = session.selectOne(statement, email); 
 		log.debug(result);
-		
 		return result;
 	}
 
@@ -42,7 +38,6 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO login(MemberVO member) {
 		String statement = "myMember.login";
 		MemberVO result = session.selectOne(statement, member); 
-		
 		return result;
 	}
 	

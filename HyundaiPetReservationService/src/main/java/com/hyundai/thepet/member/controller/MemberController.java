@@ -18,18 +18,13 @@ import com.hyundai.thepet.member.vo.MemberVO;
 
 @Controller
 @RequestMapping(value = "member")
-// @SessionAttributes(value = { "member" })
 public class MemberController {
 
 	Logger log = LogManager.getLogger("case3");
 	
 	@Autowired
 	MemberService service;
-	@Autowired
-	BCryptPasswordEncoder passEncoder;
 	
-	
-
 	@PostMapping(value = "register")
 	public String register(MemberVO member, RedirectAttributes rttr) {
 
@@ -45,9 +40,7 @@ public class MemberController {
 	public String checkId(String email) {
 		
 		log.debug("check id..... :  " + email);
-		
 		String result = service.checkId(email);
-		
 		log.debug("check id result : " + result);
 		
 		return result;
@@ -56,7 +49,8 @@ public class MemberController {
 	
 	
 	@PostMapping(value = "login")
-	public String login(@ModelAttribute("member") MemberVO member, Model model) {
+	@ResponseBody
+	public MemberVO login(@ModelAttribute("member") MemberVO member, Model model) {
 
 		log.debug("login method : " + member);
 
@@ -77,7 +71,7 @@ public class MemberController {
 			viewName = "redirect:/member/login";
 		}
 		log.debug(viewName);
-		return viewName;
+		return result;
 	}
 
 	

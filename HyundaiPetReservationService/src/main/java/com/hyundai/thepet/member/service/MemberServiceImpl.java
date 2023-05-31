@@ -25,8 +25,10 @@ public class MemberServiceImpl implements MemberService {
 	private PlatformTransactionManager transactionManger;
 	@Autowired
 	private MemberDAO dao;
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+
+	/*
+	 * @Autowired private BCryptPasswordEncoder passwordEncoder;
+	 */
 
 	@Override
 	public boolean register(MemberVO member) {
@@ -34,8 +36,7 @@ public class MemberServiceImpl implements MemberService {
 		TransactionStatus txStatus = transactionManger.getTransaction(new DefaultTransactionDefinition());
 
 		log.info("register service : ... " + member);
-		
-		
+
 		boolean result = false;
 		try {
 			dao.register(member);
@@ -56,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 		String result = "";
 		try {
 			result = dao.checkId(email);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		log.debug(result);
@@ -66,12 +67,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(MemberVO member) {
 
-		
-		passwordEncoder.encode(member.getPassword());
-		
+		//String encodingPw = passwordEncoder.encode(member.getPassword());
+
 		MemberVO result = new MemberVO();
 		try {
 			result = dao.login(member);
+
+			/*
+			 * if (encodingPw == result.getPassword()) { }
+			 */
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

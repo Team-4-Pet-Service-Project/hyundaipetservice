@@ -16,7 +16,7 @@
 		</listener-class>
 	</listener>
 
-	<!-- Log4j 설정 -->
+	<!-- Log4j2 설정 -->
 	<context-param>
 		<param-name>log4jConfiguration</param-name>
 		<param-value>classpath:/log4j2.xml</param-value>
@@ -29,21 +29,14 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
+			<param-value>
+				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/spring-security.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<!-- The definition of the Root Spring Container shared by all Servlets 
-		and Filters -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			/WEB-INF/spring/root-context.xml
-			/WEB-INF/spring/spring-security.xml
-		</param-value>
-	</context-param>
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
