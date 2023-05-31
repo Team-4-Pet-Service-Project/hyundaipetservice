@@ -84,17 +84,17 @@ public class MemberController {
 	}
 
 	@GetMapping(value = "register_bt")
-	public String register_bt() {
+	public String registerBt() {
 		return "member/register";
 	}
 
 	@GetMapping(value = "login_bt")
-	public String logint_bt() {
+	public String logintBt() {
 		return "member/login";
 	}
 
 	@GetMapping(value = "register_complete_bt")
-	public String register_complete_bt() {
+	public String registerCompleteBt() {
 		return "member/registerResult";
 	}
 	
