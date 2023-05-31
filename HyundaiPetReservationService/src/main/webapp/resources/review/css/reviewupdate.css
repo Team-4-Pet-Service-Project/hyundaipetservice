@@ -1,0 +1,270 @@
+.main_container{
+	display : flex;
+	
+}
+
+.start{
+	flex-direction: column;
+}
+
+.one{
+	margin-left:30px;
+	font-size: 30px;
+}
+
+.two{
+	display : flex;
+	justify-content: center;
+}
+
+
+.two_1{
+	font-size: 30px;
+	margin-right: 15px;
+	margin-left: 70px;
+}
+
+.three{
+	margin-top: 50px;
+	flex-direction: column;
+	display : flex;
+}
+
+.three_1{
+	font-size: 20px;
+	margin-left: 170px;
+	display : flex;
+	flex-direction: row;
+	align-items : center;
+	
+}
+
+
+.three_2{
+	font-size: 20px;
+	margin-left: 170px;
+	margin-top: 20px;
+	display : flex;
+	flex-direction: row;
+	align-items : center;
+}
+
+.three_3{
+	font-size: 20px;
+	margin-left: 170px;
+	margin-top: 20px;
+	display : flex;
+	flex-direction: row;
+	align-items : center;
+}
+
+.three_4{
+	font-size: 20px;
+	margin-left: 170px;
+	margin-top: 10px;
+	display : flex;
+	flex-direction: row;
+	align-items : center;
+	margin-bottom: 30px;
+}
+
+.four{
+	display : flex;
+	margine-top:50px;
+	height: 100px;
+	flex-direction: row;
+}
+
+
+
+.four_1{
+	font-size:20px;
+	margin-left: 170px;
+	margine-top:50px;
+}
+
+.four_2{
+	margin-left: 100px;
+	width : 150px;
+}
+
+
+.five{
+	height:50px;
+	display : flex;
+	flex-direction: row;
+	margin-left: 170px;
+	font-size:20px;
+	margin-top:10px;
+}
+
+
+.five_1{
+	margin-left:80px;
+}
+
+.six{
+	height:50px;
+	display : flex;
+	flex-direction: row;
+	margin-left: 170px;
+	font-size:20px;
+	margin-top:2px;
+}
+
+.seven_1{
+	margin-left: 40px;
+}
+
+.six_1{
+	margin-left:80px;
+}
+
+.seven{
+	height:150px;
+	display : flex;
+	flex-direction: row;
+	font-size:20px;
+	margin-left: 170px;
+}
+
+.eight{
+	text-align: center;
+	justify-content: center;
+	margin-top:100px;
+	margin-left: 20px;
+}
+
+
+
+
+ .rating i {
+      cursor: pointer;
+      font-size: 30px; /* 아이콘의 크기를 조절합니다. */
+    }
+    .rating .fas {
+      color: #ffd700;
+    }
+
+
+.radio-container {
+  margin-left: 70px;
+}
+
+.radio-container1 {
+  margin-left: 90px;
+}
+
+.radio-container2 {
+  margin-left: 30px;
+}
+
+.radio-label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.radio-label1 {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+
+
+.radio-input {
+  display: none;
+}
+
+.radio-label .radio-input:checked + .radio-custom {
+  background-color: #333333;
+  color: #f5f5f5;
+  width: 100px;
+}
+
+.radio-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 25px;
+  border: 2px solid #666666;
+  background-color: white;
+  border-radius : 20px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 30px;
+  color : #666666;
+}
+
+.radio-label1 .radio-input:checked + .radio-custom1 {
+  background-color: #333333;
+  color: #f5f5f5;
+  width: 70px;
+}
+
+.radio-custom1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 25px;
+  border: 2px solid #666666;
+  background-color: white;
+  border-radius : 20px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 30px;
+  color : #666666;
+}
+
+#uploadResult{
+	display : flex;
+	flex-direction: row;
+}
+	#result_card {
+		position: relative;
+		display : flex;
+		flex-direction: row;
+	}
+	.imgDeleteBtn{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+	
+#result_card1 {
+		position: relative;
+		display : flex;
+		flex-direction: row;
+		
+	}
+	.imgDeleteBtn1{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+  

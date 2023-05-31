@@ -26,6 +26,8 @@
 			value="classpath:mybatis-config.xml" />
 		<property name="mapperLocations">
 			<list>
+				 <value>classpath:mappers/Mypage.xml</value>
+				 <value>classpath:mappers/Review.xml</value>
         <value>classpath:mappers/Member.xml</value>
 				<value>classpath:mappers/Sms.xml</value>
 				<value>classpath:mappers/Dog.xml</value>

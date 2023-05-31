@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.rating .fa-star.fas {
+  color: #ffd700;
+}
+		
+.main_info span{
+     margin-left: 30px;
+     font-size: 30px;
+}
+
+.line{
+	border-bottom : 1px solid black;
+	margin-left: 60px;
+	margin-right: 20px;
+	margin-bottom : 15px;
+}
+
+.first{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.first_1, .first_3, .rating{
+	font-size: 20px;
+}
+
+.first_1{
+	margin-left: 50px;
+}
+
+.rating{
+	width:500px;
+	display: flex;
+	flex-direction: row;
+	margin-right: 100px;
+}
+
+.rating div{
+	margin-right: 15px;
+}
+
+.second{
+	margin-left: 80px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 30px;
+}
+
+.second div{
+	font-size: 20px;
+	margin-right: 40px;
+}
+
+.three{
+	margin-left: 70px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 30px;
+}
+
+.three div{
+	font-size: 17px;
+	margin-right: 20px;
+	border: 2px solid #E0E0E0;
+	background-color: #333333;
+	border-radius: 20px;
+	color: #FFFFFF;
+	padding: 5px;
+}
+
+.four{
+	margin-left: 60px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	height : 200px;
+}
+
+.four div{
+}
+
+.four_1{
+	width : 200px;
+	margin-right: 20px;
+}
+
+.four_2{
+	width : 600px;
+	border : 2px solid black;
+	align-items: center;
+	justify-content: flex-start;
+	display: flex;
+	font-size: 20px;
+	border-radius: 20px;
+}
+
+.line1{
+	border-bottom: 1px black solid;
+	margin-left: 50px;
+	margin-top:20px;
+	
+}
+
+.five{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.five_1{
+	margin-right: 40px;
+}
+
+input[type="submit"] {
+  background-color: #333333; /* 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 10px 20px; /* 안쪽 여백 */
+  font-size: 16px; /* 폰트 크기 */
+  border: none; /* 테두리 없음 */
+  border-radius: 4px; /* 테두리 반경 */
+  cursor: pointer; /* 커서 스타일 */
+}
+
+input[type="submit"]:hover {
+  background-color: #606060; /* 마우스 오버 시 배경색 */
+}
+
+input[type="submit"]:focus {
+  outline: none; /* 포커스 시 아웃라인 제거 */
+}
+
+
+

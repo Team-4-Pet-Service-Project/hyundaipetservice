@@ -14,10 +14,13 @@
 	
 
 	<typeAliases>
+		<typeAlias alias="Mypage" type="com.hyundai.thepet.mypage.vo.ReservVO" />
+		<typeAlias alias="Review" type="com.hyundai.thepet.review.vo.ReviewVO" />
+		<typeAlias alias="ReviewWrite" type="com.hyundai.thepet.review.vo.ReviewWriteVO" />
+		<typeAlias alias="Location" type="com.hyundai.thepet.review.vo.LocationVO" />
 		<typeAlias alias="Member" type="com.hyundai.thepet.member.vo.MemberVO" />
 		<typeAlias alias="Reservation" type="com.hyundai.thepet.message.vo.ReservationVO" />
 		<typeAlias alias="Dog" type="com.hyundai.thepet.dog.vo.DogVO" />
-
 	</typeAliases>
 
 </configuration>
