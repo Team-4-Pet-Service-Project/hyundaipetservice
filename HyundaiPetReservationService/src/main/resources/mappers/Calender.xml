@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="care"> 	
+ 	<select id="calenderDetail" parameterType="String" resultType="Calender">
+ 		SELECT * FROM reservation_times_care
+ 		WHERE calender = #{date}
+ 	</select>
+ 	
+ 	<select id="selectOneMonth" parameterType="hashmap" resultType="Calender">
+ 		SELECT * FROM reservation_times_care
+ 		WHERE calender BETWEEN #{startDate} and #{endDate}
+ 	</select>
+ </mapper>

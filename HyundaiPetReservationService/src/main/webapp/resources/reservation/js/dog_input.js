@@ -21,7 +21,7 @@ $(function () {
 
 function addDogClickEvent() {
 	let form = $('.dog_form').serialize();
-	
+	console.log(form);
 	$.ajax({
 		type:'POST',
 		url: "/thepet/addDog",

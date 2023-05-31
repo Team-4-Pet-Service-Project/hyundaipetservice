@@ -28,7 +28,10 @@ public class DogController {
 	public ResponseEntity<DogVO> addDogInfo(DogVO vo, @SessionAttribute(value = "loginId") int loginId) {
 		log.debug(loginId);
 		
+		vo.setMemberId(loginId);
 		log.debug(vo);
+		int result = dogService.addDog(vo);
+		log.debug(result);
 		return new ResponseEntity<> (vo, HttpStatus.ACCEPTED);
 	}
 	

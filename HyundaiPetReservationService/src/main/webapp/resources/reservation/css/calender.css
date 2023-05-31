@@ -39,6 +39,11 @@
     opacity: 0.5;
 }
 
+.no_reservation {
+	
+	color : forestgreen;
+}
+
 .cur_date {
     color:black;
 }
@@ -130,15 +135,9 @@
 	height: 40px;
 	
 	border-top : 1px solid #E0E0E0;
-	border-bottom : 1px solid #E0E0E0;
+	border-bottom : 1px solid black;
 }
 
-.detail_table_last{
-	width: 450px;
-	height: 40px;
-	
-	border-top : 1px solid #E0E0E0;
-}
 .detail_table_cell {
 	text-align: center;
 	vertical-align: middle;
@@ -178,3 +177,12 @@
 	border : 1px solid black;
 	box-shadow: 2px 2px gray;
 }
+
+.reservation_disable {
+	color : red;
+}
+
+.reservation_able {
+	color : blue;
+}
+

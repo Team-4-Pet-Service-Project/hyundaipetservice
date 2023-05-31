@@ -20,9 +20,18 @@
 		<div class="reservation_container">
 			<div class="reservation_form">
 				<div class="reservation_category">
-					<div class="category_box care select_category">케어</div>
-					<div class="category_box playground">놀이터</div>
-					<div class="category_box beauty">미용</div>
+					<div class="category_box care select_category">
+						<img alt="" src="/thepet/resources/reservation/img/care.png">
+						<p class="category_text">케어</p>
+					</div>
+					<div class="category_box playground">
+						<img alt="" src="/thepet/resources/reservation/img/playground.png">
+						<p class="category_text">놀이터</p>
+					</div>
+					<div class="category_box beauty">
+						<img alt="" src="/thepet/resources/reservation/img/beauty.png">
+						<p class="category_text">미용</p>
+					</div>
 				</div>
 				<div style="position: relative;">
 					<jsp:include page="./reservationCare.jsp" />

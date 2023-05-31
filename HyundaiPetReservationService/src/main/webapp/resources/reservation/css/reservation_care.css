@@ -21,3 +21,13 @@
 	height: 900px;
 	border: 1px solid red;
 }
+
+.reservation_info_container {
+	width : 490px;
+	height: 900px;
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+	border: 1px solid blue;
+}

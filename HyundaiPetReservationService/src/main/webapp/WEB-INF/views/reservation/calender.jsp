@@ -43,53 +43,10 @@
 		</div>
     </div>
     <div class="calender_detail_container">
-    	<table class="calender_detail_content">
-   			<tr class="detail_table_h">
-   				<th class="detail_table_cell">선택</th>
-   				<th class="detail_table_cell">시간</th>
-   				<th class="detail_table_cell">비고</th>
-   				<th class="detail_table_cell">남은 자리</th>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_last">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-    	</table>
+    	
     </div>
-    	<div class="add_button_box">
-    		<input type="button" value="추가" class="add_btn"/>
-    	</div>
+   	<div class="add_button_box">
+   		<input type="button" value="추가" class="add_btn"/>
+   	</div>
 </body>
 </html>
