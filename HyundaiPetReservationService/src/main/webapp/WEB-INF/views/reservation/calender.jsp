@@ -45,8 +45,8 @@
     <div class="calender_detail_container">
     	
     </div>
-   	<div class="add_button_box">
-   		<input type="button" value="추가" class="add_btn"/>
+   	<div class="add_button_box" style="display: none;">
+   		<input type="button" value="추가" class="add_btn" onclick="addReservation()"/>
    	</div>
 </body>
 </html>

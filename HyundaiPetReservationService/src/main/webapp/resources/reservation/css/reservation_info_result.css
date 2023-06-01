@@ -61,8 +61,30 @@
 	margin-top: 5%;
 }
 
-.dog_info_table {
+.dog_info_table_box {
 	width: 430px;
+	height : 120px;
+	overflow-y: scroll;
+}
+
+.dog_info_table_box::-webkit-scrollbar {
+    width: 10px;
+  }
+  .dog_info_table_box::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  .dog_info_table_box::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+.dog_info_table {
+	width: 420px;
+	/* height: 120px; */
 	height: auto;
 }
 

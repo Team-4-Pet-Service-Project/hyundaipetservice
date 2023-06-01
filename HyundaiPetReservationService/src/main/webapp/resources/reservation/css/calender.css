@@ -1,6 +1,8 @@
 .calender_container {
 	width: 490px;
 	height: 450px;
+	
+	display: none;
 }
 
 .date_box {
@@ -150,6 +152,7 @@
 }
 
 .add_button_box {
+	display: none;
 	width: 490px;
 	height: auto;
 	
@@ -168,6 +171,8 @@
 	color : #646464;
 	
 	font-size : 18px;
+	
+	cursor: pointer;
 }
 
 .checked_date {

@@ -3,14 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="care"> 	
+ <mapper namespace="calender"> 	
  	<select id="calenderDetail" parameterType="String" resultType="Calender">
  		SELECT * FROM reservation_times_care
  		WHERE calender = #{date}
  	</select>
  	
  	<select id="selectOneMonth" parameterType="hashmap" resultType="Calender">
- 		SELECT * FROM reservation_times_care
+ 		SELECT * FROM ${category}
  		WHERE calender BETWEEN #{startDate} and #{endDate}
+ 	</select>
+ 	
+ 	<select id="selectLocationInfo" parameterType="hashmap" resultType="LocationInfo">
+ 		SELECT * FROM locations
+ 		WHERE address LIKE '%' || #{branchOffice} || '%' and dog_facilities = #{facilities}
+ 	</select>
+ 	
+ 	<select id="selectPrice" parameterType="hashmap" resultType="int">
+ 		SELECT price from price_policies
+ 		WHERE dog_size = #{dogSize} and dog_facilities = #{dogFacilities}
  	</select>
  </mapper>

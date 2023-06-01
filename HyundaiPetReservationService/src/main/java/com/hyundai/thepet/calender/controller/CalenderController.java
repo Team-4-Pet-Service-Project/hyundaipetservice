@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hyundai.thepet.calender.service.CalenderService;
 import com.hyundai.thepet.calender.vo.CalenderVO;
+import com.hyundai.thepet.calender.vo.LocationInfoVO;
 
 @Controller
 @RequestMapping(value = "calender")
@@ -37,7 +38,24 @@ public class CalenderController {
 	@ResponseBody
 	public ResponseEntity<List<CalenderVO>> getOneMonthCalenderDetails(String category, String startDate, String endDate){
 		List<CalenderVO> list = new ArrayList<>();
+		
 		list = calenderService.getOneMonthDetails(category, startDate, endDate);
 		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping(value = "facilitiesLocation", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public ResponseEntity<LocationInfoVO> getFacilitiesLocation(String branchOffice, String facilities) {
+		LocationInfoVO location = new LocationInfoVO();
+
+		location = calenderService.getLocationInfo(branchOffice, facilities);
+		
+		return new ResponseEntity<> (location, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping(value = "price", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public int getServicePrice(String dogSize, String dogFacilities) {
+		return calenderService.getPrice(dogSize, dogFacilities);
 	}
 }

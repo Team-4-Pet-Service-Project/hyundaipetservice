@@ -47,10 +47,10 @@ function getDogsInfo() {
 					'<tr class="mypet_table_row">' + 
 						'<td name=' + data[i].id + ' hidden></td>'+
 						'<td class="mypet_table_cell"><input type="radio" name="select_mypet" class="mypet_radio"></td>' + 
-						'<td class="mypet_table_cell">' + data[i].name + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].age + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].breed + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].dogSize + '</td>' +
+						'<td class="mypet_table_cell" name="name">' + data[i].name + '</td>' +
+						'<td class="mypet_table_cell" name="age">' + data[i].age + '</td>' +
+						'<td class="mypet_table_cell" name="breed">' + data[i].breed + '</td>' +
+						'<td class="mypet_table_cell" name="dogSize">' + data[i].dogSize + '</td>' +
 						'<td name=' + data[i].memberId + ' hidden></td>' +
 					'</tr>'
 				)

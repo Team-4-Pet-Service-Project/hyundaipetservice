@@ -1,5 +1,8 @@
 $(function () {
-    const date = new Date();
+	sessionStorage.clear();
+	$('.radio-input').on('click', curMonth);
+	$('.add_button_box').hide();
+    /*const date = new Date();
     
     const selectCategory = $('.select_category').text();
     
@@ -65,7 +68,118 @@ $(function () {
 		        if (date < viewDate) {
 		            classDateName = "prev_date";
 		        }
-		        else if(classDateName !== 'no_reservation' && data >= viewDate) {
+		        else if(classDateName !== 'no_reservation' && date >= viewDate) {
+		            classDateName = "cur_date";
+		        }
+		        
+		        let newDate = $("<div></div>").text(date)
+		        
+		        if (classDateName === 'cur_date' || classDateName === 'no_reservation') {
+		        	newDate.on('click', dateClickEvent);
+		        }
+		        
+		        if (i % 7 === 0) {
+		            $('.main_date').append(newDate.addClass(`${classDateName} date sun`));
+		        }
+		        else if (i % 7 === 6) {
+		            $('.main_date').append(newDate.addClass(`${classDateName} date sat`));
+		        }
+		        else {
+		            $('.main_date').append(newDate.addClass(`${classDateName} date`));
+		        }
+		    }
+		},
+		error : function() {
+			
+		}
+    })*/
+    
+});
+
+function curMonth() {
+	$('.calender_container').show();
+	
+	$('.main_date').empty();
+	const date = new Date();
+    
+	const categoryMap = {
+			"케어":"care",
+			"놀이터":"playground",
+			"미용":"beauty"
+	}
+	
+	const branchMap = {
+			"서울":"seoul",
+			"대구":"daegu"
+	}
+	
+    const selectCategory = categoryMap[$('.select_category p').text()];
+    const selectBranch = branchMap[$('.radio-input:checked').val()];
+    
+    
+    const viewYear = date.getFullYear();
+    const viewMonth = date.getMonth();
+    const viewDate = date.getDate();
+    
+    const thisLast = new Date(viewYear, viewMonth + 1, 0);
+    
+    
+    const oneDate = {
+    	'category': `reservation_times_${selectCategory}_${selectBranch}`, 
+    	'startDate':`${viewYear}/${viewMonth+1}/${viewDate}`,
+    	'endDate' : `${thisLast.getFullYear()}/${thisLast.getMonth()+1}/${thisLast.getDate()}`
+    }
+    
+    $.ajax({
+    	type:'POST',
+		url: "/thepet/calender/oneMonth",
+		data : oneDate,
+		dataType:'json',
+		success : function(data) {
+			const n = data.length / 5;
+			let existDetail = [];
+			
+			for (let i = 0; i < n; i++) {
+				existDetail.push(data.slice(i*5, (i+1) * 5))
+			}
+			
+			$(".ym").text(`${viewYear}.${viewMonth+1}`);
+		    $(".left").removeClass('active_arrow').addClass('disable_arrow');
+		    
+		    const prevLast = new Date(viewYear, viewMonth, 0);
+
+		    const PLDay = prevLast.getDay();
+
+		    const TLDate = thisLast.getDate();
+
+		    const emptyDate = new Array((PLDay + 1) % 7);
+		    const prevDate = new Array(viewDate-1);
+
+		    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
+
+		    const result = [...emptyDate, ...thisDates];
+		    existDetail = [...emptyDate, ...prevDate, ...existDetail];
+		    
+		    for (let i = 0; i < result.length; i++) {
+		        const date = result[i];
+		        let classDateName = "";
+		        let flag = true;
+		        
+		        let total = 0
+		        if (existDetail[i] !== undefined) {		        	
+		        	for (let j = 0; j < 5; j++) {
+		        		total += existDetail[i][j].remainCount;
+		        	}
+		        	if (total === 0) {
+		        		classDateName = "no_reservation";
+		        	}
+		        }
+		        
+		        
+		        if (date < viewDate) {
+		            classDateName = "prev_date";
+		        }
+		        else if(classDateName !== 'no_reservation' && date >= viewDate) {
 		            classDateName = "cur_date";
 		        }
 		        
@@ -90,12 +204,25 @@ $(function () {
 			
 		}
     })
-    
-});
+}
 
 function nextMonth() {
-	const selectCategory = $('.select_category').text();
+	
     const date = new Date();
+    
+    const categoryMap = {
+			"케어":"care",
+			"놀이터":"playground",
+			"미용":"beauty"
+	}
+	
+	const branchMap = {
+			"서울":"seoul",
+			"대구":"daegu"
+	}
+	
+    const selectCategory = categoryMap[$('.select_category p').text()];
+    const selectBranch = branchMap[$('.radio-input:checked').val()];
 
     const viewMonth = date.getMonth();
 
@@ -112,8 +239,9 @@ function nextMonth() {
         nextMonth = Number(month) + 1;        
     }
     const thisLast = new Date(nextYear, nextMonth, 0);
+    
     const oneDate = {
-        'category':selectCategory, 
+    	'category': `reservation_times_${selectCategory}_${selectBranch}`, 
         'startDate':`${nextYear}/${nextMonth}/${1}`,
         'endDate' : `${thisLast.getFullYear()}/${thisLast.getMonth()+1}/${thisLast.getDate()}`
     }
@@ -191,7 +319,25 @@ function nextMonth() {
 }
 
 function prevMonth() {
-	const selectCategory = $('.select_category').text();
+	
+	const categoryMap = {
+		"케어":"care",
+		"놀이터":"playground",
+		"미용":"beauty"
+	}
+	
+	const a = {
+		'서울' : 1,
+		'대구' : 2
+	}
+	
+	const branchMap = {
+		"서울":"seoul",
+		"대구":"daegu"
+	}
+	
+    const selectCategory = categoryMap[$('.select_category p').text()];
+    const selectBranch = branchMap[$('.radio-input:checked').val()];
 	
     const date = new Date();
     const viewYear = date.getFullYear();
@@ -222,7 +368,7 @@ function prevMonth() {
     }
     
     const oneDate = {
-        'category':selectCategory, 
+    	'category': `reservation_times_${selectCategory}_${selectBranch}`,
         'startDate':`${prevYear}/${prevMonth}/${prevDate}`,
         'endDate' : `${thisLast.getFullYear()}/${thisLast.getMonth()+1}/${thisLast.getDate()}`
     }
@@ -298,7 +444,6 @@ function prevMonth() {
 		        
 		        if (classDateName === 'cur_date' || classDateName === 'no_reservation') {
 		        	newDate.on('click', dateClickEvent);
-		        	console.log(i);
 		        }
 		        
 		        
@@ -321,6 +466,7 @@ function prevMonth() {
 }
 
 function dateClickEvent(e) {
+	$('.add_button_box').show();
 	$('.checked_date').removeClass('checked_date');
 	e.target.className += ' checked_date';
 	const [year, month] = $('.ym').text().split('.');
@@ -351,8 +497,8 @@ function dateClickEvent(e) {
 				detailTable.append(`
 					<tr class="detail_table_row">
 						<td class="detail_table_cell">${detail.remainCount > 0 ? '<input type="radio" name="reservation_time" class="radio_set"/>' : ''}</td>
-						<td class="detail_table_cell">${detail.startTime}~${detail.endTime}</td>
-						<td class="detail_table_cell ${detail.remainCount > 0 ? 'reservation_able' : 'reservation_disable'}">${detail.remainCount > 0 ? '예약가능':'예약불가'}</td>
+						<td class="detail_table_cell" name="time">${detail.startTime}~${detail.endTime}</td>
+						<td class="detail_table_cell ${detail.remainCount > 0 ? 'reservation_able' : 'reservation_disable'}">${detail.remainCount> 0 ? '예약가능':'예약불가'}</td>
 						<td class="detail_table_cell">${detail.remainCount}</td>
 					</tr>
 				`)
@@ -365,7 +511,211 @@ function dateClickEvent(e) {
 			
 		}
 	})
+}
+
+function addReservation() {
+	let selectDogInfo = $('.mypet_radio:checked');
+	let selectDateTime = $('.radio_set:checked');
+	let branchOffice = $('.radio-input:checked').val();
+	let category = $('.select_category p').text()
+	if (selectDogInfo.length === 0) {
+		alert("예약할 강아지를 선택해주세요🙏");
+		return;
+	}
 	
+	if (selectDateTime.length === 0) {
+		alert("예약 가능한 날짜와 시간을 선택해주세요🙏");
+		return;
+	}
+	
+	selectDogInfo = selectDogInfo.closest('tr');
+	const name = selectDogInfo.children('td[name="name"]').text();
+	const age = selectDogInfo.children('td[name="age"]').text();
+	const breed = selectDogInfo.children('td[name="breed"]').text();
+	const dogSize = selectDogInfo.children('td[name="dogSize"]').text();
+	
+	
+	const [year, month] = $('.ym').text().split('.');
+	const date = $('.checked_date').text();
+	
+	const time = selectDateTime.closest('tr').children('td[name="time"]').text();
+	
+	
+	if (sessionStorage.getItem("member") === null) {
+		$.ajax({
+			type:"GET",
+			url:"/thepet/reservation/getMember",
+			dataType:'json',
+			async:false,
+			success : function(data) {
+				sessionStorage.setItem("member", data);
+				$('.information_container').append(`
+						<h1 class="info_h1">
+						예약정보
+						</h1>
+						<h2 class="info_h2">
+						예약자 정보
+						</h2>
+						<table class="member_info_table">
+						<tr class="info_table_row">
+						<td class="row_head common_cell">이름</td>
+						<td class="row_content common_cell">${data.name}</td>
+						</tr>
+						<tr class="info_table_row">
+						<td class="row_head common_cell">연락처</td>
+						<td class="row_content common_cell">${data.phone}</td>
+						</tr>
+						<tr class="info_table_row">
+						<td class="row_head common_cell">이메일주소</td>
+						<td class="row_content common_cell">${data.email}</td>
+						</tr>
+						<tr class="info_table_row">
+						<td class="row_head common_cell">추가 인원</td>
+						<td class="row_content common_cell">1</td>
+						</tr>
+						</table>
+				`)
+			}
+		})
+	}
+	
+	if ($('.dog_info_table').length === 0) {
+		$('.information_container').append(`
+			<h2 class="info_h2 dog_info_h2">
+				예약견 정보
+			</h2>
+			<div class="dog_info_table_box">
+				<table class="dog_info_table">
+					<tr class="dog_table_head">
+						<td class="dog_table_common_cell">이름</td>
+						<td class="dog_table_common_cell">나이</td>
+						<td class="dog_table_common_cell">견종</td>
+						<td class="dog_table_common_cell">크기</td>
+					</tr>
+					<tr class="dog_table_row">
+						<td class="dog_table_common_cell">${name}</td>
+						<td class="dog_table_common_cell">${age}</td>
+						<td class="dog_table_common_cell">${breed}</td>
+						<td class="dog_table_common_cell">${dogSize}</td>
+						<td class="dog_table_common_cell" hidden>${year}/${month}/${date}</td>
+						<td class="dog_table_common_cell" hidden>${time}</td>
+						<td class="dog_table_common_cell" hidden>${branchOffice}</td>
+						<td class="dog_table_common_cell" hidden>${category}</td>
+					</tr>
+				</table>
+			</div>
+		`)
+		getServicePrice(dogSize, category);
+	}
+	else {
+		let resDogInfo = $('.dog_info_table .dog_table_row');
+		
+		
+		for (let i = 0; i < resDogInfo.length; i++) {
+			const prevName = resDogInfo.eq(i).children('td:nth-child(1)').text();
+			const prevDate = resDogInfo.eq(i).children('td:nth-child(5)').text();
+			const prevTime = resDogInfo.eq(i).children('td:nth-child(6)').text();
+			const prevBranch = resDogInfo.eq(i).children('td:nth-child(7)').text();
+
+			if (prevName === name && prevDate === `${year}/${month}/${date}` && prevTime === time && prevBranch === branchOffice) {
+				alert('이미 추가한 예약입니다.');
+				return;
+			}
+		}
+		
+		$('.dog_info_table').append(`
+			<tr class="dog_table_row">
+				<td class="dog_table_common_cell">${name}</td>
+				<td class="dog_table_common_cell">${age}</td>
+				<td class="dog_table_common_cell">${breed}</td>
+				<td class="dog_table_common_cell">${dogSize}</td>
+				<td class="dog_table_common_cell" hidden>${year}/${month}/${date}</td>
+				<td class="dog_table_common_cell" hidden>${time}</td>
+				<td class="dog_table_common_cell" hidden>${branchOffice}</td>
+				<td class="dog_table_common_cell" hidden>${category}</td>
+			</tr>
+		`)
+		getServicePrice(dogSize, category);
+	}
+	$('.dog_table_row').on('click', showReservationDetail);
+}
+
+function getServicePrice(dogSize, dogFacilities) {
+	const requestData = {
+		'dogSize' : dogSize,
+		'dogFacilities' : dogFacilities
+	}
+	$.ajax({
+		type:'POST',
+		url:'/thepet/calender/price',
+		data : requestData,
+		success : function (data) {
+			console.log(data);
+			
+			const totalPriceBox = $('.total_price_box');
+			totalPriceBox.show();
+			console.log(totalPriceBox.children());
+			console.log(totalPriceBox.children().length);
+			console.log(totalPriceBox.length);
+			if (totalPriceBox.children().length === 0) {
+				totalPriceBox.append(`
+					<p class="total_price_text">결제 예정 금액</p>
+					<p class="total_price">${data}원</p>
+				`)
+			}
+			else {
+				let prevPrice = $('.total_price').text();
+				prevPrice = Number(prevPrice.slice(0, -1))
+				console.log(prevPrice);
+				console.log(Number(prevPrice));
+				
+				$('.total_price').text(`${prevPrice + data}원`);
+			}
+			
+			
+		}
+	})
+}
+
+function showReservationDetail(e) {
+	
+	const info = $(e.target).closest('tr');
+	const date = `${info.children('td:nth-child(5)').text()} ${info.children('td:nth-child(6)').text()}`;
+	const locationData = {
+		'branchOffice' : info.children('td:nth-child(7)').text(),
+		'facilities' : info.children('td:nth-child(8)').text()
+	}
+	
+	$.ajax({
+		type:'POST',
+		url : '/thepet/calender/facilitiesLocation',
+		data : locationData,
+		dataType:'json',
+		success : function (data) {
+			console.log(data);
+			
+			$('.information_detail_container').empty();
+			$('.information_detail_container').append(`
+				<h2 class="info_h2 dog_info_h2">
+					이용 정보
+				</h2>
+				<table class="member_info_table">
+					<tr class="info_table_row">
+						<td class="row_head common_cell">이용일자</td>
+						<td class="row_content common_cell">${date}</td>
+					</tr>
+					<tr class="info_table_row">
+						<td class="row_head common_cell">이용 서비스</td>
+						<td class="row_content common_cell">${data.dogFacilities}</td>
+					</tr>
+					<tr class="info_table_row">
+						<td class="row_head common_cell">위치</td>
+						<td class="row_content common_cell">${data.addressDetail}</td>
+					</tr>
+				</table>
+			`);
+		}
+	})
 }
 
 
