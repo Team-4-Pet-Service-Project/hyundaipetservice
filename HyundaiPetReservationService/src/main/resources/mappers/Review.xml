@@ -34,6 +34,7 @@
     JOIN
     	reviews on reservations.id=reviews.reservation_id
     WHERE members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+ 		order by reservation_date
  		]]>
  	</select>
  	

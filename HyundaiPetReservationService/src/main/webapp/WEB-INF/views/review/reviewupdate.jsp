@@ -44,7 +44,7 @@
 	    						<i class="far fa-star" data-rate="4"></i>
 	    						<i class="far fa-star" data-rate="5"></i>
 	  						</div>
-	                    	  <input type="hidden" id="selected-rate" name="rate" value="0">
+	                    	  <input type="hidden" id="selected-rate" name="rate" value="${Review.rate}">
 	                    </div>
 	                    <div class="three">
 	                    	<div class="three_1">

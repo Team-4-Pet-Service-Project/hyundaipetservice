@@ -86,6 +86,7 @@ public class ReviewController {
 
 	@GetMapping(value = "datail2")
 	public String ReviewDetail2(ReviewWriteVO reviewWriteVO, Model model) {
+		log.debug("1 : " + reviewWriteVO);
 		model.addAttribute("Id", reviewWriteVO.getId());
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
 		vo.setReviewId(vo.getId());
@@ -156,12 +157,17 @@ public class ReviewController {
 	@GetMapping(value = "delete")
 	@ResponseBody
 	public String reviewDelete(ReviewWriteVO reviewWriteVO) {
-		log.debug(reviewWriteVO.getReviewId());
 		service.reviewDelete(reviewWriteVO);
 		// 여기선 세션으로 아이디 값을 넣어줘야 한다
 		ReviewVO reviewVO = new ReviewVO();
 		reviewVO.setId(1);
 		return "/thepet/review/list?id=" + reviewVO.getId();
+	}
+	
+	@GetMapping(value = "totallist")
+	public String reviewTotalList(ReviewWriteVO reviewWriteVO) {
+		
+		return "review/reviewtotallist";
 	}
 
 }
