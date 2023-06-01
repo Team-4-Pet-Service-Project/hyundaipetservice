@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.main_info {
+	border-color: red;
+}
+
+.admin_main {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+	border: 3px solid red;
+	height: 100%;
+	width: 100%;
+}
+
+.admin_title {
+	border: 2px solid green;
+	width: 100%;
+	height: 50px;
+}
+
+.admin_menu_bar {
+	width: 100%;
+	height: 50px;
+	border: 4px solid blue;
+}
+
+.information_summary {
+	width: 100%;
+	height: 100px;
+	border: 4px solid purple;
+}
+
+.reservation_confirm {
+	flex: display;
+	flex-direction: row;
+	width: 100%;
+	height: 500px;
+	border: 4px solid yellow;
+}
+
+.reservation_confirm_title {
+	
+}
+
+.calender {
+	width: 400px;
+	height: 100px;
+	border: 4px solid grey;
+}
+
+.reservation_confirm_check {
+	width: 400px;
+	height: 100px;
+	border: 4px solid grey;
+}
