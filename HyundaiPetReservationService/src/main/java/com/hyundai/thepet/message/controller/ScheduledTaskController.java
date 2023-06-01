@@ -29,5 +29,7 @@
  * UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException {
  * List<ReservationVO> reservations = selectService.findReservations(); for
  * (ReservationVO reserv: reservations) {
- * smsController.scheduledMessage(reserv); } } }
+ * smsController.scheduledMessage(reserv); } }
+ * 
+ }
  */

@@ -10,19 +10,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewWriteVO {
-	private int reservation_id;
+	private int reservationId;
 	private float rate;
-	private Date created_time;
-	private String service_bt;
-	private String user_contents;
-	private String clean_bt;
-	private String space_bt;
-	private String revisit_bt;
-	private String admin_contents;
+	private Date createdTime;
+	private String serviceBt;
+	private String userContents;
+	private String cleanBt;
+	private String spaceBt;
+	private String revisitBt;
+	private String adminContents;
 	private String uuid;
 	private String uploadpath;
 	private String filename;
-	private int review_id;
+	private int reviewId;
 	//이것도 리뷰 id인데 mapper매칭 안되서 만든거
 	private int id;
 }

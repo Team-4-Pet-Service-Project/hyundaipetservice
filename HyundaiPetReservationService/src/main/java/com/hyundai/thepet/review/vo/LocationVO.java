@@ -13,11 +13,11 @@ import lombok.Data;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LocationVO {
-	private int reservation_id;
+	private int reservationId;
 	private String address;
-	private String address_detail;
-	private String dog_facilities;
-	private Date reservation_date;
-	private String reservation_start_time;
-	private String reservation_end_time;
+	private String addressDetail;
+	private String dogFacilities;
+	private Date reservationDate;
+	private String reservationStartTime;
+	private String reservationEndTime;
 }

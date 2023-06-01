@@ -45,9 +45,14 @@ public class ReviewDAOImpl implements ReviewDAO{
 		session.insert(statement,reviewWriteVO);
 		String statement1 = "review.select";
 		int review_id = session.selectOne(statement1, reviewWriteVO);
-		reviewWriteVO.setReview_id(review_id);
-		String statement2 = "review.imginsert";
-		session.insert(statement2,reviewWriteVO);
+		reviewWriteVO.setReviewId(review_id);
+		if(reviewWriteVO.getUuid()==null) {
+			return;
+		}else {
+			String statement2 = "review.imginsert";
+			session.insert(statement2,reviewWriteVO);
+		}
+		
 	}
 	
 	//리뷰 상세정보 빼서 오는 곳
@@ -76,7 +81,32 @@ public class ReviewDAOImpl implements ReviewDAO{
 	@Override
 	public void reviewUpdate(ReviewWriteVO reviewWriteVO) {
 		String statement = "review.update";
-		int a = session.update(statement, reviewWriteVO);
+		session.update(statement, reviewWriteVO);
+	}
+
+	@Override
+	public void imgDelete(ReviewWriteVO reviewWriteVO) {
+		String statement = "review.imgdelete";
+		session.delete(statement, reviewWriteVO);
+	}
+
+	@Override
+	public void imgUpdate(ReviewWriteVO reviewWriteVO) {
+		String statement = "review.imgupdate";
+		session.update(statement, reviewWriteVO);
+	}
+
+	@Override
+	public void imgInsert(ReviewWriteVO reviewWriteVO) {
+		String statement = "review.imginsert";
+		session.insert(statement, reviewWriteVO);
+	}
+
+	@Override
+	public void reviewDelete(ReviewWriteVO reviewWriteVO) {
+		String statement = "review.delete";
+		session.delete(statement, reviewWriteVO);
+		
 	}
 
 	
