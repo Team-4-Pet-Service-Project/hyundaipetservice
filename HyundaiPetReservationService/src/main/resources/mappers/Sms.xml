@@ -5,41 +5,24 @@
 
   <mapper namespace = "forSms">
   
-    <resultMap id="reservationResultMap" type="Reservation">
-    <result column="id" property="reservationId" />
-	  	<result column="reservation_date" property="reservationDate" />
-	  	<result column="reservation_start_time" property="reservationStartTime" />
-	  	<result column="reservation_end_time" property="reservationEndTime" />
-	  	<result column="price" property="price" />
-	  	<result column="customer_count" property="customerCount" />
-	  	<result column="member_id" property="memberId" />
-	  	<result column="dog_id" property="dogId" />
-	  	<result column="location_id" property="locationId" />
-   </resultMap>
   
-  
-  	<select id="selectPhone" parameterType="int" resultType="String">
-  		SELECT phone FROM members
+  	<select id="selectMemberInfo" parameterType="int" resultType="Member">
+  		SELECT * FROM members
   		WHERE id = #{memberId}
   	</select>
   	
-  	<select id="selectName" parameterType="int" resultType="String">
-  		SELECT name FROM members
-  		WHERE id = #{memberId}
-  	</select>
-  	
-  	<select id="selectFacility" parameterType="int" resultType="String">
-  		SELECT dog_facilities FROM locations
+  	<select id="selectLocationInfo" parameterType="int" resultType="Locations">
+  		SELECT * FROM locations
   		WHERE id = #{locationId}
   	</select>
   	
-  	<select id="selectReservation" parameterType="int" resultMap="reservationResultMap">
+  	<select id="selectReservation" parameterType="int" resultType="Reservation">
   		SELECT *
   		FROM reservations
   		WHERE id=#{reservationId}
   	</select>
   	
-  	<select id="findReservations" resultMap="reservationResultMap">
+  	<select id="findReservations" resultType="Reservation">
 		SELECT *
 		FROM reservations
 		WHERE TO_DATE(TO_CHAR(reservation_date, 'YYYY-MM-DD') || ' ' || reservation_start_time, 'YYYY-MM-DD HH24:MI')

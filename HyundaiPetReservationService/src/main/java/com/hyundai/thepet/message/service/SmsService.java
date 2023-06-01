@@ -93,7 +93,7 @@ public class SmsService {
 
 		// api 요청 양식에 맞춰 세팅
         SmsRequestDTO request = SmsRequestDTO.builder()
-                .type("SMS")
+                .type("LMS") // LMS로 변경
                 .contentType("COMM")
                 .countryCode("82")
                 .from(senderPhone)

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hyundai.thepet.member.vo.MemberVO;
 import com.hyundai.thepet.message.dao.SelectDAO;
+import com.hyundai.thepet.message.vo.LocationVO;
 import com.hyundai.thepet.message.vo.ReservationVO;
 
 @Service
@@ -13,19 +15,13 @@ public class SelectService {
 	@Autowired private SelectDAO selectDao;
 	
 
-	public String selectPhone(int memberId) {
-		String result = selectDao.selectPhone(memberId);
+	public MemberVO selectMemberInfo(int memberId) {
+		MemberVO result = selectDao.selectMemberInfo(memberId);
 		return result;
 	}
 
-
-	public String selectName(int memberId) {
-		String result = selectDao.selectName(memberId);
-		return result;
-	}
-
-	public String selectFacility(int locationId) {
-		String result = selectDao.selectFacility(locationId);
+	public LocationVO selectLocationInfo(int locationId) {
+		LocationVO result = selectDao.selectLocationInfo(locationId);
 		return result;
 	}
 	
