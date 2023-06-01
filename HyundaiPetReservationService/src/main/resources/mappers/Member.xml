@@ -6,8 +6,8 @@
 <mapper namespace="myMember">
 	<insert id="registerMember" parameterType="Member">
 		INSERT INTO
-		members(id, email, password, name, phone, birth)
-		VALUES(members_id_seq.NEXTVAL, #{email}, #{password}, #{name}, #{phone}, #{birth})
+		members(email, password, name, phone, birth)
+		VALUES(#{email}, #{password}, #{name}, #{phone}, #{birth})
 	</insert>
 
 	<select id="checkId" resultType="String">
@@ -16,12 +16,16 @@
 		MEMBERS WHERE email = #{email}
 	</select>
 	
-	<select id="login" resultType="Member">
-		SELECT email
+	<select id="checkPhone" resultType="String">
+		SELECT phone
 		FROM
-		MEMBERS WHERE email = #{email} AND password = #{password}
+		MEMBERS WHERE phone = #{phone}
 	</select>
 	
-	
+	<select id="login" resultType="Member">
+		SELECT email, password
+		FROM
+		MEMBERS WHERE email = #{email}
+	</select>
 	
 </mapper>
