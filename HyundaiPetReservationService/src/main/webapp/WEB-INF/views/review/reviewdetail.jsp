@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
-<link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <title>Insert title here</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="/thepet/resources/review/js/reviewdetail.js"></script>
+ <!-- <script src="/thepet/resources/review/js/reviewdetail.js"></script> -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
  
 </head>
@@ -42,7 +43,7 @@
     						<i class="far fa-star" data-rate="4"></i>
     						<i class="far fa-star" data-rate="5"></i>
   						</div>
-                    	<div class="first_3">${Review.created_time}</div>
+                    	<div class="first_3">${Review.createdTime}</div>
                     </div>
                     
                     <div class="second">
@@ -53,10 +54,10 @@
                     </div>
                     
                     <div class = "three">
-                    	<div>${Review.service_bt}</div>
-                    	<div>${Review.space_bt}</div>
-                    	<div>${Review.clean_bt}</div>
-                    	<div>${Review.revisit_bt}</div>
+                    	<div>${Review.serviceBt}</div>
+                    	<div>${Review.spaceBt}</div>
+                    	<div>${Review.cleanBt}</div>
+                    	<div>${Review.revisitBt}</div>
                     </div>
                  	<div class="four">
                  		<div class="four_1">
@@ -69,12 +70,15 @@
 					            </c:otherwise>
         					</c:choose>
                  		</div>
-                 		<div class="four_2">${Review.user_contents}</div>
+                 		<div class="four_2">${Review.userContents}</div>
                  	</div>
                  	
                  	<div class="line1"></div>
                  	
-                 	
+                 	<%-- <form action="/thepet/review/delete" method="GET">
+				                    <input type="submit" value="삭제">
+				                    <input type="hidden" name="reservationId" value="${Review.reservationId}">
+				                </form> --%>
                  	<!-- 수정삭제나오는 부분(여기서 관리자 조건 걸어주면 됨 -->
                  	<!--  나중에 조건 넣어준다  ${Id} eq 세션아이디 같은 조건 걸어주기-->
                  	 <c:choose>
@@ -83,24 +87,40 @@
 	            				<div class="five">
 	            					<div class="five_1">
 			                			<form action="/thepet/review/update" method="GET">
-			                    			<input type="hidden" name="service_bt" value="${Review.service_bt}">
-			                    			<input type="hidden" name="space_bt" value="${Review.space_bt}">
-			                    			<input type="hidden" name="clean_bt" value="${Review.clean_bt}">
-			                    			<input type="hidden" name="revisit_bt" value="${Review.revisit_bt}">
+			                    			<input type="hidden" name="serviceBt" value="${Review.serviceBt}">
+			                    			<input type="hidden" name="spaceBt" value="${Review.spaceBt}">
+			                    			<input type="hidden" name="cleanBt" value="${Review.cleanBt}">
+			                    			<input type="hidden" name="revisitBt" value="${Review.revisitBt}">
 			                    			<input type="hidden" name="rate" value="${Review.rate}">
-			                    			<input type="hidden" name="reservation_id" value="${Review.reservation_id}">
-			                    			<input type="hidden" name="user_contents" value="${Review.user_contents}">
+			                    			<input type="hidden" name="reservationId" value="${Review.reservationId}">
+			                    			<input type="hidden" name="userContents" value="${Review.userContents}">
 			                    			<input type="hidden" name="filename" value="${path}">
 			                    			<input type="hidden" name="uuid" value="${Review1.uuid}">
-			                    			<input type="hidden" name="review_id" value="${Review.review_id}">
+			                    			<input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
 			                    			<input type="hidden" name="uploadpath" value="${Review1.uploadpath}">
 			                    			<input type="submit" value="수정">
 			                			</form>
 	                				</div>
-				                <form action="/thepet/review/delete" method="GET">
-				                    <input type="submit" value="삭제">
-				                    <input type="hidden" name="reservation_id" value="${Review.reservation_id}">
-				                </form>
+	                				
+	                				<div id="container">
+								        <button id="btn-modal">삭제</button>
+								    </div>
+								    <div id="modal" class="modal-overlay">
+								        <div class="modal-window">
+								        	<div class="modal-topwindow">
+								        		<div class="close-area1"></div>
+								        		<div class="title">리뷰삭제</div>
+								            	<div class="close-area">X</div>
+								        	</div>
+								        	<span class="material-symbols-outlined" style="font-size:80px; margin-left : 160px;">check_circle</span>
+								            <div class="reviewmodal">리뷰를 삭제하시겠습니까?</div>
+								            <div class="content">
+								                <button id="cancelButton">취소</button>
+												<button id="confirmButton">확인</button>
+								            </div>
+								        </div>
+								    </div> 
+									
 	                			</div>
 				            </c:when>
 				            <c:otherwise>
@@ -112,5 +132,6 @@
 	</main>
 	<jsp:include page="../mainform/footer.jsp"/>
 </div>
+<script src="/thepet/resources/review/js/reviewdetail.js"></script>
 </body>
 </html>

@@ -63,14 +63,14 @@
  		<![CDATA[
  			INSERT INTO reviews (id , user_contents, rate, service_bt, space_bt, clean_bt, revisit_bt, admin_contents, reservation_id ,created_time)
 			VALUES 
-			(reviews_id_seq.NEXTVAL, #{user_contents}, #{rate}, #{service_bt}, #{space_bt}, #{clean_bt}, #{revisit_bt}, #{admin_contents}, #{reservation_id}, sysdate)
+			(reviews_id_seq.NEXTVAL, #{userContents}, #{rate}, #{serviceBt}, #{spaceBt}, #{cleanBt}, #{revisitBt}, #{adminContents}, #{reservationId}, sysdate)
  		]]>
  	</insert>
  	
  	<!-- 위에 리뷰작성값에서 reviews_id빼기 -->
  	<select id="select" parameterType="ReviewWrite" resultType="int">
  		<![CDATA[
- 			select id from reviews where reservation_id=#{reservation_id}
+ 			select id from reviews where reservation_id=#{reservationId}
  		]]>
  	</select>
  	
@@ -78,21 +78,21 @@
  	<insert id="imginsert" parameterType="ReviewWrite">
  		<![CDATA[
  			INSERT INTO review_imgs (uuid, uploadpath, filename, review_id)
-			VALUES (#{uuid}, #{uploadpath}, #{filename}, #{review_id})
+			VALUES (#{uuid}, #{uploadpath}, #{filename}, #{reviewId})
  		]]>
  	</insert>
  	
  	<!-- 위에 리뷰작성값에서 reviews_id빼기 -->
  	<select id="detail" parameterType="ReviewWrite" resultType="ReviewWrite">
  		<![CDATA[
- 			select * from reviews where reservation_id=#{reservation_id}
+ 			select * from reviews where reservation_id=#{reservationId}
  		]]>
  	</select>
  	
  	<!-- 이미지 정보가져오는 곳 -->
  	<select id="imgdetail" parameterType="ReviewWrite" resultType="ReviewWrite">
  		<![CDATA[
- 			select * from review_imgs where review_id=#{review_id}
+ 			select * from review_imgs where review_id=#{reviewId}
  		]]>
  	</select>
  	
@@ -109,7 +109,7 @@
  			from reservations
 				join locations on locations.id=reservations.location_id
 				join reviews on reviews.reservation_id=reservations.id
-			where reservations.id=#{reservation_id}
+			where reservations.id=#{reservationId}
  		]]>
  	</select>
  	<!-- 리뷰 update하는 곳 -->
@@ -118,13 +118,43 @@
  			update reviews
 			set
 			created_time = sysdate,
-			user_contents = #{user_contents},
+			user_contents = #{userContents},
 			rate = #{rate},
-			service_bt = #{service_bt},
-			space_bt = #{space_bt},
-			clean_bt = #{clean_bt},
-			revisit_bt = #{revisit_bt}
-			where id = #{review_id}
+			service_bt = #{serviceBt},
+			space_bt = #{spaceBt},
+			clean_bt = #{cleanBt},
+			revisit_bt = #{revisitBt}
+			where id = #{reviewId}
  		]]>
  	</update>
+ 	
+ 	<!-- 이미지 삭제하는 곳 -->
+ 	<delete id="imgdelete">
+ 		<![CDATA[
+ 			DELETE FROM review_imgs 
+ 			WHERE review_id = #{reviewId}
+ 		]]>
+ 	</delete>
+ 	
+ 	<!-- 이미지 갱신하는 곳 -->
+ 	<update id="imgupdate" parameterType="ReviewWrite">
+ 		<![CDATA[
+ 			update review_imgs
+			set
+			uuid = #{uuid},
+			uploadpath = #{uploadpath},
+			filename = #{filename}
+			where review_id = #{reviewId}
+ 		]]>
+ 	</update>
+ 	
+ 	<!-- 리뷰 삭제하는 곳 -->
+ 	<delete id="delete" parameterType="ReviewWrite">
+ 		<![CDATA[
+ 			delete from reviews
+ 			where id=#{reviewId}
+ 		]]>
+ 	</delete>
+ 	
+ 	
  </mapper>

@@ -45,7 +45,8 @@ public class ReviewServiceImpl implements ReviewService{
 		TransactionStatus txStatus =
 				transactionManager.getTransaction(
 						new DefaultTransactionDefinition());
-		dao.reviewWrite(reviewWriteVO);
+	
+			dao.reviewWrite(reviewWriteVO);
 		transactionManager.commit(txStatus);
 	}
 
@@ -82,6 +83,65 @@ public class ReviewServiceImpl implements ReviewService{
 		}
 		
 		
+	}
+
+	@Override
+	public void imgDelete(ReviewWriteVO reviewWriteVO) {
+		TransactionStatus txStatus =
+				transactionManager.getTransaction(
+						new DefaultTransactionDefinition());
+		try {
+			dao.imgDelete(reviewWriteVO);
+			transactionManager.commit(txStatus);
+		}catch (Exception e) {
+			transactionManager.rollback(txStatus);
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void imgUpdate(ReviewWriteVO reviewWriteVO) {
+		TransactionStatus txStatus =
+				transactionManager.getTransaction(
+						new DefaultTransactionDefinition());
+		try {
+			dao.imgUpdate(reviewWriteVO);
+			transactionManager.commit(txStatus);
+		}catch (Exception e) {
+			transactionManager.rollback(txStatus);
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void imgInsert(ReviewWriteVO reviewWriteVO) {
+		TransactionStatus txStatus =
+				transactionManager.getTransaction(
+						new DefaultTransactionDefinition());
+		try {
+			dao.imgInsert(reviewWriteVO);
+			transactionManager.commit(txStatus);
+		}catch (Exception e) {
+			transactionManager.rollback(txStatus);
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void reviewDelete(ReviewWriteVO reviewWriteVO) {
+		TransactionStatus txStatus =
+				transactionManager.getTransaction(
+						new DefaultTransactionDefinition());
+		
+		try {
+			dao.reviewDelete(reviewWriteVO);
+			transactionManager.commit(txStatus);
+		}catch (Exception e) {
+			transactionManager.rollback(txStatus);
+			e.printStackTrace();
+		}
 	}
 
 	

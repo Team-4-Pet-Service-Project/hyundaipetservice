@@ -25,4 +25,12 @@ public interface ReviewService {
 	public LocationVO selectLocation(LocationVO locationVO);
 
 	public void reviewUpdate(ReviewWriteVO reviewWriteVO);
+
+	public void imgDelete(ReviewWriteVO reviewWriteVO);
+
+	public void imgUpdate(ReviewWriteVO reviewWriteVO);
+
+	public void imgInsert(ReviewWriteVO reviewWriteVO);
+
+	public void reviewDelete(ReviewWriteVO reviewWriteVO);
 }

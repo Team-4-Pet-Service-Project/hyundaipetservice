@@ -29,20 +29,24 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public String checkId(String email) {
 		String statement = "myMember.checkId";
-		String result = session.selectOne(statement, email); 
+		String result = session.selectOne(statement, email);
+		log.debug(result);
+		return result;
+	}
+
+	@Override
+	public String checkPhone(String phone) {
+		String statement = "myMember.checkPhone";
+		String result = session.selectOne(statement, phone);
 		log.debug(result);
 		return result;
 	}
 
 	@Override
 	public MemberVO login(MemberVO member) {
+		log.debug("DAO : 시작");
 		String statement = "myMember.login";
-		MemberVO result = session.selectOne(statement, member); 
+		MemberVO result = session.selectOne(statement, member);
 		return result;
 	}
-	
-	
-	
-	
-	
 }
