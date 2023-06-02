@@ -12,6 +12,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.hyundai.thepet.review.dao.ReviewDAO;
 import com.hyundai.thepet.review.vo.LocationVO;
+import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
 import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
@@ -54,6 +55,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public ReviewWriteVO reviewDetail(ReviewWriteVO reviewWriteVO) {
 		ReviewWriteVO vo = dao.reviewDetail(reviewWriteVO);
 		return vo;
+	}
+	
+	@Override
+	public String namePrint(ReviewWriteVO reviewWriteVO) {
+		String name = dao.namePrint(reviewWriteVO);
+		return name;
 	}
 
 	@Override
@@ -143,6 +150,16 @@ public class ReviewServiceImpl implements ReviewService{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	//전체리스트 보여주는 곳
+	@Override
+	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO) {
+		List<ReviewTotalListVO> vo = dao.reviewTotalList(reviewTotalListVO);
+		return vo;
+	}
+
+	
 
 	
 }

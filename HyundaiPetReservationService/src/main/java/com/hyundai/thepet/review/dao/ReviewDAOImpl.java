@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hyundai.thepet.mypage.vo.ReservVO;
 import com.hyundai.thepet.review.vo.LocationVO;
+import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
 import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
@@ -55,6 +56,14 @@ public class ReviewDAOImpl implements ReviewDAO{
 		
 	}
 	
+	// 리뷰 이름 오는것
+	@Override
+	public String namePrint(ReviewWriteVO reviewWriteVO) {
+		String statement = "review.nameprint";
+		String name = session.selectOne(statement,reviewWriteVO);
+		return name;
+	}
+	
 	//리뷰 상세정보 빼서 오는 곳
 	@Override
 	public ReviewWriteVO reviewDetail(ReviewWriteVO reviewWriteVO) {
@@ -96,18 +105,32 @@ public class ReviewDAOImpl implements ReviewDAO{
 		session.update(statement, reviewWriteVO);
 	}
 
+	//리뷰 이미지 넣는 곳
 	@Override
 	public void imgInsert(ReviewWriteVO reviewWriteVO) {
 		String statement = "review.imginsert";
 		session.insert(statement, reviewWriteVO);
 	}
-
+	
+	//리뷰 삭제하는 곳
 	@Override
 	public void reviewDelete(ReviewWriteVO reviewWriteVO) {
 		String statement = "review.delete";
 		session.delete(statement, reviewWriteVO);
-		
 	}
+	
+	
+	//리뷰 전체리스트 출력하는 곳
+	@Override
+	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.totallist";
+		List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
+		return vo;
+	}
+
+	
+
+	
 
 	
 }

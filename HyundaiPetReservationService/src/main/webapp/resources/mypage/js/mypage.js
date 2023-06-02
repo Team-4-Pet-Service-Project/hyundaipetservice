@@ -76,6 +76,7 @@ function updateTable(response) {
         var month = reservationDate.getMonth() + 1;
         var day = reservationDate.getDate();
         var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+        const cn1 = reserv.price.toLocaleString('ko-KR');
         console.log(reserv); // 확인: reserv 변수의 값 출력
         
         if (buttonId === 'buttonA') {
@@ -85,9 +86,8 @@ function updateTable(response) {
             row.append('<td>' + reserv.customerCount + '</td>');
             row.append('<td>' + reserv['dogName'] + '</td>');
             row.append('<td>' + formattedDate + '  '+ reserv.reservationStartTime+' ~ ' + reserv.reservationEndTime +'</td>');
-            row.append('<td>' + reserv.price + '원' + '</td>');
-            row.append('<td><form action="/reservation/detail?dog_id=' + reserv.dogId + '" method="GET"><button type="submit">예약상세</button></form></td>');
-            row.append('<td><form action="/reservation/cancel" method="GET"><button type="submit">예약취소</button></form></td>');
+            row.append('<td>' + cn1 + '원' + '</td>');
+            row.append('<td><form action="/thepet/reservation/detail" method="GET"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit">리뷰확인</button></form></td>');
             tbody.append(row);
         }else{
         	let row = $('<tr></tr>');
@@ -96,7 +96,7 @@ function updateTable(response) {
             row.append('<td>' + reserv['customerCount'] + '</td>');
             row.append('<td>' + reserv['dogName'] + '</td>');
             row.append('<td>' + formattedDate + '  '+ reserv.reservationStartTime+' ~ ' + reserv.reservationEndTime + '</td>');
-            row.append('<td>' + reserv['price'] + '원' + '</td>');
+            row.append('<td>' + cn1 + '원' + '</td>');
             var buttonCell = $('<td></td>'); // 버튼을 담을 셀(td) 요소 생성
             $.ajax({
             	async: false, // 동기처리..

@@ -33,8 +33,7 @@
                     <div class="line"></div>
                    
                     <div class="first">
-                    	<div class="first_1">[name]님</div>
-              
+                    	<div class="first_1">[${name}]님</div>
                     	<div class="rating">
                     		<div>평점 :</div>
     						<i class="far fa-star" data-rate="1"></i>
@@ -98,6 +97,7 @@
 			                    			<input type="hidden" name="uuid" value="${Review1.uuid}">
 			                    			<input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
 			                    			<input type="hidden" name="uploadpath" value="${Review1.uploadpath}">
+			                    			<input type="hidden" name="name" value="${name}">
 			                    			<input type="submit" value="수정">
 			                			</form>
 	                				</div>

@@ -36,7 +36,7 @@
 	                   <div class="start">
 	                    <div class="one">리뷰수정</div>
 	                    <div class="two">
-	                    	<div class="two_1">[Name님] 시설은 어떠셨나요??</div>
+	                    	<div class="two_1">[${name}님] 시설은 어떠셨나요??</div>
 	                    	<div class="rating">
 	    						<i class="far fa-star" data-rate="1"></i>
 	    						<i class="far fa-star" data-rate="2"></i>
@@ -44,7 +44,7 @@
 	    						<i class="far fa-star" data-rate="4"></i>
 	    						<i class="far fa-star" data-rate="5"></i>
 	  						</div>
-	                    	  <input type="hidden" id="selected-rate" name="rate" value="0">
+	                    	  <input type="hidden" id="selected-rate" name="rate" value="${Review.rate}">
 	                    </div>
 	                    <div class="three">
 	                    	<div class="three_1">
