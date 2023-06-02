@@ -23,6 +23,7 @@
 		<typeAlias alias="Dog" type="com.hyundai.thepet.dog.vo.DogVO" />
 		<typeAlias alias="Calender" type="com.hyundai.thepet.calender.vo.CalenderVO" />
 		<typeAlias alias="LocationInfo" type="com.hyundai.thepet.calender.vo.LocationInfoVO" />
+		<typeAlias alias= "ReservationResult" type="com.hyundai.thepet.calender.vo.ReservationResultVO"/>
 	</typeAliases>
 
 </configuration>

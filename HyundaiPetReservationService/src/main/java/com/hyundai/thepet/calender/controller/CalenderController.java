@@ -10,12 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hyundai.thepet.calender.service.CalenderService;
 import com.hyundai.thepet.calender.vo.CalenderVO;
 import com.hyundai.thepet.calender.vo.LocationInfoVO;
+import com.hyundai.thepet.calender.vo.ReservationListVO;
 
 @Controller
 @RequestMapping(value = "calender")
@@ -28,9 +30,9 @@ public class CalenderController {
 	
 	@PostMapping(value = "detail", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public ResponseEntity<List<CalenderVO>> getCalenderDetails(String date) {
+	public ResponseEntity<List<CalenderVO>> getCalenderDetails(String category, String date) {
 		List<CalenderVO> list = new ArrayList<>();
-		list = calenderService.getAllDetails(date);
+		list = calenderService.getAllDetails(category, date);
 		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
 	}
 	
@@ -55,7 +57,18 @@ public class CalenderController {
 	
 	@PostMapping(value = "price", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public int getServicePrice(String dogSize, String dogFacilities) {
-		return calenderService.getPrice(dogSize, dogFacilities);
+	public ResponseEntity<Integer> getServicePrice(String dogSize, String dogFacilities) {
+		
+		int result = calenderService.getPrice(dogSize, dogFacilities);
+		return new ResponseEntity<> (result, HttpStatus.ACCEPTED); 
 	}
+	
+	@PostMapping(value = "reservationResult" ,produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public ResponseEntity<Integer> setAllReservationResult(@RequestBody ReservationListVO list) {
+
+		calenderService.setAllReservation(list.getCategory(), list.getReservationList());
+		return new ResponseEntity<> (1, HttpStatus.ACCEPTED);
+	}
+	
 }

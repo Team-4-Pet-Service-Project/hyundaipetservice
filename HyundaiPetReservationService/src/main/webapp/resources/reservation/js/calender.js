@@ -1,99 +1,10 @@
 $(function () {
 	sessionStorage.clear();
+	
+	sessionStorage.setItem("reservationRemain", JSON.stringify({}));
 	$('.radio-input').on('click', curMonth);
 	$('.add_button_box').hide();
-    /*const date = new Date();
-    
-    const selectCategory = $('.select_category').text();
-    
-    const viewYear = date.getFullYear();
-    const viewMonth = date.getMonth();
-    const viewDate = date.getDate();
-    
-    const thisLast = new Date(viewYear, viewMonth + 1, 0);
-    
-    
-    const oneDate = {
-    	'category':selectCategory, 
-    	'startDate':`${viewYear}/${viewMonth+1}/${viewDate}`,
-    	'endDate' : `${thisLast.getFullYear()}/${thisLast.getMonth()+1}/${thisLast.getDate()}`
-    }
-    
-    $.ajax({
-    	type:'POST',
-		url: "/thepet/calender/oneMonth",
-		data : oneDate,
-		dataType:'json',
-		success : function(data) {
-			const n = data.length / 5;
-			let existDetail = [];
-			
-			for (let i = 0; i < n; i++) {
-				existDetail.push(data.slice(i*5, (i+1) * 5))
-			}
-			
-			$(".ym").text(`${viewYear}.${viewMonth+1}`);
-		    $(".left").removeClass('active_arrow').addClass('disable_arrow');
-		    
-		    const prevLast = new Date(viewYear, viewMonth, 0);
-
-		    const PLDay = prevLast.getDay();
-
-		    const TLDate = thisLast.getDate();
-
-		    const emptyDate = new Array((PLDay + 1) % 7);
-		    const prevDate = new Array(viewDate-1);
-
-		    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-
-		    const result = [...emptyDate, ...thisDates];
-		    existDetail = [...emptyDate, ...prevDate, ...existDetail];
-		    
-		    for (let i = 0; i < result.length; i++) {
-		        const date = result[i];
-		        let classDateName = "";
-		        let flag = true;
-		        
-		        let total = 0
-		        if (existDetail[i] !== undefined) {		        	
-		        	for (let j = 0; j < 5; j++) {
-		        		total += existDetail[i][j].remainCount;
-		        	}
-		        	if (total === 0) {
-		        		classDateName = "no_reservation";
-		        	}
-		        }
-		        
-		        
-		        if (date < viewDate) {
-		            classDateName = "prev_date";
-		        }
-		        else if(classDateName !== 'no_reservation' && date >= viewDate) {
-		            classDateName = "cur_date";
-		        }
-		        
-		        let newDate = $("<div></div>").text(date)
-		        
-		        if (classDateName === 'cur_date' || classDateName === 'no_reservation') {
-		        	newDate.on('click', dateClickEvent);
-		        }
-		        
-		        if (i % 7 === 0) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sun`));
-		        }
-		        else if (i % 7 === 6) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sat`));
-		        }
-		        else {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date`));
-		        }
-		    }
-		},
-		error : function() {
-			
-		}
-    })*/
-    
+	$('.result_button_box').hide();
 });
 
 function curMonth() {
@@ -471,17 +382,32 @@ function dateClickEvent(e) {
 	e.target.className += ' checked_date';
 	const [year, month] = $('.ym').text().split('.');
 	const d = $('.checked_date').text();
-	const date = {'date' : `${year}/${month}/${d}`};
 	
 	$('.calender_detail_content').remove();
+	
+	const categoryMap = {
+			"케어":"care",
+			"놀이터":"playground",
+			"미용":"beauty"
+	}
+	
+	const branchMap = {
+			"서울":"seoul",
+			"대구":"daegu"
+	}
+	
+    const selectCategory = categoryMap[$('.select_category p').text()];
+    const selectBranch = branchMap[$('.radio-input:checked').val()];   
 	
 	$.ajax({
 		type:'POST',
 		url: "/thepet/calender/detail",
-		data : date,
+		data : {
+			'category': `reservation_times_${selectCategory}_${selectBranch}`,
+			'date' : `${year}/${month}/${d}`
+		},
 		dataType:'json',
 		success : function (data) {
-			
 			let detailTable = $(`
 					<table class="calender_detail_content">
 						<tr class="detail_table_h">
@@ -496,10 +422,11 @@ function dateClickEvent(e) {
 			data.map(detail => {
 				detailTable.append(`
 					<tr class="detail_table_row">
+						<td class="detail_table_cell" name="id" hidden>${detail.id}</td>
 						<td class="detail_table_cell">${detail.remainCount > 0 ? '<input type="radio" name="reservation_time" class="radio_set"/>' : ''}</td>
 						<td class="detail_table_cell" name="time">${detail.startTime}~${detail.endTime}</td>
 						<td class="detail_table_cell ${detail.remainCount > 0 ? 'reservation_able' : 'reservation_disable'}">${detail.remainCount> 0 ? '예약가능':'예약불가'}</td>
-						<td class="detail_table_cell">${detail.remainCount}</td>
+						<td class="detail_table_cell" name="remain_count">${detail.remainCount}</td>
 					</tr>
 				`)
 			})
@@ -533,12 +460,16 @@ function addReservation() {
 	const age = selectDogInfo.children('td[name="age"]').text();
 	const breed = selectDogInfo.children('td[name="breed"]').text();
 	const dogSize = selectDogInfo.children('td[name="dogSize"]').text();
+	const dogId = selectDogInfo.children('td[name="dogId"]').text();
+	const memberId = selectDogInfo.children('td[name="memberId"]').text();
 	
 	
 	const [year, month] = $('.ym').text().split('.');
 	const date = $('.checked_date').text();
 	
 	const time = selectDateTime.closest('tr').children('td[name="time"]').text();
+	const timeId = selectDateTime.closest('tr').children('td[name="id"]').text();
+	const remainCount = Number(selectDateTime.closest('tr').children('td[name="remain_count"]').text());
 	
 	
 	if (sessionStorage.getItem("member") === null) {
@@ -571,13 +502,26 @@ function addReservation() {
 						</tr>
 						<tr class="info_table_row">
 						<td class="row_head common_cell">추가 인원</td>
-						<td class="row_content common_cell">1</td>
+						<td class="row_content common_cell customer_count">1</td>
 						</tr>
 						</table>
 				`)
 			}
 		})
 	}
+	
+	let remainCountMap = JSON.parse(sessionStorage.getItem("reservationRemain"));
+	if (timeId in remainCountMap) {
+		if (remainCountMap[timeId] === 0) {
+			alert('예약이 남아 있는 자리수를 초과했습니다. 죄송합니다.');
+			return;
+		}
+		remainCountMap[timeId] = remainCount - 1;
+	}
+	else {
+		remainCountMap[timeId] = remainCount - 1;
+	}
+	sessionStorage.setItem("reservationRemain", JSON.stringify(remainCountMap));
 	
 	if ($('.dog_info_table').length === 0) {
 		$('.information_container').append(`
@@ -601,6 +545,9 @@ function addReservation() {
 						<td class="dog_table_common_cell" hidden>${time}</td>
 						<td class="dog_table_common_cell" hidden>${branchOffice}</td>
 						<td class="dog_table_common_cell" hidden>${category}</td>
+						<td class="dog_table_common_cell" hidden>${dogId}</td>
+						<td class="dog_table_common_cell" hidden>${memberId}</td>
+						<td class="dog_table_common_cell" hidden>${timeId}</td>
 					</tr>
 				</table>
 			</div>
@@ -633,10 +580,14 @@ function addReservation() {
 				<td class="dog_table_common_cell" hidden>${time}</td>
 				<td class="dog_table_common_cell" hidden>${branchOffice}</td>
 				<td class="dog_table_common_cell" hidden>${category}</td>
+				<td class="dog_table_common_cell" hidden>${dogId}</td>
+				<td class="dog_table_common_cell" hidden>${memberId}</td>
+				<td class="dog_table_common_cell" hidden>${timeId}</td>
 			</tr>
 		`)
 		getServicePrice(dogSize, category);
 	}
+	$('.result_button_box').show();
 	$('.dog_table_row').on('click', showReservationDetail);
 }
 
@@ -650,13 +601,8 @@ function getServicePrice(dogSize, dogFacilities) {
 		url:'/thepet/calender/price',
 		data : requestData,
 		success : function (data) {
-			console.log(data);
-			
 			const totalPriceBox = $('.total_price_box');
 			totalPriceBox.show();
-			console.log(totalPriceBox.children());
-			console.log(totalPriceBox.children().length);
-			console.log(totalPriceBox.length);
 			if (totalPriceBox.children().length === 0) {
 				totalPriceBox.append(`
 					<p class="total_price_text">결제 예정 금액</p>
@@ -666,10 +612,8 @@ function getServicePrice(dogSize, dogFacilities) {
 			else {
 				let prevPrice = $('.total_price').text();
 				prevPrice = Number(prevPrice.slice(0, -1))
-				console.log(prevPrice);
-				console.log(Number(prevPrice));
 				
-				$('.total_price').text(`${prevPrice + data}원`);
+				$('.total_price').text(`${prevPrice + data} 원`);
 			}
 			
 			
@@ -678,7 +622,8 @@ function getServicePrice(dogSize, dogFacilities) {
 }
 
 function showReservationDetail(e) {
-	
+	$('.select_info_table_row').removeClass('select_info_table_row');
+	$(e.target).closest('tr').addClass('select_info_table_row')
 	const info = $(e.target).closest('tr');
 	const date = `${info.children('td:nth-child(5)').text()} ${info.children('td:nth-child(6)').text()}`;
 	const locationData = {
@@ -692,7 +637,6 @@ function showReservationDetail(e) {
 		data : locationData,
 		dataType:'json',
 		success : function (data) {
-			console.log(data);
 			
 			$('.information_detail_container').empty();
 			$('.information_detail_container').append(`

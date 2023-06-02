@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/thepet/resources/reservation/css/reservation_info_result.css?<%= System.currentTimeMillis() %>">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/thepet/resources/reservation/js/reservation_info_result.js"></script>
 </head>
 <body>
 	<div class="information_container">

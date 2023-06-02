@@ -178,9 +178,10 @@
 .checked_date {
 	border-radius:50%;
 	width : 53.4px;
-	height : 53.4px;	
-	border : 1px solid black;
-	box-shadow: 2px 2px gray;
+	height : 53.4px;
+	/* border : 1px solid black;
+	box-shadow: 2px 2px gray; */
+	background-color: #E0E0E0;
 }
 
 .reservation_disable {

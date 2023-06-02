@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
  <mapper namespace="calender"> 	
- 	<select id="calenderDetail" parameterType="String" resultType="Calender">
- 		SELECT * FROM reservation_times_care
+ 	<select id="calenderDetail" parameterType="hashmap" resultType="Calender">
+ 		SELECT * FROM ${category}
  		WHERE calender = #{date}
  	</select>
  	
@@ -23,4 +23,16 @@
  		SELECT price from price_policies
  		WHERE dog_size = #{dogSize} and dog_facilities = #{dogFacilities}
  	</select>
+ 	
+ 	<insert id="insertReservation" parameterType="ReservationResult">
+ 		INSERT INTO reservations (reservation_date, reservation_start_time, reservation_end_time, price, customer_count, member_id, dog_id, location_id) VALUES
+ 		(#{reservationDate}, #{reservationStartTime}, #{reservationEndTime}, #{price}, #{customerCount}, #{memberId}, #{dogId}, #{locationId})
+ 	</insert>
+ 	
+ 	<update id="updateReservation" parameterType="hashmap">
+ 		UPDATE ${category}
+ 		SET
+ 		remain_count = remain_count - 1
+ 		WHERE id = #{reservationId}
+ 	</update>
  </mapper>

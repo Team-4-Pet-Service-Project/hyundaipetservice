@@ -42,6 +42,12 @@
 	
 	border-top : 1px solid #666666;
 	border-bottom : 1px solid #E0E0E0;
+	
+	cursor: pointer;
+}
+
+.select_info_table_row {
+	background-color: #DCEBF5;
 }
 
 .row_head {
@@ -141,6 +147,7 @@
 	display: flex;
 	justify-content : center;
 	align-items: center;
+	
 }
 
 .reservation_reset_button {
@@ -154,6 +161,8 @@
 	font-weight: bold;
 	
 	margin-right: 5%;
+	
+	cursor: pointer;
 }
 
 .do_reservation_button {
@@ -166,4 +175,6 @@
 	
 	font-size : 20px;
 	font-weight: bold;
+	
+	cursor: pointer;
 }
