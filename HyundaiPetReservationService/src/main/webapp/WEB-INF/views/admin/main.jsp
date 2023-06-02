@@ -18,9 +18,9 @@
 	integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
 	crossorigin="anonymous"></script>
 <script type="text/javascript"
-	src="/thepet/resources/reservation/js/calender.js">
-	
-</script>
+	src="/thepet/resources/admin/js/admin_calender.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 <title>관리자 페이지</title>
 </head>
 <body>
@@ -102,7 +102,7 @@
 									<h3 class="reservation_confirm_check_title">날짜 예약 상세 조회</h3>
 									<table class="total_check">
 										<tbody>
-											<tr>
+											<tr class="total_check_table_row">
 												<td class="total_price">총 결제 금액</td>
 												<td class="total_price_data">3,500,000</td>
 											</tr>

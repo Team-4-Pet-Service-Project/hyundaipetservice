@@ -185,6 +185,7 @@ function prevMonth() {
 function dateClickEvent(e) {
 	$('.checked_date').removeClass('checked_date');
 	e.target.className += ' checked_date';
+	
 }
 
 
