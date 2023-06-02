@@ -20,6 +20,7 @@
 		<typeAlias alias="Reservation" type="com.hyundai.thepet.message.vo.ReservationVO" />
 		<typeAlias alias="Dog" type="com.hyundai.thepet.dog.vo.DogVO" />
 		<typeAlias alias="ReservationDetail" type="com.hyundai.thepet.reservationdetail.vo.ReservationDetailVO" />
+		<typeAlias alias="ReivewTotal" type="com.hyundai.thepet.review.vo.ReviewTotalListVO" />
 	</typeAliases>
 
 </configuration>

@@ -75,6 +75,13 @@
  		]]>
  	</select>
  	
+ 	<!--이름 가져오는 곳-->
+ 	<select id="nameprint" parameterType="ReviewWrite" resultType="String">
+ 		<![CDATA[
+ 			select name from members where id = #{id}
+ 		]]>
+ 	</select>
+ 	
  	<!-- 이미지 넣는 곳 -->
  	<insert id="imginsert" parameterType="ReviewWrite">
  		<![CDATA[
@@ -156,6 +163,30 @@
  			where id=#{reviewId}
  		]]>
  	</delete>
+ 	
+ 	<!--전체 리뷰 출력하는 곳-->
+ 	<select id="totallist" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId}
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
  	
  	
  </mapper>

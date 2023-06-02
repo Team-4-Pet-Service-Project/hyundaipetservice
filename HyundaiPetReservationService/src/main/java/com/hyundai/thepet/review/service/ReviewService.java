@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hyundai.thepet.mypage.vo.ReservVO;
 import com.hyundai.thepet.review.vo.LocationVO;
+import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
 import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
@@ -33,4 +34,9 @@ public interface ReviewService {
 	public void imgInsert(ReviewWriteVO reviewWriteVO);
 
 	public void reviewDelete(ReviewWriteVO reviewWriteVO);
+
+	public String namePrint(ReviewWriteVO reviewWriteVO);
+
+	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO);
+
 }

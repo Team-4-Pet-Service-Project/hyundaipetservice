@@ -1,6 +1,8 @@
 package com.hyundai.thepet.review.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hyundai.thepet.mypage.vo.ReservVO;
 import com.hyundai.thepet.review.service.ReviewService;
 import com.hyundai.thepet.review.vo.LocationVO;
+import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
 import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
@@ -63,6 +67,8 @@ public class ReviewController {
 	@GetMapping(value = "detail1")
 	public String ReviewDetail1(ReviewWriteVO reviewWriteVO, Model model) {
 		model.addAttribute("Id", reviewWriteVO.getId());
+		String name = service.namePrint(reviewWriteVO);
+		model.addAttribute("name", name);
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
 		vo.setReviewId(vo.getId());
 		ReviewWriteVO vo1 = service.reviewimgDetail(vo);
@@ -86,13 +92,12 @@ public class ReviewController {
 
 	@GetMapping(value = "datail2")
 	public String ReviewDetail2(ReviewWriteVO reviewWriteVO, Model model) {
-		log.debug("1 : " + reviewWriteVO);
 		model.addAttribute("Id", reviewWriteVO.getId());
+		String name = service.namePrint(reviewWriteVO);
+		model.addAttribute("name", name);
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
 		vo.setReviewId(vo.getId());
 		ReviewWriteVO vo1 = service.reviewimgDetail(vo);
-		log.debug(vo);
-		log.debug(vo1);
 		model.addAttribute("Review", vo);
 		// 여기에review_id, filename, uploadpath, uuid
 		model.addAttribute("Review1", vo1);
@@ -111,9 +116,10 @@ public class ReviewController {
 	// 리뷰업데이트창 넘어가는 컨트롤러
 
 	@GetMapping(value = "update")
-	public String reivewUpdate(ReviewWriteVO reviewWriteVO, Model model) {
+	public String reivewUpdate(ReviewWriteVO reviewWriteVO, String name, Model model) {
 		// 여기서값을 가져오기
 		model.addAttribute("Review", reviewWriteVO);
+		model.addAttribute("name",name);
 		// 여기서 이용시설이랑 이용일자 데이터베이스처리
 		LocationVO locationVO = new LocationVO();
 		locationVO.setReservationId(reviewWriteVO.getReservationId());
@@ -164,10 +170,24 @@ public class ReviewController {
 		return "/thepet/review/list?id=" + reviewVO.getId();
 	}
 	
+	//여긴 처음 전체 리뷰 보여주는 페이지
 	@GetMapping(value = "totallist")
-	public String reviewTotalList(ReviewWriteVO reviewWriteVO) {
-		
+	public String reviewTotalList(ReviewTotalListVO reviewTotalListVO, Model model) {
+		//서울 케어가 처음 선택
+		// 그래서 나중에 여기로 값 보낼때 reservationId 1로 줘야함
+		List<ReviewTotalListVO> vo = service.reviewTotalList(reviewTotalListVO);
+		model.addAttribute("Review",vo);
+		log.debug(vo);
 		return "review/reviewtotallist";
+	}
+	
+	@GetMapping(value = "totallistajax")
+	@ResponseBody
+	public Map<String, Object> reviewTotalListAjax(ReviewTotalListVO reviewTotalListVO) {
+		Map<String, Object> response = new HashMap<>();
+		List<ReviewTotalListVO> vo = service.reviewTotalList(reviewTotalListVO);
+		response.put("review",vo);
+		return response;
 	}
 
 }

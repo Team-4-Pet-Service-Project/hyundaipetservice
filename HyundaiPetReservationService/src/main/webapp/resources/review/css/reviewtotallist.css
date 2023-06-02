@@ -3,16 +3,93 @@
 .location{
 	display: flex;
 	flex-direction: row;
-	border : 2px solid blue;
+	margin-bottom: 30px;
+	margin-left : 40px;
 }
 
 .location_1{
-	border : 2px solid blue;
+	font-size: 20px;
+	margin-right: 20px;
 }
 
-.radio-container {
-  
+.facility{
+	display: flex;
+	flex-direction: row;
+	margin-left : 40px;
 }
+
+.facility_1{
+	font-size: 20px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+}
+
+.spec{
+	font-size : 20px;
+	padding-bottom: 25px;
+	margin-left : 40px;
+}
+
+.review{
+	border-top : 1px solid black;
+	margin-left : 40px;
+	padding-top: 10px;
+	padding-bottom : 30px;
+	margin-top: 20px;
+}
+
+.review_1{
+	display: flex;
+	flex-direction: row;
+	font-size: 20px;
+}
+
+.review_1 .name{
+	margin-right: 20px;
+}
+
+
+.rating{
+	display: flex;
+	flex-direction: row;
+	margin-right:200px;
+}
+
+.rating .fa-star.fas {
+  color: #ffd700;
+  margin-left: 10px;
+}
+.review_2{
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+}
+
+.image{
+	margin-right: 50px;
+}
+
+
+.contents{
+	width : 400px;
+	border : 1px solid black;
+}
+
+.admin{
+	margin-left : 40px;
+	display: flex;
+	flex-direction: row;
+	font-size: 20px;
+	padding-bottom : 10px;
+	border-bottom: 1px solid black;
+}
+
+.admin .admin_1{
+	margin-right: 60px;
+	margin-left : 60px;
+}
+
+
 
 .radio-label {
   display: inline-block;
@@ -34,6 +111,56 @@
   justify-content: center;
   align-items: center;
   width: 80px;
+  height: 30px;
+  border: 3px solid #666666;
+  background-color: white;
+  border-radius : 20px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 20px;
+  color : #666666;
+}
+
+
+.radio-label1 {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-label1 .radio-input:checked + .radio-custom1 {
+  background-color: #333333;
+  border: 3px solid #333333;
+  color: #fff;
+}
+
+.radio-custom1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  border: 3px solid #666666;
+  background-color: white;
+  border-radius : 20px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  line-height: 20px;
+  color : #666666;
+}
+
+.radio-custom2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
   height: 30px;
   border: 3px solid #666666;
   background-color: white;

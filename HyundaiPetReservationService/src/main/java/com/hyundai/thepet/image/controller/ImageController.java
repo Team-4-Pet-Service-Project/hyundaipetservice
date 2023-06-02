@@ -80,7 +80,7 @@ public class ImageController {
 		return result;
 	}
 
-	// 이미지 보여주는 곳
+	// 이미지 보여주는곳
 	@GetMapping(value = "display")
 	public ResponseEntity<byte[]> getImage(String fileName) {
 		File file = new File("c:\\upload\\" + fileName);
