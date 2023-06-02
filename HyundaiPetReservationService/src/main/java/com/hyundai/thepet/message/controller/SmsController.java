@@ -1,3 +1,5 @@
+package com.hyundai.thepet.message.controller;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
