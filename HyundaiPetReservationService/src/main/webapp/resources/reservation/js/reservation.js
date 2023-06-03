@@ -1,6 +1,11 @@
 $(function() {
+	$('.care_container').hide();
 	$('.playground_container').hide();
-	$('.beauty_container').hide();
+	$('.beauty_container').show();
+	
+	$('.care_container .main_date').addClass("care_calender");
+	$('.playground_container .main_date').addClass("playground_calender");
+	$('.beauty_container .main_date').addClass("beauty_calender");
 	
 	$('.care').on('click', function() {
 		$('.care').addClass('select_category');

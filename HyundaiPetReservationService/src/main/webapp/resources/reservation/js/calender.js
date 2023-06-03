@@ -8,6 +8,7 @@ $(function () {
 });
 
 function curMonth() {
+	
 	$('.calender_container').show();
 	
 	$('.main_date').empty();
@@ -101,13 +102,13 @@ function curMonth() {
 		        }
 		        
 		        if (i % 7 === 0) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sun`));
+		            $(`.${selectCategory}_calender`).append(newDate.addClass(`${classDateName} date sun`));
 		        }
 		        else if (i % 7 === 6) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sat`));
+		            $(`.${selectCategory}_calender`).append(newDate.addClass(`${classDateName} date sat`));
 		        }
 		        else {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date`));
+		            $(`.${selectCategory}_calender`).append(newDate.addClass(`${classDateName} date`));
 		        }
 		    }
 		},

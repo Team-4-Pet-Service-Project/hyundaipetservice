@@ -11,7 +11,8 @@
 <script type="text/javascript" src="/thepet/resources/reservation/js/reservation.js"></script>
 <title>Insert title here</title>
 </head>
-<body style="display: flex; justify-content: center">
+<body style="display: flex; justify-content: center;">
+<jsp:include page="./modal.jsp" />
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/>
@@ -20,7 +21,7 @@
 		<div class="reservation_container">
 			<div class="reservation_form">
 				<div class="reservation_category">
-					<div class="category_box care select_category">
+					<div class="category_box care">
 						<img alt="" src="/thepet/resources/reservation/img/care.png">
 						<p class="category_text">케어</p>
 					</div>
@@ -28,7 +29,7 @@
 						<img alt="" src="/thepet/resources/reservation/img/playground.png">
 						<p class="category_text">놀이터</p>
 					</div>
-					<div class="category_box beauty">
+					<div class="category_box beauty select_category">
 						<img alt="" src="/thepet/resources/reservation/img/beauty.png">
 						<p class="category_text">미용</p>
 					</div>

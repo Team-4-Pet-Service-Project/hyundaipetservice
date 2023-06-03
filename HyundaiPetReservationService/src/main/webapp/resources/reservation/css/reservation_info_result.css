@@ -42,8 +42,6 @@
 	
 	border-top : 1px solid #666666;
 	border-bottom : 1px solid #E0E0E0;
-	
-	cursor: pointer;
 }
 
 .select_info_table_row {
@@ -99,6 +97,8 @@
 	
 	border-top : 1px solid #E0E0E0;
 	border-bottom : 1px solid #E0E0E0;
+	
+	cursor: pointer;
 }
 
 .dog_table_common_cell {
