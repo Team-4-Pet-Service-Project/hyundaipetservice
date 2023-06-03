@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminVO {
-	private int reservationTotalPrice;
-	private int reservationTotalNumber;
 	private int reservationFacilitiesTotalNum;
 	private int reservationFacilitiesTotalPrice;
 	private String reservationDogFacilities;

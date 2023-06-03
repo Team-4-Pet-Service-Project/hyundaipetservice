@@ -10,16 +10,16 @@ import lombok.NoArgsConstructor;
 public class ReservationDTO {
 	private String reservationDate;
 	private String address;
-	private int reservationTotalPrice;
-	private int reservationTotalNumber;
+	
 	
 	private int totalNum;
 	private int totalPrice;
+	
+	
 	private int totalCareNum;
 	private int totalCarePrice;
 	private int totalPlaygroundPrice;
 	private int totalPlaygroundNum;
 	private int totalBeautyNum;
 	private int totalBeautyPrice;
-	
 }

@@ -19,7 +19,8 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript"
 	src="/thepet/resources/admin/js/admin_calender.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 <title>관리자 페이지</title>
 </head>
@@ -43,95 +44,78 @@
 							<div class="reservation_tab admin_tab select_form">예약 관리</div>
 							<div class="review_tab admin_tab non_select_form">리뷰 관리</div>
 						</div>
-						<div class="information_summary">
-							<h2 class="informatin_summary_title">요약 정보</h2>
-							<table class="reservation_table">
-								<tbody>
-									<tr>
-										<td class="today_reservation">오늘 예약</td>
-										<td class="reservation_table_cell">3건</td>
-										<td class="today_sales">오늘 매출</td>
-										<td class="reservation_table_cell">320,000원</td>
-									</tr>
-									<tr>
-										<td class="month_reservation">이번달 예약</td>
-										<td class="reservation_table_cell ">10건</td>
-										<td class="month_sales">이번달 매출</td>
-										<td class="reservation_table_cell">600,000원</td>
-									</tr>
-									<tr>
-										<td class="last_month_reservation">지난달 예약</td>
-										<td class="reservation_table_cell">1건</td>
-										<td class="last_month_sales">지난달 매출</td>
-										<td class="reservation_table_cell">2,400,000원</td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="location_container" style="display: flex;">
+							<div class="">
+								<h2 class="select_location">지점 선택</h2>
+							</div>
+							<select class="myDropdown">
+								<option value="">선택하세요</option>
+								<option value="option1">더 현대 서울</option>
+								<option value="option2">더 현대 대구</option>
+							</select>
+							<div class="information_summary">
+								<h2 class="information_summary_title">요약 정보</h2>
+								<table class="reservation_table">
+									<tbody>
+										<tr>
+											<td class="today_reservation">오늘 예약</td>
+											<td class="reservation_table_cell"></td>
+											<td class="today_sales">오늘 매출</td>
+											<td class="reservation_table_cell"></td>
+										</tr>
+										<tr>
+											<td class="month_reservation">이번달 예약</td>
+											<td class="reservation_table_cell "></td>
+											<td class="month_sales">이번달 매출</td>
+											<td class="reservation_table_cell"></td>
+										</tr>
+										<tr>
+											<td class="last_month_reservation">지난달 예약</td>
+											<td class="reservation_table_cell"></td>
+											<td class="last_month_sales">지난달 매출</td>
+											<td class="reservation_table_cell"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-						<div class="reservation_confirm">
-							<h3 class="reservation_confirm_title">예약 조회</h3>
-							<div class="reservation_confirm_contents">
-								<div class="calender_container">
-									<div
-										style="display: flex; justify-content: flex-start; width: 490px; margin-top: 20px; margin-left: 10px;">
-										<div class="calender">
-											<div class="date_header">
-												<span
-													class="material-symbols-rounded arrow active_arrow left"
-													onclick="prevMonth()">chevron_left</span> <span class="ym"></span>
-												<span
-													class="material-symbols-rounded arrow active_arrow right"
-													onclick="nextMonth()">chevron_right</span>
+						<h3 class="reservation_confirm_title">예약 조회</h3>
+						<div class="reservation_confirm_contents">
+							<div class="calender_container">
+								<div
+									style="display: flex; justify-content: flex-start; width: 490px; margin-top: 20px; margin-left: 10px;">
+									<div class="calender">
+										<div class="date_header">
+											<span
+												class="material-symbols-rounded arrow active_arrow left"
+												onclick="prevMonth()">chevron_left</span> <span class="ym"></span>
+											<span
+												class="material-symbols-rounded arrow active_arrow right"
+												onclick="nextMonth()">chevron_right</span>
+										</div>
+										<div class="main">
+											<div class="days">
+												<div class="day sun">SUN</div>
+												<div class="day">MON</div>
+												<div class="day">TUE</div>
+												<div class="day">WED</div>
+												<div class="day">THE</div>
+												<div class="day">FRI</div>
+												<div class="day sat">SAT</div>
 											</div>
-											<div class="main">
-												<div class="days">
-													<div class="day sun">SUN</div>
-													<div class="day">MON</div>
-													<div class="day">TUE</div>
-													<div class="day">WED</div>
-													<div class="day">THE</div>
-													<div class="day">FRI</div>
-													<div class="day sat">SAT</div>
-												</div>
-												<div class="main_date"></div>
-											</div>
+											<div class="main_date"></div>
 										</div>
 									</div>
 								</div>
-								<div class="reservation_confirm_check">
-									<h3 class="reservation_confirm_check_title">날짜 예약 상세 조회</h3>
-									<table class="total_check">
-										<tbody>
-											<tr class="total_check_table_row">
-												<td class="total_price">총 결제 금액</td>
-												<td class="total_price_data">3,500,000</td>
-											</tr>
-											<tr>
-												<td class="total_reservation">총 예약 건수</td>
-												<td class="total_reservation_data">20건</td>
-											</tr>
-										</tbody>
-									</table>
-									<table class="detail_total_check">
-										<tbody>
-											<tr class="care">
-												<td>케어</td>
-												<td>3건</td>
-												<td>320,000원</td>
-											</tr>
-											<tr class="beauty">
-												<td>미용</td>
-												<td>10건</td>
-												<td>580,000원</td>
-											</tr>
-											<tr class="playground">
-												<td>놀이터</td>
-												<td>0건</td>
-												<td>120,000원</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
+							</div>
+							<div class="reservation_confirm_check">
+								<h3 class="reservation_confirm_check_title">날짜 예약 상세 조회</h3>
+								<table class="total_check">
+
+								</table>
+								<table class="total_check_detail">
+
+								</table>
 							</div>
 						</div>
 					</div>

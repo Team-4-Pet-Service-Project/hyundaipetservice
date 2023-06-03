@@ -47,7 +47,59 @@ $(function () {
             $('.main_date').append(newDate.addClass(`${classDateName} date`));
         }
     }
+    
+	$('.reservation_tab').on('click', function() {
+		$('.reservation_tab').removeClass('non_select_form').addClass('select_form');
+		$('.review_tab').removeClass('select_form').addClass('non_select_form');
+		/*$('.dog_form').show();
+		$('.mypet').hide();*/
+	})
+	
+	$('.review_tab').on('click', function() {
+		$('.review_tab').removeClass('non_select_form').addClass('select_form');
+		$('.reservation_tab').removeClass('select_form').addClass('non_select_form');
+		/*$('.mypet').show();
+		$('.dog_form').hide();*/
+	})
+	
+	$('.reservation_tab').on('click', reservationClickEvent);
+	$('.review_tab').on('click', reviewClickEvent);
+    
 });
+
+function reservationClickEvent() {
+	
+	$.ajax({
+		type:'Get',
+		url: "/thepet/admin/reservationManagement",
+		success : function (data) {
+			console.log("예약 관리 선택");
+			window.location("");
+		},
+		error : function (request, status, error) {
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	})
+}
+
+function reviewClickEvent() {
+	
+	// url 넣기
+	$.ajax({
+		type:'GET',
+		url: "",
+		success : function (data) {
+			console.log("리뷰 관리 선택");
+			$('.mypet_table_row').remove();
+		},
+		error : function (request, status, error) {
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	})
+}
+
+
+
 
 function curMonth() {
    $('.calender_container').show();
@@ -116,7 +168,7 @@ function curMonth() {
           for (let i = 0; i < result.length; i++) {
               const date = result[i];
               
-              let newDate = $("<div></div>").text(date)
+              let newDate = $("<div></div>").text(date);
               
                 newDate.on('click', dateClickEvent);
               
@@ -149,9 +201,6 @@ function dateClickEvent(e) {
 	const d = $('.checked_date').text();
 	const date = moment(`${year}/${month}/${d}`, 'YYYY/M/D').format('YYYY/MM/DD');
 
-	// `` 사용하기
-	console.log(date);
-	console.log(typeof(date));
 	
 	$.ajax({
 		type:"post",
@@ -160,16 +209,39 @@ function dateClickEvent(e) {
 			reservationDate : date
 			},
 		success: function(result) {
-			// 성공하면 저 테이블에 값 보여주는 걸로
+			
+			$('.total_check').empty()
+			$('.total_check_detail').empty()
+			
 			console.log(result)
-			/*$('.total_check').append(
-					'<tr class="total_check_table_row">' + 
-						'<td class=' + data[i].totalPrice + ' hidden></td>'+
-						'<td class="total_price_data">' + data[i].name + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].age + '</td>' +
-						'<td name=' + data[i].memberId + ' hidden></td>' +
-					'</tr>'
-			)*/
+			
+			$('.total_check').append(
+				`<tr>
+					<td class="total_check_column">총 결제 금액</td>
+					<td>${result.totalPrice}</td>
+				</tr>
+				<tr>
+					<td class="total_check_column">총 예약 건수</td>
+					<td>${result.totalNum}</td>
+				</tr>`
+			)
+			$('.total_check_detail').append(
+				`<tr class="care">
+					<td>케어</td>
+					<td>${result.totalCareNum}</td>
+					<td>${result.totalCarePrice}</td>
+				</tr>
+				<tr class="beauty">
+					<td>미용</td>
+					<td>${result.totalBeautyNum}</td>
+					<td>${result.totalBeautyPrice}</td>
+				</tr>
+				<tr class="playground">
+					<td>놀이터</td>
+					<td>${result.totalPlaygroundNum}</td>
+					<td>${result.totalPlaygroundPrice}</td>
+				</tr>`
+			)
 		},
 		error: function(result){
 			console.log(result);
