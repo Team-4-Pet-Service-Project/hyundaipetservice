@@ -18,30 +18,32 @@
 </style>
 </head>
 <body>
-   <header>
-      <div class="header_container">
-         <div class="logo_container">
-            <img class="logo" src="/thepet/resources/basic/img/thehyundai.png" alt="">
-            <div class="user_box">
-               <p>
-                  <%= request.getParameter("userName") %>
-               </p>
-               <div class="bell1">
-                  <span class="material-symbols-outlined"> notifications </span>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="menu_container">
-         <div class="menu_bar">
-            <a class="menu-trigger" href="#"> 
-               <span></span> 
-               <span></span> 
-               <span></span>
-            </a> 
-            <span>Gift</span> <span>New</span> <span>Store In</span> <span>Show-Room</span><span>Re.Green</span> <span>Event</span>
-         </div>
-         <div class="user_box1"></div>
+   <header class="top_container">
+   	  <div class="header_container">
+	      <!-- <div class="header_container"> -->
+	         <div class="logo_container">
+	            <img class="logo" src="/thepet/resources/basic/img/thehyundai.png" alt="">
+	            <div class="user_box">
+	               <p>
+	                  <%= request.getParameter("userName") %>
+	               </p>
+	               <div class="bell1">
+	                  <span class="material-symbols-outlined"> notifications </span>
+	               </div>
+	            </div>
+	         <!-- </div> -->
+	      </div>
+	      <div class="menu_container">
+	         <div class="menu_bar">
+	            <a class="menu-trigger" href="#"> 
+	               <span></span> 
+	               <span></span> 
+	               <span></span>
+	            </a> 
+	            <span>Gift</span> <span>New</span> <span>Store In</span> <span>Show-Room</span><span>Re.Green</span> <span>Event</span>
+	         </div>
+	         <div class="user_box1"></div>
+	      </div>
       </div>
    </header>
    <script src="/thepet/resources/basic/js/rotate.js"></script>

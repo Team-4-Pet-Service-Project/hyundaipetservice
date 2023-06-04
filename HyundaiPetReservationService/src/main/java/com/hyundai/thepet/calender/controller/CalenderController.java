@@ -58,7 +58,8 @@ public class CalenderController {
 	@PostMapping(value = "price", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public ResponseEntity<Integer> getServicePrice(String dogSize, String dogFacilities) {
-		
+		log.debug(dogSize);
+		log.debug(dogFacilities);
 		int result = calenderService.getPrice(dogSize, dogFacilities);
 		return new ResponseEntity<> (result, HttpStatus.ACCEPTED); 
 	}

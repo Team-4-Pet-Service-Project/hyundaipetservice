@@ -31,4 +31,11 @@ public class TestController {
 		model.addAttribute("member", member);
 		return "reservation/reservation"; 
 	}
+	
+	@GetMapping(value = "main")
+	public String test2(Model model) {
+		return "main/main";
+	}
 }
+
+

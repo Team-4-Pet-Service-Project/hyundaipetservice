@@ -102,13 +102,13 @@ function curMonth() {
 		        }
 		        
 		        if (i % 7 === 0) {
-		            $(`.${selectCategory}_calender`).append(newDate.addClass(`${classDateName} date sun`));
+		            $(".main_date").append(newDate.addClass(`${classDateName} date sun`));
 		        }
 		        else if (i % 7 === 6) {
-		            $(`.${selectCategory}_calender`).append(newDate.addClass(`${classDateName} date sat`));
+		            $(".main_date").append(newDate.addClass(`${classDateName} date sat`));
 		        }
 		        else {
-		            $(`.${selectCategory}_calender`).append(newDate.addClass(`${classDateName} date`));
+		            $(".main_date").append(newDate.addClass(`${classDateName} date`));
 		        }
 		    }
 		},
@@ -445,7 +445,7 @@ function addReservation() {
 	let selectDogInfo = $('.mypet_radio:checked');
 	let selectDateTime = $('.radio_set:checked');
 	let branchOffice = $('.radio-input:checked').val();
-	let category = $('.select_category p').text()
+	let category = $('.select_category p').text();
 	if (selectDogInfo.length === 0) {
 		alert("예약할 강아지를 선택해주세요🙏");
 		return;
@@ -472,6 +472,17 @@ function addReservation() {
 	const timeId = selectDateTime.closest('tr').children('td[name="id"]').text();
 	const remainCount = Number(selectDateTime.closest('tr').children('td[name="remain_count"]').text());
 	
+	let addPersonnel = "";
+	
+	if (category === "케어"){
+		addPersonnel = `<td class="row_content common_cell customer_count">1</td>`;
+	}
+	else if (category === "놀이터") {
+		addPersonnel = `<td class="row_content common_cell customer_count">${$(".customer_counter_input").val()}</td>`;
+	}
+	else if (category === "미용") {
+		
+	}
 	
 	if (sessionStorage.getItem("member") === null) {
 		$.ajax({
@@ -503,7 +514,7 @@ function addReservation() {
 						</tr>
 						<tr class="info_table_row">
 						<td class="row_head common_cell">추가 인원</td>
-						<td class="row_content common_cell customer_count">1</td>
+						${addPersonnel}
 						</tr>
 						</table>
 				`)
@@ -593,6 +604,8 @@ function addReservation() {
 }
 
 function getServicePrice(dogSize, dogFacilities) {
+	
+	let category = $('.select_category p').text();
 	const requestData = {
 		'dogSize' : dogSize,
 		'dogFacilities' : dogFacilities
@@ -604,20 +617,26 @@ function getServicePrice(dogSize, dogFacilities) {
 		success : function (data) {
 			const totalPriceBox = $('.total_price_box');
 			totalPriceBox.show();
+			
+			let priceResult = data;
+			
+			
 			if (totalPriceBox.children().length === 0) {
+				if (category === '놀이터') {
+					priceResult = data + Number($(".customer_counter_input").val()) * 10000;
+				}
+				
 				totalPriceBox.append(`
 					<p class="total_price_text">결제 예정 금액</p>
-					<p class="total_price">${data}원</p>
+					<p class="total_price">${priceResult} 원</p>
 				`)
 			}
 			else {
 				let prevPrice = $('.total_price').text();
 				prevPrice = Number(prevPrice.slice(0, -1))
 				
-				$('.total_price').text(`${prevPrice + data} 원`);
+				$('.total_price').text(`${prevPrice + priceResult} 원`);
 			}
-			
-			
 		}
 	})
 }

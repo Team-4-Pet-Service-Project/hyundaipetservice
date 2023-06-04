@@ -51,3 +51,6 @@
 	
 	margin-top: 2%;
 }
+.disable-div {
+    pointer-events: none;
+}

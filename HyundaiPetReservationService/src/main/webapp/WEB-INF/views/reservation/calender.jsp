@@ -34,6 +34,15 @@
 	            	<div class="main_date">
 						
 	            	</div>
+<!-- 	            	<div class="main_date care_calender">
+						
+	            	</div>
+	            	<div class="main_date playground_calender">
+						
+	            	</div>
+	            	<div class="main_date beauty_calender">
+						
+	            	</div> -->
 	        	</div>
 	    	</div>
 		</div>
