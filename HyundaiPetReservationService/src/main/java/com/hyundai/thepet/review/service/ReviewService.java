@@ -2,7 +2,7 @@ package com.hyundai.thepet.review.service;
 
 import java.util.List;
 
-import com.hyundai.thepet.mypage.vo.ReservVO;
+import com.hyundai.thepet.review.vo.Criteria;
 import com.hyundai.thepet.review.vo.LocationVO;
 import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
@@ -38,5 +38,14 @@ public interface ReviewService {
 	public String namePrint(ReviewWriteVO reviewWriteVO);
 
 	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalList1(Criteria cri, ReviewTotalListVO reviewTotalListVO);
+
+	public int getTotal(ReviewTotalListVO reviewTotalListVO);
+
 
 }

@@ -18,12 +18,13 @@ $(document).ready(function() {
     	const locationAndFacilities = location + ', ' + facilities;
     	const locationIdValue = locationId[locationAndFacilities];
         $.ajax({
-            url: "/thepet/review/totallistajax", // AJAX 요청을 보낼 엔드포인트 URL을 입력하세요
+            url: "/thepet/review/totallistajax1", // AJAX 요청을 보낼 엔드포인트 URL을 입력하세요
             type: "GET",
             data: { locationId: locationIdValue },
             success: function(response) {
                 // 요청이 성공한 경우에 대한 처리
                 console.log("AJAX 요청 성공");
+                console.log(response);
                 // 응답 데이터를 가지고 추가 작업을 수행하세요.
                 updateList(response,location,facilities);
                 
@@ -42,10 +43,10 @@ function updateList(response,location,facilities){
 	$('.spec').empty();
 	$('.total').empty(); // 기존 내용을 제거
 	$('.spec').text(location + " > " + facilities);
-    var cnt = response.cnt;
     var reviewList = response.review;
-    
-    for (var i = 0; i < cnt; i++) {
+    var locationId = response.location;
+    var pageMaker = response.pageMaker;
+    for (var i = 0; i < reviewList.length; i++) {
     	var review = reviewList[i];
     	var reviewDate = new Date(review.createdTime);
         var year = reviewDate.getFullYear();
@@ -108,6 +109,7 @@ function updateList(response,location,facilities){
     		var admin_2 = $('<div>' +  review.adminContents+ '</div>').addClass('admin_2');
     	}
     	
+    	
     	rating.append(rating_1);
     	rating.append(starGroup);
     	rating.append(date);
@@ -119,9 +121,11 @@ function updateList(response,location,facilities){
     	
     	admin.append(admin_1);
     	admin.append(admin_2);
+    	
     	reviewlist.append(review_1);
     	reviewlist.append(review_2);
     	reviewlist.append(admin);
+    	reviewlist.append(pageInfoWrap);
     	list1.append(reviewlist);
     	
     	const starGroupElement = list1.find('.star-group');
@@ -134,8 +138,39 @@ function updateList(response,location,facilities){
     	 $('.total').append(list1);
     	 
     }
+ // 페이지 정보 영역 생성
+    var pageInfoWrap = $('<div>').addClass('pageInfo_wrap');
+    var pageInfoArea = $('<div>').addClass('pageInfo_area');
+    var pageInfoList = $('<ul>').addClass('pageInfo');
+    
+    // 이전페이지 버튼
+    if (pageMaker.prev) {
+        var previousBtn = $('<li>').addClass('pageInfo_btn previous');
+        var previousLink = $('<a>').attr('href', pageMaker.startPage - 1).text('Previous');
+        previousBtn.append(previousLink);
+        pageInfoList.append(previousBtn);
+    }
+    
+    // 각 번호 페이지 버튼
+    for (var num = pageMaker.startPage; num <= pageMaker.endPage; num++) {
+        var pageInfoBtn = $('<li>').addClass('pageInfo_btn');
+        var pageInfoLink = $('<a>').attr('href', '/thepet/review/totallist1?locationId=' + locationId+ '&pageNum=' + num).text(num);
+        pageInfoBtn.append(pageInfoLink);
+        pageInfoList.append(pageInfoBtn);
+    }
+    
+    // 다음페이지 버튼
+    if (pageMaker.next) {
+        var nextBtn = $('<li>').addClass('pageInfo_btn next');
+        var nextLink = $('<a>').attr('href', pageMaker.endPage + 1).text('Next');
+        nextBtn.append(nextLink);
+        pageInfoList.append(nextBtn);
+    }
+    
+    pageInfoArea.append(pageInfoList);
+    pageInfoWrap.append(pageInfoArea);
+    $('.total').append(pageInfoWrap);
 }
-
 
 
 

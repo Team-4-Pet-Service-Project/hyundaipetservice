@@ -11,6 +11,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.hyundai.thepet.review.dao.ReviewDAO;
+import com.hyundai.thepet.review.vo.Criteria;
 import com.hyundai.thepet.review.vo.LocationVO;
 import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
@@ -116,7 +117,6 @@ public class ReviewServiceImpl implements ReviewService{
 			transactionManager.commit(txStatus);
 		}catch (Exception e) {
 			transactionManager.rollback(txStatus);
-			e.printStackTrace();
 		}
 		
 	}
@@ -158,8 +158,37 @@ public class ReviewServiceImpl implements ReviewService{
 		List<ReviewTotalListVO> vo = dao.reviewTotalList(reviewTotalListVO);
 		return vo;
 	}
+	
+	
+	
+	@Override
+	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO) {
+		List<ReviewTotalListVO> vo = dao.reviewTotalListAll(reviewTotalListVO);
+		return vo;
+	}
+
+	@Override
+	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO) {
+		List<ReviewTotalListVO> vo = dao.reviewTotalListAll1(reviewTotalListVO);
+		return vo;
+	}
+	
+	
+	//여기서 부터 페이징 구현하는 부분
+	@Override
+	public List<ReviewTotalListVO> reviewTotalList1(Criteria cri, ReviewTotalListVO reviewTotalListVO) {
+		List<ReviewTotalListVO> vo = dao.reviewTotalList1(cri,reviewTotalListVO);
+		return vo;
+	}
+
+	@Override
+	public int getTotal(ReviewTotalListVO reviewTotalListVO) {
+		return dao.getTotal(reviewTotalListVO);
+	}
 
 	
 
 	
+
+
 }
