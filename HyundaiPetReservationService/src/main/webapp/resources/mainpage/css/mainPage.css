@@ -2,8 +2,6 @@
 	width:2040px;
 	height:700px;
 	
-	border: 1px solid red;
-	
 	display: flex;
 	align-items: center;
 }

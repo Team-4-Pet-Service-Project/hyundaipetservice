@@ -22,6 +22,7 @@
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/>
 	</jsp:include>
+	<jsp:include page="../mainform/menubar.jsp" />
 	<main>
 		<div class="reservation_container">
 			<div class="reservation_form">
