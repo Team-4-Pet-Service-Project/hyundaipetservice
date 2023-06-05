@@ -10,11 +10,14 @@ import lombok.NoArgsConstructor;
 public class ReservationLocationDTO {
 	private String address;
 	
-	private int todayReservation;
-	private int monthReservation;
-	private int lastMonthReservation;
+	private int currentMonthReservationsCount;
+	private int lastMonthReservationsCount;
 	
-	private int todaySales;
-	private int monthSales;
+	private int currentMonthSales;
+	private int currentMonthCustomerCount;
+	private int currentMonthDogCount;
+	
 	private int lastMonthSales;
+	private int lastMonthCustomerCount;
+	private int lastMonthDogCount;
 }

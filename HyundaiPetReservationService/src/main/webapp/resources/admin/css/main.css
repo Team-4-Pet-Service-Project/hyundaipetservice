@@ -61,7 +61,7 @@
 
 .information_summary_container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	border-bottom: 2px solid #999999;
 }
 
@@ -71,11 +71,13 @@
 }
 
 .location_select {
-	width: 40%;
+	margin-top:10px;
+	display:flex;
+	align-items:center;
+	width: 100%;
 }
 
 .location_select_title {
-	margin: 10px;
 	color: black;
 	font-weight: bold;
 	font-size: 23px;
@@ -86,14 +88,14 @@
 .myDropdown {
 	display: flex;
 	flex-direction: row;
-	width: 80%;
+	width: 20%;
 	height: 20px;
-	margin: 10px 0px;
+	margin: 10px 10px;
 }
 
 .information_summary {
 	width: 100%;
-	height: 150px;
+	height: 100%;
 	margin: 10px 0px;
 }
 
@@ -103,6 +105,16 @@
 	font-weight: bold;
 	font-size: 23px;
 }
+
+.td_class{
+	width:30px;
+}
+.information_data{
+	text-align: center;
+	vertical-align: middle;
+	font-weight: light;
+}
+
 
 /* 테이블 CSS 관리 */
 .reservation_table {
@@ -131,7 +143,6 @@
 	text-align: center;
 	vertical-align: middle;
 	background-color: #F6F6F6;
-	padding: 7px;
 	font-weight: bold;
 }
 
@@ -147,7 +158,6 @@
 	text-align: center;
 	vertical-align: middle;
 	background-color: #F6F6F6;
-	padding: 7px;
 	font-weight: bold;
 }
 
@@ -163,7 +173,6 @@
 	text-align: center;
 	vertical-align: middle;
 	background-color: #F6F6F6;
-	padding: 7px;
 	font-weight: bold;
 }
 
@@ -171,7 +180,6 @@
 	text-align: center;
 	vertical-align: middle;
 	background-color: #F6F6F6;
-	padding: 7px;
 	font-weight: bold;
 }
 
@@ -185,6 +193,7 @@
 }
  */
 .reservation_confirm_title {
+	margin-top:10px;
 	padding: 10px 0px;
 	color: black;
 	font-weight: bold;

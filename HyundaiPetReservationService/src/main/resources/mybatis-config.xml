@@ -21,6 +21,7 @@
 		<typeAlias alias="Locations" type="com.hyundai.thepet.message.vo.LocationVO" />
 		<typeAlias alias="Dog" type="com.hyundai.thepet.dog.vo.DogVO" />
 		<typeAlias alias="Admin" type="com.hyundai.thepet.admin.vo.AdminVO" />
+		<typeAlias alias="AdminReservation" type="com.hyundai.thepet.admin.dto.ReservationLocationDTO" />
 		<typeAlias alias="Calender" type="com.hyundai.thepet.calender.vo.CalenderVO" />
 		<typeAlias alias="LocationInfo" type="com.hyundai.thepet.calender.vo.LocationInfoVO" />
 		<typeAlias alias="ReservationResult" type="com.hyundai.thepet.calender.vo.ReservationResultVO"/>
