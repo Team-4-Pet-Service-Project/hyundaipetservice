@@ -15,13 +15,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="/thepet/resources/member/js/login.js?<%=System.currentTimeMillis()%>"></script>
-<title>Login</title>
+<title>The Hyundai : 로그인</title>
 </head>
 <body style="display: flex; justify-content: center;">
 	<div class="container">
 		<jsp:include page="../mainform/header.jsp">
 			<jsp:param value="석진" name="userName" />
 		</jsp:include>
+		<jsp:include page="../mainform/menubar.jsp" />
 		<div class="gap"></div>
 		<main>
 			<div class="main_container">
@@ -41,7 +42,7 @@
 														<label class="id ePlaceholderEach required" title="아이디*">
 															<p class="form-title">아이디*</p> <input id="member_id"
 															name="email" class="inputTypeText" placeholder="아이디*"
-															value="" type="text"/>
+															value="" type="text" />
 														</label>
 														<div class="err-msg" id="idMsg" style="display: none;">아이디
 															항목은 필수 입력값입니다.</div>
@@ -51,11 +52,13 @@
 															title="패스워드*">
 															<p class="form-title">패스워드*</p> <input id="member_passwd"
 															name="password" autocomplete="off" value=""
-															type="password" placeholder="패스워드*"/>
+															type="password" placeholder="패스워드*" />
 														</label>
-														<div class="err-msg" id="pwMsg" style="display: none;">패스워드 항목은 필수 입력값입니다.</div>
+														<div class="err-msg" id="pwMsg" style="display: none;">패스워드
+															항목은 필수 입력값입니다.</div>
 													</div>
-													<button class="btnLogin btn btn-lg btn-dark btn-full" type="button">
+													<button class="btnLogin btn btn-lg btn-dark btn-full"
+														type="button">
 														<span>로그인</span>
 													</button>
 													<div class="find-block">
@@ -64,8 +67,8 @@
 															<li><a href="/member/findPwd">비밀번호찾기</a></li>
 														</ul>
 													</div>
-													<div class="err-msg" id="loginMsg" style="display: none;">아이디 또는 비밀번호 잘못 입력했습니다.
-													입력하신 내용을 다시 확인해주세요.</div>
+													<div class="err-msg" id="loginMsg" style="display: none;">아이디
+														또는 비밀번호 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.</div>
 													<div class="join-block ">
 														<div class="util">
 															<p>아직 회원이 아니신가요?</p>

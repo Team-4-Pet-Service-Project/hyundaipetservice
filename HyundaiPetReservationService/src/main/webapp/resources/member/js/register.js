@@ -14,6 +14,7 @@ $(document).ready(function() {
 	birth_year.on("input", combineBirth);
 	birth_month.on("input", combineBirth);
 	birth_day.on("input", combineBirth);
+
 });
 
 function combinePhone() {
@@ -158,12 +159,11 @@ function checkPhone() {
 
 	if ($("#mobile1").val() == '' || $("#mobile2").val() == ''
 			|| $("#mobile3").val() == '') {
-		
 
 		$("#phoneMsg").text("전화번호를 입력해주세요.");
 		$("#phoneMsg").css("color", "red");
-		
-		if($("#mobile1").length + $("#mobile2").length + $("#mobile3").length == 11){
+
+		if ($("#mobile1").length + $("#mobile2").length + $("#mobile3").length == 11) {
 			$("#phoneMsg").text("전화 번호 갯수가 부족합니다.");
 			$("#phoneMsg").css("color", "red");
 		}

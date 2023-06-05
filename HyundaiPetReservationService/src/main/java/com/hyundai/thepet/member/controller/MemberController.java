@@ -69,11 +69,10 @@ public class MemberController {
 	@PostMapping(value = "login")
 	@ResponseBody
 	public ResponseEntity<MemberVO> login(@ModelAttribute("member") MemberVO member, Model model) throws Exception {
+		
 		log.debug("login method : " + member);
-
 		MemberVO result = service.login(member);
 		model.addAttribute("member",result);
-		
 		log.debug("controller : " + result);
 		
 		try {
