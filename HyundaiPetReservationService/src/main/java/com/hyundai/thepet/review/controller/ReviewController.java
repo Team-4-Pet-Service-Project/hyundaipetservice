@@ -3,6 +3,7 @@ package com.hyundai.thepet.review.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -66,12 +67,16 @@ public class ReviewController {
 	// 리뷰상세확인하는곳1 (지난예약 버튼에서 상세화면으로가는 경우)
 
 	@GetMapping(value = "detail1")
-	public String ReviewDetail1(ReviewWriteVO reviewWriteVO, Model model) {
-		model.addAttribute("Id", reviewWriteVO.getId());
+	public String ReviewDetail1(ReviewWriteVO reviewWriteVO, Optional<Integer> isAdmin, Model model) {
+		model.addAttribute("Id", reviewWriteVO.getId()); // memberId 를 Id로 설정
+		System.out.println("isAdmin: " + isAdmin.isPresent()); // admin이 들어왔는지 확인
+		if (isAdmin.isPresent() == true) {
+			model.addAttribute("admin", 1);
+		}
 		String name = service.namePrint(reviewWriteVO);
 		model.addAttribute("name", name);
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
-		vo.setReviewId(vo.getId());
+		vo.setReviewId(vo.getId()); // id에 reviewId가 있으니 여기에서는 reviewId가 vo에 들어감
 		ReviewWriteVO vo1 = service.reviewimgDetail(vo);
 		model.addAttribute("Review", vo);
 		// 여기에 review_id, filename, uploadpath, uuid
@@ -91,14 +96,13 @@ public class ReviewController {
 
 	// 위와 아래로 나눈 이유는 위에가 review_id를 가지고 올수 가 없다 //사이드바에서 리뷰확인누른다음 리뷰상세 들어가는 곳
 
-	@GetMapping(value = "datail2")
-	public String ReviewDetail2(ReviewWriteVO reviewWriteVO, Model model) {
-		log.debug(reviewWriteVO);
-		model.addAttribute("Id", reviewWriteVO.getId());
+	@GetMapping(value = "detail2")
+	public String ReviewDetail2(ReviewWriteVO reviewWriteVO, Optional<Integer> isAdmin, Model model) {
+		model.addAttribute("Id", reviewWriteVO.getId()); // memberId 를 Id로 설정
 		String name = service.namePrint(reviewWriteVO);
 		model.addAttribute("name", name);
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
-		vo.setReviewId(vo.getId());
+		vo.setReviewId(vo.getId()); // id에 reviewId가 있으니 여기에서는 reviewId가 vo에 들어감
 		ReviewWriteVO vo1 = service.reviewimgDetail(vo);
 		model.addAttribute("Review", vo);
 		// 여기에review_id, filename, uploadpath, uuid

@@ -25,6 +25,7 @@
 		<typeAlias alias="LocationInfo" type="com.hyundai.thepet.calender.vo.LocationInfoVO" />
 		<typeAlias alias= "ReservationResult" type="com.hyundai.thepet.calender.vo.ReservationResultVO"/>
 		<typeAlias alias="AdminReview" type="com.hyundai.thepet.admin.review.vo.AdminReviewVO" />
+		<typeAlias alias="UserReview" type="com.hyundai.thepet.admin.review.vo.UserReviewVO" />
 		<typeAlias alias="ReservationDetail" type="com.hyundai.thepet.reservationdetail.vo.ReservationDetailVO" />
 		<typeAlias alias="ReivewTotal" type="com.hyundai.thepet.review.vo.ReviewTotalListVO" />
 	</typeAliases>

@@ -57,7 +57,7 @@
 										<td>${review.reservationDate}  ${review.reservationStartTime} ~ ${review.reservationEndTime}</td>
 										<td><fmt:formatNumber value="${review.price}" pattern="#,###"/>원</td>
 										<td>
-											<form action="/thepet/review/datail2" method="GET">
+											<form action="/thepet/review/detail2" method="GET">
 												<input type="hidden" name="reviewId" value="${review.reviewId}">
 												<input type="hidden" name="reservationId" value="${review.reservationId}">
 												<input type="hidden" name="id" value="${review.id}">

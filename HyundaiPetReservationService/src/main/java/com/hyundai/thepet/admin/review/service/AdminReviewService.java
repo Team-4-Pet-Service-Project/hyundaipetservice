@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hyundai.thepet.admin.review.dao.AdminReviewDAO;
+import com.hyundai.thepet.admin.review.vo.UserReviewVO;
 import com.hyundai.thepet.admin.review.vo.AdminReviewVO;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,9 @@ public class AdminReviewService {
 	
 	public int countCommented() {
 		return adminReviewDAO.countCommented();
+	}
+	
+	public int updateAdminReview(UserReviewVO reviewVo) {
+		return adminReviewDAO.updateAdminReview(reviewVo);
 	}
 }

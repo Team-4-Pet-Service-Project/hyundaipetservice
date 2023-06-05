@@ -61,10 +61,11 @@
 												<td>${reviewNoComment.cleanBt}</td>
 												<td>${reviewNoComment.revisitBt}</td>
 												<td>
-													<form action="/thepet/admin/review/detail" method="GET">
-														<input type="hidden" name="reservationId" value="${reviewNoComment.reviewId}">
+													<form action="/thepet/review/detail1" method="GET">
+														<%-- <input type="hidden" name="reviewId" value="${reviewNoComment.reviewId}"> --%>
 														<input type="hidden" name="reservationId" value="${reviewNoComment.reservationId}">
 														<input type="hidden" name="id" value="${reviewNoComment.memberId}">
+														<input type="hidden" name="isAdmin" value="1">
 														<button type="submit">답변 등록</button>
 													</form>
 												</td>
@@ -103,11 +104,12 @@
 												<td>${reviewCommented.cleanBt}</td>
 												<td>${reviewCommented.revisitBt}</td>
 												<td>
-													<form action="/thepet/admin/review/detail" method="GET">
-														<input type="hidden" name="reservationId" value="${reviewNoComment.reviewId}">
-														<input type="hidden" name="reservationId" value="${reviewNoComment.reservationId}">
-														<input type="hidden" name="id" value="${reviewNoComment.memberId}">
-														<button type="submit">답변 등록</button>
+													<form action="/thepet/review/detail1" method="GET">
+														<%-- <input type="hidden" name="reviewId" value="${reviewNoComment.reviewId}"> --%>
+														<input type="hidden" name="reservationId" value="${reviewCommented.reservationId}">
+														<input type="hidden" name="id" value="${reviewCommented.memberId}">
+														<input type="hidden" name="isAdmin" value="1">
+														<button type="submit">답변 보기</button>
 													</form>
 												</td>
 											</tr>

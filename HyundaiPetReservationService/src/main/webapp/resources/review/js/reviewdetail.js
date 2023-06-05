@@ -1,16 +1,102 @@
 //const initialRate = parseInt('${rate}'); // JSP 변수를 가져와서 정수로 변환
 
 document.addEventListener('DOMContentLoaded', function() {
-    const stars = document.querySelectorAll('i'); // 선택자를 'i'로 변경
-    const initial = document.getElementById("hidList").value; 
-    const initialRate = parseInt(initial);
-    for (let i = 0; i < initialRate; i++) {
-      stars[i].classList.add('fas');
-      stars[i].classList.remove('far');
-    }
+  const stars = document.querySelectorAll('i'); // 선택자를 'i'로 변경
+  const initial = document.getElementById("hidList").value; 
+  const initialRate = parseInt(initial);
+  for (let i = 0; i < initialRate; i++) {
+    stars[i].classList.add('fas');
+    stars[i].classList.remove('far');
+  }
 
-    console.log(stars);
+  //console.log(stars);
+  
+  
+  const adminContentsInput = document.querySelector('.admin-contents');
+  const modifyButton = document.getElementById('modify-button');
+  const cancelButton = document.getElementById('cancel-button');
+  const deleteButton = document.getElementById('delete-button');
+  const updateButton = document.getElementById('update-button');
+  
+  let previousContents = adminContentsInput.value; // 이전 [답변 수정] 클릭 시의 값 저장
+
+  modifyButton.addEventListener('click', function() {
+    adminContentsInput.removeAttribute('readonly');
+    modifyButton.type = 'hidden'; // [답변 수정] 버튼 숨기기
+    deleteButton.type = 'hidden'; // [답변 삭제] 버튼 숨기기
+    cancelButton.type = 'button'; // [답변 취소] 버튼 보이기
+    updateButton.type = 'button'; // [답변 등록] 버튼 보이기
   });
+
+  cancelButton.addEventListener('click', function() {
+	adminContentsInput.value = previousContents; // 이전 [답변 수정] 클릭 시의 값으로 되돌아감
+    adminContentsInput.setAttribute('readonly', 'readonly');
+    cancelButton.type = 'hidden'; // [답변 취소] 버튼 숨기기
+    updateButton.type = 'hidden'; // [답변 등록] 버튼 숨기기
+    modifyButton.type = 'button'; // [답변 수정] 버튼 보이기
+    deleteButton.type = 'button'; // [답변 삭제] 버튼 보이기
+  });
+  
+  updateButton.addEventListener('click', function() {
+	    previousContents = adminContentsInput.value; // [답변 수정] 클릭 시의 값을 이전 값으로 업데이트
+	    var reviewId = document.getElementById('reviewId').value;
+	    console.log(reviewId);
+	    // AJAX 호출
+	    $.ajax({
+	      url: '/thepet/admin/review/update', // 실제 서버 URL로 대체해야 합니다.
+	      method: 'POST', // 요청 메소드 (GET, POST 등)
+	      data: {
+	        reviewId: reviewId,
+	        adminContents: adminContentsInput.value
+	      },
+	      success: function() {
+	        // 서버 응답을 받았을 때 실행할 동작을 여기에 작성합니다.
+	        console.log('요청 성공');
+	        cancelButton.type = 'hidden'; // [답변 취소] 버튼 숨기기
+	        updateButton.type = 'hidden'; // [답변 등록] 버튼 숨기기
+	        modifyButton.type = 'button'; // [답변 수정] 버튼 보이기
+	        deleteButton.type = 'button'; // [답변 삭제] 버튼 보이기
+	        
+	      },
+	      error: function(xhr, status, error) {
+	        // 서버 요청이 실패했을 때 실행할 동작을 여기에 작성합니다.
+	        console.log('요청 실패:', status, error);
+	      }
+	    });
+  });
+
+  deleteButton.addEventListener('click', function() {
+	    adminContentsInput.value = '관리자 답변이 없습니다.';
+	    deleteButton.type = 'hidden'; // [답변 삭제] 버튼 숨기기
+	    modifyButton.type = 'hidden'; // [답변 수정] 버튼 보이기
+	    cancelButton.type = 'hidden'; // [답변 취소] 버튼 숨기기
+	    updateButton.type = 'hidden'; // [답변 등록] 버튼 숨기기
+	    var reviewId = document.getElementById('reviewId').value;
+	    console.log(reviewId);
+	    // AJAX 호출
+	    $.ajax({
+	      url: '/thepet/admin/review/delete', // 실제 서버 URL로 대체해야 합니다.
+	      method: 'GET', // 요청 메소드 (GET, POST 등)
+	      data: {
+	        reviewId: reviewId
+	      },
+	      success: function(response) {
+	        // 서버 응답을 받았을 때 실행할 동작을 여기에 작성합니다.
+	        console.log('요청 성공:', response);
+	      },
+	      error: function(xhr, status, error) {
+	        // 서버 요청이 실패했을 때 실행할 동작을 여기에 작성합니다.
+	        console.log('요청 실패:', status, error);
+	      }
+	    });
+  });
+  
+  
+});
+
+
+
+
 
 
 //여기 모달창
