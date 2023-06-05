@@ -80,6 +80,8 @@
 .contents{
 	width : 750px;
 	border : 1px solid black;
+	padding-left: 10px;
+	padding-top: 10px;
 }
 
 .admin{
@@ -177,6 +179,10 @@
   color : #666666;
 }
 
+.pageInfo_wrap{
+	margin-top : 20px;
+}
+
 .pageInfo_area {
   display: flex;
   flex-direction: row;
@@ -184,7 +190,11 @@
   
 }
 
-.pageInfo li {
+.no_dot {
+	  list-style-type: none;
+	}
+
+.pageInfo_btn {
   list-style-type: none;
   display: inline-block;
   font-size: 20px;
@@ -194,6 +204,21 @@
   border: 1px solid black;
 }
 
+.pageInfo_btn a {
+  color: black;
+  text-decoration: none;
+}
+
+.pageInfo_btn:hover {
+  background-color: #cdd5ec;
+  border: 1px solid #cdd5ec;
+}
+
+.pageInfo_btn.active {
+  background-color: #9fabcf;
+  border: 1px solid #9fabcf;
+}
+
 a:link {
   color: black;
   text-decoration: none;
@@ -201,6 +226,7 @@ a:link {
 
 a:visited {
   color: black;
+  
   text-decoration: none;
 }
 
@@ -210,5 +236,10 @@ a:hover {
 }
 
 .active {
-  background-color: #cdd5ec;
+  background-color: #F6F6F6;
+  border: 1px solid #F6F6F6;
 }
+
+
+
+

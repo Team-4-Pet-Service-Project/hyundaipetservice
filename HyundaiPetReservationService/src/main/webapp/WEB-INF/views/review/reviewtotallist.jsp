@@ -7,7 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
+<link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/thepet/resources/review/css/reviewtotallist.css">
 <title>Insert title here</title>
@@ -16,11 +18,12 @@
  <script src="/thepet/resources/review/js/reviewtotallist.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>       
 </head>
-<body>
+<body class="container_body">
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/> 
 	</jsp:include>
+	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">

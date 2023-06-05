@@ -34,9 +34,6 @@ public class ReservationDetailController {
 	@ResponseBody
 	public String reservDelete(ReservationDetailVO reservationDetailVO) {
 		service.reservationDelete(reservationDetailVO);
-		// 여기선 세션으로 아이디 값을 넣어줘야 한다
-		ReviewVO reviewVO = new ReviewVO();
-		reviewVO.setId(1);
-		return "/thepet/mypage/reservlist?id=" + reviewVO.getId();
+		return "/thepet/mypage/reservlist";
 	}
 }
