@@ -89,14 +89,14 @@ function drawAddOption(category) {
 			<div class="add_option_radio_box">
 				<div class="radoi_button_box">
 					<label for="beauty">
-						<input type="checkbox" name="beauty_service_type" id="beauty" class="add_option_radio_input"/>
+						<input type="checkbox" name="beauty_service_type" id="beauty" value="미용" class="add_option_radio_input"/>
 						<i class="circle"></i>
 						<span class="text">미용</span>
 					</label>
 				</div>
 				<div class="radoi_button_box">
 					<label for="spar">
-						<input type="checkbox" name="beauty_service_type" id="spar" class="add_option_radio_input"/>
+						<input type="checkbox" name="beauty_service_type" id="spar" value="스파" class="add_option_radio_input"/>
 						<i class="circle"></i>
 						<span class="text">스파</span>
 					</label>

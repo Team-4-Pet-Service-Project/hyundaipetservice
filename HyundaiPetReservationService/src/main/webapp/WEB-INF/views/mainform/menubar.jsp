@@ -20,28 +20,28 @@
 				<p>스포츠/레저</p>
 				<p>리빙/가전</p>
 				<p>식품</p>
-				<p class="selected_detail_main_category">반려동물 ></p>
+				<p class="pet_menu">반려동물</p>
 			</div>
 			<div class="menu_detail_sub_category">
-				<p>THE PET</p>
-				<p>티셔츠</p>
-				<p>아우터</p>
-				<p>드레스</p>
-				<p>올인원</p>
-				<p>Acc</p>
-				<p>리빙</p>
-				<p>케어</p>
-				<p>푸드</p>
-				<p>예약</p>
+				<a>THE PET</a>
+				<a>티셔츠</a>
+				<a>아우터</a>
+				<a>드레스</a>
+				<a>올인원</a>
+				<a>Acc</a>
+				<a>리빙</a>
+				<a>케어</a>
+				<a>푸드</a>
+				<a href="/thepet/reservation" class="menu_bar_a">예약</a>
 			</div>
-			<div class="menu_detail_sub_category" style="height: 200px;">
-				<p>몽슈슈</p>
-				<p>위드토리</p>
-				<p>비쇼네</p>
-				<p>하글앤넬로</p>
-				<p>코코스퀘어</p>
-				<p>코니도기</p>
-				<p>펫컴</p>
+			<div class="menu_detail_sub_category">
+				<a>몽슈슈</a>
+				<a>위드토리</a>
+				<a>비쇼네</a>
+				<a>하글앤넬로</a>
+				<a>코코스퀘어</a>
+				<a>코니도기</a>
+				<a>펫컴</a>
 			</div>
 		</div>
 	</div>

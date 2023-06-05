@@ -474,16 +474,38 @@ function addReservation() {
 	const remainCount = Number(selectDateTime.closest('tr').children('td[name="remain_count"]').text());
 	
 	let addPersonnel = "";
+	let addService = "";
+	let beautyServiceList = [];
 	
 	if (category === "케어"){
 		addPersonnel = `<td class="row_content common_cell customer_count">1</td>`;
+		addService = category;
 	}
 	else if (category === "놀이터") {
 		addPersonnel = `<td class="row_content common_cell customer_count">${$(".customer_counter_input").val()}</td>`;
+		addService = category;
 	}
 	else if (category === "미용") {
+		addPersonnel = "";
+		console.log($('.add_option_radio_input'));
+		$('.add_option_radio_input:checked').each(function (){
+			beautyServiceList.push($(this).val());
+		});
+		
+		if (beautyServiceList.length === 0) {
+			alert("이용하실 서비스를 선택해주세요");
+			return;
+		}
+		else if (beautyServiceList.length === 2) {
+			addService = `${beautyServiceList[0]}+${beautyServiceList[1]}`;
+		}
+		else if (beautyServiceList.length === 1){
+			addService = beautyServiceList[0];
+		}
 		
 	}
+	
+	console.log(addPersonnel, addService, beautyServiceList);
 	
 	if (sessionStorage.getItem("member") === null) {
 		$.ajax({
@@ -557,7 +579,7 @@ function addReservation() {
 						<td class="dog_table_common_cell" hidden>${year}/${month}/${date}</td>
 						<td class="dog_table_common_cell" hidden>${time}</td>
 						<td class="dog_table_common_cell" hidden>${branchOffice}</td>
-						<td class="dog_table_common_cell" hidden>${category}</td>
+						<td class="dog_table_common_cell" hidden>${addService}</td>
 						<td class="dog_table_common_cell" hidden>${dogId}</td>
 						<td class="dog_table_common_cell" hidden>${memberId}</td>
 						<td class="dog_table_common_cell" hidden>${timeId}</td>
@@ -592,7 +614,7 @@ function addReservation() {
 				<td class="dog_table_common_cell" hidden>${year}/${month}/${date}</td>
 				<td class="dog_table_common_cell" hidden>${time}</td>
 				<td class="dog_table_common_cell" hidden>${branchOffice}</td>
-				<td class="dog_table_common_cell" hidden>${category}</td>
+				<td class="dog_table_common_cell" hidden>${addService}</td>
 				<td class="dog_table_common_cell" hidden>${dogId}</td>
 				<td class="dog_table_common_cell" hidden>${memberId}</td>
 				<td class="dog_table_common_cell" hidden>${timeId}</td>

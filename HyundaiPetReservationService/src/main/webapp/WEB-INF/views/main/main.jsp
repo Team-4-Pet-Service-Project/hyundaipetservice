@@ -7,7 +7,15 @@
 <link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
 <link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
-<title>Insert title here</title>
+
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous" ></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script type="text/javascript" src="/thepet/resources/mainpage/js/main_slide.js"></script>
 </head>
 <body class="container_body">
 <div class="container">
@@ -18,11 +26,7 @@
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">
-			<%-- <jsp:include page="../mainform/side.jsp"/>
-			<div class="main_info">
-                    <!-- 여기다가 구현 -->
-            </div> --%>
-            <div class="slide_main_container">
+            <div class="slide_main_container variable-width">
             	<img alt="" src="/thepet/resources/mainpage/img/main1.jpg">
             	<img alt="" src="/thepet/resources/mainpage/img/main2.jpg">
             	<img alt="" src="/thepet/resources/mainpage/img/main3.jpg">
@@ -45,5 +49,6 @@
 	<hr>
 	<jsp:include page="../mainform/footer.jsp"/>
 </div>
+
 </body>
 </html>

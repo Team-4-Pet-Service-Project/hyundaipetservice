@@ -66,7 +66,7 @@
 
 .menu_detail_sub_category {
 	width : 200px;
-	height: 300px;
+	height: 200px;
 	
 	display: flex;
 	flex-direction: column;
@@ -78,6 +78,14 @@
 .selected_detail_main_category {
 	color : black;
 	font-weight: 600;
+}
+
+.menu_bar_a {
+	text-decoration: none;
+}
+
+.menu_bar_a:visited {
+	color : gray;
 }
 
 .logo_container {
