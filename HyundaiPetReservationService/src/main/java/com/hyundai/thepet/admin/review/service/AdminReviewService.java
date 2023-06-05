@@ -13,22 +13,10 @@ import org.springframework.stereotype.Service;
 public class AdminReviewService {
 	@Autowired AdminReviewDAO adminReviewDAO;
 
-	public List<AdminReviewVO> selectReviewNoComment() {
-		return adminReviewDAO.selectReviewNoComment();
+	public List<AdminReviewVO> selectReview(String adminAddress) {
+		return adminReviewDAO.selectReview(adminAddress);
 	}
-	
-	public List<AdminReviewVO> selectReviewCommented() {
-		return adminReviewDAO.selectReviewCommented();
-	}
-	
-	public int countNoComment() {
-		return adminReviewDAO.countNoComment();
-	}
-	
-	public int countCommented() {
-		return adminReviewDAO.countCommented();
-	}
-	
+
 	public int updateAdminReview(UserReviewVO reviewVo) {
 		return adminReviewDAO.updateAdminReview(reviewVo);
 	}
