@@ -43,37 +43,38 @@
 						<div class="admin_menu_bar">
 							<div class="reservation_tab admin_tab select_form">예약 관리</div>
 							<div class="review_tab admin_tab non_select_form">리뷰 관리</div>
+							<div class="remain_menu_bar"></div>
 						</div>
-						<div class="location_container" style="display: flex;">
-							<div class="">
-								<h2 class="select_location">지점 선택</h2>
+						<div class="information_summary_container">
+							<div class="location_select">
+								<h2 class="location_select_title">지점 선택</h2>
+								<select class="myDropdown">
+									<option value="">선택하세요</option>
+									<option value="option1">더 현대 서울</option>
+									<option value="option2">더 현대 대구</option>
+								</select>
 							</div>
-							<select class="myDropdown">
-								<option value="">선택하세요</option>
-								<option value="option1">더 현대 서울</option>
-								<option value="option2">더 현대 대구</option>
-							</select>
 							<div class="information_summary">
 								<h2 class="information_summary_title">요약 정보</h2>
 								<table class="reservation_table">
 									<tbody>
 										<tr>
 											<td class="today_reservation">오늘 예약</td>
-											<td class="reservation_table_cell"></td>
+											<td class="reservation_table_cell">100건</td>
 											<td class="today_sales">오늘 매출</td>
-											<td class="reservation_table_cell"></td>
+											<td class="reservation_table_cell">100,000,000원</td>
 										</tr>
 										<tr>
 											<td class="month_reservation">이번달 예약</td>
-											<td class="reservation_table_cell "></td>
+											<td class="reservation_table_cell">21건</td>
 											<td class="month_sales">이번달 매출</td>
-											<td class="reservation_table_cell"></td>
+											<td class="reservation_table_cell">100,000원</td>
 										</tr>
 										<tr>
 											<td class="last_month_reservation">지난달 예약</td>
-											<td class="reservation_table_cell"></td>
+											<td class="reservation_table_cell">10건</td>
 											<td class="last_month_sales">지난달 매출</td>
-											<td class="reservation_table_cell"></td>
+											<td class="reservation_table_cell">120,000원</td>
 										</tr>
 									</tbody>
 								</table>

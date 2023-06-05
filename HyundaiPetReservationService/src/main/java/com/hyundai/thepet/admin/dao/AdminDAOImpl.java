@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hyundai.thepet.admin.dto.ReservationDTO;
+import com.hyundai.thepet.admin.dto.ReservationLocationDTO;
 import com.hyundai.thepet.admin.dto.ReservationTotalDTO;
 import com.hyundai.thepet.admin.vo.AdminVO;
 
@@ -39,13 +40,16 @@ public class AdminDAOImpl implements AdminDAO {
 		int totalPlaygroundNum = 0;
 		int totalBeautyNum = 0;
 		int totalBeautyPrice = 0;
-		HashMap<String, Number> map1 = new HashMap<>();
-		HashMap<String, Number> map2 = new HashMap<>();
-		
-		for (int i = 0; i < result.size(); i++) {
-			map1.put(result.get(i).getReservationDogFacilities(), result.get(i).getReservationFacilitiesTotalPrice());
-			map2.put(result.get(i).getReservationDogFacilities(), result.get(i).getReservationFacilitiesTotalNum());
-		}
+		/*
+		 * HashMap<String, Number> map1 = new HashMap<>(); HashMap<String, Number> map2
+		 * = new HashMap<>();
+		 * 
+		 * for (int i = 0; i < result.size(); i++) {
+		 * map1.put(result.get(i).getReservationDogFacilities(),
+		 * result.get(i).getReservationFacilitiesTotalPrice());
+		 * map2.put(result.get(i).getReservationDogFacilities(),
+		 * result.get(i).getReservationFacilitiesTotalNum()); }
+		 */
 		
 		
 		for (int i = 0; i < result.size(); i++) {
@@ -102,6 +106,15 @@ public class AdminDAOImpl implements AdminDAO {
 
 		String statement = "myAdmin.selectReservationTotal";
 		ReservationTotalDTO result = session.selectOne(statement, reservation);
+		
+		return result;
+	}
+
+	@Override
+	public ReservationLocationDTO postReservationLocation(ReservationLocationDTO reservation) {
+		
+		String statement = "myAdmin.selectReservationTotal";
+		ReservationLocationDTO result = session.selectOne(statement, reservation);
 		
 		return result;
 	}

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.hyundai.thepet.admin.dao.AdminDAO;
 import com.hyundai.thepet.admin.dto.ReservationDTO;
+import com.hyundai.thepet.admin.dto.ReservationLocationDTO;
 import com.hyundai.thepet.admin.dto.ReservationTotalDTO;
 import com.hyundai.thepet.admin.vo.AdminVO;
 
@@ -37,4 +38,15 @@ public class AdminServiceImpl implements AdminService{
 		
 		return result;
 	}
+
+	@Override
+	public ReservationLocationDTO postReservationLocation(ReservationLocationDTO reservation) {
+		
+		log.debug("Service 접근 : " + reservation);
+		ReservationLocationDTO result = dao.postReservationLocation(reservation);
+		
+		
+		return result;
+	}
+	
 }
