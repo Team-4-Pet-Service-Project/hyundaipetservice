@@ -55,5 +55,15 @@
 	
 	]]>
 	</update>
+	
+	<delete id="deleteAdminReview" parameterType="int">
+	<![CDATA[
+		UPDATE reviews
+		SET admin_contents=null
+		WHERE id=#{reviewId}
+	
+	]]>
+	</delete>
+
 
 </mapper>

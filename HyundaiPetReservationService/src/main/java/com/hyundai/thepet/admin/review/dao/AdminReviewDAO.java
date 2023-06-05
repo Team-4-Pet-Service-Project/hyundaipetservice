@@ -38,5 +38,10 @@ public class AdminReviewDAO {
 		return result;
 	}
 	
+	public int deleteAdminReview(int reviewId) {
+		return session.delete("forAdminReview.deleteAdminReview", reviewId);
+	}
+	
+
 	
 }
