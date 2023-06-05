@@ -36,6 +36,11 @@ public class TestController {
 	public String test2(Model model) {
 		return "main/main";
 	}
+	
+	@GetMapping(value = "test")
+	public String test3(Model model) {
+		return "mainform/test";
+	}
 }
 
 
