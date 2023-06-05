@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="/thepet/resources/review/css/reviewtotallist.css">
+<link rel="stylesheet" href="/thepet/resources/review/css/reviewtotallist1.css">
 <title>Insert title here</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="/thepet/resources/review/js/reviewtotallist.js"></script>
+ <script src="/thepet/resources/review/js/reviewtotallist1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>       
 </head>
 <body>
@@ -132,7 +132,32 @@
 							    }
 							  });
 						</script>
+						
+						<div class="pageInfo_wrap" >
+					        <div class="pageInfo_area">
+					        	<ul id="pageInfo" class="pageInfo"></ul>
+					 			 <!-- 이전페이지 버튼 -->
+					                <c:if test="${pageMaker.prev}">
+					                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+					                </c:if>
+					 			 
+					 			 <!-- 각 번호 페이지 버튼 -->
+				                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				                    <li class="pageInfo_btn"><a href="/thepet/review/totallist1?locationId=1&pageNum=${num}">${num}</a></li>
+				                </c:forEach>
+				                
+				                	 <!-- 다음페이지 버튼 -->
+					                <c:if test="${pageMaker.next}">
+					                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+					                </c:if>  
+					        </div>
+					    </div>
+						
+						
 		                
+        				    
+		           
+		           
 		           </div>
 		      </div>
 		</div>

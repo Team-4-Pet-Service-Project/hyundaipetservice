@@ -87,7 +87,7 @@ function updateTable(response) {
             row.append('<td>' + reserv['dogName'] + '</td>');
             row.append('<td>' + formattedDate + '  '+ reserv.reservationStartTime+' ~ ' + reserv.reservationEndTime +'</td>');
             row.append('<td>' + cn1 + '원' + '</td>');
-            row.append('<td><form action="/thepet/reservation/detail" method="GET"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit">리뷰확인</button></form></td>');
+            row.append('<td><form action="/thepet/reservation/detail" method="GET"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit">예약상세</button></form></td>');
             tbody.append(row);
         }else{
         	let row = $('<tr></tr>');

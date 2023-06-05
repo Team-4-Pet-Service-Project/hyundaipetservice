@@ -176,3 +176,39 @@
   line-height: 20px;
   color : #666666;
 }
+
+.pageInfo_area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.pageInfo li {
+  list-style-type: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 18px;
+  padding: 7px;
+  font-weight: 500;
+  border: 1px solid black;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.active {
+  background-color: #cdd5ec;
+}
