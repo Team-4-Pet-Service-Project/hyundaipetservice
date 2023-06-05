@@ -47,6 +47,8 @@ public class MemberDAOImpl implements MemberDAO {
 		log.debug("DAO : 시작");
 		String statement = "myMember.login";
 		MemberVO result = session.selectOne(statement, member);
+		
+		log.debug("로그인 " + result);
 		return result;
 	}
 }

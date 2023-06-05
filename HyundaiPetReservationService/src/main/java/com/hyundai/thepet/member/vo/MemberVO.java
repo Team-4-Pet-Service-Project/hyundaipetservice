@@ -15,5 +15,5 @@ public class MemberVO {
 	private String phone;
 	private String birth;
 	private int admin;
-	private int adminAddress;
+	private String adminAddress;
 }

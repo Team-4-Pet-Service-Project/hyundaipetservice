@@ -27,5 +27,4 @@
 		FROM
 		MEMBERS WHERE email = #{email}
 	</select>
-	
 </mapper>
