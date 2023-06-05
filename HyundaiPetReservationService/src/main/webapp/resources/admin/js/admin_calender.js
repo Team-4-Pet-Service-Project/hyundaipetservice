@@ -107,10 +107,13 @@ function reviewClickEvent() {
 	// url 넣기
 	$.ajax({
 		type:'GET',
-		url: "",
-		success : function (data) {
+		url: "/thepet/admin/review",
+		success : function (response) {
 			console.log("리뷰 관리 선택");
+			console.log(response);
 			$('.mypet_table_row').remove();
+			
+			
 		},
 		error : function (request, status, error) {
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

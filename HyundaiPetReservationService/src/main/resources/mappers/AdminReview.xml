@@ -5,25 +5,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace = "forAdminReview">
-	<select id="selectReviewNoComment" resultType="AdminReview">
+	<select id="selectReview" parameterType="String" resultType="AdminReview">
 	<![CDATA[
 		SELECT res.member_id, res.reservation_date, rev.reservation_id, rev.id as review_id, loc.dog_facilities, rev.rate, rev.service_bt, rev.space_bt, rev.clean_bt, rev.revisit_bt, rev.admin_contents
 		FROM reviews rev
 				 JOIN reservations res ON rev.reservation_id = res.id
 				 JOIN locations loc ON res.location_id = loc.id
-		WHERE rev.admin_contents IS NULL
+		WHERE loc.address = #{adminAddress}
 		
 	]]>
 
 	</select>
 	
-	<select id="selectReviewCommented" resultType="AdminReview">
+<!-- 	<select id="selectReviewCommented" parameterType="String" resultType="AdminReview">
 	<![CDATA[
 		SELECT res.member_id, res.reservation_date, rev.reservation_id, rev.id as review_id, loc.dog_facilities, rev.rate, rev.service_bt, rev.space_bt, rev.clean_bt, rev.revisit_bt, rev.admin_contents
 		FROM reviews rev
 				 JOIN reservations res ON rev.reservation_id = res.id
 				 JOIN locations loc ON res.location_id = loc.id
-		WHERE rev.admin_contents IS NOT NULL
+		WHERE rev.admin_contents IS NOT NULL and loc.address = #{adminAddress}
 	]]>
 	</select>
 
@@ -45,7 +45,7 @@
 				 JOIN locations loc ON res.location_id = loc.id
 		WHERE rev.admin_contents IS NOT NULL
 		]]>
-	</select>
+	</select> -->
 	
 	<update id="updateAdminReview" parameterType="UserReview">
 	<![CDATA[
