@@ -279,3 +279,88 @@
 .total_check_detail_cell {
 	
 }
+
+
+.review_management_container {
+	width: 800px;
+}
+
+.review_no_comment_container {
+	width: 800px;
+	margin-top: 2%;
+}
+
+.review_no_comment_table {
+	width: 800px;
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	margin-top: 2%;
+}
+
+.review_comment_table_head {
+	background-color: #F6F6F6;
+	height: 45px;
+}
+
+
+
+.review_comment_table_row {
+	width: 800px;
+	height: 45px;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.review_comment_table_cell {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.review_commented_p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.review_no_comment_p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.review_commented_container {
+	width: 800px;
+}
+
+
+.review_commented_table {
+	width: 800px;
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	margin-top: 2%;
+}
+
+
+
+
+
+.review_comment_button {
+  background-color: #FAFAFA; /* 배경색 */
+  color: #666666; /* 텍스트 색상 */
+  padding: 5px 10px; /* 안쪽 여백 */
+  font-size: 14px; /* 폰트 크기 */
+  border: 1px solid #B7B7B7; /* 테두리 없음 */
+  border-radius: 1px; /* 테두리 반경 */
+  cursor: pointer; /* 커서 스타일 */
+}
+
+.review_comment_button:hover {
+  background-color: #F6F6F6; /* 마우스 오버 시 배경색 */
+}
+
+.review_comment_button:focus {
+  outline: none; /* 포커스 시 아웃라인 제거 */
+}
+
+
+
+
+
