@@ -40,6 +40,8 @@ public class AdminReviewController {
 		return "admin/reviewList";
 	}
 	
+	
+	
 	@PostMapping(value="admin/review/update")
 	@ResponseBody
 	public void updateReview(int reviewId, String adminContents, Model model) { // 
@@ -57,13 +59,13 @@ public class AdminReviewController {
 	}
 	
 	@GetMapping(value="admin/review/delete")
-	public String deleteReview(int reviewId, Model model) {
-		
+	public void deleteReview(int reviewId, Model model) {
 		System.out.println("reviewId: " + reviewId);
 		
-		System.out.println("delete review 실행");
+		// admin contents 삭제
+		int result = service.deleteAdminReview(reviewId);
 		
-		return "redirect:";
+		System.out.println("delete review 실행" + result);
 	}
 	
 }

@@ -32,4 +32,10 @@ public class AdminReviewService {
 	public int updateAdminReview(UserReviewVO reviewVo) {
 		return adminReviewDAO.updateAdminReview(reviewVo);
 	}
+	
+	public int deleteAdminReview(int reviewId) {
+		return adminReviewDAO.deleteAdminReview(reviewId);
+	}
+	
+
 }

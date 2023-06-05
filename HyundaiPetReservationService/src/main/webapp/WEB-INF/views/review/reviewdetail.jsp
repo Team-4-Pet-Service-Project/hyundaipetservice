@@ -6,22 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
+<link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <title>리뷰 상세 페이지</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="/thepet/resources/review/js/reviewdetail.js"></script>
+ 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
  
 </head>
-<body>
+<body class="container_body">
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/> 
 	</jsp:include>
+	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">
@@ -130,29 +133,33 @@
 	                			</div>
 				            </c:when>
 				            
+				            
+				            
 				            <c:when test="${admin eq 1}"> <!-- 관리자 -->
+				            	<input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
 						        <c:choose>
 						            <c:when test="${empty Review.adminContents}"> <!-- 답변이 없는 경우 -->
 							            <div class="five">
 							                <div class="five_1">
-							                    <form action="admin/review/add-adminreview" method="GET">
-							                        <input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
-							                        <input type="submit" value="답변 등록">
-							                    </form>
+							                	<input type="button" class="add-button" value="답변 등록1">
+							                	<input type="hidden" class="cancel-button" value="답변 취소1">
 							                </div>
+							                <div class="five_1">
+							                	
+							               		<input type="hidden" class="update-button" value="답변 등록2">
+							                </div>
+							                
 						                </div>
 						            </c:when>
 						            <c:otherwise> <!-- 답변이 있는 경우 -->
 						            	<div class="five">
 						            		<div class="five_1">
-							                <input type="button" id="modify-button" value="답변 수정">
-							                <input type="hidden" id="cancel-button" value="답변 취소">
-							                
+							                	<input type="button" class="modify-button" value="답변 수정">
+							                	<input type="hidden" class="cancel-button" value="답변 취소2">
 							                </div>
 							                <div class="five_1">
-							                	<input type="button" id="delete-button" value="답변 삭제">
-							                	<input type="hidden" id="update-button" value="답변 등록">
-							                	<input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
+							                	<input type="button" class="delete-button" value="답변 삭제">
+							                	<input type="hidden" class="update-button" value="답변 등록3">
 							                </div>
 						                </div>
 						            </c:otherwise>
