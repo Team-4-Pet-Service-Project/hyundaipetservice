@@ -17,7 +17,7 @@
 
 <title>The Hyundai 회원 등록</title>
 </head>
-<body>
+<body class="container_body">
 	<div class="container">
 		<jsp:include page="../mainform/header.jsp">
 			<jsp:param value="석진" name="userName" />
