@@ -51,15 +51,17 @@ $(function () {
 	$('.reservation_tab').on('click', function() {
 		$('.reservation_tab').removeClass('non_select_form').addClass('select_form');
 		$('.review_tab').removeClass('select_form').addClass('non_select_form');
-		/*$('.dog_form').show();
-		$('.mypet').hide();*/
+		/*
+		 * $('.dog_form').show(); $('.mypet').hide();
+		 */
 	})
 	
 	$('.review_tab').on('click', function() {
 		$('.review_tab').removeClass('non_select_form').addClass('select_form');
 		$('.reservation_tab').removeClass('select_form').addClass('non_select_form');
-		/*$('.mypet').show();
-		$('.dog_form').hide();*/
+		/*
+		 * $('.mypet').show(); $('.dog_form').hide();
+		 */
 	})
 	
 	$('.reservation_tab').on('click', reservationClickEvent);
@@ -68,27 +70,50 @@ $(function () {
 	
 	$('.myDropdown').change(function() {
         var selectedOption = $(this).val();
-        
        console.log(selectedOption);
         $.ajax({
-            url: '/thepet/admin/reservationLocation',  // AJAX 요청을 보낼 서버의 URL을 지정합니다. 실제로 사용하는 서버 파일의 경로로 변경해야 합니다.
-            method: 'POST',  // AJAX 요청의 HTTP 메소드를 지정합니다. 필요에 따라 GET 또는 POST로 변경할 수 있습니다.
-            data: { address: selectedOption },  // AJAX 요청으로 보낼 데이터를 지정합니다. 서버에서는 이 데이터를 받아 처리할 수 있어야 합니다.
+            url: '/thepet/admin/reservationLocation',
+            method: 'POST', 
+            data: { 
+            	address: selectedOption,
+            },  // AJAX 요청으로 보낼 데이터를 지정합니다. 서버에서는 이 데이터를 받아 처리할 수 있어야 합니다.
             success: function(response) {
-            	console.log("성공");
+    		      // 이번달 예약
+    		      $('.reservation_table_this_month_check').text(response.currentMonthReservationsCount);
+
+    		      // 지난달 예약
+    		      $('.reservation_table_last_month_check').text(response.lastMonthReservationsCount);
+
+    		      // 이번달 매출
+    		      $('.reservation_table_this_month_sales').text(response.currentMonthSales);
+
+    		      // 지난달 매출
+    		      $('.reservation_table_cell_last_month_sales').text(response.lastMonthSales);
+
+    		      // 이번달 이용 고객 수
+    		      $('.reservation_table_this_month_customer_num').text(response.currentMonthCustomerCount);
+
+    		      // 지난달 이용 고객 수
+    		      $('.reservation_table_last_month_customer_num').text(response.lastMonthCustomerCount);
+    		      
+    		      // 이번달 이용 강아지 수
+    		      $('.reservation_table_this_month_puppies').text(response.currentMonthDogCount);
+    		      
+    		      // 지난달 이용 강아지 수
+    		      $('.reservation_table_last_month_puppies').text(response.lastMonthDogCount);
+            	
+            	
+            	console.log(response);
             },
             error: function(xhr, status, error) {
                 console.log(error);  // 에러 발생 시 콘솔에 에러를 출력합니다.
             }
         });
     });
-	
-	
-	
 });
 
+
 function reservationClickEvent() {
-	
 	$.ajax({
 		type:'Get',
 		url: "/thepet/admin/reservationManagement",
@@ -119,9 +144,129 @@ function reviewClickEvent() {
 }
 
 
+function nextMonth() {
 
+    const date = new Date();
 
-function curMonth() {
+    const viewMonth = date.getMonth();
+
+    const curMonth = $('.ym').text();
+    const [year, month] = curMonth.split('.');
+    let nextYear = 0;
+    let nextMonth = 0;
+    if (Number(month) === 12) {
+        nextYear = Number(year) + 1;
+        nextMonth = 1;
+    }
+    else {
+        nextYear = Number(year);
+        nextMonth = Number(month) + 1;        
+    }
+
+    $('.main_date').empty();
+
+    $(".ym").text(`${nextYear}.${nextMonth}`);
+    
+    const prevLast = new Date(year, month, 0);
+    const thisLast = new Date(nextYear, nextMonth, 0);
+
+    if (new Date() < thisLast) {
+        $(".left").removeClass('disable_arrow').addClass('active_arrow');
+    }
+
+    const PLDay = prevLast.getDay();
+
+    const TLDate = thisLast.getDate();
+
+    const emptyDate = new Array((PLDay + 1) % 7);
+
+    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
+
+    const result = [...emptyDate, ...thisDates]
+    
+
+    for (let i = 0; i < result.length; i++) {
+        const date = result[i];
+
+        if (i % 7 === 0) {
+            $('.main_date').append($("<div></div>").text(date).addClass("cur_date date sun"));
+        }
+        else if (i % 7 === 6) {
+            $('.main_date').append($("<div></div>").text(date).addClass("cur_date date sat"));
+        }
+        else {
+            $('.main_date').append($("<div></div>").text(date).addClass("cur_date date"));
+        }
+    }
+}
+
+function prevMonth() {
+    const date = new Date();
+    const viewYear = date.getFullYear();
+    const viewMonth = date.getMonth();
+    const viewDate = date.getDate();
+    
+    const curMonth = $('.ym').text();
+    const [year, month] = curMonth.split('.');
+    let prevYear = 0;
+    let prevMonth = 0;
+    if (Number(month) === 1) {
+        prevYear = Number(year) - 1;
+        prevMonth = 12;
+    }
+    else {
+        prevYear = Number(year);
+        prevMonth = Number(month) - 1;
+    }
+
+    $('.main_date').empty();
+
+    $(".ym").text(`${prevYear}.${prevMonth}`);
+    
+    const prevLast = new Date(prevYear, prevMonth - 1, 0);
+    const thisLast = new Date(prevYear, prevMonth, 0);
+
+    const PLDay = prevLast.getDay();
+
+    const TLDate = thisLast.getDate();
+
+    const emptyDate = new Array((PLDay + 1) % 7);
+
+    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
+
+    const result = [...emptyDate, ...thisDates]
+
+    if (new Date().getMonth()+1 === prevMonth) {
+        $(".left").removeClass('active_arrow').addClass('disable_arrow');
+    }
+    
+    for (let i = 0; i < result.length; i++) {
+        const date = result[i];
+        let classDateName = "";
+        
+        if (viewYear === prevYear && prevMonth === viewMonth+1) {
+            
+            if (date < viewDate) {
+                classDateName = "prev_date";
+            }
+            else {
+                classDateName = "cur_date";
+            }
+        }
+
+        if (i % 7 === 0) {
+            $('.main_date').append($("<div></div>").text(date).addClass(`${classDateName} date sun`));
+        }
+        else if (i % 7 === 6) {
+            $('.main_date').append($("<div></div>").text(date).addClass(`${classDateName} date sat`));
+        }
+        else {
+            $('.main_date').append($("<div></div>").text(date).addClass(`${classDateName} date`));
+        }
+    }
+}
+
+/*function curMonth() {
    $('.calender_container').show();
    
    $('.main_date').empty();
@@ -207,7 +352,7 @@ function curMonth() {
          
       }
     })
-}
+}*/
 
 function dateClickEvent(e) {
 	

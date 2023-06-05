@@ -50,36 +50,35 @@ public class AdminDAOImpl implements AdminDAO {
 		 * map2.put(result.get(i).getReservationDogFacilities(),
 		 * result.get(i).getReservationFacilitiesTotalNum()); }
 		 */
-		
-		
+
 		for (int i = 0; i < result.size(); i++) {
 			totalNum += result.get(i).getReservationFacilitiesTotalNum();
 			totalPrice += result.get(i).getReservationFacilitiesTotalPrice();
-			
+
 			if (result.get(i).getReservationDogFacilities().equals("케어")) {
 				log.debug(result.get(i).getReservationFacilitiesTotalNum());
 				log.debug(result.get(i).getReservationFacilitiesTotalPrice());
-				
+
 				totalCareNum = result.get(i).getReservationFacilitiesTotalNum();
 				totalCarePrice = result.get(i).getReservationFacilitiesTotalPrice();
-				
+
 				log.debug("케어 : " + totalCareNum);
 				log.debug("케어 : " + totalCarePrice);
-				
+
 			} else if (result.get(i).getReservationDogFacilities().equals("놀이터")) {
 				log.debug("놀이터 숫자 : " + result.get(i).getReservationFacilitiesTotalNum());
 				log.debug("놀이터 가격 : " + result.get(i).getReservationFacilitiesTotalPrice());
 
 				totalPlaygroundNum = result.get(i).getReservationFacilitiesTotalNum();
 				totalPlaygroundPrice = result.get(i).getReservationFacilitiesTotalPrice();
-				
+
 				log.debug("놀이터 : " + totalPlaygroundNum);
 				log.debug("놀이터 : " + totalPlaygroundPrice);
-				
+
 			} else {
 				log.debug(result.get(i).getReservationFacilitiesTotalNum());
 				log.debug(result.get(i).getReservationFacilitiesTotalPrice());
-				
+
 				totalBeautyNum = result.get(i).getReservationFacilitiesTotalNum();
 				totalBeautyPrice = result.get(i).getReservationFacilitiesTotalPrice();
 				log.debug("미용 : " + totalPlaygroundNum);
@@ -88,7 +87,7 @@ public class AdminDAOImpl implements AdminDAO {
 			}
 		}
 
-		reservation.setTotalNum(totalNum); 
+		reservation.setTotalNum(totalNum);
 		reservation.setTotalPrice(totalPrice);
 		reservation.setTotalBeautyNum(totalBeautyNum);
 		reservation.setTotalBeautyPrice(totalBeautyPrice);
@@ -96,7 +95,7 @@ public class AdminDAOImpl implements AdminDAO {
 		reservation.setTotalCarePrice(totalCarePrice);
 		reservation.setTotalPlaygroundNum(totalPlaygroundNum);
 		reservation.setTotalPlaygroundPrice(totalPlaygroundPrice);
-		
+
 		log.debug("price, num 세팅 " + reservation);
 		return reservation;
 	}
@@ -106,16 +105,19 @@ public class AdminDAOImpl implements AdminDAO {
 
 		String statement = "myAdmin.selectReservationTotal";
 		ReservationTotalDTO result = session.selectOne(statement, reservation);
-		
+
 		return result;
 	}
 
 	@Override
 	public ReservationLocationDTO postReservationLocation(ReservationLocationDTO reservation) {
-		
+
+		log.debug("reservationLocationDAO 접근" + reservation);
 		String statement = "myAdmin.selectReservationLocation";
 		ReservationLocationDTO result = session.selectOne(statement, reservation);
-		
+		result.setAddress(reservation.getAddress());
+		log.debug("쿼리 결과 : " + result);
+
 		return result;
 	}
 }

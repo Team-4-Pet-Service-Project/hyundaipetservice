@@ -48,78 +48,94 @@
 							<div class="review_tab admin_tab non_select_form">리뷰 관리</div>
 							<div class="remain_menu_bar"></div>
 						</div>
-						<div class="information_summary_container">
-							<div class="location_select">
-								<h2 class="location_select_title">지점 선택</h2>
-								<select class="myDropdown">
-									<option value="">선택하세요</option>
-									<option value="서울 더 현대 ">서울 더 현대</option>
-									<option value="대구 더 현대">대구 더 현대</option>
-								</select>
+						<div class="reservation_management_container">
+							<div class="information_summary_container">
+								<div class="location_select">
+									<h2 class="location_select_title">지점 선택</h2>
+									<select class="myDropdown">
+										<option value="">선택하세요</option>
+										<option value="더현대 서울">서울 더 현대</option>
+										<option value="더현대 대구">대구 더 현대</option>
+									</select>
+								</div>
+								<div class="information_summary">
+									<h2 class="information_summary_title">요약 정보</h2>
+									<table class="reservation_table">
+										<tbody>
+											<tr>
+												<td class="today_reservation td_class">이번달 예약</td>
+												<td
+													class="reservation_table_this_month_check td_class information_data"></td>
+												<td class="today_sales td_class">지난달 예약</td>
+												<td
+													class="reservation_table_last_month_check td_class information_data"></td>
+											</tr>
+											<tr>
+												<td class="month_reservation">이번달 매출</td>
+												<td
+													class="reservation_table_this_month_sales information_data"></td>
+												<td class="month_sales">지난달 매출</td>
+												<td
+													class="reservation_table_cell_last_month_sales information_data"></td>
+											</tr>
+											<tr>
+												<td class="last_month_reservation">이번달 이용 고객 수</td>
+												<td
+													class="reservation_table_this_month_customer_num information_data"></td>
+												<td class="last_month_sales">지난달 이용 고객 수</td>
+												<td
+													class="reservation_table_last_month_customer_num information_data"></td>
+											</tr>
+											<tr>
+												<td class="last_month_reservation">이번달 이용 강아지 수</td>
+												<td
+													class="reservation_table_this_month_puppies information_data"></td>
+												<td class="last_month_sales">지난달 이용 강아지 수</td>
+												<td
+													class="reservation_table_last_month_puppies information_data"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							<div class="information_summary">
-								<h2 class="information_summary_title">요약 정보</h2>
-								<table class="reservation_table">
-									<tbody>
-										<tr>
-											<td class="today_reservation">오늘 예약</td>
-											<td class="reservation_table_cell">100건</td>
-											<td class="today_sales">오늘 매출</td>
-											<td class="reservation_table_cell">100,000,000원</td>
-										</tr>
-										<tr>
-											<td class="month_reservation">이번달 예약</td>
-											<td class="reservation_table_cell">21건</td>
-											<td class="month_sales">이번달 매출</td>
-											<td class="reservation_table_cell">100,000원</td>
-										</tr>
-										<tr>
-											<td class="last_month_reservation">지난달 예약</td>
-											<td class="reservation_table_cell">10건</td>
-											<td class="last_month_sales">지난달 매출</td>
-											<td class="reservation_table_cell">120,000원</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<h3 class="reservation_confirm_title">예약 조회</h3>
-						<div class="reservation_confirm_contents">
-							<div class="calender_container">
-								<div
-									style="display: flex; justify-content: flex-start; width: 490px; margin-top: 20px; margin-left: 10px;">
-									<div class="calender">
-										<div class="date_header">
-											<span
-												class="material-symbols-rounded arrow active_arrow left"
-												onclick="prevMonth()">chevron_left</span> <span class="ym"></span>
-											<span
-												class="material-symbols-rounded arrow active_arrow right"
-												onclick="nextMonth()">chevron_right</span>
-										</div>
-										<div class="main">
-											<div class="days">
-												<div class="day sun">SUN</div>
-												<div class="day">MON</div>
-												<div class="day">TUE</div>
-												<div class="day">WED</div>
-												<div class="day">THE</div>
-												<div class="day">FRI</div>
-												<div class="day sat">SAT</div>
+							<h3 class="reservation_confirm_title">예약 조회</h3>
+							<div class="reservation_confirm_contents">
+								<div class="calender_container">
+									<div
+										style="display: flex; justify-content: flex-start; width: 490px; margin-top: 20px; margin-left: 10px;">
+										<div class="calender">
+											<div class="date_header">
+												<span
+													class="material-symbols-rounded arrow active_arrow left"
+													onclick="prevMonth()">chevron_left</span> <span class="ym"></span>
+												<span
+													class="material-symbols-rounded arrow active_arrow right"
+													onclick="nextMonth()">chevron_right</span>
 											</div>
-											<div class="main_date"></div>
+											<div class="main">
+												<div class="days">
+													<div class="day sun">SUN</div>
+													<div class="day">MON</div>
+													<div class="day">TUE</div>
+													<div class="day">WED</div>
+													<div class="day">THE</div>
+													<div class="day">FRI</div>
+													<div class="day sat">SAT</div>
+												</div>
+												<div class="main_date"></div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="reservation_confirm_check">
-								<h3 class="reservation_confirm_check_title">날짜 예약 상세 조회</h3>
-								<table class="total_check">
+								<div class="reservation_confirm_check">
+									<h3 class="reservation_confirm_check_title">날짜 예약 상세 조회</h3>
+									<table class="total_check">
 
-								</table>
-								<table class="total_check_detail">
+									</table>
+									<table class="total_check_detail">
 
-								</table>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>

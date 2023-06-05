@@ -37,8 +37,9 @@
         </Logger>
   		
   		<Logger name="myBook" level="debug"></Logger>
-  		<Logger name="myMember" level="debug"></Logger>
+  		<Logger name="myMember" level="trace"></Logger>
   		<Logger name="myPoint" level="debug"></Logger>
+  		<Logger name="myAdmin" level="trace"></Logger>
   
         <Root level="INFO">
             <AppenderRef ref="stdout_2" />

@@ -23,9 +23,8 @@
 	</select>
 	
 	<select id="login" resultType="Member">
-		SELECT email, password
+		SELECT email, password, admin, admin_address
 		FROM
 		MEMBERS WHERE email = #{email}
 	</select>
-	
 </mapper>

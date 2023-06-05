@@ -87,7 +87,8 @@ public class MemberServiceImpl implements MemberService {
 			
 			if (passwordEncoder.matches(member.getPassword(), result.getPassword())) {
 				log.debug("service try - 비밀번호 성공");
-				return member;
+				log.debug(result);
+				return result;
 			}else {
 				log.debug("service try - 비밀번호 실패");
 				return null;
