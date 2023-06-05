@@ -5,6 +5,9 @@
 .main_info .table-container {
             margin-left: 30px;
      }
+span{
+	font-size:25px;
+}
 
 .cntt{
 	margin-left: 30px;
@@ -57,11 +60,12 @@
 .board-table th, .board-table td {
 	padding: 8px;
 	border: 1px solid #ddd;
+	
 }
 
 .board-table th {
-	background-color: #f2f2f2;
 	text-align: center;
+	background-color: #F6F6F6;
 }
 
 .board-table td {

@@ -146,7 +146,7 @@ function updateList(response,location,facilities){
     // 이전페이지 버튼
     if (pageMaker.prev) {
         var previousBtn = $('<li>').addClass('pageInfo_btn previous');
-        var previousLink = $('<a>').attr('href', pageMaker.startPage - 1).text('Previous');
+        var previousLink = $('<a>').attr('href', '/thepet/review/totallist1?locationId=' + locationId+ '&pageNum=' + pageMaker.startPage - 1).text('Previous');
         previousBtn.append(previousLink);
         pageInfoList.append(previousBtn);
     }
@@ -162,7 +162,7 @@ function updateList(response,location,facilities){
     // 다음페이지 버튼
     if (pageMaker.next) {
         var nextBtn = $('<li>').addClass('pageInfo_btn next');
-        var nextLink = $('<a>').attr('href', pageMaker.endPage + 1).text('Next');
+        var nextLink = $('<a>').attr('href', '/thepet/review/totallist1?locationId=' + locationId+ '&pageNum=' + pageMaker.endPage + 1).text('Next');
         nextBtn.append(nextLink);
         pageInfoList.append(nextBtn);
     }
@@ -181,4 +181,32 @@ $(document).on("click", ".list1", function() {
  // 페이지 리다이렉트
     window.location.href = "/thepet/review/detail1?id=" + id + "&reservationId=" + reservationId;
 });
+
+function handleClick(element) {
+	  var buttons = document.querySelectorAll('.pageInfo_btn a');
+
+	  buttons.forEach(function(btn) {
+	    btn.classList.remove('active');
+	  });
+
+	  element.classList.add('active');
+
+	  // 상태 저장
+	  sessionStorage.setItem('activeButton', element.getAttribute('href'));
+	}
+
+	// 페이지 로드 시 상태 복원
+	window.addEventListener('load', function() {
+	  var activeButton = sessionStorage.getItem('activeButton');
+
+	  if (activeButton) {
+	    var buttonToActivate = document.querySelector('.pageInfo_btn a[href="' + activeButton + '"]');
+	    if (buttonToActivate) {
+	      buttonToActivate.classList.add('active');
+	    }
+	  }
+	});
+
+
+
 

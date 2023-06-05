@@ -183,7 +183,6 @@ public class ReviewController {
 		// 그래서 나중에 여기로 값 보낼때 locationId 1로 줘야함
 		List<ReviewTotalListVO> vo = service.reviewTotalList(reviewTotalListVO);
 		model.addAttribute("Review",vo);
-		log.debug(vo);
 		return "review/reviewtotallist";
 	}
 	
@@ -195,7 +194,6 @@ public class ReviewController {
 			reviewTotalListVO.setLocationId(1);
 			model.addAttribute("Review",service.reviewTotalList1(cri,reviewTotalListVO));
 			int total = service.getTotal(reviewTotalListVO);
-			log.debug(total);
 			PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 			 model.addAttribute("pageMaker", pageMake);
 			return "review/reviewtotallist1";

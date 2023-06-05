@@ -1,7 +1,12 @@
 @charset "UTF-8";
 .active {
-            background-color: #333333; /* 활성화된 버튼의 배경색을 변경 */
-            color: #FCFCFC; /* 활성화된 버튼의 글자색을 변경 */
+			width : 53.4px;
+			height : 53.4px;
+			border-top : 2px solid black;
+			border-left : 2px solid black;
+			border-right : 2px solid black;	
+			border-bottom : none;
+			background-color: #FFFFFF;
         }
         
 		.button-container button.active {
@@ -12,6 +17,9 @@
         .main_info .table-container {
             margin-left: 30px;
         }
+span{
+	font-size: 25px;
+}
 
 .cntt{
 	margin-left: 30px;
@@ -22,6 +30,39 @@
 	/* border : 1px solid red; */
 	display : flex;
 	margin-left: 30px;
+	position: relative;
+}
+
+
+
+#buttonA{
+    text-align: center;
+    height: 35px;
+    display: flex;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #FFFFFF;
+}
+
+#buttonB{
+	background-color: #FFFFFF;
+    text-align: center;
+    height: 35px;
+    display: flex;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    
+}
+
+.button-container .side{
+	border-bottom : 1px solid black;
+	width : 800px;
 }
         
 /* 게시판 테이블 스타일 */
@@ -37,7 +78,7 @@
 }
 
 .board-table th {
-	background-color: #f2f2f2;
+	background-color: #F6F6F6;
 	text-align: center;
 }
 

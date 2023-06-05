@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
+<link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="/thepet/resources/reservationdetail/css/reservationdetail.css">
 <title>Insert title here</title>
 
@@ -14,11 +16,12 @@
  
      
 </head>
-<body>
+<body class="container_body">
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/> 
 	</jsp:include>
+	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">

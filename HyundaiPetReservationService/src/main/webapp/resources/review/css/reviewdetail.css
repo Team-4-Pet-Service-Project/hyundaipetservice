@@ -42,33 +42,99 @@
 }
 
 .second{
-	margin-left: 80px;
-	display: flex;
-	flex-direction: row;
-	margin-top: 30px;
-}
-
-.second div{
-	font-size: 20px;
-	margin-right: 40px;
-}
-
-.three{
 	margin-left: 70px;
 	display: flex;
 	flex-direction: row;
 	margin-top: 30px;
+	width : 500px;
+	justify-content: space-between;
 }
 
-.three div{
-	font-size: 17px;
-	margin-right: 20px;
+.second .service{
+	text-align: center;
+}
+.service .service_1{
+	font-size : 20px;
+	margin-bottom: 20px;
+}
+
+.service .service_2{
+	font-size : 13px;
 	border: 2px solid #E0E0E0;
-	background-color: #333333;
+	background-color: #242424;
 	border-radius: 20px;
 	color: #FFFFFF;
-	padding: 5px;
+	padding-right : 10px;
+	padding-left : 10px;
+	padding-top : 5px;
+	padding-bottom : 5px;
 }
+
+.second .space{
+	text-align: center;
+}
+
+.space .space_1{
+	font-size : 20px;
+	margin-bottom: 20px;
+}
+
+.space .space_2{
+	font-size : 13px;
+	border: 2px solid #E0E0E0;
+	background-color: #242424;
+	border-radius: 20px;
+	color: #FFFFFF;
+	padding-right : 10px;
+	padding-left : 10px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+}
+
+.second .environment{
+	text-align: center;
+}
+
+.environment .environment_1{
+	font-size : 20px;
+	margin-bottom: 20px;
+}
+
+.environment .environment_2{
+	font-size : 13px;
+	border: 2px solid #E0E0E0;
+	background-color: #242424;
+	border-radius: 20px;
+	color: #FFFFFF;
+	padding-right : 10px;
+	padding-left : 10px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+}
+
+.second .revisit{
+	text-align: center;
+}
+
+.revisit .revisit_1{
+	font-size : 20px;
+	margin-bottom: 20px;
+}
+
+.revisit .revisit_2{
+	font-size : 13px;
+	border: 2px solid #E0E0E0;
+	background-color: #242424;
+	border-radius: 20px;
+	color: #FFFFFF;
+	padding-right : 10px;
+	padding-left : 10px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+}
+
+
+
 
 .four{
 	margin-left: 60px;
@@ -87,20 +153,20 @@
 }
 
 .four_2{
-	width : 600px;
-	border : 2px solid black;
-	align-items: center;
+	width : 680px;
 	justify-content: flex-start;
 	display: flex;
 	font-size: 20px;
-	
+	padding-left: 15px;
+	padding-top : 10px;
+	background-color: #E0E0E0;
 }
 
 .line1{
-	border-bottom: 1px black solid;
+	border-bottom: 2px black solid;
 	margin-left: 50px;
 	margin-top:20px;
-	
+	width : 930px;
 }
 
 .five{

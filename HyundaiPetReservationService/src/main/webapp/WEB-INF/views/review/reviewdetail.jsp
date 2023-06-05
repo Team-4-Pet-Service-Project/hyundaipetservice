@@ -46,18 +46,26 @@
                     </div>
                     
                     <div class="second">
-                    	<div>서비스</div>
-                    	<div>공간</div>
-                    	<div>환경</div>
-                    	<div>재방문의사</div>
+                    	<div class="service">
+                    		<div class="service_1">서비스</div>
+                    		<div class="service_2">${Review.serviceBt}</div>
+                    	</div>
+                    	<div class="space">
+                    		<div class="space_1">공간</div>
+                    		<div class="space_2">${Review.spaceBt}</div>
+                    	</div>
+                    	<div class="environment">
+                    		<div class="environment_1">환경</div>
+                    		<div class="environment_2">${Review.cleanBt}</div>
+                    	</div>
+						<div class="revisit">
+							<div class="revisit_1">재방문의사</div>
+							<div class="revisit_2">${Review.revisitBt}</div>
+						</div>                    	
+                    	
                     </div>
                     
-                    <div class = "three">
-                    	<div>${Review.serviceBt}</div>
-                    	<div>${Review.spaceBt}</div>
-                    	<div>${Review.cleanBt}</div>
-                    	<div>${Review.revisitBt}</div>
-                    </div>
+                    	
                  	<div class="four">
                  		<div class="four_1">
                  			<c:choose>
