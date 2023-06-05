@@ -1,6 +1,8 @@
 package com.hyundai.thepet.review.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hyundai.thepet.mypage.vo.ReservVO;
 import com.hyundai.thepet.review.service.ReviewService;
+import com.hyundai.thepet.review.vo.Criteria;
 import com.hyundai.thepet.review.vo.LocationVO;
+import com.hyundai.thepet.review.vo.PageMakerDTO;
+import com.hyundai.thepet.review.vo.ReviewTotalListVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
 import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
@@ -63,6 +68,8 @@ public class ReviewController {
 	@GetMapping(value = "detail1")
 	public String ReviewDetail1(ReviewWriteVO reviewWriteVO, Model model) {
 		model.addAttribute("Id", reviewWriteVO.getId());
+		String name = service.namePrint(reviewWriteVO);
+		model.addAttribute("name", name);
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
 		vo.setReviewId(vo.getId());
 		ReviewWriteVO vo1 = service.reviewimgDetail(vo);
@@ -86,18 +93,19 @@ public class ReviewController {
 
 	@GetMapping(value = "datail2")
 	public String ReviewDetail2(ReviewWriteVO reviewWriteVO, Model model) {
+		log.debug(reviewWriteVO);
 		model.addAttribute("Id", reviewWriteVO.getId());
+		String name = service.namePrint(reviewWriteVO);
+		model.addAttribute("name", name);
 		ReviewWriteVO vo = service.reviewDetail(reviewWriteVO);
 		vo.setReviewId(vo.getId());
 		ReviewWriteVO vo1 = service.reviewimgDetail(vo);
-		log.debug(vo);
-		log.debug(vo1);
 		model.addAttribute("Review", vo);
 		// 여기에review_id, filename, uploadpath, uuid
 		model.addAttribute("Review1", vo1);
 		if (vo1 == null) {
 
-		} else {
+		} else { 
 			String path = vo1.getUploadpath();
 			path += "\\";
 			path += vo1.getFilename();
@@ -110,9 +118,10 @@ public class ReviewController {
 	// 리뷰업데이트창 넘어가는 컨트롤러
 
 	@GetMapping(value = "update")
-	public String reivewUpdate(ReviewWriteVO reviewWriteVO, Model model) {
+	public String reivewUpdate(ReviewWriteVO reviewWriteVO, String name, Model model) {
 		// 여기서값을 가져오기
 		model.addAttribute("Review", reviewWriteVO);
+		model.addAttribute("name",name);
 		// 여기서 이용시설이랑 이용일자 데이터베이스처리
 		LocationVO locationVO = new LocationVO();
 		locationVO.setReservationId(reviewWriteVO.getReservationId());
@@ -156,12 +165,93 @@ public class ReviewController {
 	@GetMapping(value = "delete")
 	@ResponseBody
 	public String reviewDelete(ReviewWriteVO reviewWriteVO) {
-		log.debug(reviewWriteVO.getReviewId());
 		service.reviewDelete(reviewWriteVO);
 		// 여기선 세션으로 아이디 값을 넣어줘야 한다
 		ReviewVO reviewVO = new ReviewVO();
 		reviewVO.setId(1);
 		return "/thepet/review/list?id=" + reviewVO.getId();
+	}
+	
+	//여긴 처음 전체 리뷰 보여주는 페이지
+	@GetMapping(value = "totallist")
+	public String reviewTotalList(ReviewTotalListVO reviewTotalListVO, Model model) {
+		//서울 케어가 처음 선택
+		// 그래서 나중에 여기로 값 보낼때 locationId 1로 줘야함
+		List<ReviewTotalListVO> vo = service.reviewTotalList(reviewTotalListVO);
+		model.addAttribute("Review",vo);
+		log.debug(vo);
+		return "review/reviewtotallist";
+	}
+	
+	//여긴 처음 전체 리뷰 보여주는 페이지(페이징하는곳)
+		@GetMapping(value = "totallist1")
+		public String reviewTotalList1(ReviewTotalListVO reviewTotalListVO, Model model,Criteria cri) {
+			//서울 케어가 처음 선택
+			// 그래서 나중에 여기로 값 보낼때 locationId 1로 줘야함
+			reviewTotalListVO.setLocationId(1);
+			model.addAttribute("Review",service.reviewTotalList1(cri,reviewTotalListVO));
+			int total = service.getTotal(reviewTotalListVO);
+			log.debug(total);
+			PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+			 model.addAttribute("pageMaker", pageMake);
+			return "review/reviewtotallist1";
+		}
+	
+	@GetMapping(value = "totallistajax")
+	@ResponseBody
+	public Map<String, Object> reviewTotalListAjax(ReviewTotalListVO reviewTotalListVO) {
+		Map<String, Object> response = new HashMap<>();
+		int locationId = reviewTotalListVO.getLocationId();
+		//이 경우 서울 미용 or 스파 다 불러오는곳
+		if(locationId==3 || locationId==43) {
+			List<ReviewTotalListVO> vo = service.reviewTotalListAll(reviewTotalListVO);
+			response.put("review",vo);
+			response.put("cnt",vo.size());
+			return response;
+		}else if(locationId==6 || locationId==41) {
+			List<ReviewTotalListVO> vo = service.reviewTotalListAll1(reviewTotalListVO);
+			response.put("review",vo);
+			response.put("cnt",vo.size());
+			return response;
+		}else {
+			List<ReviewTotalListVO> vo = service.reviewTotalList(reviewTotalListVO);
+			response.put("review",vo);
+			response.put("cnt",vo.size());
+			return response;
+		}
+		
+	}
+	
+	//Paging하는 곳
+	@GetMapping(value = "totallistajax1")
+	@ResponseBody
+	public Map<String, Object> reviewTotalListAjax1(ReviewTotalListVO reviewTotalListVO) {
+		Map<String, Object> response = new HashMap<>();
+		int locationId = reviewTotalListVO.getLocationId();
+		//이 경우 서울 미용 or 스파 다 불러오는곳
+		if(locationId==3 || locationId==43) {
+			response.put("review",service.reviewTotalList1(new Criteria(),reviewTotalListVO));
+			int total = service.getTotal(reviewTotalListVO);
+			PageMakerDTO pageMake = new PageMakerDTO(new Criteria(), total);
+			response.put("pageMaker", pageMake);
+			response.put("location",locationId);
+			return response;
+		}else if(locationId==6 || locationId==41) {
+			response.put("review",service.reviewTotalList1(new Criteria(),reviewTotalListVO));
+			int total = service.getTotal(reviewTotalListVO);
+			PageMakerDTO pageMake = new PageMakerDTO(new Criteria(), total);
+			response.put("pageMaker", pageMake);
+			response.put("location",locationId);
+			return response;
+		}else {
+			response.put("review",service.reviewTotalList1(new Criteria(),reviewTotalListVO));
+			int total = service.getTotal(reviewTotalListVO);
+			PageMakerDTO pageMake = new PageMakerDTO(new Criteria(), total);
+			response.put("pageMaker", pageMake);
+			response.put("location",locationId);
+			return response;
+		}
+		
 	}
 
 }

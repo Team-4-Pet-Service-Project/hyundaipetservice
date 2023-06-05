@@ -10,7 +10,7 @@
 	<div class="side_bar">
 		<h1 class="side_title">마이현대</h1>
 		<h2 class="side_h2">MY HYUNDAI</h2>
-		<hr class="side_hr"align="left">
+		<hr class="side_hr" align="left">
 		<div class="category_container">
 			<p class="my_category">예약 현황</p>
 			<div class="check_menu">

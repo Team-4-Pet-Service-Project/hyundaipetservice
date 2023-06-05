@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="reservationdetail">
+ 	
+ 	<!-- 여기에서 나중에 members.id는 세션에서 받아온 사람의 id -->
+ 	<select id="print" parameterType="ReservationDetail" resultType="ReservationDetail">
+ 		<![CDATA[
+ 		SELECT 
+    		members.id as id,
+    		members.email,
+		    members.password,
+		    members.name,
+		    members.phone,
+		    members.birth,
+		    reservations.id as reservationId,
+		    reservations.reservation_date,
+		    reservations.reservation_start_time,
+		    reservations.reservation_end_time,
+		    reservations.customer_count,
+		    reservations.price,
+		    locations.address,
+		    locations.address_detail,
+		    locations.dog_facilities,
+		    dogs.name as dogName,
+		    dogs.age as dogAge,
+		    dogs.breed,
+		    dogs.dog_size as dogSize,
+		    dogs.special_note as specialNote
+			FROM 
+			    members
+			JOIN 
+			    reservations ON members.id = reservations.member_id
+			JOIN 
+			    locations ON reservations.location_id = locations.id
+			JOIN 
+			    dogs ON dogs.id = reservations.dog_id
+			WHERE 
+			    members.id = #{id} and reservations.id = #{reservationId}
+ 		]]>
+ 	</select>
+ 	
+ 	<delete id="delete" parameterType="ReservationDetail">
+ 		<![CDATA[
+ 		delete from reservations  
+ 		where id = #{reservationId}
+ 		]]>
+ 	</delete>
+ 	
+ 	
+ 
+ </mapper>

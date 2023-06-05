@@ -1,6 +1,8 @@
 .calender_container {
 	width: 490px;
 	height: 450px;
+	
+	display: none;
 }
 
 .date_box {
@@ -37,6 +39,11 @@
 .prev_date {
     /* color:#666666; */
     opacity: 0.5;
+}
+
+.no_reservation {
+	
+	color : forestgreen;
 }
 
 .cur_date {
@@ -130,15 +137,9 @@
 	height: 40px;
 	
 	border-top : 1px solid #E0E0E0;
-	border-bottom : 1px solid #E0E0E0;
+	border-bottom : 1px solid black;
 }
 
-.detail_table_last{
-	width: 450px;
-	height: 40px;
-	
-	border-top : 1px solid #E0E0E0;
-}
 .detail_table_cell {
 	text-align: center;
 	vertical-align: middle;
@@ -151,6 +152,7 @@
 }
 
 .add_button_box {
+	display: none;
 	width: 490px;
 	height: auto;
 	
@@ -169,12 +171,24 @@
 	color : #646464;
 	
 	font-size : 18px;
+	
+	cursor: pointer;
 }
 
 .checked_date {
 	border-radius:50%;
 	width : 53.4px;
-	height : 53.4px;	
-	border : 1px solid black;
-	box-shadow: 2px 2px gray;
+	height : 53.4px;
+	/* border : 1px solid black;
+	box-shadow: 2px 2px gray; */
+	background-color: #E0E0E0;
 }
+
+.reservation_disable {
+	color : red;
+}
+
+.reservation_able {
+	color : blue;
+}
+

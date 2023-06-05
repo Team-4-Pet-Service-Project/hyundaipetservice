@@ -28,6 +28,7 @@
 		JOIN
     	locations ON reservations.location_id = locations.id
 		where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
+ 		order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
  		]]>
  	</select>
  	
@@ -54,6 +55,7 @@
 		JOIN
     	locations ON reservations.location_id = locations.id
 		where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+ 		order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
  		]]>
  	</select>
  	

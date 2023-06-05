@@ -1,0 +1,180 @@
+.information_container {
+	width : 430px;
+	height: 480px;
+}
+
+.information_detail_container {
+	width: 430px;
+	height: 200px;
+}
+
+.info_h1 {
+	width: 430px;
+	height:45px;
+	font-size : 30px;
+	font-weight: bold;
+	
+	display: flex;
+	align-items: center;
+	
+	margin-top: 5%;
+}
+
+.info_h2 {
+	width: 430px;
+	height:40px;
+	font-size : 20px;
+	font-weight: 500;
+	
+	display: flex;
+	align-items: center;
+}
+
+.member_info_table {
+	width: 430px;
+	height: 120px;
+	border-top : 1px solid #666666;
+	border-bottom : 1px solid #666666;
+}
+
+.info_table_row {
+	height: 40px;
+	
+	border-top : 1px solid #666666;
+	border-bottom : 1px solid #E0E0E0;
+}
+
+.select_info_table_row {
+	background-color: #DCEBF5;
+}
+
+.row_head {
+	font-weight: bold;
+}
+
+.row_content {
+	color : #666666;
+}
+
+.common_cell {
+	vertical-align: middle;
+	font-size : 17px;
+}
+
+.dog_info_h2 {
+	margin-top: 5%;
+}
+
+.dog_info_table_box {
+	width: 430px;
+	height : 120px;
+	overflow-y: scroll;
+}
+
+.dog_info_table_box::-webkit-scrollbar {
+    width: 10px;
+  }
+  .dog_info_table_box::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  .dog_info_table_box::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+.dog_info_table {
+	width: 420px;
+	/* height: 120px; */
+	height: auto;
+}
+
+.dog_table_row {
+	height: 40px;
+	
+	border-top : 1px solid #E0E0E0;
+	border-bottom : 1px solid #E0E0E0;
+	
+	cursor: pointer;
+}
+
+.dog_table_common_cell {
+	text-align: center;
+	vertical-align: middle;
+	font-size : 17px;
+}
+
+.dog_table_head {
+	height: 40px;
+	font-weight : bold;
+	background-color : #F6F6F6;
+	
+	border-top : 1px solid #666666;
+	border-bottom : 1px solid #E0E0E0;
+}
+
+.total_price_box {
+	width: 430px;
+	height : 60px;
+	background-color: #F6F6F6;
+	
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	margin-top : 3%;
+}
+
+.total_price_text {
+	font-size : 20px;
+	margin-left : 5%;
+}
+
+.total_price {
+	font-size: 25px;
+	font-weight: bold;
+	
+	margin-right : 5%;
+}
+
+.result_button_box {
+	width: 430px;
+	height : 90px;
+	
+	display: flex;
+	justify-content : center;
+	align-items: center;
+	
+}
+
+.reservation_reset_button {
+	width : 150px;
+	height: 70px;
+	
+	background-color: #FAFAFA;
+	border : 1px solid #B7B7B7;
+	
+	font-size : 20px;
+	font-weight: bold;
+	
+	margin-right: 5%;
+	
+	cursor: pointer;
+}
+
+.do_reservation_button {
+	width : 150px;
+	height: 70px;
+	
+	background-color: black;
+	
+	color : white;
+	
+	font-size : 20px;
+	font-weight: bold;
+	
+	cursor: pointer;
+}

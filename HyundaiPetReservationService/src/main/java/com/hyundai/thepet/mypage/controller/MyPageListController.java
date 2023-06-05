@@ -32,7 +32,7 @@ public class MyPageListController {
 	@GetMapping(value = "reservlist")
 	public String ReservList(ReservVO reservVO, Model model) {
 		//여기 부분은 나중에 세션에서 값을 받아와야한다
-		reservVO.setId(1);		
+		reservVO.setId(3);		
 		List<ReservVO> vo = service.print(reservVO);
 		//여기부분은 총 예약한 수를 구하기 위한 곳
 		int total = service.count(reservVO);
@@ -48,7 +48,7 @@ public class MyPageListController {
         Map<String, Object> response = new HashMap<>();
         if(buttonId.equals("buttonA")) {
         	//여기 부분은 나중에 세션에서 값을 받아와야한다
-        	reservVO.setId(1);
+        	reservVO.setId(3);
     		List<ReservVO> vo = service.print(reservVO);
     		
     		int cnt = service.count(reservVO);

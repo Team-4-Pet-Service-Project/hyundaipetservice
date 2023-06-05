@@ -21,7 +21,7 @@ $(function () {
 
 function addDogClickEvent() {
 	let form = $('.dog_form').serialize();
-	
+	console.log(form);
 	$.ajax({
 		type:'POST',
 		url: "/thepet/addDog",
@@ -45,13 +45,13 @@ function getDogsInfo() {
 			for (let i = 0; i < data.length; i++) {
 				$('.mypet_table').append(
 					'<tr class="mypet_table_row">' + 
-						'<td name=' + data[i].id + ' hidden></td>'+
+						'<td name="dogId" hidden>' + data[i].id + '</td>'+
 						'<td class="mypet_table_cell"><input type="radio" name="select_mypet" class="mypet_radio"></td>' + 
-						'<td class="mypet_table_cell">' + data[i].name + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].age + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].breed + '</td>' +
-						'<td class="mypet_table_cell">' + data[i].dogSize + '</td>' +
-						'<td name=' + data[i].memberId + ' hidden></td>' +
+						'<td class="mypet_table_cell" name="name">' + data[i].name + '</td>' +
+						'<td class="mypet_table_cell" name="age">' + data[i].age + '</td>' +
+						'<td class="mypet_table_cell" name="breed">' + data[i].breed + '</td>' +
+						'<td class="mypet_table_cell" name="dogSize">' + data[i].dogSize + '</td>' +
+						'<td name="memberId" hidden>' + data[i].memberId + '</td>' +
 					'</tr>'
 				)
 			}

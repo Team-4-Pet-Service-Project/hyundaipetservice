@@ -78,6 +78,8 @@
  * // api 요청 양식에 맞춰 세팅 SmsRequestDTO request = SmsRequestDTO.builder()
  * .type("SMS") .contentType("COMM") .countryCode("82") .from(senderPhone)
  * .content("::") .messages(messages) .build();
+ * .type("LMS") // LMS로 변경 .contentType("COMM") .countryCode("82")
+ * .from(senderPhone) .content("::") .messages(messages) .build();
  * 
  * //request를 json형태로 body로 변환 ObjectMapper objectMapper = new ObjectMapper();
  * String body = objectMapper.writeValueAsString(request);
