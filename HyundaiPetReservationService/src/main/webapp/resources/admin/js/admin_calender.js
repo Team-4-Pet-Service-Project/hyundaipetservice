@@ -1,4 +1,7 @@
 $(function () {
+	
+	
+	$('.review_management_container').hide();
     const date = new Date();
     
     const viewYear = date.getFullYear();
@@ -114,20 +117,25 @@ $(function () {
 
 
 function reservationClickEvent() {
-	$.ajax({
-		type:'Get',
-		url: "/thepet/admin/reservationManagement",
-		success : function (data) {
-			console.log("예약 관리 선택");
-			window.location("");
-		},
-		error : function (request, status, error) {
-            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-        }
-	})
+	$('.reservation_management_container').show();
+	$('.review_management_container').hide();
+//	$.ajax({
+//		type:'Get',
+//		url: "/thepet/admin/reservationManagement",
+//		success : function (data) {
+//			console.log("예약 관리 선택");
+//			$('.reservation_management_container').show();
+//			window.location("");
+//		},
+//		error : function (request, status, error) {
+//            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//        }
+//	})
 }
 
 function reviewClickEvent() {
+	$('.review_management_container').show();
+	$('.review_comment_table_row').remove();
 	
 	// url 넣기
 	$.ajax({
@@ -136,8 +144,54 @@ function reviewClickEvent() {
 		success : function (response) {
 			console.log("리뷰 관리 선택");
 			console.log(response);
-			$('.mypet_table_row').remove();
+			$('.reservation_management_container').hide();
+			let no_cnt = 0;
+            let cnt = 0;
+			for (let i=0; i<response.length;i++) {
+
+
+
+				let reservationDate=new Date(response[i].reservationDate);
+                let year = reservationDate.getFullYear();
+                let month = reservationDate.getMonth() + 1;
+                let day = reservationDate.getDate();
+                let formattedDate = `${year}-${month}-${day}`;
+
+				
+				if (response[i].adminContents === null) {
+                    no_cnt += 1;
+					$('.review_no_comment_table').append(`
+							<tr class="review_comment_table_row">
+								<td class="review_comment_table_cell">${response[i].dogFacilities}</td>
+								<td class="review_comment_table_cell">${formattedDate}</td>
+								<td class="review_comment_table_cell">${response[i].rate}</td>
+								<td class="review_comment_table_cell">${response[i].serviceBt}</td>
+								<td class="review_comment_table_cell">${response[i].spaceBt}</td>
+								<td class="review_comment_table_cell">${response[i].cleanBt}</td>
+								<td class="review_comment_table_cell">${response[i].revisitBt}</td>
+								<td class="review_comment_table_cell"><form action="/thepet/review/detail1" method="GET"><input type="hidden" name="isAdmin" value="1"><input type="hidden" name="reservationId" value="${response[i].reservationId}"><input type="hidden" name="id" value="${response[i].memberId}"><button type="submit" class="review_comment_button">답변 등록</button></form></td>
+								</tr>
+					`)
+				}
+                else {
+                    cnt += 1;
+                    $('.review_commented_table').append(`
+							<tr class="review_comment_table_row">
+								<td class="review_comment_table_cell">${response[i].dogFacilities}</td>
+								<td class="review_comment_table_cell">${formattedDate}</td>
+								<td class="review_comment_table_cell">${response[i].rate}</td>
+								<td class="review_comment_table_cell">${response[i].serviceBt}</td>
+								<td class="review_comment_table_cell">${response[i].spaceBt}</td>
+								<td class="review_comment_table_cell">${response[i].cleanBt}</td>
+								<td class="review_comment_table_cell">${response[i].revisitBt}</td>
+								<td class="review_comment_table_cell"><form action="/thepet/review/detail1" method="GET"><input type="hidden" name="isAdmin" value="1"><input type="hidden" name="reservationId" value="${response[i].reservationId}"><input type="hidden" name="id" value="${response[i].memberId}"><button type="submit" class="review_comment_button">답변 보기</button></form></td>
+								</tr>
+					`)
+                }
+			}
 			
+			$('.review_no_comment_p').text(`답변하지 않은 고객 리뷰 ${no_cnt} 건`);
+			$('.review_commented_p').text(`답변하지 않은 고객 리뷰 ${cnt} 건`);
 			
 		},
 		error : function (request, status, error) {
