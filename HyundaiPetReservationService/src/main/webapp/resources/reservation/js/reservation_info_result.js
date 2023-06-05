@@ -14,8 +14,11 @@ function reservationInfoReset() {
 
 function addAllReservation() {
 	const loactionMap = {
-		'서울' : 1,
-		'대구' : 2
+		'케어' : 1,
+		'놀이터' : 2,
+		'미용' : 3,
+		'스파' : 4,
+		'미용+스파' : 5
 	}
 	
 	const categoryMap = {
@@ -41,7 +44,6 @@ function addAllReservation() {
 	for ( let i = 0; i < resDogInfo.length; i++ ) {
 		
 		const [reservationStartTime, reservationEndTime] = resDogInfo.eq(i).children('td:nth-child(6)').text().split('~');
-		
 		data.reservationList.push({
 			'reservationDate' : resDogInfo.eq(i).children('td:nth-child(5)').text(),
 			'reservationStartTime' : reservationStartTime,
@@ -50,7 +52,7 @@ function addAllReservation() {
 			'customerCount' : Number($('.customer_count').text()),
 			'memberId' : Number(resDogInfo.eq(i).children('td:nth-child(10)').text()),
 			'dogId' : Number(resDogInfo.eq(i).children('td:nth-child(9)').text()),
-			'locationId' : loactionMap[resDogInfo.eq(i).children('td:nth-child(7)').text()],
+			'locationId' : loactionMap[resDogInfo.eq(i).children('td:nth-child(8)').text()],
 			'reservationId' : Number(resDogInfo.eq(i).children('td:nth-child(11)').text())
 		});
 	}
@@ -61,11 +63,7 @@ function addAllReservation() {
 		contentType: 'application/json',
 		data: JSON.stringify(data),
 		success : function(data) {
-			console.log(data);
+			window.location.href = '/thepet/main';
 		}
 	})
-	
-	
-	
-	console.log(data);
 }

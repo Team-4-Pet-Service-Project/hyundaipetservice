@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
+<link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="/thepet/resources/mypage/css/mypage.css">
 <title>Insert title here</title>
 
@@ -14,11 +16,12 @@
  <script src="/thepet/resources/mypage/js/mypage.js"></script>
      
 </head>
-<body>
+<body class="container_body">
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/> 
 	</jsp:include>
+	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">
@@ -31,6 +34,7 @@
                     <div class="button-container">
         				<button id="buttonA" name="buttonA">예약목록</button>
         				<button id="buttonB" name="buttonB">지난예약</button>
+        				<div class="side"></div>
     				</div><br><br>
     				<div>
     				

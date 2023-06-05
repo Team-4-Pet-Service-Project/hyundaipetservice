@@ -63,11 +63,12 @@ table {
     margin-right: auto;
     /* 또는 text-align: center; */
     width: 975px;
-}
+} 
 
 table tr th{
 	background-color: #F6F6F6;
 	height: 35px;
+	line-height: 33px;
 }
 
 table tr td{
@@ -80,7 +81,7 @@ table tr td{
 .reservdog{
 	font-size:20px;
 	margin-bottom: 5px;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 
@@ -117,7 +118,7 @@ table tr td{
 .reservlist{
 	margin-bottom: 10px;
 	font-size:20px;
-	margin-top: 10px;
+	margin-top: 20px;
 	border-bottom: 1px solid black;
 	padding-bottom: 10px;
 }
@@ -211,6 +212,7 @@ table tr td{
 	margin-bottom : 10px;
 	height:40px;
 	border-bottom: 1px solid #666666;
+	margin-top: 20px;
 }
 
 .total_1{
