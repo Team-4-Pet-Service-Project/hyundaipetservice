@@ -48,7 +48,6 @@
 								        <th>이용일자</th>
 								        <th>이용금액</th>
 								        <th>예약 상세</th>
-								        <th>예약 취소</th>
 								    </tr>
 								</thead>
 								
@@ -66,22 +65,20 @@
 							<tbody>
 								<c:forEach var="reserv" items="${Reserv}">
 									<tr>
-										<td>${reserv.address} ${reserv.address_detail}</td>
-										<td>${reserv.dog_facilities}</td>
-										<td>${reserv.customer_count}</td>
-										<td>${reserv.dog_name}</td>
-										<td>${reserv.reservation_date}  ${reserv.reservation_start_time} ~ ${reserv.reservation_end_time}</td>
-										<td>${reserv.price}원</td>
+										<td>${reserv.address} ${reserv.addressDetail}</td>
+										<td>${reserv.dogFacilities}</td>
+										<td>${reserv.customerCount}</td>
+										<td>${reserv.dogName}</td>
+										<td>${reserv.reservationDate}  ${reserv.reservationStartTime} ~ ${reserv.reservationEndTime}</td>
+										<td><fmt:formatNumber value="${reserv.price}" pattern="#,###"/>원</td>
 										<td>
-											<form action="/reservation/detail?dog_id=${reserv.dog_id}" method="GET">
+											<form action="/thepet/reservation/detail" method="GET">
+												<input type="hidden" name="id" value="${reserv.id}">
+												<input type="hidden" name="reservationId" value="${reserv.reservationId}">
   												<button type="submit">예약상세</button>
 											</form>
 										</td>
-										<td>
-											<form action="/reservation/cancel" method="GET">
-  												<button type="submit">예약취소</button>
-											</form>
-										</td>
+										
 									</tr>
 								</c:forEach>
 							</tbody>

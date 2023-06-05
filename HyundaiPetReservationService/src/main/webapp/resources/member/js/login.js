@@ -46,9 +46,11 @@ function loginSubmit(e) {
 		success : function(result){
 			if(result){
 				console.log(result);
+				window.location.href = "/thepet/resources/member/html/main.html";
 			}
 		},
 		error : function(request, status, error){
+			console.log(status);
 			console.log(error);
 			$("#loginMsg").css("display", "block");
 			$("#loginMsg").css("color", "red");

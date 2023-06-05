@@ -1,0 +1,355 @@
+@charset "UTF-8";
+
+.main_info .reservdetail{
+	margin-left: 40px;
+}
+
+.main_info .reservinfo{
+	margin-left: 40px;
+}
+
+.main_info .reservinfo_1{
+	margin-left: 40px;
+}
+
+.main_info .reservdog{
+	margin-left: 40px;
+}
+
+.main_info .reservdog_1{
+	margin-left: 25px;
+}
+
+.main_info .reservlist{
+	margin-left: 40px;
+}
+
+.main_info .reservlist_1{
+	margin-left: 40px;
+}
+
+.main_info .total{
+	margin-left: 40px;
+}
+
+.main_info .total_1{
+	margin-left: 40px;
+}
+
+.main_info .last{
+	margin-left: 40px;
+}
+
+.main_info table{
+	margin-left: 40px;
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+}
+
+/*위에는 옆에 여백 띄는 것 밑에부터 꾸미는 것*/
+
+.reservdetail{
+	font-size:25px;
+	margin-bottom: 30px;
+}
+
+.reservinfo{
+	font-size:20px;
+	margin-bottom: 10px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    /* 또는 text-align: center; */
+    width: 975px;
+}
+
+table tr th{
+	background-color: #F6F6F6;
+	height: 35px;
+}
+
+table tr td{
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px; 
+}
+
+
+.reservdog{
+	font-size:20px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+
+.num{
+	border-bottom : 1px solid #E0E0E0;
+	padding-bottom: 5px;
+}
+
+.loc{
+	border-bottom : 1px solid #E0E0E0;
+	padding-bottom: 5px;
+	padding-top : 5px;
+}
+
+.classfication{
+	border-bottom : 1px solid #E0E0E0;
+	padding-bottom: 5px;
+	padding-top : 5px;
+}
+
+.date{
+	border-bottom : 1px solid #E0E0E0;
+	padding-bottom: 5px;
+	padding-top : 5px;
+}
+
+.plus{
+	border-bottom : 1px solid #E0E0E0;
+	padding-bottom: 5px;
+	padding-top : 5px;
+}
+
+
+.reservlist{
+	margin-bottom: 10px;
+	font-size:20px;
+	margin-top: 10px;
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
+}
+
+.reservlist_1{
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.reservlist_1 .num{
+	display: flex;
+	flex-direction: row;
+}
+
+.num div{
+	margin-right: 110px;
+	margin-left: 20px;
+	
+}
+
+.reservlist_1 .loc{
+	display: flex;
+	flex-direction: row;
+}
+
+.loc div{
+	margin-right: 120px;
+	margin-left: 30px;
+}
+
+.reservlist_1 .classfication{
+	display: flex;
+	flex-direction: row;
+}
+
+.classfication div{
+	margin-right: 120px;
+	margin-left: 30px;
+}
+
+.reservlist_1 .date{
+	display: flex;
+	flex-direction: row;
+}
+
+.date div{
+	margin-right: 110px;
+	margin-left: 20px;
+}
+
+.reservlist_1 .plus{
+	display: flex;
+	flex-direction: row;
+}
+
+.plus div{
+	margin-right: 110px;
+	margin-left: 20px;
+}
+
+
+.loc{
+	display: flex;
+	flex-direction: row;
+}
+
+.classfication{
+	display: flex;
+	flex-direction: row;
+}
+
+.date{
+	display: flex;
+	flex-direction: row;
+}
+
+.plus{
+	display: flex;
+	flex-direction: row;
+}
+
+.dogname{
+	margin-right: 20px;
+}
+
+/*이용금액*/
+
+.total{
+	font-size:20px;
+	margin-bottom : 10px;
+	height:40px;
+	border-bottom: 1px solid #666666;
+}
+
+.total_1{
+	display: flex;
+	justify-content: space-between;
+	background-color: #F6F6F6;
+	font-weight: bold;
+	height: 70px;
+	margin-bottom: 10px;
+}
+
+.total_1 div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.total_1 .price1{
+	font-size : 20px;
+	padding-left: 15px;
+}
+
+.total_1 .price2{
+	font-size : 25px;
+	color: #D65755;
+	padding-right: 15px;
+}
+
+.last{
+	display: flex;
+	justify-content: space-between;
+}
+
+.list-button {
+    font-size: 20px; /* 버튼의 글꼴 크기 */
+    padding: 10px 20px; /* 버튼의 패딩 크기 */
+}
+
+.cancel-button{
+	background-color: #242424;
+	padding: 10px 20px; /* 버튼의 패딩 크기 */
+	color : #FFFFFF;
+}
+
+/*여기는 모달창*/
+#modal.modal-overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	display: none;
+	top: 0;
+	/* display: flex; */
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#modal .modal-window {
+	background: #E5E5E5;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(13.5px);
+	-webkit-backdrop-filter: blur(13.5px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 400px;
+	height: 300px;
+	position: relative;
+	top: -100px;
+	padding: 10px;
+}
+
+#modal .modal-topwindow{
+	background-color: #242424;
+	display : flex;
+	flex-direction: row;
+	justify-content : space-between;
+	height: 50px;
+	align-items: center;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
+#modal .title {
+	/* padding-left: 10px; */
+	color: white;
+	text-align: center;
+	margin-left: 20px;
+}
+
+
+#modal .close-area {
+	/* display: inline; */
+	text-align : center;
+	/* float: right; */
+	/* padding-right: 10px; */
+	cursor: pointer;
+	/* text-shadow: 1px 1px 2px gray; */
+	color: white;
+	width:25px;
+	height:25px;
+}
+
+#modal .content {
+	margin-top: 20px;
+	padding: 0px 10px;
+	text-shadow: 1px 1px 2px gray;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.reviewmodal{
+	text-align: center;
+	font-size:24px;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+#cancelButton{
+	margin-right: 30px;
+}
+
+.content button{
+	
+background-color: #333333; /* 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 10px 20px; /* 안쪽 여백 */
+  font-size: 14px; /* 폰트 크기 */
+  border: none; /* 테두리 없음 */
+  border-radius: 4px; /* 테두리 반경 */
+  cursor: pointer; /* 커서 스타일 */
+}

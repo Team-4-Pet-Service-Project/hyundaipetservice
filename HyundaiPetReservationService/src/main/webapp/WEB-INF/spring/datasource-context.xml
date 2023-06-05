@@ -32,6 +32,8 @@
 				<value>classpath:mappers/Sms.xml</value>
 				<value>classpath:mappers/Dog.xml</value>
 				<value>classpath:mappers/Calender.xml</value>
+				<value>classpath:mappers/AdminReview.xml</value>
+				<value>classpath:mappers/ReservationDetail.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+
+.main_info {
+	border-color: red;
+}
+
+.admin_main {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+	border: 3px solid red;
+	height: 100%;
+	width: 100%;
+}
+
+.admin_title {
+	border: 2px solid green;
+	width: 100%;
+	height: 50px;
+}
+
+.admin_menu_bar {
+	width: 100%;
+	height: 50px;
+	border: 4px solid blue;
+}
+
+/* 게시판 테이블 스타일 */
+.board-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.board-table th, .board-table td {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+.board-table th {
+	background-color: #f2f2f2;
+	text-align: center;
+}
+
+.board-table td {
+	text-align: center;
+}
+
+.board-table a {
+	color: #333;
+}

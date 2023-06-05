@@ -34,6 +34,7 @@
     JOIN
     	reviews on reservations.id=reviews.reservation_id
     WHERE members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+ 		order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
  		]]>
  	</select>
  	
@@ -63,14 +64,21 @@
  		<![CDATA[
  			INSERT INTO reviews (id , user_contents, rate, service_bt, space_bt, clean_bt, revisit_bt, admin_contents, reservation_id ,created_time)
 			VALUES 
-			(reviews_id_seq.NEXTVAL, #{user_contents}, #{rate}, #{service_bt}, #{space_bt}, #{clean_bt}, #{revisit_bt}, #{admin_contents}, #{reservation_id}, sysdate)
+			(reviews_id_seq.NEXTVAL, #{userContents}, #{rate}, #{serviceBt}, #{spaceBt}, #{cleanBt}, #{revisitBt}, #{adminContents}, #{reservationId}, sysdate)
  		]]>
  	</insert>
  	
  	<!-- 위에 리뷰작성값에서 reviews_id빼기 -->
  	<select id="select" parameterType="ReviewWrite" resultType="int">
  		<![CDATA[
- 			select id from reviews where reservation_id=#{reservation_id}
+ 			select id from reviews where reservation_id=#{reservationId}
+ 		]]>
+ 	</select>
+ 	
+ 	<!--이름 가져오는 곳-->
+ 	<select id="nameprint" parameterType="ReviewWrite" resultType="String">
+ 		<![CDATA[
+ 			select name from members where id = #{id}
  		]]>
  	</select>
  	
@@ -78,21 +86,21 @@
  	<insert id="imginsert" parameterType="ReviewWrite">
  		<![CDATA[
  			INSERT INTO review_imgs (uuid, uploadpath, filename, review_id)
-			VALUES (#{uuid}, #{uploadpath}, #{filename}, #{review_id})
+			VALUES (#{uuid}, #{uploadpath}, #{filename}, #{reviewId})
  		]]>
  	</insert>
  	
  	<!-- 위에 리뷰작성값에서 reviews_id빼기 -->
  	<select id="detail" parameterType="ReviewWrite" resultType="ReviewWrite">
  		<![CDATA[
- 			select * from reviews where reservation_id=#{reservation_id}
+ 			select * from reviews where reservation_id=#{reservationId}
  		]]>
  	</select>
  	
  	<!-- 이미지 정보가져오는 곳 -->
  	<select id="imgdetail" parameterType="ReviewWrite" resultType="ReviewWrite">
  		<![CDATA[
- 			select * from review_imgs where review_id=#{review_id}
+ 			select * from review_imgs where review_id=#{reviewId}
  		]]>
  	</select>
  	
@@ -109,7 +117,7 @@
  			from reservations
 				join locations on locations.id=reservations.location_id
 				join reviews on reviews.reservation_id=reservations.id
-			where reservations.id=#{reservation_id}
+			where reservations.id=#{reservationId}
  		]]>
  	</select>
  	<!-- 리뷰 update하는 곳 -->
@@ -118,13 +126,175 @@
  			update reviews
 			set
 			created_time = sysdate,
-			user_contents = #{user_contents},
+			user_contents = #{userContents},
 			rate = #{rate},
-			service_bt = #{service_bt},
-			space_bt = #{space_bt},
-			clean_bt = #{clean_bt},
-			revisit_bt = #{revisit_bt}
-			where id = #{review_id}
+			service_bt = #{serviceBt},
+			space_bt = #{spaceBt},
+			clean_bt = #{cleanBt},
+			revisit_bt = #{revisitBt}
+			where id = #{reviewId}
  		]]>
  	</update>
+ 	
+ 	<!-- 이미지 삭제하는 곳 -->
+ 	<delete id="imgdelete">
+ 		<![CDATA[
+ 			DELETE FROM review_imgs 
+ 			WHERE review_id = #{reviewId}
+ 		]]>
+ 	</delete>
+ 	
+ 	<!-- 이미지 갱신하는 곳 -->
+ 	<update id="imgupdate" parameterType="ReviewWrite">
+ 		<![CDATA[
+ 			update review_imgs
+			set
+			uuid = #{uuid},
+			uploadpath = #{uploadpath},
+			filename = #{filename}
+			where review_id = #{reviewId}
+ 		]]>
+ 	</update>
+ 	
+ 	<!-- 리뷰 삭제하는 곳 -->
+ 	<delete id="delete" parameterType="ReviewWrite">
+ 		<![CDATA[
+ 			delete from reviews
+ 			where id=#{reviewId}
+ 		]]>
+ 	</delete>
+ 	
+ 	<!--전체 리뷰 출력하는 곳-->
+ 	<select id="totallist" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId}
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 서울(미용, 스파)-->
+ 	<select id="totallistAll" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId} and locations.id=44
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 대구(미용, 스파)-->
+ 	<select id="totallistAll1" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId} and locations.id=42
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<select id="reviewTotalList1" resultType="ReivewTotal" parameterType="map">
+		<![CDATA[
+			SELECT *
+FROM (
+    SELECT
+    	rownum as rn,
+        name,
+        id,
+        reservationId,
+        rate,
+        admin_contents,
+        user_contents,
+        reviewId,
+        filename,
+        uploadpath,
+        uuid,
+        created_time
+    FROM (
+        SELECT members.name,
+            members.id,
+            reservations.id as reservationId,
+            reviews.rate,
+            reviews.admin_contents,
+            reviews.user_contents,
+            reviews.id as reviewId,
+            review_imgs.filename,
+            review_imgs.uploadpath,
+            review_imgs.uuid,
+            reviews.created_time
+        FROM reservations
+        JOIN reviews ON reservations.id = reviews.reservation_id
+        JOIN locations ON reservations.location_id = locations.id
+        JOIN members ON members.id = reservations.member_id
+        LEFT JOIN review_imgs ON review_imgs.review_id = reviews.id
+        WHERE locations.id = #{reviewTotalListVO.locationId}
+        ORDER BY reviews.created_time DESC
+    )
+)
+WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pageNum} * #{criteria.amount}	
+		]]>
+	</select>
+	
+	
+	<select id="total" parameterType="ReivewTotal" resultType="int">
+ 		<![CDATA[
+ 			select 
+			    count(*)
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId}
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	
  </mapper>
