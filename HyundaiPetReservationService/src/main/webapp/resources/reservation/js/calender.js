@@ -381,6 +381,7 @@ function dateClickEvent(e) {
 	$('.add_button_box').show();
 	$('.checked_date').removeClass('checked_date');
 	e.target.className += ' checked_date';
+	
 	const [year, month] = $('.ym').text().split('.');
 	const d = $('.checked_date').text();
 	
