@@ -71,6 +71,8 @@ public class MemberController {
 		log.debug("login method : " + member);
 
 		MemberVO result = service.login(member);
+		model.addAttribute(result);
+		
 		try {
 			if (result == null) {
 				return new ResponseEntity<MemberVO>(result, HttpStatus.UNAUTHORIZED);
