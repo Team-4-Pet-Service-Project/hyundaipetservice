@@ -11,10 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReviewTotalListVO {
 	private String name;
+	private int id;
 	private int reservationId;
 	private String userContents;
 	private String adminContents;
-	private String locationId;
+	private int locationId;
 	private int rate;
 	private int reviewId;
 	private String uuid;

@@ -7,11 +7,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	<link rel="stylesheet" href="/thepet/resources/reservation/css/calender.css?<%= System.currentTimeMillis() %>">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/thepet/resources/reservation/js/calender.js">
-<!--
-
-//-->
-</script>
+    <script type="text/javascript" src="/thepet/resources/reservation/js/calender.js"></script>
 </head>
 <body>
 	<div class="calender_container">
@@ -38,58 +34,24 @@
 	            	<div class="main_date">
 						
 	            	</div>
+<!-- 	            	<div class="main_date care_calender">
+						
+	            	</div>
+	            	<div class="main_date playground_calender">
+						
+	            	</div>
+	            	<div class="main_date beauty_calender">
+						
+	            	</div> -->
 	        	</div>
 	    	</div>
 		</div>
     </div>
     <div class="calender_detail_container">
-    	<table class="calender_detail_content">
-   			<tr class="detail_table_h">
-   				<th class="detail_table_cell">선택</th>
-   				<th class="detail_table_cell">시간</th>
-   				<th class="detail_table_cell">비고</th>
-   				<th class="detail_table_cell">남은 자리</th>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_row">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-   			<tr class="detail_table_last">
-   				<td class="detail_table_cell"><input type="radio" name="reservation_time" class="radio_set"/></td>
-   				<td class="detail_table_cell">07:00~09:00</td>
-   				<td class="detail_table_cell">예약가능</td>
-   				<td class="detail_table_cell">6</td>
-   			</tr>
-    	</table>
+    	
     </div>
-    	<div class="add_button_box">
-    		<input type="button" value="추가" class="add_btn"/>
-    	</div>
+   	<div class="add_button_box" style="display: none;">
+   		<input type="button" value="추가" class="add_btn" onclick="addReservation()"/>
+   	</div>
 </body>
 </html>

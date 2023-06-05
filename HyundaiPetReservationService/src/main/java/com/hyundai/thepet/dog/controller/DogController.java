@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hyundai.thepet.dog.service.DogService;
 import com.hyundai.thepet.dog.vo.DogVO;
+import com.hyundai.thepet.member.vo.MemberVO;
 
 @Controller
 public class DogController {
@@ -25,18 +26,20 @@ public class DogController {
 	private DogService dogService;
 	
 	@PostMapping(value = "addDog")
-	public ResponseEntity<DogVO> addDogInfo(DogVO vo, @SessionAttribute(value = "loginId") int loginId) {
-		log.debug(loginId);
+	public ResponseEntity<DogVO> addDogInfo(DogVO vo, @SessionAttribute(value = "member") MemberVO member) {
 		
+		vo.setMemberId(member.getId());
 		log.debug(vo);
+		int result = dogService.addDog(vo);
+		log.debug(result);
 		return new ResponseEntity<> (vo, HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping(value = "getDogs")
-	public ResponseEntity<List<DogVO>> getDogsInfo(@SessionAttribute(value = "loginId") int loginId) {
+	public ResponseEntity<List<DogVO>> getDogsInfo(@SessionAttribute(value = "member") MemberVO member) {
 		List<DogVO> list = new ArrayList<DogVO>();
 		
-		list = dogService.getAllDogs(loginId);
+		list = dogService.getAllDogs(member.getId());
 		
 		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
 	}

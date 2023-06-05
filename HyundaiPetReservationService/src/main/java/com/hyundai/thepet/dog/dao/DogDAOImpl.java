@@ -15,9 +15,9 @@ public class DogDAOImpl implements DogDAO{
 	private SqlSession session;
 	
 	@Override
-	public void inserDog(DogVO vo) {
+	public int inserDog(DogVO vo) {
 		String statement = "myDog.insertDog";
-		session.insert(statement, vo);
+		return session.insert(statement, vo);
 	}
 	
 	@Override

@@ -34,7 +34,7 @@
     JOIN
     	reviews on reservations.id=reviews.reservation_id
     WHERE members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
- 		order by reservation_date
+ 		order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
  		]]>
  	</select>
  	
@@ -169,6 +169,7 @@
  		<![CDATA[
  			select 
 			    members.name,
+			    members.id,
 			    reservations.id as reservationId,
 			    reviews.rate,
 			    reviews.admin_contents,
@@ -178,6 +179,113 @@
     			review_imgs.uploadpath,
     			review_imgs.uuid,
     			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId}
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 서울(미용, 스파)-->
+ 	<select id="totallistAll" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId} and locations.id=44
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 대구(미용, 스파)-->
+ 	<select id="totallistAll1" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			reviews.created_time
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId} and locations.id=42
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<select id="reviewTotalList1" resultType="ReivewTotal" parameterType="map">
+		<![CDATA[
+			SELECT *
+FROM (
+    SELECT
+    	rownum as rn,
+        name,
+        id,
+        reservationId,
+        rate,
+        admin_contents,
+        user_contents,
+        reviewId,
+        filename,
+        uploadpath,
+        uuid,
+        created_time
+    FROM (
+        SELECT members.name,
+            members.id,
+            reservations.id as reservationId,
+            reviews.rate,
+            reviews.admin_contents,
+            reviews.user_contents,
+            reviews.id as reviewId,
+            review_imgs.filename,
+            review_imgs.uploadpath,
+            review_imgs.uuid,
+            reviews.created_time
+        FROM reservations
+        JOIN reviews ON reservations.id = reviews.reservation_id
+        JOIN locations ON reservations.location_id = locations.id
+        JOIN members ON members.id = reservations.member_id
+        LEFT JOIN review_imgs ON review_imgs.review_id = reviews.id
+        WHERE locations.id = #{reviewTotalListVO.locationId}
+        ORDER BY reviews.created_time DESC
+    )
+)
+WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pageNum} * #{criteria.amount}	
+		]]>
+	</select>
+	
+	
+	<select id="total" parameterType="ReivewTotal" resultType="int">
+ 		<![CDATA[
+ 			select 
+			    count(*)
 			from reservations
 				join reviews on reservations.id = reviews.reservation_id
 				join locations on reservations.location_id=locations.id

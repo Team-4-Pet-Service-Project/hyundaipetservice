@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myAdmin">
+	<select id="selectReservationDetail" resultType="Admin">
+		SELECT 
+		sum(price) as reservation_facilities_total_price, 
+		count(price) as reservation_facilities_total_num, 
+		l.DOG_FACILITIES AS reservation_dog_facilities
+		FROM reservations r
+		JOIN locations l
+		ON r.location_id = l.id
+		WHERE reservation_date = #{reservationDate}
+		GROUP BY l.DOG_FACILITIES
+	</select>
+</mapper>

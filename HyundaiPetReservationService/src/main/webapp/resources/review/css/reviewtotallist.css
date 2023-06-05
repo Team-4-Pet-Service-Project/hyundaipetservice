@@ -42,6 +42,7 @@
 	display: flex;
 	flex-direction: row;
 	font-size: 20px;
+	
 }
 
 .review_1 .name{
@@ -55,10 +56,16 @@
 	margin-right:200px;
 }
 
+.star-group{
+	margin-right: 200px;
+	margin-left: 10px;
+}
+
 .rating .fa-star.fas {
   color: #ffd700;
-  margin-left: 10px;
+  margin-left: 5px;
 }
+
 .review_2{
 	display: flex;
 	flex-direction: row;
@@ -71,22 +78,19 @@
 
 
 .contents{
-	width : 400px;
+	width : 750px;
 	border : 1px solid black;
 }
 
 .admin{
-	margin-left : 40px;
+	margin-left : 90px;
 	display: flex;
 	flex-direction: row;
 	font-size: 20px;
-	padding-bottom : 10px;
-	border-bottom: 1px solid black;
 }
 
 .admin .admin_1{
-	margin-right: 60px;
-	margin-left : 60px;
+	margin-right: 90px;
 }
 
 

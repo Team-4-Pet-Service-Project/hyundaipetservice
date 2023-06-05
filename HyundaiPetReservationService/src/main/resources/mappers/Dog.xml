@@ -7,4 +7,8 @@
  	<select id="selectAllDogs" parameterType="int" resultType="Dog">
  		SELECT * FROM dogs WHERE #{loginId} = member_id
  	</select>
+ 	
+ 	<insert id="insertDog" parameterType="Dog">
+ 		INSERT INTO dogs (name, age, breed, dog_size, special_note, member_id) values(#{name}, #{age}, #{breed}, #{dogSize}, #{specialNote}, #{memberId})
+ 	</insert>
  </mapper>

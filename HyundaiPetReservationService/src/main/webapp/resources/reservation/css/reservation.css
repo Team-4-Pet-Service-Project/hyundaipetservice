@@ -30,6 +30,11 @@
 	border : 1px solid #B7B7B7;
 	
 	cursor: pointer;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .select_category {
@@ -38,4 +43,14 @@
 
 .non_select_category {
 	
+}
+
+.category_text {
+	font-size : 18px;
+	font-weight : 600;
+	
+	margin-top: 2%;
+}
+.disable-div {
+    pointer-events: none;
 }

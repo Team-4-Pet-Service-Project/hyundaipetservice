@@ -1,57 +1,272 @@
 @charset "UTF-8";
 
 .main_info {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
 	border-color: red;
 }
 
-.admin_main {
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	flex-wrap: wrap;
-	border: 3px solid red;
-	height: 100%;
-	width: 100%;
+.admin_container {
+	width: 800px;
+	/* 	border: 1px solid red;
+ */
 }
 
 .admin_title {
-	border: 2px solid green;
+	/* 	border: 2px solid green; */
 	width: 100%;
-	height: 50px;
+	height: 70px;
 }
 
 .admin_menu_bar {
+	display: flex;
 	width: 100%;
+	height: 40px;
+	padding: 20px 0px 10px 0px;
+/* 	border-bottom: 1.5px solid grey;
+ */	/* 	border: 2px solid blue;
+ */
+}
+
+.remain_menu_bar {
+	width: 100%;
+	height: 50.5px;
+	border-bottom: 1px solid black;
+}
+/* 메뉴 탭 부분 */
+.admin_tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	font-weight: bold;
+	width: 100px;
 	height: 50px;
-	border: 4px solid blue;
+	cursor: pointer;
+}
+
+.select_form {
+	border-top: 1px solid #212121;
+	border-left: 1px solid #212121;
+	border-right: 1px solid #212121;
+}
+
+.non_select_form {
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #212121;
+}
+
+.information_summary_container {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 2px solid #999999;
+}
+
+.location_container {
+	display: flex;
+	flex-direction: row;
+}
+
+.location_select {
+	width: 40%;
+}
+
+.location_select_title {
+	margin: 10px;
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
+	padding: 5px 0px;
+}
+
+/* 드롭박스 */
+.myDropdown {
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	height: 20px;
+	margin: 10px 0px;
 }
 
 .information_summary {
 	width: 100%;
-	height: 100px;
-	border: 4px solid purple;
+	height: 150px;
+	margin: 10px 0px;
 }
 
-.reservation_confirm {
+.information_summary_title {
+	padding: 5px 0px;
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+/* 테이블 CSS 관리 */
+.reservation_table {
+	border-collapse: collapse;
+	width: 100%;
+	border-top: 1px solid black;
+	margin: 3px;
+}
+
+.reservation_table_h {
+	width: 450px;
+	height: 50px;
+	background-color: #F6F6F6;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.reservation_table_cell {
+	text-align: center;
+	vertical-align: middle;
+	padding: 7px;
+	font-weight: lighter;
+}
+
+.today_reservation {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	padding: 7px;
+	font-weight: bold;
+}
+
+.today_sales {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	padding: 7px;
+	font-weight: bold;
+}
+
+.month_reservation {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	padding: 7px;
+	font-weight: bold;
+}
+
+.month_sales {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	padding: 7px;
+	font-weight: bold;
+}
+
+.last_month_reservation {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	padding: 7px;
+	font-weight: bold;
+}
+
+.last_month_sales {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	padding: 7px;
+	font-weight: bold;
+}
+
+/* 예약 조회 컨텐츠 */
+/* .reservation_confirm {
 	flex: display;
 	flex-direction: row;
 	width: 100%;
 	height: 500px;
-	border: 4px solid yellow;
+	border: 2px solid yellow;
 }
-
+ */
 .reservation_confirm_title {
-	
+	padding: 10px 0px;
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
 }
 
-.calender {
-	width: 400px;
-	height: 100px;
-	border: 4px solid grey;
+.reservation_confirm_contents {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+	height: 500px;
+	border: 2px solid pink;
 }
 
 .reservation_confirm_check {
-	width: 400px;
-	height: 100px;
-	border: 4px solid grey;
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	height: 300px;
+	border: 2px solid grey;
+	width: 300px;
+}
+
+.reservation_confirm_check_title {
+	width: 100%;
+	height: 30px;
+	font-weight: bold;
+	font-size: 20px;
+	margin: 10px 10px 0px 10px;
+}
+
+/* 테이블 */
+.total_check {
+	width: 100%;
+	height: 50%;
+	border-bottom: 1.5px solid grey;
+	border-top: 1.5px solid grey;
+}
+
+.total_check_column {
+	width: 40%;
+}
+
+.total_check td {
+	text-align: center;
+	vertical-align: middle;
+	border-color: 1px solid e0e0e0;
+}
+
+.total_reservation_row {
+	/* 	border-bottom: 2px solid #999999; */
+	
+}
+
+.total_price_row {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.total_reservation_row {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.total_check_detail {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	width: 100%;
+	height: 50%;
+	margin: 5px;
+}
+
+.total_check_detail td {
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.total_check_detail_cell {
+	
 }
