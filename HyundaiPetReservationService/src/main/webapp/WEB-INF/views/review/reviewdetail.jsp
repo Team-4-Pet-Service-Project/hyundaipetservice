@@ -10,10 +10,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<title>Insert title here</title>
+<title>리뷰 상세 페이지</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <!-- <script src="/thepet/resources/review/js/reviewdetail.js"></script> -->
+ <script src="/thepet/resources/review/js/reviewdetail.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
  
 </head>
@@ -73,7 +73,15 @@
                  	</div>
                  	
                  	<div class="line1"></div>
+                 	<br>
                  	
+                 	<!-- 여기에 관리자 답글 영역 추가 -->
+                 	<div class="font-bold">관리자 답변</div>
+                 	<div>
+                 	<input class="admin-contents" type="text" readonly value="${empty Review.adminContents ? '관리자 답변이 존재하지 않습니다.' : Review.adminContents}"/>
+                 	</div>
+                 	
+                 	<br>
                  	<%-- <form action="/thepet/review/delete" method="GET">
 				                    <input type="submit" value="삭제">
 				                    <input type="hidden" name="reservationId" value="${Review.reservationId}">
@@ -81,8 +89,7 @@
                  	<!-- 수정삭제나오는 부분(여기서 관리자 조건 걸어주면 됨 -->
                  	<!--  나중에 조건 넣어준다  ${Id} eq 세션아이디 같은 조건 걸어주기-->
                  	 <c:choose>
-                 	 	
-	            			<c:when test="${Id eq 1}">
+	            			<c:when test="${Id eq 0}"> <!-- member Id가 현재 로그인한 사용자 Id라면 아래 내용 보이도록 수정 -->
 	            				<div class="five">
 	            					<div class="five_1">
 			                			<form action="/thepet/review/update" method="GET">
@@ -119,14 +126,40 @@
 												<button id="confirmButton">확인</button>
 								            </div>
 								        </div>
-								    </div> 
-									
+								    </div>
 	                			</div>
 				            </c:when>
-				            <c:otherwise>
-				               
-				            </c:otherwise>
-        				</c:choose>
+				            
+				            <c:when test="${admin eq 1}"> <!-- 관리자 -->
+						        <c:choose>
+						            <c:when test="${empty Review.adminContents}"> <!-- 답변이 없는 경우 -->
+							            <div class="five">
+							                <div class="five_1">
+							                    <form action="admin/review/add-adminreview" method="GET">
+							                        <input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
+							                        <input type="submit" value="답변 등록">
+							                    </form>
+							                </div>
+						                </div>
+						            </c:when>
+						            <c:otherwise> <!-- 답변이 있는 경우 -->
+						            	<div class="five">
+						            		<div class="five_1">
+							                <input type="button" id="modify-button" value="답변 수정">
+							                <input type="hidden" id="cancel-button" value="답변 취소">
+							                
+							                </div>
+							                <div class="five_1">
+							                	<input type="button" id="delete-button" value="답변 삭제">
+							                	<input type="hidden" id="update-button" value="답변 등록">
+							                	<input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
+							                </div>
+						                </div>
+						            </c:otherwise>
+						        </c:choose>
+						    </c:when>
+
+        			</c:choose>
             </div>		
 		</div>
 	</main>

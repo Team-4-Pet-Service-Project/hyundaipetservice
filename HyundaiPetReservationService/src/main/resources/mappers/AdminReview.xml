@@ -46,5 +46,14 @@
 		WHERE rev.admin_contents IS NOT NULL
 		]]>
 	</select>
+	
+	<update id="updateAdminReview" parameterType="UserReview">
+	<![CDATA[
+		UPDATE reviews
+		SET admin_contents = #{adminContents}
+		WHERE id=#{id}
+	
+	]]>
+	</update>
 
 </mapper>

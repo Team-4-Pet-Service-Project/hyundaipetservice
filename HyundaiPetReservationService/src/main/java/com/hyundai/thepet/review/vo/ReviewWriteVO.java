@@ -22,7 +22,9 @@ public class ReviewWriteVO {
 	private String uuid;
 	private String uploadpath;
 	private String filename;
-	private int reviewId;
+	private int reviewId; // null
 	//이것도 리뷰 id인데 mapper매칭 안되서 만든거
-	private int id;
+	private int id; // memberId, reviewId
+	
+	private int isAdmin; // admin인지 확인
 }

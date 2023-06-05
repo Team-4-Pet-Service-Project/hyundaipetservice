@@ -114,6 +114,36 @@
 	margin-right: 40px;
 }
 
+.admin-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 10px;
+	margin-right: 40px;
+}
+
+
+.font-bold{
+	font-size: 24px;
+	font-weight: bold;
+	color: #000000;
+	margin-top: 10px;
+	margin-left: 50px;
+}
+
+.admin-contents{
+	border: 2px solid red;
+	width : 900px;
+	border : 2px solid black;
+	align-items: center;
+	justify-content: flex-start;
+	display: flex;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-left: 50px;
+	padding: 10px;
+}
+
 input[type="submit"] {
   background-color: #333333; /* 배경색 */
   color: white; /* 텍스트 색상 */
@@ -129,6 +159,24 @@ input[type="submit"]:hover {
 }
 
 input[type="submit"]:focus {
+  outline: none; /* 포커스 시 아웃라인 제거 */
+}
+
+input[type="button"] {
+  background-color: #333333; /* 배경색 */
+  color: white; /* 텍스트 색상 */
+  padding: 10px 20px; /* 안쪽 여백 */
+  font-size: 16px; /* 폰트 크기 */
+  border: none; /* 테두리 없음 */
+  border-radius: 4px; /* 테두리 반경 */
+  cursor: pointer; /* 커서 스타일 */
+}
+
+input[type="button"]:hover {
+  background-color: #606060; /* 마우스 오버 시 배경색 */
+}
+
+input[type="button"]:focus {
   outline: none; /* 포커스 시 아웃라인 제거 */
 }
 
@@ -261,4 +309,3 @@ background-color: #333333; /* 배경색 */
  
 }
 이부분 span있어서 직접 인라인으로 줌 */
-

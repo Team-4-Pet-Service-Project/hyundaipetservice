@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hyundai.thepet.admin.review.vo.AdminReviewVO;
+import com.hyundai.thepet.admin.review.vo.UserReviewVO;
 
 @Repository
 public class AdminReviewDAO {
@@ -29,6 +30,11 @@ public class AdminReviewDAO {
 	
 	public int countCommented() {
 		int result = session.selectOne("forAdminReview.countCommented");
+		return result;
+	}
+	
+	public int updateAdminReview(UserReviewVO reviewVo) {
+		int result = session.update("forAdminReview.updateAdminReview", reviewVo);
 		return result;
 	}
 	
