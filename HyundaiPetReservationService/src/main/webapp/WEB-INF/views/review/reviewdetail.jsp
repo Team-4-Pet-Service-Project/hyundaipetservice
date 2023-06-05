@@ -141,12 +141,12 @@
 						            <c:when test="${empty Review.adminContents}"> <!-- 답변이 없는 경우 -->
 							            <div class="five">
 							                <div class="five_1">
-							                	<input type="button" class="add-button" value="답변 등록1">
-							                	<input type="hidden" class="cancel-button" value="답변 취소1">
+							                	<input type="button" class="add-button" value="답변 등록">
+							                	<input type="hidden" class="cancel-button" value="답변 취소">
 							                </div>
 							                <div class="five_1">
 							                	
-							               		<input type="hidden" class="update-button" value="답변 등록2">
+							               		<input type="hidden" class="update-button" value="답변 등록">
 							                </div>
 							                
 						                </div>
@@ -155,11 +155,11 @@
 						            	<div class="five">
 						            		<div class="five_1">
 							                	<input type="button" class="modify-button" value="답변 수정">
-							                	<input type="hidden" class="cancel-button" value="답변 취소2">
+							                	<input type="hidden" class="cancel-button" value="답변 취소">
 							                </div>
 							                <div class="five_1">
 							                	<input type="button" class="delete-button" value="답변 삭제">
-							                	<input type="hidden" class="update-button" value="답변 등록3">
+							                	<input type="hidden" class="update-button" value="답변 등록">
 							                </div>
 						                </div>
 						            </c:otherwise>
