@@ -1,11 +1,12 @@
 footer img {
     /* width: 100%; */
-    height: 300px;
+    width : 1240px;
+    height: 250px;
 }
 
-@media (min-width : 1690px) {
+/* @media (min-width : 1690px) {
     footer img {width: 1690px};
 }
 @media (min-width : 2030px) {
     footer img {width: 2030px};
-}
+} */

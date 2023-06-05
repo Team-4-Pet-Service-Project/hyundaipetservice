@@ -1,0 +1,14 @@
+.slide_main_container {
+	width:2040px;
+	height:700px;
+	
+	border: 1px solid red;
+	
+	display: flex;
+	align-items: center;
+}
+
+.slide_main_container img {
+	width: 1600px;
+	height: 650px;
+}

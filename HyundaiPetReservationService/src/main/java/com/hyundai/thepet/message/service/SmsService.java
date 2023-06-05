@@ -76,6 +76,8 @@
  * List<MessageDTO> messages = new ArrayList<>(); messages.add(messageDto);
  * 
  * // api 요청 양식에 맞춰 세팅 SmsRequestDTO request = SmsRequestDTO.builder()
+ * .type("SMS") .contentType("COMM") .countryCode("82") .from(senderPhone)
+ * .content("::") .messages(messages) .build();
  * .type("LMS") // LMS로 변경 .contentType("COMM") .countryCode("82")
  * .from(senderPhone) .content("::") .messages(messages) .build();
  * 

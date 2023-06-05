@@ -1,6 +1,16 @@
 .container {
-    width: 2060px;
-    height: 100%;
+    width: 1240px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    /* height: 100%; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    /* display: flex;
+	flex-direction: column;
+	justify-content : center;
+	align-items: center; */
 }
 
 /*main*/
@@ -24,11 +34,11 @@ main {
 .gap {
     height: 50px;
 }
-
+/* 
 @media (min-width : 1690px) {
     .container {width: 1690px};
 }
 @media (min-width : 2030px) {
     .container {width: 2030px};
 }
-
+ */

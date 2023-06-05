@@ -31,15 +31,15 @@
 			<form class="dog_form" action="/thepet/addDog" method="POST">
 				<div class="input_div">
 					<p class="input_name">이름</p>
-					<input type="text" name="dogName" class="input_set">
+					<input type="text" name="name" class="input_set">
 				</div>
 				<div class="input_div">
 					<p class="input_name">나이</p>
-					<input type="number" name="dogAge" class="input_set">
+					<input type="number" name="age" class="input_set">
 				</div>
 				<div class="input_div">
 					<p class="input_name">견종</p>
-					<input type="text" name="dogBreed" class="input_set">
+					<input type="text" name="breed" class="input_set">
 				</div>
 				<div class="input_div">
 					<p class="input_name">분류</p>

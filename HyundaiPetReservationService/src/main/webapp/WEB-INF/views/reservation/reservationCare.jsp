@@ -17,6 +17,9 @@
 		<div class="select_datetime_container">
 			<jsp:include page="./calender.jsp" />
 		</div>
+		<div class="reservation_info_container">
+			<jsp:include page="./reservationInfoResult.jsp" />
+		</div>
 	</div>
 </body>
 </html>

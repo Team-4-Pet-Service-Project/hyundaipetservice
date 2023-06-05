@@ -30,6 +30,17 @@
  * NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
  * 
  * ReservationVO reserv =
+ * selectService.selectReservation(reservation.getReservationId());
+ * 
+ * String phone = selectService.selectPhone(reserv.getMemberId()); String name =
+ * selectService.selectName(reserv.getMemberId()); String location_facility =
+ * selectService.selectFacility(reserv.getLocationId()); Date reservationDate =
+ * reserv.getReservationDate(); SimpleDateFormat dateFormat = new
+ * SimpleDateFormat("yy/MM/dd"); String reservationDateString =
+ * dateFormat.format(reservationDate);
+ * 
+ * String content = name + "님, "+ reservationDateString + " " +
+ * reserv.getReservationStartTime() + "에 " + location_facility + "가 예약되었습니다.";
  * selectService.selectReservation(reservation.getReservationId()); MemberVO
  * memberInfo = selectService.selectMemberInfo(reserv.getMemberId()); LocationVO
  * locationInfo = selectService.selectLocationInfo(reserv.getLocationId());
@@ -62,6 +73,17 @@
  * NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
  * 
  * ReservationVO reserv =
+ * selectService.selectReservation(reservation.getReservationId());
+ * 
+ * String phone = selectService.selectPhone(reserv.getMemberId()); String name =
+ * selectService.selectName(reserv.getMemberId()); String location_facility =
+ * selectService.selectFacility(reserv.getLocationId()); Date reservationDate =
+ * reserv.getReservationDate(); SimpleDateFormat dateFormat = new
+ * SimpleDateFormat("yy/MM/dd"); String reservationDateString =
+ * dateFormat.format(reservationDate);
+ * 
+ * String content = name + "님, "+ reservationDateString + " " +
+ * reserv.getReservationStartTime() + "에 예약하신 " + location_facility +
  * selectService.selectReservation(reservation.getReservationId()); MemberVO
  * memberInfo = selectService.selectMemberInfo(reserv.getMemberId()); LocationVO
  * locationInfo = selectService.selectLocationInfo(reserv.getLocationId());
@@ -93,6 +115,11 @@
  * throws UnsupportedEncodingException, URISyntaxException,
  * NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
  * ReservationVO reserv =
+ * selectService.selectReservation(reservation.getReservationId());
+ * 
+ * String phone = selectService.selectPhone(reserv.getMemberId()); String name =
+ * selectService.selectName(reserv.getMemberId()); String location_facility =
+ * selectService.selectFacility(reserv.getLocationId());
  * selectService.selectReservation(reservation.getReservationId()); MemberVO
  * memberInfo = selectService.selectMemberInfo(reserv.getMemberId()); LocationVO
  * locationInfo = selectService.selectLocationInfo(reserv.getLocationId());
@@ -107,6 +134,9 @@
  * dateFormat = new SimpleDateFormat("yy/MM/dd"); String reservationDateString =
  * dateFormat.format(reservationDate);
  * 
+ * String content = name + "님, "+ reservationDateString+ " " +
+ * reserv.getReservationStartTime() + "에 예약하신 " + location_facility +
+ * " 이용 시간이 10분 남았습니다.";
  * String content = name + "님, " + reservationDateString + " " +
  * reserv.getReservationStartTime() + "에 예약하신 " + locationFacility +
  * " 이용 시간이 10분 남았습니다. \n" + "위치는 " + address + " " + addressDetail + "입니다. " +

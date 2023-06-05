@@ -7,11 +7,17 @@
 <link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
 <link rel="stylesheet" href="/thepet/resources/reservation/css/reservation.css?<%= System.currentTimeMillis() %>">
+<link rel="stylesheet" href="/thepet/resources/reservation/css/care_add_option.css?<%= System.currentTimeMillis() %>">
+<link rel="stylesheet" href="/thepet/resources/reservation/css/playground_add_option.css?<%= System.currentTimeMillis() %>">
+<link rel="stylesheet" href="/thepet/resources/reservation/css/beauty_add_option.css?<%= System.currentTimeMillis() %>">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/thepet/resources/reservation/js/reservation.js"></script>
+<!-- <script type="text/javascript" src="/thepet/resources/reservation/js/playground_add_option.js"></script> -->
+<!-- <script type="text/javascript" src="/thepet/resources/reservation/js/beauty_add_option.js"></script> -->
 <title>Insert title here</title>
 </head>
-<body style="display: flex; justify-content: center">
+<body style="display: flex; justify-content: center;">
+<jsp:include page="./modal.jsp" />
 <div class="container">
 	<jsp:include page="../mainform/header.jsp">
 		<jsp:param value="석진" name="userName"/>
@@ -20,14 +26,23 @@
 		<div class="reservation_container">
 			<div class="reservation_form">
 				<div class="reservation_category">
-					<div class="category_box care select_category">케어</div>
-					<div class="category_box playground">놀이터</div>
-					<div class="category_box beauty">미용</div>
+					<div class="category_box care select_category">
+						<img alt="" src="/thepet/resources/reservation/img/care.png">
+						<p class="category_text">케어</p>
+					</div>
+					<div class="category_box playground">
+						<img alt="" src="/thepet/resources/reservation/img/playground.png">
+						<p class="category_text">놀이터</p>
+					</div>
+					<div class="category_box beauty">
+						<img alt="" src="/thepet/resources/reservation/img/beauty.png">
+						<p class="category_text">미용</p>
+					</div>
 				</div>
 				<div style="position: relative;">
 					<jsp:include page="./reservationCare.jsp" />
-					<jsp:include page="./reservationPlayground.jsp" />
-					<jsp:include page="./reservationBeauty.jsp" />
+					<%-- <jsp:include page="./reservationPlayground.jsp" />
+					<jsp:include page="./reservationBeauty.jsp" /> --%>
 				</div>
 			</div>		
 		</div>
