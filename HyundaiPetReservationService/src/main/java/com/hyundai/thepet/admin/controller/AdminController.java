@@ -42,33 +42,31 @@ public class AdminController {
 			return null;
 		}
 	}
-	
-	// 예약 관리 버튼 눌렀을 때	
-	@GetMapping(value="reservationManagement")
+
+	// 예약 관리 버튼 눌렀을 때
+	@GetMapping(value = "reservationManagement")
 	@ResponseBody
-	public ResponseEntity<ReservationTotalDTO> adminReservationTotal(ReservationDTO reservation){
-		
+	public ResponseEntity<ReservationTotalDTO> adminReservationTotal(ReservationDTO reservation) {
+
 		log.debug("controller 진입 : reservationManagement = " + reservation);
 		ReservationTotalDTO result = service.getReservationTotal(reservation);
+
 		try {
 			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
-		}catch(Exception e){
+		} catch (Exception e) {
 			return null;
 		}
 	}
-	
-	/*
-	 * @PostMapping(value = "reservationLocation")
-	 * 
-	 * @ResponseBody public ResponseEntity<ReservationLocationDTO>
-	 * PostreservationLocationSelect(ReservationLocationDTO reservation) throws
-	 * Exception {
-	 * 
-	 * log.debug("reservationLocationSelect controller 진입 : reservationDetail = " +
-	 * reservation); ReservationLocationDTO result =
-	 * service.postReservationLocation(reservation); try { return new
-	 * ResponseEntity<>(result, HttpStatus.ACCEPTED); } catch (Exception e) { return
-	 * null; } }
-	 */
-	
+
+	@PostMapping(value = "reservationLocation")
+	@ResponseBody
+	public ResponseEntity<ReservationLocationDTO> postReservationLocationSelect(ReservationLocationDTO reservation) throws Exception {
+		log.debug("reservationLocationSelect controller 진입 : reservationDetail = " + reservation);
+		ReservationLocationDTO result = service.postReservationLocation(reservation);
+		try {
+			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

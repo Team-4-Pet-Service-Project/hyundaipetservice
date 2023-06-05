@@ -11,6 +11,8 @@
 <link rel="stylesheet"
 	href="/thepet/resources/basic/css/container.css?<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
+	href="/thepet/resources/mainpage/css/mainPage.css">
+<link rel="stylesheet"
 	href="/thepet/resources/admin/css/main.css?<%=System.currentTimeMillis()%>">
 <link rel="stylesheet"
 	href="/thepet/resources/admin/css/admin_calender.css?<%=System.currentTimeMillis()%>">
@@ -24,11 +26,12 @@
 
 <title>관리자 페이지</title>
 </head>
-<body>
+<body class="container_body">
 	<div class="container">
 		<jsp:include page="../mainform/header.jsp">
 			<jsp:param value="석진" name="userName" />
 		</jsp:include>
+		<jsp:include page="../mainform/menubar.jsp" />
 		<div class="gap"></div>
 		<main>
 			<div class="main_container">
@@ -50,8 +53,8 @@
 								<h2 class="location_select_title">지점 선택</h2>
 								<select class="myDropdown">
 									<option value="">선택하세요</option>
-									<option value="option1">더 현대 서울</option>
-									<option value="option2">더 현대 대구</option>
+									<option value="서울 더 현대 ">서울 더 현대</option>
+									<option value="대구 더 현대">대구 더 현대</option>
 								</select>
 							</div>
 							<div class="information_summary">

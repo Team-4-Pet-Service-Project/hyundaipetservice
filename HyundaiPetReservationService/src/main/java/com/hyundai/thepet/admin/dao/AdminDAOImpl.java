@@ -113,7 +113,7 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public ReservationLocationDTO postReservationLocation(ReservationLocationDTO reservation) {
 		
-		String statement = "myAdmin.selectReservationTotal";
+		String statement = "myAdmin.selectReservationLocation";
 		ReservationLocationDTO result = session.selectOne(statement, reservation);
 		
 		return result;

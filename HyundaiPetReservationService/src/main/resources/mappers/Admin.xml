@@ -16,3 +16,4 @@
 		GROUP BY l.DOG_FACILITIES
 	</select>
 </mapper>
+

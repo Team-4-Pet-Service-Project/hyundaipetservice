@@ -45,8 +45,6 @@ public class AdminServiceImpl implements AdminService{
 		log.debug("Service 접근 : " + reservation);
 		ReservationLocationDTO result = dao.postReservationLocation(reservation);
 		
-		
 		return result;
 	}
-	
 }

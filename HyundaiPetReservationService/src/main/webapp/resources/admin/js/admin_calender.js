@@ -69,10 +69,11 @@ $(function () {
 	$('.myDropdown').change(function() {
         var selectedOption = $(this).val();
         
+       console.log(selectedOption);
         $.ajax({
             url: '/thepet/admin/reservationLocation',  // AJAX 요청을 보낼 서버의 URL을 지정합니다. 실제로 사용하는 서버 파일의 경로로 변경해야 합니다.
             method: 'POST',  // AJAX 요청의 HTTP 메소드를 지정합니다. 필요에 따라 GET 또는 POST로 변경할 수 있습니다.
-            data: { option: selectedOption },  // AJAX 요청으로 보낼 데이터를 지정합니다. 서버에서는 이 데이터를 받아 처리할 수 있어야 합니다.
+            data: { address: selectedOption },  // AJAX 요청으로 보낼 데이터를 지정합니다. 서버에서는 이 데이터를 받아 처리할 수 있어야 합니다.
             success: function(response) {
             	console.log("성공");
             },
