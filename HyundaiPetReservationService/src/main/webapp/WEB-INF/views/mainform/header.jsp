@@ -27,14 +27,19 @@
 				</a>
 				<div class="user_box">
 					<c:set var="email" value="${member.email}" />
+					<c:set var="admin" value="${member.admin}" />
 					<c:choose>
 						<c:when test="${empty email}">
 							<a href="/thepet/member/login_bt" class="login_main">로그인 </a>
 							<a href="/thepet/member/register_bt" class="register_main">회원가입</a>
 						</c:when>
+						<c:when test="${admin eq 1}">
+							<a href="admin/main">관리자 페이지</a>
+						</c:when>
 						<c:otherwise>
 							<p class="name_main">${member.name}님 </p>
 							<a href="/thepet/mypage/reservlist" class="mypage_main">마이페이지</a>
+							<p class="name_main">로그아웃 </p>
 							<div class="bell1">
 								<span class="material-symbols-outlined">notifications </span>
 							</div>
