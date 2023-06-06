@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="/thepet/resources/review/css/reviewwrite.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<title>Insert title here</title>
+<title>The Hyundai : 리뷰 작성</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script src="/thepet/resources/review/js/reviewwrite.js"></script>
@@ -35,7 +35,7 @@
                     <div class="start">
                     <div class="one">리뷰작성</div>
                     <div class="two">
-                    	<div class="two_1">[Name님] 시설은 어떠셨나요??</div>
+                    	<div class="two_1">[${member.name}님] 시설은 어떠셨나요??</div>
                     	<div class="rating">
     						<i class="far fa-star" data-rate="1"></i>
     						<i class="far fa-star" data-rate="2"></i>

@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<title>리뷰 상세 페이지</title>
+<title>The Hyundai : 리뷰 상세</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  

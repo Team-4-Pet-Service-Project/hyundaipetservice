@@ -19,7 +19,7 @@
 
 
 .two_1{
-	font-size: 30px;
+	font-size: 27px;
 	margin-right: 15px;
 	margin-left: 70px;
 }
@@ -31,37 +31,33 @@
 }
 
 .three_1{
-	font-size: 20px;
+	font-size: 15px;
 	margin-left: 170px;
 	display : flex;
 	flex-direction: row;
 	align-items : center;
-	
 }
 
 
 .three_2{
-	font-size: 20px;
+	font-size: 15px;
 	margin-left: 170px;
-	margin-top: 20px;
 	display : flex;
 	flex-direction: row;
 	align-items : center;
 }
 
 .three_3{
-	font-size: 20px;
+	font-size: 15px;
 	margin-left: 170px;
-	margin-top: 20px;
 	display : flex;
 	flex-direction: row;
 	align-items : center;
 }
 
 .three_4{
-	font-size: 20px;
+	font-size: 15px;
 	margin-left: 170px;
-	margin-top: 10px;
 	display : flex;
 	flex-direction: row;
 	align-items : center;
@@ -76,7 +72,7 @@
 
 
 .four_1{
-	font-size:20px;
+	font-size:15px;
 	margin-left: 170px;
 	margine-top:50px;
 }
@@ -85,22 +81,23 @@
 	margin-left: 80px;
 }
 
-
-
-
+#uploadResult{
+	margin-left: 27px;
+	}
 
 .five{
 	height:50px;
 	display : flex;
 	flex-direction: row;
 	margin-left: 170px;
-	font-size:20px;
+	font-size:15px;
 	margin-top:10px;
+	bord
 }
 
 
 .five_1{
-	margin-left:80px;
+	margin-left:70px;
 }
 
 .six{
@@ -108,29 +105,30 @@
 	display : flex;
 	flex-direction: row;
 	margin-left: 170px;
-	font-size:20px;
+	font-size:15px;
 	margin-top:2px;
 }
 
 .seven_1{
-	margin-left: 40px;
+	margin-left: 30px;
 	padding-top: 8px;
 	padding-left : 8px;
 }
 
 .six_1{
-	margin-left:80px;
+	margin-left:70px;
 }
 
 .seven{
 	height:150px;
 	display : flex;
 	flex-direction: row;
-	font-size:20px;
+	font-size:15px;
 	margin-left: 170px;
 }
 
 .eight{
+	padding-top : 20px;
 	text-align: center;
 	justify-content: center;
 	margin-top:100px;
@@ -142,7 +140,7 @@
 
  .rating i {
       cursor: pointer;
-      font-size: 30px; /* 아이콘의 크기를 조절합니다. */
+      font-size: 27px; /* 아이콘의 크기를 조절합니다. */
     }
     .rating .fas {
       color: #ffd700;
@@ -150,23 +148,31 @@
 
 
 .radio-container {
-  margin-left: 70px;
+  margin-left: 75px;
 }
 
 .radio-container1 {
-  margin-left: 90px;
+  margin-left: 89px;
 }
 
 .radio-container2 {
-  margin-left: 30px;
+  margin-left: 74px;
 }
 
+.radio-container3 {
+  margin-left: 45px;
+}
+
+
+
 .radio-label {
+  padding-top : 10px;
   display: inline-block;
   margin-bottom: 10px;
 }
 
 .radio-label1 {
+	padding-top : 10px;
   display: inline-block;
   margin-bottom: 10px;
 }
@@ -179,8 +185,7 @@
 
 .radio-label .radio-input:checked + .radio-custom {
   background-color: #333333;
-  color: #f5f5f5;
-  width: 100px;
+  color: #fff;
 }
 
 .radio-custom {
@@ -188,35 +193,34 @@
   justify-content: center;
   align-items: center;
   width: 90px;
-  height: 25px;
+  height: 30px;
   border: 2px solid #666666;
   background-color: white;
   border-radius : 20px;
   cursor: pointer;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 12px;
   line-height: 30px;
   color : #666666;
 }
 
 .radio-label1 .radio-input:checked + .radio-custom1 {
   background-color: #333333;
-  color: #f5f5f5;
-  width: 70px;
+  color: #fff;
 }
 
 .radio-custom1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
-  height: 25px;
+  width: 80px;
+  height: 30px;
   border: 2px solid #666666;
   background-color: white;
   border-radius : 20px;
   cursor: pointer;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 12px;
   line-height: 30px;
   color : #666666;
 }

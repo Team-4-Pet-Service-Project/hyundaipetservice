@@ -1,14 +1,15 @@
 $(document).ready(function() {
     var buttonId = ''; // 버튼 ID 값을 저장할 변수
-    
+    var loginId = '';
     $('#theadA').show();
     $('#theadB').hide();
-    
+    loginId = document.getElementById("loginId").value;
     // 초기에 첫 번째 버튼을 활성화 상태로 설정
     $('#buttonA').addClass('active'); // 버튼 A를 활성화 상태로 표시
 
     $('#buttonA').click(function() {
         buttonId = $(this).attr('id'); // 버튼 A의 ID 값을 가져와서 buttonId에 할당
+        
         $(this).addClass('active'); // 버튼 A를 활성화 상태로 표시
         $('#buttonB').removeClass('active'); // 버튼 B의 활성화 상태 제거
         $('#theadA').show();
@@ -17,7 +18,9 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             url: '/thepet/mypage/reservajax',
-            data: { buttonId: buttonId },
+            data: { buttonId: buttonId, 
+            		id: loginId
+            },
             success: function(response) {
                 // 서버로부터의 응답을 처리하는 로직 작성
                 updateTable(response);
@@ -39,7 +42,9 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             url: '/thepet/mypage/reservajax',
-            data: { buttonId: buttonId },
+            data: { buttonId: buttonId, 
+        			id: loginId
+            },
             success: function(response) {
                 // 서버로부터의 응답을 처리하는 로직 작성
                 updateTable(response);

@@ -10,10 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.hyundai.thepet.member.vo.MemberVO;
 import com.hyundai.thepet.mypage.service.MyPageService;
 import com.hyundai.thepet.mypage.vo.ReservVO;
 
@@ -21,6 +25,7 @@ import com.hyundai.thepet.mypage.vo.ReservVO;
 
 @Controller
 @RequestMapping(value = "mypage")
+@SessionAttributes(value = { "member" })
 public class MyPageListController {
 	
 	Logger log = LogManager.getLogger("case3");
@@ -28,11 +33,18 @@ public class MyPageListController {
 	@Autowired
 	private MyPageService service;
 	
+	@ModelAttribute(value="member")
+	public MemberVO setMemberVO() {
+		return new MemberVO(0,"","","","","",0,"");
+	}
+	
 	//예약확인 누르면 나오는 리스트 창
 	@GetMapping(value = "reservlist")
-	public String ReservList(ReservVO reservVO, Model model) {
-		//여기 부분은 나중에 세션에서 값을 받아와야한다
-		reservVO.setId(3);		
+	public String ReservList(@ModelAttribute(value = "member") MemberVO memberVO, ReservVO reservVO, Model model) {
+		if(memberVO.getId() == 0) {
+			return "redirect:/main";
+		}
+		reservVO.setId(memberVO.getId());
 		List<ReservVO> vo = service.print(reservVO);
 		//여기부분은 총 예약한 수를 구하기 위한 곳
 		int total = service.count(reservVO);
@@ -48,9 +60,7 @@ public class MyPageListController {
         Map<String, Object> response = new HashMap<>();
         if(buttonId.equals("buttonA")) {
         	//여기 부분은 나중에 세션에서 값을 받아와야한다
-        	reservVO.setId(3);
     		List<ReservVO> vo = service.print(reservVO);
-    		
     		int cnt = service.count(reservVO);
     		response.put("cnt", cnt);
             response.put("reservList", vo);
@@ -58,7 +68,6 @@ public class MyPageListController {
             return response;
         }else {
         	//여기 부분은 나중에 세션에서 값을 받아와야한다
-        	reservVO.setId(1);		
     		List<ReservVO> vo = service.lastprint(reservVO);
     		int cnt = service.lastcount(reservVO);
     		//여기는 리뷰작성에서 리뷰확인을 보여줄지 리뷰작성을 보여줄지

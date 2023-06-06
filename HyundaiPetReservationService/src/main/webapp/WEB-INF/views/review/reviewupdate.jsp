@@ -14,7 +14,7 @@
 	href="/thepet/resources/review/css/reviewupdate.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<title>Insert title here</title>
+<title>The Hyundai : 리뷰 수정</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/thepet/resources/review/js/reviewupdate.js"></script>
@@ -97,7 +97,7 @@
 
 								<div class="three_3">
 									<div>청결도</div>
-									<div class="radio-container">
+									<div class="radio-container2">
 										<label class="radio-label1"> <input
 											class="radio-input" type="radio" name="cleanBt" value="쾌적해요"
 											${Review.cleanBt == '쾌적해요' ? 'checked' : ''}> <span
@@ -116,7 +116,7 @@
 
 								<div class="three_4">
 									<div>재방문의사</div>
-									<div class="radio-container2">
+									<div class="radio-container3">
 										<label class="radio-label"> <input class="radio-input"
 											type="radio" name="revisitBt" value="무조건이죠"
 											${Review.revisitBt == '무조건이죠' ? 'checked' : ''}> <span
@@ -152,7 +152,7 @@
 													style="width: 230px; height: 220px; margin-left: 50px;">
 												<div class='imgDeleteBtn1' data-file='" + fileCallPath + "'>X</div>
 											</div>
-										</div>
+									</div>
 									</div>
 									</c:otherwise>
 								</c:choose>

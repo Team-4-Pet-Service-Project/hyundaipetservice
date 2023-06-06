@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.hyundai.thepet.member.vo.MemberVO;
 import com.hyundai.thepet.mypage.vo.ReservVO;
 import com.hyundai.thepet.review.service.ReviewService;
 import com.hyundai.thepet.review.vo.Criteria;
@@ -25,7 +28,7 @@ import com.hyundai.thepet.review.vo.ReviewVO;
 import com.hyundai.thepet.review.vo.ReviewWriteVO;
 
 @Controller
-
+@SessionAttributes(value = { "member" })
 @RequestMapping(value = "review")
 public class ReviewController {
 
@@ -45,12 +48,13 @@ public class ReviewController {
 	// 리뷰작성 후 다시 리뷰확인 리스트로 가는 곳
 
 	@PostMapping(value = "writecheck")
-	public String ReviewWriteCheck(ReviewWriteVO reviewWriteVO) {
+	public String ReviewWriteCheck(@SessionAttribute(value = "member") MemberVO memberVO,ReviewWriteVO reviewWriteVO) {
 		service.reviewWrite(reviewWriteVO);
-		ReviewVO reviewVO = new ReviewVO();
-		// 여기선세션으로 아이디 값을 넣어줘야 한다
-		reviewVO.setId(1);
-		return "redirect:/review/list?id=" + reviewVO.getId();
+		/*
+		 * ReviewVO reviewVO = new ReviewVO(); // 여기선세션으로 아이디 값을 넣어줘야 한다
+		 * reviewVO.setId(1);
+		 */
+		return "redirect:/review/list?id=" + memberVO.getId();
 	}
 
 	// (사이드바 누르면)리뷰확인리스트 보여주는 곳
@@ -139,7 +143,7 @@ public class ReviewController {
 	// 리뷰 업데이트 처리하는 컨트롤러
 
 	@PostMapping(value = "updatecom")
-	public String reviewComplete(ReviewWriteVO reviewWriteVO) {
+	public String reviewComplete(@SessionAttribute(value = "member") MemberVO memberVO,ReviewWriteVO reviewWriteVO) {
 		// 여기서 리뷰 업데이트하는 곳
 		service.reviewUpdate(reviewWriteVO);
 		// null인경우 이미지가 있었는데 삭제된 경우
@@ -163,19 +167,22 @@ public class ReviewController {
 			}
 			
 		}
-		ReviewVO reviewVO = new ReviewVO(); // 여기선 세션으로 아이디 값을 넣어줘야 한다
-		reviewVO.setId(1);
-		return "redirect:/review/list?id=" + reviewVO.getId();
+		/*
+		 * ReviewVO reviewVO = new ReviewVO(); // 여기선 세션으로 아이디 값을 넣어줘야 한다
+		 * reviewVO.setId(1);
+		 */
+		return "redirect:/review/list?id=" + memberVO.getId();
 	}
 	
 	@GetMapping(value = "delete")
 	@ResponseBody
-	public String reviewDelete(ReviewWriteVO reviewWriteVO) {
+	public String reviewDelete(@SessionAttribute(value = "member") MemberVO memberVO,ReviewWriteVO reviewWriteVO) {
 		service.reviewDelete(reviewWriteVO);
 		// 여기선 세션으로 아이디 값을 넣어줘야 한다
-		ReviewVO reviewVO = new ReviewVO();
-		reviewVO.setId(1);
-		return "/thepet/review/list?id=" + reviewVO.getId();
+		/*
+		 * ReviewVO reviewVO = new ReviewVO(); reviewVO.setId(1);
+		 */
+		return "/thepet/review/list?id=" + memberVO.getId();
 	}
 	
 	//여긴 처음 전체 리뷰 보여주는 페이지(페이징하는곳)
