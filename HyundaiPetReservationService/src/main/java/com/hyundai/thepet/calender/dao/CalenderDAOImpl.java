@@ -1,5 +1,6 @@
 package com.hyundai.thepet.calender.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -66,16 +67,15 @@ public class CalenderDAOImpl implements CalenderDAO{
 	}
 	
 	@Override
-	public int insertAllReservation(List<ReservationResultVO> list) {
+	public List<ReservationResultVO> insertAllReservation(List<ReservationResultVO> list) {
 		String statement = "calender.insertReservation";
 		log.debug(list);
-		int result = 0;
-		
+
 		for (int i = 0; i < list.size(); i++) {
-			result = session.insert(statement, list.get(i));
+			session.insert(statement, list.get(i));
 		}
 		
-		return result;
+		return list;
 	}
 	
 	@Override

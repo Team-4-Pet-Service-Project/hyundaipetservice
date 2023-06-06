@@ -1,5 +1,10 @@
 package com.hyundai.thepet.reservationdetail.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hyundai.thepet.reservationdetail.service.ReservationDetailService;
 import com.hyundai.thepet.reservationdetail.vo.ReservationDetailVO;
 import com.hyundai.thepet.review.vo.ReviewVO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.hyundai.thepet.message.controller.SmsController; 
+import com.hyundai.thepet.message.vo.ReservationVO;
 
 @Controller
 @RequestMapping(value = "reservation")
@@ -19,6 +27,9 @@ public class ReservationDetailController {
 	
 	Logger log = LogManager.getLogger("case3");
 	
+	private final SmsController smsController; 
+    public ReservationDetailController(SmsController smsController) 
+    { this.smsController = smsController; }
 	
 	@Autowired
 	ReservationDetailService service;
@@ -32,8 +43,16 @@ public class ReservationDetailController {
 	
 	@GetMapping(value = "delete")
 	@ResponseBody
-	public String reservDelete(ReservationDetailVO reservationDetailVO) {
+	public String reservDelete(ReservationDetailVO reservationDetailVO) throws InvalidKeyException, JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException {
+		
+		ReservationVO reservation = new ReservationVO();
+		reservation.setReservationId(reservationDetailVO.getReservationId());
+		smsController.cancelMessage(reservation);
+		
+		
 		service.reservationDelete(reservationDetailVO);
+		
+		
 		return "/thepet/mypage/reservlist";
 	}
 }

@@ -1,5 +1,9 @@
 package com.hyundai.thepet.calender.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +18,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hyundai.thepet.calender.service.CalenderService;
 import com.hyundai.thepet.calender.vo.CalenderVO;
 import com.hyundai.thepet.calender.vo.LocationInfoVO;
 import com.hyundai.thepet.calender.vo.ReservationListVO;
+import com.hyundai.thepet.calender.vo.ReservationResultVO;
+
+import com.hyundai.thepet.message.controller.SmsController; 
+import com.hyundai.thepet.message.vo.ReservationVO;
+
 
 @Controller
 @RequestMapping(value = "calender")
@@ -27,6 +37,11 @@ public class CalenderController {
 	
 	@Autowired
 	private CalenderService calenderService; 
+	
+	private final SmsController smsController;
+	public CalenderController(SmsController smsController) {
+		this.smsController = smsController;
+	}
 	
 	@PostMapping(value = "detail", produces = "application/json; charset=UTF-8")
 	@ResponseBody
@@ -66,9 +81,19 @@ public class CalenderController {
 	
 	@PostMapping(value = "reservationResult" ,produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public ResponseEntity<Integer> setAllReservationResult(@RequestBody ReservationListVO list) {
+	public ResponseEntity<Integer> setAllReservationResult(@RequestBody ReservationListVO list) throws InvalidKeyException, JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException {
 
-		calenderService.setAllReservation(list.getCategory(), list.getReservationList());
+		List<ReservationResultVO> reservationList = calenderService.setAllReservation(list.getCategory(),list.getReservationList());
+		
+		for(ReservationResultVO reserv: reservationList) {
+			int id = reserv.getReservationId();
+			log.debug("가져온 예약 아이디" + id);
+			ReservationVO msgreserv = new ReservationVO();
+			msgreserv.setReservationId(id);
+			smsController.submitMessage(msgreserv);
+		}
+		
+		
 		return new ResponseEntity<> (1, HttpStatus.ACCEPTED);
 	}
 	

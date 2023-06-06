@@ -11,6 +11,6 @@ public interface CalenderDAO {
 	List<CalenderVO> selectOneMonthDetails(String category, String startDate, String endDate);
 	LocationInfoVO selectLocationInfo(String branchOffice, String facilities);
 	int selectPrice(String dogSize, String dogFacilities);
-	int insertAllReservation(List<ReservationResultVO> list);
+	List<ReservationResultVO> insertAllReservation(List<ReservationResultVO> list);
 	int updateAllReservation(String category, List<ReservationResultVO> list);
 }

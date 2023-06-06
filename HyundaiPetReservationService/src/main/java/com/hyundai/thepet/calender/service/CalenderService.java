@@ -11,5 +11,5 @@ public interface CalenderService {
 	List<CalenderVO> getOneMonthDetails(String category, String startDate, String endDate);
 	LocationInfoVO getLocationInfo(String branchOffice, String facilities);
 	int getPrice(String dogSize, String dogFacilities);
-	int setAllReservation(String category, List<ReservationResultVO> list);
+	List<ReservationResultVO> setAllReservation(String category, List<ReservationResultVO> list);
 }

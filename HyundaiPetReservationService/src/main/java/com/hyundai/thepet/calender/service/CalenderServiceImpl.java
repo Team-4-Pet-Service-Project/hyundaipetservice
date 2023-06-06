@@ -1,11 +1,13 @@
 package com.hyundai.thepet.calender.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.hyundai.thepet.calender.dao.CalenderDAO;
@@ -14,6 +16,7 @@ import com.hyundai.thepet.calender.vo.LocationInfoVO;
 import com.hyundai.thepet.calender.vo.ReservationResultVO;
 
 @Service
+@Transactional
 public class CalenderServiceImpl implements CalenderService{
 	
 	@Autowired
@@ -43,22 +46,20 @@ public class CalenderServiceImpl implements CalenderService{
 	}
 	
 	@Override
-	public int setAllReservation(String category, List<ReservationResultVO> list) {
+	public List<ReservationResultVO> setAllReservation(String category, List<ReservationResultVO> list) {
 		
 		TransactionStatus txStatus = transactionManager.getTransaction(new DefaultTransactionDefinition());
-		int result = 0;
-		
+
 		try {
-			result = calenderDao.insertAllReservation(list);
-			result = calenderDao.updateAllReservation(category, list);
+			calenderDao.insertAllReservation(list);
+			calenderDao.updateAllReservation(category, list); // result = 있던거 뺌
 			transactionManager.commit(txStatus);
 		} catch (Exception e) {
 			transactionManager.rollback(txStatus);
-			result = 0;
 		}
 		
-		calenderDao.insertAllReservation(list);
+//		calenderDao.insertAllReservation(list);
 		
-		return result;
+		return list;
 	}
 }
