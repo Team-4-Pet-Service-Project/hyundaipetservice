@@ -130,6 +130,66 @@
 								</div>
 							</div>
 						</div>
+						
+						<!-- 여기 아래부터는 리뷰 관리 클릭 시 나오는 영역 -->
+						<div class="review_management_container">
+							<div class="review_no_comment_container">
+								<p class="review_no_comment_p">답변하지 않은 고객 리뷰</p>
+								<table class="review_no_comment_table">
+									<tr class="review_comment_table_head">
+										<th class="review_comment_table_cell">구분</th>
+										<th class="review_comment_table_cell">이용일자</th>
+										<th class="review_comment_table_cell">평점</th>
+										<th class="review_comment_table_cell">서비스 만족도</th>
+										<th class="review_comment_table_cell">공간</th>
+										<th class="review_comment_table_cell">청결도</th>
+										<th class="review_comment_table_cell">재방문 의사</th>
+										<th class="review_comment_table_cell">답변 등록</th>
+									</tr>
+									
+<!-- 									<tr class="review_comment_table_row">
+										<td class="review_comment_table_cell">케어</td>
+										<td class="review_comment_table_cell">2023-05-24</td>
+										<td class="review_comment_table_cell">4</td>
+										<td class="review_comment_table_cell">친절해요</td>
+										<td class="review_comment_table_cell">넓어요</td>
+										<td class="review_comment_table_cell">쾌적해요</td>
+										<td class="review_comment_table_cell">무조건이죠</td>
+										<td class="review_comment_table_cell"><button type="submit">답변 등록</button></td>
+									</tr> -->
+								</table>
+							
+							</div>
+							<br><br>
+							<div class="review_commented_container">
+								<p class="review_commented_p">답변한 고객 리뷰</p>
+								<table class="review_commented_table">
+									<tr class="review_comment_table_head">
+										<th class="review_comment_table_cell">구분</th>
+										<th class="review_comment_table_cell">이용일자</th>
+										<th class="review_comment_table_cell">평점</th>
+										<th class="review_comment_table_cell">서비스 만족도</th>
+										<th class="review_comment_table_cell">공간</th>
+										<th class="review_comment_table_cell">청결도</th>
+										<th class="review_comment_table_cell">재방문 의사</th>
+										<th class="review_comment_table_cell">답변 보기</th>
+									</tr>
+									
+<!-- 									<tr class="review_comment_table_row">
+										<td class="review_comment_table_cell">케어</td>
+										<td class="review_comment_table_cell">2023-05-24</td>
+										<td class="review_comment_table_cell">4</td>
+										<td class="review_comment_table_cell">친절해요</td>
+										<td class="review_comment_table_cell">넓어요</td>
+										<td class="review_comment_table_cell">쾌적해요</td>
+										<td class="review_comment_table_cell">무조건이죠</td>
+										<td class="review_comment_table_cell"><button type="submit">답변 등록</button></td>
+									</tr> -->
+								</table>
+								
+							</div>
+						
+						</div>
 					</div>
 				</div>
 			</div>

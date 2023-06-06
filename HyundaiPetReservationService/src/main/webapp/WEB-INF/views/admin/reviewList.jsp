@@ -29,13 +29,13 @@
 				<jsp:include page="../mainform/side.jsp" />
 				<div class="main_info">
 					<div class="admin_main">
-						<div class="admin_title">
+<!-- 						<div class="admin_title">
 							<h1>관리화면</h1>
 							<h2>ADMIN HYUNDAI</h2>
 						</div>
 						<div class="admin_menu_bar">
 							<h3>메뉴바</h3>
-						</div>
+						</div> -->
 						<br>
 						<div class="review_no_comment">
 							<div class="cnt"><h3>답변하지 않은 고객 리뷰 총 ${cnt} 건</h3></div>

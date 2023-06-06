@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.hyundai.thepet.admin.review.service.AdminReviewService;
 import com.hyundai.thepet.admin.review.vo.AdminReviewVO;
 import com.hyundai.thepet.admin.review.vo.UserReviewVO;
+import com.hyundai.thepet.member.vo.MemberVO;
 
 @Controller
+// @SessionAttributes(value = { "member" })
 public class AdminReviewController {
 	
 	@Autowired
@@ -21,29 +26,23 @@ public class AdminReviewController {
 	
 	
 	@GetMapping(value="admin/review")
-	public String reviewList(AdminReviewVO reviewVO, Model model) {
-		List<AdminReviewVO> reviewNoComment = service.selectReviewNoComment();
-		List<AdminReviewVO> reviewCommented = service.selectReviewCommented();
+	@ResponseBody
+	public List<AdminReviewVO> reviewList(AdminReviewVO reviewVO, Model model) { // , @SessionAttribute(value="member") MemberVO member
+		// String adminAddress = member.getAdminAddress(); // 들어온다고 생각하고...! 합치고 나서 리테스트
+		// System.out.println("adminAddress: " + adminAddress);
 		
-		System.out.println(reviewNoComment);
+		System.out.println(reviewVO);
+		String adminAddress = "더현대 서울"; // 테스트용
 		
-		model.addAttribute("ReviewNoComment", reviewNoComment);
-		model.addAttribute("ReviewCommented", reviewCommented);
+		List<AdminReviewVO> review = service.selectReview(adminAddress);
+		System.out.println(review);
 		
-		int cnt = service.countNoComment();
-		int cnt2 = service.countCommented();
-		
-		model.addAttribute("cnt", cnt);
-		model.addAttribute("cnt2", cnt2);
-		
-		System.out.println("cnt1: " +cnt + ", cnt2: " + cnt2);
-		return "admin/reviewList";
+		return review;
 	}
 	
 	
 	
 	@PostMapping(value="admin/review/update")
-	@ResponseBody
 	public void updateReview(int reviewId, String adminContents, Model model) { // 
 		
 		System.out.println("reviewId: " + reviewId + ", adminContents: " + adminContents);
