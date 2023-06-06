@@ -3,8 +3,6 @@
 	height: 900px;
 	
 	display : flex;
-	
-	border: 1px solid rebeccapurple;
 }
 .reservation_input {
 	width : 490px;
@@ -12,14 +10,16 @@
 	display: flex;
 	flex-direction : column;
 	align-items : center;
+	
+	border : 1px solid #B7B7B7;
 	/* justify-content: center; */
-	border : 1px solid skyblue;
 }
 
 .select_datetime_container {
 	width : 490px;
 	height: 900px;
-	border: 1px solid red;
+	
+	border : 1px solid #B7B7B7;
 }
 
 .reservation_info_container {
@@ -29,5 +29,6 @@
 	flex-direction : column;
 	justify-content : center;
 	align-items : center;
-	border: 1px solid blue;
+	
+	border : 1px solid #B7B7B7;
 }

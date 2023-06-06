@@ -84,6 +84,7 @@ function deleteDogInfo() {
 		},
 		error : function (request, status, error) {
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            alert('해당 강아지의 예약이 존재합니다.');
         }
 	})
 }

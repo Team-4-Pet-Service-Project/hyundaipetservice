@@ -2,6 +2,9 @@ $(function () {
 	$('.menu_detail_box').hide();
 	$('.menu_detail_sub_category').hide();
 	$('.pet_menu').hover(petMenuhoverEvent);
+	$('.logo').on('click', function() {
+		window.location.href = '/thepet/main';
+	})
 })
 
 const menuTrigger = document.querySelector('.menu-trigger');

@@ -49,6 +49,11 @@ public class DogController {
 		log.debug(dogId);
 		int result = dogService.deleteDogInfo(dogId);
 		
-		return new ResponseEntity<> (result, HttpStatus.ACCEPTED);
+		if (result == 0) {
+			return new ResponseEntity<> (result, HttpStatus.CONFLICT);
+		}
+		else {			
+			return new ResponseEntity<> (result, HttpStatus.ACCEPTED);
+		}
 	}
 }

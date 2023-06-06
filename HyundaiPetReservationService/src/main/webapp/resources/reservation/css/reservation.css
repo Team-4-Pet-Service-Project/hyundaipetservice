@@ -10,7 +10,7 @@
 	display:flex;
 	width : 1600px;
 	height : 900px;
-	border : 1px solid green;
+	border : 1px solid #B7B7B7;
 }
 
 .reservation_category {
@@ -19,7 +19,6 @@
 	width : 130px;
 	height: 900px;
 	
-	border : 1px solid purple;
 }
 
 .category_box {
