@@ -39,4 +39,20 @@ public class DogServiceImpl implements DogService{
 	public List<DogVO> getAllDogs(int loginId) {
 		return dogDao.selectAllDogs(loginId);
 	}
+	
+	@Override
+	public int deleteDogInfo(String dogId) {
+		TransactionStatus txStatus = transactionManager.getTransaction(new DefaultTransactionDefinition());
+		int result = 0;
+		
+		try {
+			result = dogDao.deleteDog(dogId);
+			transactionManager.commit(txStatus);
+		} catch (Exception e) {
+			transactionManager.rollback(txStatus);
+			result = 0;
+			e.printStackTrace();
+		}
+		return result;		
+	}
 }

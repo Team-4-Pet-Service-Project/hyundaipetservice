@@ -11,4 +11,8 @@
  	<insert id="insertDog" parameterType="Dog">
  		INSERT INTO dogs (name, age, breed, dog_size, special_note, member_id) values(#{name}, #{age}, #{breed}, #{dogSize}, #{specialNote}, #{memberId})
  	</insert>
+ 	
+ 	<delete id="deleteDog" parameterType="String">
+ 		DELETE FROM dogs where id = #{dogId}
+ 	</delete>
  </mapper>

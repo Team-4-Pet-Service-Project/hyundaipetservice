@@ -43,6 +43,19 @@ public class CalenderDAOImpl implements CalenderDAO{
 	}
 	
 	@Override
+	public List<Integer> selectRemainCount(String category, String startDate, String endDate) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		map.put("category", category);
+		map.put("startDate", startDate);
+		map.put("endDate", endDate);
+		
+		String statement = "calender.selectRemainCount";
+		
+		return session.selectList(statement, map);
+	}
+	
+	@Override
 	public LocationInfoVO selectLocationInfo(String branchOffice, String facilities) {
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -91,9 +104,7 @@ public class CalenderDAOImpl implements CalenderDAO{
 		for (int i = 0; i < list.size(); i++) {
 			map.put("reservationId", Integer.toString(list.get(i).getReservationId()));
 			result = session.update(statement, map);
-		}
-		
-		
+		}	
 		return result;
 	}
 }

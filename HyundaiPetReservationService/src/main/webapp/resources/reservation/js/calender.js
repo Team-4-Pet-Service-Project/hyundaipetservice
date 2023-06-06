@@ -3,13 +3,30 @@ $(function () {
 	
 	sessionStorage.setItem("reservationRemain", JSON.stringify({}));
 	$('.radio-input').on('click', curMonth);
+	$('.radio-input').on('click', showCalender);
 	$('.add_button_box').hide();
 	$('.result_button_box').hide();
+	
+	$('.left').on('click', prevMonth);
+	$('.right').on('click', nextMonth);
 });
+
+function showCalender() {
+	$('.calender_container').show();
+	
+	const date = new Date();
+	
+	const viewYear = date.getFullYear();
+    const viewMonth = date.getMonth();
+    const viewDate = date.getDate();
+    
+    $(".ym").text(`${viewYear}.${viewMonth+1}`);
+    $(".left").removeClass('active_arrow').addClass('disable_arrow');
+}
 
 function curMonth() {
 	
-	$('.calender_container').show();
+	/*$('.calender_container').show();*/
 	
 	$('.main_date').empty();
 	const date = new Date();
@@ -44,17 +61,15 @@ function curMonth() {
     
     $.ajax({
     	type:'POST',
-		url: "/thepet/calender/oneMonth",
+		url: "/thepet/calender/remainCount",
 		data : oneDate,
 		dataType:'json',
 		success : function(data) {
-			const n = data.length / 5;
+			
+			let classList = [`date sun`, `date`, `date`, `date`, `date`, `date`, `date sat`];
+			
 			let existDetail = [];
-			
-			for (let i = 0; i < n; i++) {
-				existDetail.push(data.slice(i*5, (i+1) * 5))
-			}
-			
+		
 			$(".ym").text(`${viewYear}.${viewMonth+1}`);
 		    $(".left").removeClass('active_arrow').addClass('disable_arrow');
 		    
@@ -70,25 +85,18 @@ function curMonth() {
 		    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
 
 		    const result = [...emptyDate, ...thisDates];
-		    existDetail = [...emptyDate, ...prevDate, ...existDetail];
+		    existDetail = [...emptyDate, ...prevDate, ...data];
+		    
 		    
 		    for (let i = 0; i < result.length; i++) {
-		        const date = result[i];
-		        let classDateName = "";
-		        let flag = true;
-		        
-		        let total = 0
-		        if (existDetail[i] !== undefined) {		        	
-		        	for (let j = 0; j < 5; j++) {
-		        		total += existDetail[i][j].remainCount;
-		        	}
-		        	if (total === 0) {
-		        		classDateName = "no_reservation";
-		        	}
-		        }
-		        
-		        
-		        if (date < viewDate) {
+		    	const date = result[i];
+		    	let classDateName = "";
+		    	
+		    	if (existDetail[i] !== undefined && existDetail[i] === 0) {
+		    		classDateName = "no_reservation";
+		    	}
+		    	
+		    	if (date < viewDate) {
 		            classDateName = "prev_date";
 		        }
 		        else if(classDateName !== 'no_reservation' && date >= viewDate) {
@@ -97,19 +105,11 @@ function curMonth() {
 		        
 		        let newDate = $("<div></div>").text(date)
 		        
-		        if (classDateName === 'cur_date' || classDateName === 'no_reservation') {
+		        if (classDateName !== 'prev_date') {
 		        	newDate.on('click', dateClickEvent);
 		        }
 		        
-		        if (i % 7 === 0) {
-		            $(".main_date").append(newDate.addClass(`${classDateName} date sun`));
-		        }
-		        else if (i % 7 === 6) {
-		            $(".main_date").append(newDate.addClass(`${classDateName} date sat`));
-		        }
-		        else {
-		            $(".main_date").append(newDate.addClass(`${classDateName} date`));
-		        }
+		        $(".main_date").append(newDate.addClass(`${classDateName} ${classList[i%7]}`));  	
 		    }
 		},
 		error : function() {
@@ -160,17 +160,14 @@ function nextMonth() {
     
     $.ajax({
     	type:'POST',
-		url: "/thepet/calender/oneMonth",
+		url: "/thepet/calender/remainCount",
 		data : oneDate,
 		dataType:'json',
 		success : function(data) {
+			let classList = [`date sun`, `date`, `date`, `date`, `date`, `date`, `date sat`];
 			$('.main_date').empty();
-			const n = data.length / 5;
-			let existDetail = [];
 			
-			for (let i = 0; i < n; i++) {
-				existDetail.push(data.slice(i*5, (i+1) * 5))
-			}
+			let existDetail = [];
 			
 			$(".ym").text(`${nextYear}.${nextMonth}`);
 		    
@@ -190,39 +187,24 @@ function nextMonth() {
 		    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
 
 		    const result = [...emptyDate, ...thisDates];
-		    existDetail = [...emptyDate, ...existDetail];
-
+		    existDetail = [...emptyDate, ...data];
+		    
 		    for (let i = 0; i < result.length; i++) {
-		        const date = result[i];
-		        let classDateName = "";
-		        
-		        let total = 0
-		        if (existDetail[i] !== undefined) {		        	
-		        	for (let j = 0; j < 5; j++) {
-		        		total += existDetail[i][j].remainCount;
-		        	}
-		        	if (total === 0) {
-		        		classDateName = "no_reservation";
-		        	}
-		        	else {
-		        		classDateName = "cur_date";
-		        	}
-		        }
-		        
-		        let newDate = $("<div></div>").text(date);
+		    	const date = result[i];
+		    	let classDateName = "";
+		    	
+		    	if (existDetail[i] === 0) {
+		    		classDateName = "no_reservation";
+		    	}
+		    	else {
+		    		classDateName = "cur_date";
+		    	}
+		    	  
+		        let newDate = $("<div></div>").text(date)
 		        newDate.on('click', dateClickEvent);
 		        
-		        if (i % 7 === 0) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sun`));
-		        }
-		        else if (i % 7 === 6) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sat`));
-		        }
-		        else {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date`));
-		        }
+		        $(".main_date").append(newDate.addClass(`${classDateName} ${classList[i%7]}`));  	
 		    }
-		    
 		},
 		error : function() {
 			
@@ -288,16 +270,13 @@ function prevMonth() {
     
     $.ajax({
     	type:'POST',
-		url: "/thepet/calender/oneMonth",
+		url: "/thepet/calender/remainCount",
 		data : oneDate,
 		dataType:'json',
 		success : function(data) {
-			const n = data.length / 5;
+			let classList = [`date sun`, `date`, `date`, `date`, `date`, `date`, `date sat`];
 			let existDetail = [];
 			
-			for (let i = 0; i < n; i++) {
-				existDetail.push(data.slice(i*5, (i+1) * 5))
-			}
 			$('.main_date').empty();
 		    $(".ym").text(`${prevYear}.${prevMonth}`);
 		    
@@ -314,30 +293,22 @@ function prevMonth() {
 		    if (new Date().getMonth()+1 === prevMonth) {
 		    	$(".left").removeClass('active_arrow').addClass('disable_arrow');
 		    	const prevDate = new Array(viewDate-1);
-		    	existDetail = [...emptyDate, ...prevDate, ...existDetail];
+		    	existDetail = [...emptyDate, ...prevDate, ...data];
 		    }
 		    else {
-		    	existDetail = [...emptyDate, ...existDetail];
+		    	existDetail = [...emptyDate, ...data];
 		    }
 		    
 		    const thisDates = [...Array(TLDate + 1).keys()].slice(1);
 
 		    const result = [...emptyDate, ...thisDates];
 		    
-		    
 		    for (let i = 0; i < result.length; i++) {
 		        const date = result[i];
 		        let classDateName = "";
-		        let flag = true;
 		        
-		        let total = 0
-		        if (existDetail[i] !== undefined) {		        	
-		        	for (let j = 0; j < 5; j++) {
-		        		total += existDetail[i][j].remainCount;
-		        	}
-		        	if (total === 0) {
-		        		classDateName = "no_reservation";
-		        	}
+		        if (existDetail[i] !== undefined && existDetail[i] === 0) {
+		        	classDateName = "no_reservation";
 		        }
 		        
 		        if (viewYear === prevYear && prevMonth === viewMonth+1) {
@@ -354,21 +325,11 @@ function prevMonth() {
 		        
 		        let newDate = $("<div></div>").text(date)
 		        
-		        if (classDateName === 'cur_date' || classDateName === 'no_reservation') {
+		        if (classDateName !== 'prev_date') {
 		        	newDate.on('click', dateClickEvent);
 		        }
 		        
-		        
-		        
-		        if (i % 7 === 0) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sun`));
-		        }
-		        else if (i % 7 === 6) {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date sat`));
-		        }
-		        else {
-		            $('.main_date').append(newDate.addClass(`${classDateName} date`));
-		        }
+		        $(".main_date").append(newDate.addClass(`${classDateName} ${classList[i%7]}`)); 
 		    }
 		},
 		error : function() {
@@ -487,7 +448,6 @@ function addReservation() {
 	}
 	else if (category === "미용") {
 		addPersonnel = "";
-		console.log($('.add_option_radio_input'));
 		$('.add_option_radio_input:checked').each(function (){
 			beautyServiceList.push($(this).val());
 		});
@@ -504,8 +464,6 @@ function addReservation() {
 		}
 		
 	}
-	
-	console.log(addPersonnel, addService, beautyServiceList);
 	
 	if (sessionStorage.getItem("member") === null) {
 		$.ajax({

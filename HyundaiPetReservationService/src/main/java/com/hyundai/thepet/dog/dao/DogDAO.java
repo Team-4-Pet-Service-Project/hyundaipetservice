@@ -6,5 +6,6 @@ import com.hyundai.thepet.dog.vo.DogVO;
 
 public interface DogDAO {
 	int inserDog(DogVO vo);
-	List<DogVO> selectAllDogs(int loginId);
+	List<DogVO> selectAllDogs(int loginId);	
+	int deleteDog(String dogId);
 }
