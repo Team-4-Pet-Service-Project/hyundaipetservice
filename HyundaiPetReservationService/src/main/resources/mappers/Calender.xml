@@ -25,10 +25,15 @@
  	</select>
  	
  	<insert id="insertReservation" parameterType="ReservationResult">
- 		INSERT INTO reservations (reservation_date, reservation_start_time, reservation_end_time, price, customer_count, member_id, dog_id, location_id) VALUES
- 		(#{reservationDate}, #{reservationStartTime}, #{reservationEndTime}, #{price}, #{customerCount}, #{memberId}, #{dogId}, #{locationId})
+
+ 		INSERT INTO reservations (id, reservation_date, reservation_start_time, reservation_end_time, price, customer_count, member_id, dog_id, location_id) VALUES
+ 		(RESERVATIONS_ID_SEQ.NEXTVAL, #{reservationDate}, #{reservationStartTime}, #{reservationEndTime}, #{price}, #{customerCount}, #{memberId}, #{dogId}, #{locationId})
+ 		
+ 		 <selectKey keyProperty="reservationId" resultType="Integer" order="AFTER">
+ 			SELECT RESERVATIONS_ID_SEQ.CURRVAL FROM DUAL
+ 		</selectKey>
  	</insert>
- 	
+
  	<update id="updateReservation" parameterType="hashmap">
  		UPDATE ${category}
  		SET
