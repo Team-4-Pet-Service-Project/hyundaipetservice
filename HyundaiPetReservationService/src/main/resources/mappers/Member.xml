@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="login" resultType="Member">
-		SELECT email, password, admin, admin_address, name, id
+		SELECT *
 		FROM
 		MEMBERS WHERE email = #{email}
 	</select>
