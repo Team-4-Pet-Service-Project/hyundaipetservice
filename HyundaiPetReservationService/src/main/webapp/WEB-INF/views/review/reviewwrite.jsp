@@ -120,14 +120,13 @@
                     </div>
                     <div class="four">
                     	<div class="four_1">이미지</div>
-                    	<div class="four_2"><input type="file" id="uploadFile" name="uploadFile"></div>
-                    	<div id="uploadResult">
-                    		<!-- <div id="result_card">
-								<div class="imgDeleteBtn">x</div>
-
-							</div> -->
-						</div>
+                    	<div class="four_2">
+                    		<input type="file" id="uploadFile" name="uploadFile">
+                    		<div id="uploadResult"></div>
+                    	</div>
+                    	
                     </div>
+                    
                     <div class="five">
                     	<div>이용시설</div>
                     	<div class="five_1">${Reserv.dogFacilities}</div>

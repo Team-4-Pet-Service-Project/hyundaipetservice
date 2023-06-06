@@ -48,11 +48,6 @@ function updateList(response,location,facilities){
     var pageMaker = response.pageMaker;
     for (var i = 0; i < reviewList.length; i++) {
     	var review = reviewList[i];
-    	var reviewDate = new Date(review.createdTime);
-        var year = reviewDate.getFullYear();
-        var month = reviewDate.getMonth() + 1;
-        var day = reviewDate.getDate();
-        var formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
     	
     	var list1 = $('<div></div>').addClass('list1').css({
     	});
@@ -74,7 +69,7 @@ function updateList(response,location,facilities){
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '4'));
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '5'));
     	
-    	var date = $('<div>작성날짜 : ' + formattedDate+ '</div>').addClass('date').css({
+    	var date = $('<div>작성날짜 : ' + review.createdTime + '</div>').addClass('date').css({
 			
 		});
     	var review_2 = $('<div></div>').addClass('review_2').css({

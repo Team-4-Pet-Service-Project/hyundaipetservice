@@ -71,6 +71,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 	public ReviewWriteVO reviewDetail(ReviewWriteVO reviewWriteVO) {
 		String statement = "review.detail";
 		ReviewWriteVO vo = session.selectOne(statement, reviewWriteVO);
+		log.debug("reviewWrite : 결과값" + vo);
 		return vo;
 	}
 	
@@ -122,34 +123,28 @@ public class ReviewDAOImpl implements ReviewDAO{
 	}
 	
 	
-	//리뷰 전체리스트 출력하는 곳
-	@Override
-	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO) {
-		String statement = "review.totallist";
-		List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
-		return vo;
-	}
-	
-	//서울(미용, 스파)
-	@Override
-	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO) {
-		String statement = "review.totallistAll";
-		List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
-		return vo;
-	}
-	
-	//대구(미용, 스파)
-	@Override
-	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO) {
-		String statement = "review.totallistAll1";
-		List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
-		return vo;
-	}
-	
 	//페이징
 	@Override
 	public List<ReviewTotalListVO> reviewTotalList1(@Param("criteria") Criteria cri, @Param("reviewTotalListVO") ReviewTotalListVO reviewTotalListVO) {
 		String statement = "review.reviewTotalList1";
+		ReviewListWrapper wrapper = new ReviewListWrapper(cri,reviewTotalListVO);
+		List<ReviewTotalListVO> vo =  session.selectList(statement,wrapper);
+		log.debug(vo);
+		return vo;
+	}
+	
+	@Override
+	public List<ReviewTotalListVO> reviewTotalListSeoul(Criteria cri, ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.reviewTotalListSeoul";
+		ReviewListWrapper wrapper = new ReviewListWrapper(cri,reviewTotalListVO);
+		List<ReviewTotalListVO> vo =  session.selectList(statement,wrapper);
+		log.debug(vo);
+		return vo;
+	}
+
+	@Override
+	public List<ReviewTotalListVO> reviewTotalList1Daegu(Criteria cri, ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.reviewTotalListDaegu";
 		ReviewListWrapper wrapper = new ReviewListWrapper(cri,reviewTotalListVO);
 		List<ReviewTotalListVO> vo =  session.selectList(statement,wrapper);
 		log.debug(vo);
@@ -162,10 +157,5 @@ public class ReviewDAOImpl implements ReviewDAO{
 		int cnt = session.selectOne(statement,reviewTotalListVO);
 		return cnt;
 	}
-
-	
-
-	
-
 	
 }

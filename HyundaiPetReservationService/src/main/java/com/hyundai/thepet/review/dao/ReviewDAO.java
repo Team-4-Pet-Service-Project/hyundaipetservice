@@ -38,13 +38,12 @@ public interface ReviewDAO {
 
 	public String namePrint(ReviewWriteVO reviewWriteVO);
 
-	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO);
-
-	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO);
-
-	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO);
 
 	public List<ReviewTotalListVO> reviewTotalList1(Criteria cri, ReviewTotalListVO reviewTotalListVO);
 
 	public int getTotal(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalListSeoul(Criteria cri, ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalList1Daegu(Criteria cri, ReviewTotalListVO reviewTotalListVO);
 }

@@ -42,7 +42,6 @@
 	display: flex;
 	flex-direction: row;
 	font-size: 20px;
-	
 }
 
 .review_1 .name{
@@ -53,11 +52,11 @@
 .rating{
 	display: flex;
 	flex-direction: row;
-	margin-right:200px;
+	margin-right:130px;
 }
 
 .star-group{
-	margin-right: 200px;
+	margin-right: 225px;
 	margin-left: 10px;
 }
 
