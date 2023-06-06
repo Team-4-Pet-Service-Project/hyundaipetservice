@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="/thepet/resources/review/css/reviewtotallist1.css">
-<title>Insert title here</title>
+<title>The Hyundai : 전체 리뷰</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script src="/thepet/resources/review/js/reviewtotallist1.js"></script>
@@ -89,7 +89,7 @@
 				    						<i class="far fa-star" data-rate="5"></i>
 			  							</div>
 			  						</div>
-			  						<div class="">작성날짜 : ${review.createdTime}</div>
+			  						<div class="date">작성날짜 : ${review.createdTime}</div>
 		                 		</div>
 		                 		<div class = "review_2">
 		                 			<div class = "image">
@@ -110,7 +110,7 @@
 		                 		<div class="admin_1">관리자 답글</div>
 		                 			<c:choose>
 			                 			<c:when test="${review.adminContents eq null}">
-			                 				<div class="admin_2">관리자가 댓글 안달았습니다.</div>
+			                 				<div class="admin_2">관리자 답변이 존재하지 않습니다.</div>
 			                 			</c:when>
 			                 			<c:otherwise>
 			                 				<div class="admin_2">${review.adminContents}</div>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
 <link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="/thepet/resources/reservationdetail/css/reservationdetail.css">
-<title>Insert title here</title>
+<title>The Hyundai : 예약 상세</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  

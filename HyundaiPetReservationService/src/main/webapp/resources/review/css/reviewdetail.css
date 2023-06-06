@@ -23,7 +23,7 @@
 }
 
 .first_1, .first_3, .rating{
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .first_1{
@@ -54,12 +54,12 @@
 	text-align: center;
 }
 .service .service_1{
-	font-size : 20px;
+	font-size : 15px;
 	margin-bottom: 20px;
 }
 
 .service .service_2{
-	font-size : 13px;
+	font-size : 15px;
 	border: 2px solid #E0E0E0;
 	background-color: #242424;
 	border-radius: 20px;
@@ -75,12 +75,12 @@
 }
 
 .space .space_1{
-	font-size : 20px;
+	font-size : 15px;
 	margin-bottom: 20px;
 }
 
 .space .space_2{
-	font-size : 13px;
+	font-size : 15px;
 	border: 2px solid #E0E0E0;
 	background-color: #242424;
 	border-radius: 20px;
@@ -96,12 +96,12 @@
 }
 
 .environment .environment_1{
-	font-size : 20px;
+	font-size : 15px;
 	margin-bottom: 20px;
 }
 
 .environment .environment_2{
-	font-size : 13px;
+	font-size : 15px;
 	border: 2px solid #E0E0E0;
 	background-color: #242424;
 	border-radius: 20px;
@@ -117,12 +117,12 @@
 }
 
 .revisit .revisit_1{
-	font-size : 20px;
+	font-size : 15px;
 	margin-bottom: 20px;
 }
 
 .revisit .revisit_2{
-	font-size : 13px;
+	font-size : 15px;
 	border: 2px solid #E0E0E0;
 	background-color: #242424;
 	border-radius: 20px;
@@ -156,10 +156,10 @@
 	width : 670px;
 	justify-content: flex-start;
 	display: flex;
-	font-size: 20px;
+	font-size: 15px;
 	padding-left: 15px;
 	padding-top : 10px;
-	background-color: #E0E0E0;
+	background-color: #F6F6F6;
 }
 
 .line1{
@@ -190,7 +190,7 @@
 
 
 .font-bold{
-	font-size: 24px;
+	font-size: 15px;
 	font-weight: bold;
 	color: #000000;
 	margin-top: 10px;
@@ -203,7 +203,7 @@
 	align-items: center;
 	justify-content: flex-start;
 	display: flex;
-	font-size: 20px;
+	font-size: 15px;
 	margin-top: 10px;
 	margin-left: 50px;
 	padding: 10px;

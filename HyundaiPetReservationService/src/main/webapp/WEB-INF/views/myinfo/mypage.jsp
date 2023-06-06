@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
 <link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="/thepet/resources/mypage/css/mypage.css">
-<title>Insert title here</title>
+<title>The Hyundai : 예약확인</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script src="/thepet/resources/mypage/js/mypage.js"></script>
@@ -30,14 +30,13 @@
                     <!-- 여기다가 구현 -->
                     
                     <span>예약확인</span><br><br>
-                    
                     <div class="button-container">
         				<button id="buttonA" name="buttonA">예약목록</button>
         				<button id="buttonB" name="buttonB">지난예약</button>
         				<div class="side"></div>
     				</div><br><br>
     				<div>
-    				
+    				<input type="hidden" id ="loginId" name="id" value="${member.id}">
     				</div>
  					<div class = "cntt">총 ${cnt}건</div>
                  	<!--테이블-->

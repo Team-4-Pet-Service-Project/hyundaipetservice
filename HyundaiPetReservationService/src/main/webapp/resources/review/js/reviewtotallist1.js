@@ -49,8 +49,8 @@ function updateList(response,location,facilities){
     for (var i = 0; i < reviewList.length; i++) {
     	var review = reviewList[i];
     	
-    	var list1 = $('<div></div>').addClass('list1').css({
-    	});
+    	var list1 = $('<div></div>').addClass('list1');
+    	
     	list1.append($('<input>').attr('type', 'hidden').attr('name', 'id').val(review.id));
     	list1.append($('<input>').attr('type', 'hidden').attr('name', 'reservationId').val(review.reservationId));
     	//여기서 리뷰(class명 review)
@@ -69,16 +69,10 @@ function updateList(response,location,facilities){
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '4'));
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '5'));
     	
-    	var date = $('<div>작성날짜 : ' + review.createdTime + '</div>').addClass('date').css({
-			
-		});
-    	var review_2 = $('<div></div>').addClass('review_2').css({
-    		'margin-bottom' : '30px',
-    		'width' : '1000px'
-    	});
-    	var image = $('<div></div>').addClass('image').css({
-    		
-    	})
+    	var date = $('<div>작성날짜 : ' + review.createdTime + '</div>').addClass('date');
+		
+    	var review_2 = $('<div></div>').addClass('review_2');
+    	var image = $('<div></div>').addClass('image');
     	if (review.uuid === null) {
     	    var img2 = $('<img>').attr('src', '/thepet/resources/review/img/no.png');
     	    image.append(img2);
@@ -89,7 +83,6 @@ function updateList(response,location,facilities){
     	    image.append(img2);
     	}
     	var contents = $('<div>' + review.userContents+'</div>').addClass('contents').css({
-    		'border' : '1px solid black',
     		'width' : '700px'
     	});
     	
