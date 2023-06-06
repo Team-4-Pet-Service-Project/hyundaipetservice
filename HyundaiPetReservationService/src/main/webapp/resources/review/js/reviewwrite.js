@@ -90,7 +90,7 @@ $(document).ready(function() {
 		let str = "";
 		let fileCallPath = obj.uploadPath.replace(/\\/g, '/') + "/" + obj.fileName;
 		str += "<div id='result_card'>";
-		str += "<img src='/thepet/image/display?fileName=" + fileCallPath + "' style='width: 150px; height: auto;'>";
+		str += "<img src='/thepet/image/display?fileName=" + fileCallPath + "'style='width: 230px; height: 220px;'>";
 		str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>X</div>";
 		console.log(fileCallPath);
 		str += `<input type="hidden" name="filename" value="${obj.fileName}">`;

@@ -152,27 +152,6 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	
-	//전체리스트 보여주는 곳
-	@Override
-	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO) {
-		List<ReviewTotalListVO> vo = dao.reviewTotalList(reviewTotalListVO);
-		return vo;
-	}
-	
-	
-	
-	@Override
-	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO) {
-		List<ReviewTotalListVO> vo = dao.reviewTotalListAll(reviewTotalListVO);
-		return vo;
-	}
-
-	@Override
-	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO) {
-		List<ReviewTotalListVO> vo = dao.reviewTotalListAll1(reviewTotalListVO);
-		return vo;
-	}
-	
 	
 	//여기서 부터 페이징 구현하는 부분
 	@Override
@@ -182,13 +161,20 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
+	public List<ReviewTotalListVO> reviewTotalListSeoul(Criteria cri, ReviewTotalListVO reviewTotalListVO) {
+		List<ReviewTotalListVO> vo = dao.reviewTotalListSeoul(cri,reviewTotalListVO);
+		return vo;
+	}
+
+	@Override
+	public List<ReviewTotalListVO> reviewTotalList1Daegu(Criteria cri, ReviewTotalListVO reviewTotalListVO) {
+		List<ReviewTotalListVO> vo = dao.reviewTotalList1Daegu(cri,reviewTotalListVO);
+		return vo;
+	}
+
+	@Override
 	public int getTotal(ReviewTotalListVO reviewTotalListVO) {
 		return dao.getTotal(reviewTotalListVO);
 	}
-
-	
-
-	
-
 
 }

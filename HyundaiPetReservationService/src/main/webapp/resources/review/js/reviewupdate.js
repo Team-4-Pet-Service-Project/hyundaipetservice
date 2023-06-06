@@ -99,7 +99,7 @@ $(document).ready(function() {
 		let str = "";
 		let fileCallPath = obj.uploadPath.replace(/\\/g, '/') + "/" + obj.fileName;
 		str += "<div id='result_card'>";
-		str += "<img src='/thepet/image/display?fileName=" + fileCallPath + "' style='width: 130px; height: 130px;'>";
+		str += "<img src='/thepet/image/display?fileName=" + fileCallPath + "' style='width: 230px; height: 220px;'>";
 		str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>X</div>";
 		console.log(fileCallPath);
 		str += `<input type="hidden" name="filename" value="${obj.fileName}">`;
@@ -111,9 +111,21 @@ $(document).ready(function() {
 
 	/* 이미지 삭제 버튼 동작 */
 	$(document).ready(function(){
-		$("#uploadResult").on("click", ".imgDeleteBtn", function(e){
-			deleteFile();
-		});
+		$("body").on("click", "#uploadResult .imgDeleteBtn", function(e) {
+		    deleteFile();
+		  });
+		
+		$("body").on("click", "#result_card1 .imgDeleteBtn1", function(e) {
+		    $("#uploadResult").remove();
+		    let str = "";
+		    str += "<div class='four_2'>"
+		    str += "<input type='file' id='uploadFile' name='uploadFile'>";
+		    str += "<div id='uploadResult'></div>"; // 수정된 부분
+		    str += "</div>"
+		    $("#uuid").remove();
+		    $("#uploadpath").remove();
+		    $(".four_3").append(str);
+		  });
 	});
 	
 	/* 파일 삭제 메서드 */
@@ -142,18 +154,5 @@ $(document).ready(function() {
 		});
 	}
 
-//이미 이미지가 있는 경우 바꾸는 경우(수정)
-	$(document).ready(function(){
-		$("#result_card1").on("click", ".imgDeleteBtn1", function(e){
-			$("#result_card1").remove();
-			let str = "";
-			str += "<div class='four_2'>";
-			str += "<input type='file' id='uploadFile' name='uploadFile'>";
-			str += "</div>";
-			$("#uuid").remove();
-			$("#uploadpath").remove();
-			$("#uploadResult").append(str);
-		});
-	});
 
 

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ReviewWriteVO {
 	private int reservationId;
 	private float rate;
-	private Date createdTime;
+	private String createdTime;
 	private String serviceBt;
 	private String userContents;
 	private String cleanBt;

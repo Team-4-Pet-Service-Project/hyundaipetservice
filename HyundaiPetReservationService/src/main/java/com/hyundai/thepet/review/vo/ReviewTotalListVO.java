@@ -21,5 +21,5 @@ public class ReviewTotalListVO {
 	private String uuid;
 	private String uploadpath;
 	private String filename;
-	private Date createdTime;
+	private String createdTime;
 }
