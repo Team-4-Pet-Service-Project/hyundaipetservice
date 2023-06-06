@@ -1,0 +1,91 @@
+@charset "UTF-8";
+.active {
+			width : 53.4px;
+			height : 53.4px;
+			border-top : 2px solid black;
+			border-left : 2px solid black;
+			border-right : 2px solid black;	
+			border-bottom : none;
+			background-color: #FFFFFF;
+        }
+        
+		.button-container button.active {
+    		border-bottom: none; /* 활성화된 버튼의 선을 제거 */
+		}
+		
+		.main_info span,
+        .main_info .table-container {
+            margin-left: 30px;
+        }
+span{
+	font-size: 25px;
+}
+
+.cntt{
+	margin-left: 30px;
+}
+
+.button-container {
+	width:auto;
+	/* border : 1px solid red; */
+	display : flex;
+	margin-left: 30px;
+	position: relative;
+}
+
+
+
+#buttonA{
+    text-align: center;
+    height: 35px;
+    display: flex;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #FFFFFF;
+}
+
+#buttonB{
+	background-color: #FFFFFF;
+    text-align: center;
+    height: 35px;
+    display: flex;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    
+}
+
+.button-container .side{
+	border-bottom : 1px solid black;
+	width : 800px;
+}
+        
+/* 게시판 테이블 스타일 */
+.board-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.board-table th, .board-table td {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+.board-table th {
+	background-color: #F6F6F6;
+	text-align: center;
+}
+
+.board-table td {
+	text-align: center;
+}
+
+.board-table a {
+	color: #333;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="calender"> 	
+ 	<select id="calenderDetail" parameterType="hashmap" resultType="Calender">
+ 		SELECT * FROM ${category}
+ 		WHERE calender = #{date}
+ 	</select>
+ 	
+ 	<select id="selectOneMonth" parameterType="hashmap" resultType="Calender">
+ 		SELECT * FROM ${category}
+ 		WHERE calender BETWEEN #{startDate} and #{endDate}
+ 	</select>
+ 	
+ 	<select id="selectLocationInfo" parameterType="hashmap" resultType="LocationInfo">
+ 		SELECT * FROM locations
+ 		WHERE address LIKE '%' || #{branchOffice} || '%' and dog_facilities = #{facilities}
+ 	</select>
+ 	
+ 	<select id="selectPrice" parameterType="hashmap" resultType="int">
+ 		SELECT price from price_policies
+ 		WHERE dog_size = #{dogSize} and dog_facilities = #{dogFacilities}
+ 	</select>
+ 	
+ 	<insert id="insertReservation" parameterType="ReservationResult">
+ 		INSERT INTO reservations (reservation_date, reservation_start_time, reservation_end_time, price, customer_count, member_id, dog_id, location_id) VALUES
+ 		(#{reservationDate}, #{reservationStartTime}, #{reservationEndTime}, #{price}, #{customerCount}, #{memberId}, #{dogId}, #{locationId})
+ 	</insert>
+ 	
+ 	<update id="updateReservation" parameterType="hashmap">
+ 		UPDATE ${category}
+ 		SET
+ 		remain_count = remain_count - 1
+ 		WHERE id = #{reservationId}
+ 	</update>
+ </mapper>

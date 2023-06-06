@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace = "forSms">
+  
+  
+  	<select id="selectMemberInfo" parameterType="int" resultType="Member">
+  		SELECT * FROM members
+  		WHERE id = #{memberId}
+  	</select>
+  	
+  	<select id="selectLocationInfo" parameterType="int" resultType="Locations">
+  		SELECT * FROM locations
+  		WHERE id = #{locationId}
+  	</select>
+  	
+  	<select id="selectReservation" parameterType="int" resultType="Reservation">
+  		SELECT *
+  		FROM reservations
+  		WHERE id=#{reservationId}
+  	</select>
+  	
+  	<select id="findReservations" resultType="Reservation">
+		SELECT *
+		FROM reservations
+		WHERE TO_DATE(TO_CHAR(reservation_date, 'YYYY-MM-DD') || ' ' || reservation_start_time, 'YYYY-MM-DD HH24:MI')
+		= TRUNC(sysdate, 'MI') + INTERVAL '10' MINUTE
+    </select>
+  </mapper>

@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+		
+.main_info span,
+.main_info .table-container {
+            margin-left: 30px;
+     }
+span{
+	font-size:25px;
+}
+
+.cntt{
+	margin-left: 30px;
+}
+
+.button-container {
+	width:auto;
+	/* border : 1px solid red; */
+	display : flex;
+	margin-left: 30px;
+}
+
+.first{
+	display: flex;
+	flex-direction: row;
+	margin-left: 30px;
+}
+
+.first_1 {
+    border: 1px solid black;
+    border-bottom: none;
+    text-align: center;
+    height: 35px;
+    display: flex;
+    width: 90px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+
+.first_2{
+	border : 3px solid blue;
+	width:800px;
+	border-bottom: 1px solid black;
+	border-top : none;
+	border-left: none;
+	border-right: none;
+}
+
+
+        
+/* 게시판 테이블 스타일 */
+.board-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+.board-table th, .board-table td {
+	padding: 8px;
+	border: 1px solid #ddd;
+	
+}
+
+.board-table th {
+	text-align: center;
+	background-color: #F6F6F6;
+}
+
+.board-table td {
+	text-align: center;
+}
+
+.board-table a {
+	color: #333;
+}

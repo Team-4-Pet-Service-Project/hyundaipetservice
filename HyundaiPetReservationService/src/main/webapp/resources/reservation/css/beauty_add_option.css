@@ -1,0 +1,92 @@
+.add_option_container {
+	width : 450px;
+	height: 240px;
+
+	margin-top : 5%;
+}
+
+.add_option_h1 {
+	font-size : 30px;
+	font-weight: bold;
+}
+
+
+.add_option_radio_box {
+	width: 350px;
+	height: 100px;
+	
+	display : flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+
+.add_option_radio_input {
+	width : 25px;
+	height: 25px;
+}
+
+.radoi_button_box {
+	width: 100px;
+	height : 40px;
+	
+	display: flex;
+	align-items: center;
+
+}
+
+.add_option_radio_input:checked {
+  accent-color: #242424;
+}
+
+.add_option_radio_label {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.add_style_button_box {
+	width: 450px;
+	height: 60px;
+	
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.add_dog_style_button {
+	background-color: #FAFAFA;
+	border : 1px solid #B7B7B7;
+	width: 300px;
+	height: 40px;
+}
+
+/*///////////////////////////////////////////////////////*/
+.circle{
+  display: inline-block; /* 영역적용가능해짐 */
+  width: 20px; height: 20px;
+  border: 2px solid #333;
+  box-sizing: border-box;
+  border-radius: 10px; /* 모서리둥글게 처리 */
+  position: relative; top: 4px;
+  cursor: pointer; /* 마우스 올렸을때 손모양 처리 */
+}
+.circle:after{
+  content: '\2714'; /* 체크박스 특수문자 */
+  font-size: 24px; color: #333;
+  position: absolute; top: -10px; left: 0;
+
+  opacity: 0; /* 처음엔 안보이게 처리 */
+  transition: 0.2s; /* CSS변화에 시간차 처리 */
+}
+
+/* input이 체크되면 특수문자 보이게 처리 */
+#beauty:checked + .circle:after,
+#spar:checked + .circle:after{ 
+	opacity: 1; 
+}
+
+/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
+#beauty, #spar { 
+	position: absolute; left: -999em; 
+}

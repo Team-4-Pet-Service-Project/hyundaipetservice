@@ -1,0 +1,55 @@
+.reservation_container {
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	height : 1000px;
+	width: 1600px;
+}
+
+.reservation_form {
+	display:flex;
+	width : 1600px;
+	height : 900px;
+	border : 1px solid green;
+}
+
+.reservation_category {
+	display:flex;
+	flex-direction : column;
+	width : 130px;
+	height: 900px;
+	
+	border : 1px solid purple;
+}
+
+.category_box {
+	width: 130px;
+	height: 130px;
+	
+	border : 1px solid #B7B7B7;
+	
+	cursor: pointer;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.select_category {
+	background-color: #F6F6F6;
+}
+
+.non_select_category {
+	
+}
+
+.category_text {
+	font-size : 18px;
+	font-weight : 600;
+	
+	margin-top: 2%;
+}
+.disable-div {
+    pointer-events: none;
+}

@@ -1,0 +1,194 @@
+.calender_container {
+	width: 490px;
+	height: 450px;
+	
+	display: none;
+}
+
+.date_box {
+	width: 490px;
+}
+
+.calender {
+    /* border: 1px solid black; */
+    width: 385px;
+    height : 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.days{
+    /* border: 1px solid blue; */
+    width: 385px;
+    display: flex;
+    flex-direction: row;
+}
+
+.day {
+    /* border: 1px solid orange; */
+    width: 55px;
+    height: 55px;
+    font-weight: bold;
+    color:#666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.prev_date {
+    /* color:#666666; */
+    opacity: 0.5;
+}
+
+.no_reservation {
+	
+	color : forestgreen;
+}
+
+.cur_date {
+    color:black;
+}
+
+.date {
+    width: 55px;
+    height: 55px;
+    font-weight: bold;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    
+    cursor: pointer;
+}
+
+.date_header {
+    /* border: 1px solid black; */
+    width: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.arrow {
+    color:#ffffff;
+    border-radius: 50%;
+}
+
+.active_arrow {
+    background-color: #222222;
+    cursor: pointer;
+}
+
+.disable_arrow {
+    background-color: #808080;
+    pointer-events: none;
+}
+
+.ym {
+	font-size : 20px;
+    font-weight: bold;
+    margin : 0 5px 0 5px;
+}
+
+
+.main_date {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sun {
+    color:red;
+}
+
+.sat {
+    color:blue;
+}
+
+
+.calender_detail_container {
+	width : 490px;
+	height: 320px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+
+.calender_detail_content {
+	width: 450px;
+	height: 280px;
+	
+	border-top : 1px solid black;
+	border-bottom : 1px solid black;
+}
+
+.detail_table_h {
+	width: 450px;
+	height: 40px;
+	
+	background-color: #F6F6F6;
+}
+
+.detail_table_row {
+	width: 450px;
+	height: 40px;
+	
+	border-top : 1px solid #E0E0E0;
+	border-bottom : 1px solid black;
+}
+
+.detail_table_cell {
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+.radio_set {
+	width:15px;
+	height: 15px;
+}
+
+.add_button_box {
+	display: none;
+	width: 490px;
+	height: auto;
+	
+	display: flex;
+	justify-content: flex-end;
+	
+}
+
+.add_btn {
+	width:100px;
+	height: 40px;
+	margin-right: 20px;
+	
+	background-color : #FAFAFA;
+	border: 1px solid #B7B7B7;
+	color : #646464;
+	
+	font-size : 18px;
+	
+	cursor: pointer;
+}
+
+.checked_date {
+	border-radius:50%;
+	width : 53.4px;
+	height : 53.4px;
+	/* border : 1px solid black;
+	box-shadow: 2px 2px gray; */
+	background-color: #E0E0E0;
+}
+
+.reservation_disable {
+	color : red;
+}
+
+.reservation_able {
+	color : blue;
+}
+

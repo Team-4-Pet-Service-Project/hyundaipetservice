@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myAdmin">
+	<select id="selectReservationDetail" resultType="Admin">
+		SELECT
+		sum(price) as reservation_facilities_total_price,
+		count(price) as
+		reservation_facilities_total_num,
+		l.DOG_FACILITIES AS
+		reservation_dog_facilities
+		FROM reservations r
+		JOIN locations l
+		ON
+		r.location_id = l.id
+		WHERE reservation_date = #{reservationDate} AND l.address=#{address}
+		GROUP
+		BY l.DOG_FACILITIES
+	</select>
+
+	<select id="selectReservationLocation"
+		resultType="AdminReservation">
+	SELECT
+        count(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) THEN reservation_date ELSE NULL END) AS currentMonthReservationsCount,
+		sum(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) THEN price ELSE 0 END) AS currentMonthSales,
+		sum(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) THEN customer_count ELSE 0 END) AS currentMonthCustomerCount,
+		count(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) THEN dog_id ELSE NULL END) AS currentMonthDogCount,
+        count(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) -1 THEN reservation_date ELSE NULL END) AS lasttMonthCheck,
+		sum(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) - 1 THEN price ELSE 0 END) AS lastMonthSales,
+		sum(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) - 1 THEN customer_count ELSE 0 END) AS lastMonthCustomerCount,
+		count(CASE WHEN EXTRACT(MONTH FROM reservation_date) = EXTRACT(MONTH FROM SYSDATE) - 1 THEN dog_id ELSE NULL END) AS lastMonthReservationsCount
+		FROM reservations r JOIN locations l ON r.location_id = l.id
+		WHERE EXTRACT(YEAR FROM reservation_date) = EXTRACT(YEAR FROM SYSDATE) 
+		AND l.address = #{address}
+	</select>
+</mapper>
+

@@ -1,0 +1,314 @@
+@charset "UTF-8";
+
+.main_info {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	border-color: red;
+}
+
+.admin_container {
+	width: 800px;
+	/* 	border: 1px solid red;
+ */
+}
+
+.admin_title {
+	/* 	border: 2px solid green; */
+	width: 100%;
+	height: 70px;
+}
+
+.admin_menu_bar {
+	display: flex;
+	width: 100%;
+	height: 40px;
+	padding: 20px 0px 10px 0px;
+	/* 	border-bottom: 1.5px solid grey;
+ */ /* 	border: 2px solid blue;
+ */
+}
+
+.remain_menu_bar {
+	width: 100%;
+	height: 50.5px;
+	border-bottom: 1px solid black;
+}
+/* 메뉴 탭 부분 */
+.admin_tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	font-weight: bold;
+	width: 100px;
+	height: 50px;
+	cursor: pointer;
+}
+
+.select_form {
+	border-top: 1px solid #212121;
+	border-left: 1px solid #212121;
+	border-right: 1px solid #212121;
+}
+
+.non_select_form {
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-right: 1px solid #E0E0E0;
+	border-bottom: 1px solid #212121;
+}
+
+.information_summary_container {
+	display: flex;
+	flex-direction: column;
+	border-bottom: 2px solid #999999;
+}
+
+.location_container {
+	display: flex;
+	flex-direction: row;
+}
+
+.location_select {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.location_select_title {
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
+	padding: 5px 0px;
+}
+
+/* 드롭박스 */
+.myDropdown {
+	display: flex;
+	flex-direction: row;
+	width: 20%;
+	height: 20px;
+	margin: 10px 10px;
+}
+
+.information_summary {
+	width: 100%;
+	height: 100%;
+	margin: 10px 0px;
+}
+
+.information_summary_title {
+	padding: 5px 0px;
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+
+/* 예약 전체 관리 */
+/* 테이블 CSS 관리 */
+.td_class {
+	width: 30px;
+	padding:7px;
+}
+
+.this_month_reservation {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.information_data {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.reservation_table {
+	width: 100%;
+	border-top: 1px solid black;
+	margin: 3px;
+}
+
+.td_title{
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	font-weight: bold;
+	padding:7px;
+	width:40px;
+}
+
+
+
+/* 예약 상세 조회 */
+.total_check {
+	width: 100%;
+	height: 30%;
+	border-bottom: 1.5px solid grey;
+	border-top: 1.5px solid grey;
+}
+.total_check_column {
+	width: 35%;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	font-weight: bold;
+}
+.total_check td {
+	text-align: center;
+	vertical-align: middle;
+	border-color: 1px solid e0e0e0;
+}
+.total_price_row {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.total_reservation_row {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+/* 예약 상세 조회 CSS */
+.reservation_confirm_title {
+	margin-top: 10px;
+	padding: 10px 0px;
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+.reservation_confirm_contents {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+	height: 400px;
+}
+
+.reservation_confirm_check {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	height: 300px;
+	border: 2px solid grey;
+	width: 300px;
+}
+
+.reservation_confirm_check_title {
+	width: 100%;
+	height: 30px;
+	font-weight: bold;
+	font-size: 20px;
+	margin: 10px 10px 0px 10px;
+}
+
+.total_check_detail {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	width: 100%;
+	height: 50%;
+}
+
+.detail_td_title{
+	text-align: center;
+	vertical-align: middle;
+	background-color: #F6F6F6;
+	font-weight: bold;
+	width:35%;
+}
+
+.total_check_detail td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.total_check_detail_cell {
+	
+}
+
+
+.review_management_container {
+	width: 800px;
+}
+
+.review_no_comment_container {
+	width: 800px;
+	margin-top: 2%;
+}
+
+.review_no_comment_table {
+	width: 800px;
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	margin-top: 2%;
+}
+
+.review_comment_table_head {
+	background-color: #F6F6F6;
+	height: 45px;
+}
+
+
+
+.review_comment_table_row {
+	width: 800px;
+	height: 45px;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.review_comment_table_cell {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.review_commented_p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.review_no_comment_p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.review_commented_container {
+	width: 800px;
+}
+
+
+.review_commented_table {
+	width: 800px;
+	border-top: 1px solid #666666;
+	border-bottom: 1px solid #666666;
+	margin-top: 2%;
+}
+
+
+
+
+
+.review_comment_button {
+  background-color: #FAFAFA; /* 배경색 */
+  color: #666666; /* 텍스트 색상 */
+  padding: 5px 10px; /* 안쪽 여백 */
+  font-size: 14px; /* 폰트 크기 */
+  border: 1px solid #B7B7B7; /* 테두리 없음 */
+  border-radius: 1px; /* 테두리 반경 */
+  cursor: pointer; /* 커서 스타일 */
+}
+
+.review_comment_button:hover {
+  background-color: #F6F6F6; /* 마우스 오버 시 배경색 */
+}
+
+.review_comment_button:focus {
+  outline: none; /* 포커스 시 아웃라인 제거 */
+}
+
+

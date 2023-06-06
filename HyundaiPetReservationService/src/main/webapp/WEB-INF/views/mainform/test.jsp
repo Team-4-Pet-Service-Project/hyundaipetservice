@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
-<title>Insert title here</title>
+<link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 </head>
-<body>
+<body class="container_body">
 <div class="container">
 	<jsp:include page="./header.jsp">
-		<jsp:param value="석진" name="userName"/> 
+		<jsp:param value="석진" name="userName"/>
 	</jsp:include>
+	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">
@@ -21,6 +23,7 @@
             </div>		
 		</div>
 	</main>
+	<hr>
 	<jsp:include page="./footer.jsp"/>
 </div>
 </body>

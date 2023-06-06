@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace = "forAdminReview">
+	<select id="selectReview" parameterType="String" resultType="AdminReview">
+	<![CDATA[
+		SELECT res.member_id, res.reservation_date, rev.reservation_id, rev.id as review_id, loc.dog_facilities, rev.rate, rev.service_bt, rev.space_bt, rev.clean_bt, rev.revisit_bt, rev.admin_contents
+		FROM reviews rev
+				 JOIN reservations res ON rev.reservation_id = res.id
+				 JOIN locations loc ON res.location_id = loc.id
+		WHERE loc.address = #{adminAddress}
+		
+	]]>
+
+	</select>
+	
+<!-- 	<select id="selectReviewCommented" parameterType="String" resultType="AdminReview">
+	<![CDATA[
+		SELECT res.member_id, res.reservation_date, rev.reservation_id, rev.id as review_id, loc.dog_facilities, rev.rate, rev.service_bt, rev.space_bt, rev.clean_bt, rev.revisit_bt, rev.admin_contents
+		FROM reviews rev
+				 JOIN reservations res ON rev.reservation_id = res.id
+				 JOIN locations loc ON res.location_id = loc.id
+		WHERE rev.admin_contents IS NOT NULL and loc.address = #{adminAddress}
+	]]>
+	</select>
+
+	<select id="countNoComment" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*) AS result_count
+		FROM reviews rev
+				 JOIN reservations res ON rev.reservation_id = res.id
+				 JOIN locations loc ON res.location_id = loc.id
+		WHERE rev.admin_contents IS NULL
+	]]>
+	</select>
+
+	<select id="countCommented" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*) AS result_count
+		FROM reviews rev
+				 JOIN reservations res ON rev.reservation_id = res.id
+				 JOIN locations loc ON res.location_id = loc.id
+		WHERE rev.admin_contents IS NOT NULL
+		]]>
+	</select> -->
+	
+	<update id="updateAdminReview" parameterType="UserReview">
+	<![CDATA[
+		UPDATE reviews
+		SET admin_contents = #{adminContents}
+		WHERE id=#{id}
+	
+	]]>
+	</update>
+	
+	<delete id="deleteAdminReview" parameterType="int">
+	<![CDATA[
+		UPDATE reviews
+		SET admin_contents=null
+		WHERE id=#{reviewId}
+	
+	]]>
+	</delete>
+
+
+</mapper>
