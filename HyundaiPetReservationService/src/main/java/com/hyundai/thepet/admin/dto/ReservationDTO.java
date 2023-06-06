@@ -11,10 +11,8 @@ public class ReservationDTO {
 	private String reservationDate;
 	private String address;
 	
-	
 	private int totalNum;
 	private int totalPrice;
-	
 	
 	private int totalCareNum;
 	private int totalCarePrice;

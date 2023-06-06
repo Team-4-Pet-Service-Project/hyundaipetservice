@@ -15,7 +15,7 @@
 		JOIN locations l
 		ON
 		r.location_id = l.id
-		WHERE reservation_date = #{reservationDate}
+		WHERE reservation_date = #{reservationDate} AND l.address=#{address}
 		GROUP
 		BY l.DOG_FACILITIES
 	</select>

@@ -34,7 +34,7 @@ public class AdminController {
 	@ResponseBody
 	public ResponseEntity<ReservationDTO> adminReservationDetail(ReservationDTO reservation) throws Exception {
 
-		log.debug("controller 진입 : reservationDetail = " + reservation);
+		log.debug("controller 진입 : reservationDetail = " + reservation.getAddress());
 		ReservationDTO result = service.getReservationDetail(reservation);
 		try {
 			return new ResponseEntity<>(result, HttpStatus.ACCEPTED);

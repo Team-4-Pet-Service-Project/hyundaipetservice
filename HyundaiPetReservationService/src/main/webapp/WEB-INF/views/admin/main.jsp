@@ -54,8 +54,8 @@
 									<h2 class="location_select_title">지점 선택</h2>
 									<select class="myDropdown">
 										<option value="">선택하세요</option>
-										<option value="더현대 서울">서울 더 현대</option>
-										<option value="더현대 대구">대구 더 현대</option>
+										<option value="더현대 서울">더현대 서울 </option>
+										<option value="더현대 대구">더현대 대구</option>
 									</select>
 								</div>
 								<div class="information_summary">
@@ -63,36 +63,28 @@
 									<table class="reservation_table">
 										<tbody>
 											<tr>
-												<td class="today_reservation td_class">이번달 예약</td>
-												<td
-													class="reservation_table_this_month_check td_class information_data"></td>
-												<td class="today_sales td_class">지난달 예약</td>
-												<td
-													class="reservation_table_last_month_check td_class information_data"></td>
+												<td class="this_month_reservation td_title">이번달 예약</td>
+												<td class="this_month_reservation_data td_class information_data"></td>
+												<td class="last_month_reservation td_title">지난달 예약</td>
+												<td class="last_month_reservation_data td_class information_data"></td>
 											</tr>
 											<tr>
-												<td class="month_reservation">이번달 매출</td>
-												<td
-													class="reservation_table_this_month_sales information_data"></td>
-												<td class="month_sales">지난달 매출</td>
-												<td
-													class="reservation_table_cell_last_month_sales information_data"></td>
+												<td class="this_month_sales td_title">이번달 매출</td>
+												<td class="this_month_sales_data information_data"></td>
+												<td class="last_month_sales td_title">지난달 매출</td>
+												<td class="last_month_sales_data information_data"></td>
 											</tr>
 											<tr>
-												<td class="last_month_reservation">이번달 이용 고객 수</td>
-												<td
-													class="reservation_table_this_month_customer_num information_data"></td>
-												<td class="last_month_sales">지난달 이용 고객 수</td>
-												<td
-													class="reservation_table_last_month_customer_num information_data"></td>
+												<td class="this_month_customers td_title">이번달 이용 고객 수</td>
+												<td class="this_month_customers_data information_data"></td>
+												<td class="last_month_customers td_title">지난달 이용 고객 수</td>
+												<td class="last_month_customers_data information_data"></td>
 											</tr>
 											<tr>
-												<td class="last_month_reservation">이번달 이용 강아지 수</td>
-												<td
-													class="reservation_table_this_month_puppies information_data"></td>
-												<td class="last_month_sales">지난달 이용 강아지 수</td>
-												<td
-													class="reservation_table_last_month_puppies information_data"></td>
+												<td class="this_month_puppies td_title">이번달 이용 강아지 수</td>
+												<td class="this_month_puppies_data information_data"></td>
+												<td class="last_month_puppies td_title">지난달 이용 강아지 수</td>
+												<td class="last_month_puppies_data information_data"></td>
 											</tr>
 										</tbody>
 									</table>

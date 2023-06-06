@@ -82,28 +82,28 @@ $(function () {
             },  // AJAX 요청으로 보낼 데이터를 지정합니다. 서버에서는 이 데이터를 받아 처리할 수 있어야 합니다.
             success: function(response) {
     		      // 이번달 예약
-    		      $('.reservation_table_this_month_check').text(response.currentMonthReservationsCount);
+    		      $('.this_month_reservation_data').text(response.currentMonthReservationsCount);
 
     		      // 지난달 예약
-    		      $('.reservation_table_last_month_check').text(response.lastMonthReservationsCount);
+    		      $('.last_month_reservation_data').text(response.lastMonthReservationsCount);
 
     		      // 이번달 매출
-    		      $('.reservation_table_this_month_sales').text(response.currentMonthSales);
+    		      $('.this_month_sales_data').text(response.currentMonthSales);
 
     		      // 지난달 매출
-    		      $('.reservation_table_cell_last_month_sales').text(response.lastMonthSales);
+    		      $('.last_month_sales_data').text(response.lastMonthSales);
 
     		      // 이번달 이용 고객 수
-    		      $('.reservation_table_this_month_customer_num').text(response.currentMonthCustomerCount);
+    		      $('.this_month_customers_data').text(response.currentMonthCustomerCount);
 
     		      // 지난달 이용 고객 수
-    		      $('.reservation_table_last_month_customer_num').text(response.lastMonthCustomerCount);
+    		      $('.last_month_customers_data').text(response.lastMonthCustomerCount);
     		      
     		      // 이번달 이용 강아지 수
-    		      $('.reservation_table_this_month_puppies').text(response.currentMonthDogCount);
+    		      $('.this_month_puppies_data').text(response.currentMonthDogCount);
     		      
     		      // 지난달 이용 강아지 수
-    		      $('.reservation_table_last_month_puppies').text(response.lastMonthDogCount);
+    		      $('.last_month_puppies_data').text(response.lastMonthDogCount);
             	
             	
             	console.log(response);
@@ -117,6 +117,17 @@ $(function () {
 
 
 function reservationClickEvent() {
+	$.ajax({
+		type:'Get',
+		url: "/thepet/admin/reservationManagement",
+		success : function (data) {
+			console.log("예약 관리 선택");
+			$('.reservation_management_container').show();
+		},
+		error : function (request, status, error) {
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	})
 	$('.reservation_management_container').show();
 	$('.review_management_container').hide();
 //	$.ajax({
@@ -323,93 +334,6 @@ function prevMonth() {
     }
 }
 
-/*function curMonth() {
-   $('.calender_container').show();
-   
-   $('.main_date').empty();
-   const date = new Date();
-    
-   const categoryMap = {
-         "케어":"care",
-         "놀이터":"playground",
-         "미용":"beauty"
-   }
-   
-   const branchMap = {
-         "서울":"seoul",
-         "대구":"daegu"
-   }
-   
-    const selectCategory = categoryMap[$('.select_category p').text()];
-    const selectBranch = branchMap[$('.radio-input:checked').val()];
-    
-    
-    const viewYear = date.getFullYear();
-    const viewMonth = date.getMonth();
-    const viewDate = date.getDate();
-    
-    const thisLast = new Date(viewYear, viewMonth + 1, 0);
-    
-    
-    const oneDate = {
-       'category': `reservation_times_${selectCategory}_${selectBranch}`, 
-       'startDate':`${viewYear}/${viewMonth+1}/${1}`,
-       'endDate' : `${thisLast.getFullYear()}/${thisLast.getMonth()+1}/${thisLast.getDate()}`
-    }
-    
-    $.ajax({
-       type:'POST',
-      url: "/thepet/calender/oneMonth",
-      data : oneDate,
-      dataType:'json',
-      success : function(data) {
-         const n = data.length / 5;
-         let existDetail = [];
-         
-         for (let i = 0; i < n; i++) {
-            existDetail.push(data.slice(i*5, (i+1) * 5))
-         }
-         
-         $(".ym").text(`${viewYear}.${viewMonth+1}`);
-          $(".left").removeClass('active_arrow').addClass('disable_arrow');
-          
-          const prevLast = new Date(viewYear, viewMonth, 0);
-
-          const PLDay = prevLast.getDay();
-
-          const TLDate = thisLast.getDate();
-
-          const emptyDate = new Array((PLDay + 1) % 7);
-          const prevDate = new Array(viewDate-1);
-
-          const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-
-          const result = [...emptyDate, ...thisDates];
-          existDetail = [...emptyDate, ...existDetail];
-          
-          for (let i = 0; i < result.length; i++) {
-              const date = result[i];
-              
-              let newDate = $("<div></div>").text(date);
-              
-                newDate.on('click', dateClickEvent);
-              
-              if (i % 7 === 0) {
-                  $('.main_date').append(newDate.addClass(`${classDateName} date sun`));
-              }
-              else if (i % 7 === 6) {
-                  $('.main_date').append(newDate.addClass(`${classDateName} date sat`));
-              }
-              else {
-                  $('.main_date').append(newDate.addClass(`${classDateName} date`));
-              }
-          }
-      },
-      error : function() {
-         
-      }
-    })
-}*/
 
 function dateClickEvent(e) {
 	
@@ -423,12 +347,17 @@ function dateClickEvent(e) {
 	const d = $('.checked_date').text();
 	const date = moment(`${year}/${month}/${d}`, 'YYYY/M/D').format('YYYY/MM/DD');
 
+	let selectedOption = $('.myDropdown').val();
+	
+	console.log(date);
+	console.log(selectedOption);
 	
 	$.ajax({
 		type:"post",
-		url:"/thepet/admin/reservation",
+		url:"/thepet/admin/reservationDetial",
 		data: {
-			reservationDate : date
+			reservationDate : date,
+			address : selectedOption
 			},
 		success: function(result) {
 			
@@ -449,17 +378,17 @@ function dateClickEvent(e) {
 			)
 			$('.total_check_detail').append(
 				`<tr class="care">
-					<td>케어</td>
+					<td class="detail_td_title">케어</td>
 					<td>${result.totalCareNum}</td>
 					<td>${result.totalCarePrice}</td>
 				</tr>
 				<tr class="beauty">
-					<td>미용</td>
+					<td class="detail_td_title">미용</td>
 					<td>${result.totalBeautyNum}</td>
 					<td>${result.totalBeautyPrice}</td>
 				</tr>
 				<tr class="playground">
-					<td>놀이터</td>
+					<td class="detail_td_title">놀이터</td>
 					<td>${result.totalPlaygroundNum}</td>
 					<td>${result.totalPlaygroundPrice}</td>
 				</tr>`

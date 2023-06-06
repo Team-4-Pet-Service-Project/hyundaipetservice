@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="/thepet/resources/basic/css/reset.css">
 <link rel="stylesheet"
 	href="/thepet/resources/basic/css/container.css?<%=System.currentTimeMillis()%>">
@@ -14,14 +13,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="/thepet/resources/member/js/register.js?<%=System.currentTimeMillis()%>"></script>
-
-<title>The Hyundai 회원 등록</title>
+<title>The Hyundai : 회원 등록</title>
 </head>
-<body>
+<body class="container_body">
 	<div class="container">
 		<jsp:include page="../mainform/header.jsp">
 			<jsp:param value="석진" name="userName" />
 		</jsp:include>
+		<jsp:include page="../mainform/menubar.jsp" />
 		<div class="gap"></div>
 		<main>
 			<div class="main_container">
@@ -59,8 +58,7 @@
 												placeholder="비밀번호*">
 												<div class="info-msg">(영문 대소문자/숫자/특수문자 중 2가지 이상 조합,
 													10자~16자)</div>
-												<div class="err-msg" id="pwMsg">비밀번호 항목은 필수
-													입력값입니다.</div>
+												<div class="err-msg" id="pwMsg">비밀번호 항목은 필수 입력값입니다.</div>
 											</label>
 										</div>
 
@@ -70,7 +68,8 @@
 												id="user_passwd_confirm" name="password" autocomplete="off"
 												maxlength="16" value="" type="password"
 												placeholder="비밀번호 확인*">
-												<div class="err-msg" id="pwCheckMsg">비밀번호 확인 항목은 필수 입력값입니다.</div>
+												<div class="err-msg" id="pwCheckMsg">비밀번호 확인 항목은 필수
+													입력값입니다.</div>
 											</label>
 										</div>
 									</div>
@@ -110,7 +109,7 @@
 									<div class="">
 										<div class="form-block birthday-block">
 											<div class="birthday">
-												<div class="day">
+												<!-- <div class="day">
 													<label title="생년*" class="ePlaceholderEach">
 														<p class="form-title">생년*</p> <input id="birth_year"
 														name="birth_year" class="inputTypeText" placeholder="생년"
@@ -127,10 +126,18 @@
 														maxlength="2" value="" type="text"
 														oninput="combineBirth()">
 													</label>
+												</div> -->
+												<div class="day">
+													<p class="form-title active" style="margin-top: 23px;">생년월일*</p>
+													<label title="생년*" class="ePlaceholderEach">
+														<p class="form-title">생년*</p> <input id="birth"
+														name="birth" class="inputTypeText" placeholder="생년"
+														type="date" oninput="clickBirth()">
+													</label>
 												</div>
 											</div>
-											<div class="form-err-msg birthday-msg" id="birthMsg">생년월일 항목은 필수
-												입력값입니다.</div>
+											<div class="form-err-msg birthday-msg" id="birthMsg">생년월일
+												항목은 필수 입력값입니다.</div>
 										</div>
 									</div>
 									<div hidden class="hidden_form"
