@@ -43,7 +43,7 @@ public class MemberController {
 		
 		service.register(member);
 		
-		model.addAttribute("member", member);
+		model.addAttribute("member", member.getEmail());
 
 
 		return "/member/registerResult";
