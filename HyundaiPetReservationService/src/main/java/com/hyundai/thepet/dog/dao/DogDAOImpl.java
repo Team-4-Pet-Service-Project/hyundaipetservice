@@ -25,4 +25,11 @@ public class DogDAOImpl implements DogDAO{
 		String statement = "myDog.selectAllDogs";
 		return session.selectList(statement, loginId);
 	}
+	
+	@Override
+	public int deleteDog(String dogId) {
+		String statement = "myDog.deleteDog";
+		System.out.println(dogId);
+		return session.delete(statement, dogId);
+	}
 }

@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/thepet/resources/reservation/css/care_add_option.css?<%= System.currentTimeMillis() %>">
 <link rel="stylesheet" href="/thepet/resources/reservation/css/playground_add_option.css?<%= System.currentTimeMillis() %>">
 <link rel="stylesheet" href="/thepet/resources/reservation/css/beauty_add_option.css?<%= System.currentTimeMillis() %>">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/thepet/resources/reservation/js/reservation.js"></script>
 <!-- <script type="text/javascript" src="/thepet/resources/reservation/js/playground_add_option.js"></script> -->

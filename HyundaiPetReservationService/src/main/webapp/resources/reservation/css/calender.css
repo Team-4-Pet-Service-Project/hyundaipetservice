@@ -71,7 +71,14 @@
 }
 
 .arrow {
-    color:#ffffff;
+    /* color:#ffffff; */
+    /* background-color : #ffffff; */
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    width : 25px;
+    height: 25px;
+    background-color:black;
     border-radius: 50%;
 }
 

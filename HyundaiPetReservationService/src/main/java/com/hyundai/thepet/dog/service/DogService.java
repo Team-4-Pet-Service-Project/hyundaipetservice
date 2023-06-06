@@ -7,4 +7,5 @@ import com.hyundai.thepet.dog.vo.DogVO;
 public interface DogService {
 	int addDog(DogVO vo);
 	List<DogVO> getAllDogs(int loginId);
+	int deleteDogInfo(String dogId);
 }

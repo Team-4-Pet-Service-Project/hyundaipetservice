@@ -76,7 +76,11 @@
 						<th class="mypet_table_cell">크기</th>
 					</tr>
 				</table>
-			</div>		
+				<div class="delect_button_box">
+					<input type="button" class="dog_info_delect_btn" value="삭제">
+				</div>
+			</div>
 		</div>
+			
 </body>
 </html>

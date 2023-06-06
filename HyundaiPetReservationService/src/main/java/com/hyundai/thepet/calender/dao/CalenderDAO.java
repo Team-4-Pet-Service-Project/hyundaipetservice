@@ -9,6 +9,9 @@ import com.hyundai.thepet.calender.vo.ReservationResultVO;
 public interface CalenderDAO {
 	List<CalenderVO> selectAllDetails(String category, String date);
 	List<CalenderVO> selectOneMonthDetails(String category, String startDate, String endDate);
+	
+	List<Integer> selectRemainCount(String category, String startDate, String endDate);
+	
 	LocationInfoVO selectLocationInfo(String branchOffice, String facilities);
 	int selectPrice(String dogSize, String dogFacilities);
 	List<ReservationResultVO> insertAllReservation(List<ReservationResultVO> list);

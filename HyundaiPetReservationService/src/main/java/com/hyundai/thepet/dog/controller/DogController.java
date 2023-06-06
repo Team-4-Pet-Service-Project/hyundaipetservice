@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hyundai.thepet.dog.service.DogService;
@@ -29,9 +30,7 @@ public class DogController {
 	public ResponseEntity<DogVO> addDogInfo(DogVO vo, @SessionAttribute(value = "member") MemberVO member) {
 		
 		vo.setMemberId(member.getId());
-		log.debug(vo);
 		int result = dogService.addDog(vo);
-		log.debug(result);
 		return new ResponseEntity<> (vo, HttpStatus.ACCEPTED);
 	}
 	
@@ -42,5 +41,19 @@ public class DogController {
 		list = dogService.getAllDogs(member.getId());
 		
 		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping(value = "deleteDog")
+	@ResponseBody
+	public ResponseEntity<Integer> deleteDogInfo(String dogId) {
+		log.debug(dogId);
+		int result = dogService.deleteDogInfo(dogId);
+		
+		if (result == 0) {
+			return new ResponseEntity<> (result, HttpStatus.CONFLICT);
+		}
+		else {			
+			return new ResponseEntity<> (result, HttpStatus.ACCEPTED);
+		}
 	}
 }

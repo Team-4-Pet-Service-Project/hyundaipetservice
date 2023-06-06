@@ -17,6 +17,7 @@ $(function () {
 	
 	$('.dog_form_btn').on('click', addDogClickEvent);
 	$('.exist_dog').on('click', getDogsInfo);
+	$('.dog_info_delect_btn').on('click', deleteDogInfo);
 })
 
 function addDogClickEvent() {
@@ -40,6 +41,7 @@ function getDogsInfo() {
 		type:'GET',
 		url: "/thepet/getDogs",
 		success : function (data) {
+			console.log(data)
 			$('.mypet_table_row').remove();
 			
 			for (let i = 0; i < data.length; i++) {
@@ -58,6 +60,31 @@ function getDogsInfo() {
 		},
 		error : function (request, status, error) {
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	})
+}
+
+function deleteDogInfo() {
+	console.log($('.mypet_radio:checked').closest('tr').children('td:nth-child(1)').text());
+	
+	if ($('.mypet_radio:checked').length === 0) {
+		alert('삭제할 강아지를 선택하세요');
+	}
+	
+	const checkedDogInfo = $('.mypet_radio:checked').closest('tr');
+	let dogId = checkedDogInfo.children('td:nth-child(1)').text();
+	
+	$.ajax({
+		type:'POST',
+		url:"/thepet/deleteDog",
+		data : {'dogId':dogId},
+		success : function (data) {
+			console.log(data);
+			checkedDogInfo.remove();
+		},
+		error : function (request, status, error) {
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            alert('해당 강아지의 예약이 존재합니다.');
         }
 	})
 }

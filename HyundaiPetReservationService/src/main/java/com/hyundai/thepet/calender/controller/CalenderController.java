@@ -60,6 +60,16 @@ public class CalenderController {
 		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
 	}
 	
+	
+	@PostMapping(value = "remainCount", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public ResponseEntity<List<Integer>> getOneMonthCalenderRemainCount(String category, String startDate, String endDate){
+		List<Integer> list = new ArrayList<>();
+		
+		list = calenderService.getAllRemainCount(category, startDate, endDate);
+		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
+	}
+	
 	@PostMapping(value = "facilitiesLocation", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public ResponseEntity<LocationInfoVO> getFacilitiesLocation(String branchOffice, String facilities) {

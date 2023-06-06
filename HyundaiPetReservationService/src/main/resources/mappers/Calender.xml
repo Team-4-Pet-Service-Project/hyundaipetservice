@@ -24,6 +24,12 @@
  		WHERE dog_size = #{dogSize} and dog_facilities = #{dogFacilities}
  	</select>
  	
+ 	<select id="selectRemainCount" parameterType="hashmap" resultType="int">
+ 		SELECT SUM(remain_count) FROM ${category}
+		WHERE calender BETWEEN #{startDate} and #{endDate}
+		GROUP BY calender
+ 	</select>
+ 	
  	<insert id="insertReservation" parameterType="ReservationResult">
 
  		INSERT INTO reservations (id, reservation_date, reservation_start_time, reservation_end_time, price, customer_count, member_id, dog_id, location_id) VALUES

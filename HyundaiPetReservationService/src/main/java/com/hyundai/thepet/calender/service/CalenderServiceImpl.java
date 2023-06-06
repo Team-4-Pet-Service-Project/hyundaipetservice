@@ -36,6 +36,11 @@ public class CalenderServiceImpl implements CalenderService{
 	}
 	
 	@Override
+	public List<Integer> getAllRemainCount(String category, String startDate, String endDate) {
+		return calenderDao.selectRemainCount(category, startDate, endDate);
+	}
+	
+	@Override
 	public LocationInfoVO getLocationInfo(String branchOffice, String facilities) {
 		return calenderDao.selectLocationInfo(branchOffice, facilities);
 	}

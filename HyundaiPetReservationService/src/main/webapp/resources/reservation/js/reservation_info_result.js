@@ -63,7 +63,7 @@ function addAllReservation() {
 		contentType: 'application/json',
 		data: JSON.stringify(data),
 		success : function(data) {
-			window.location.href = '/thepet/main';
+			window.location.href = '/thepet/mypage/reservlist';
 		}
 	})
 }
