@@ -109,7 +109,7 @@
 									<div class="">
 										<div class="form-block birthday-block">
 											<div class="birthday">
-												<div class="day">
+												<!-- <div class="day">
 													<label title="생년*" class="ePlaceholderEach">
 														<p class="form-title">생년*</p> <input id="birth_year"
 														name="birth_year" class="inputTypeText" placeholder="생년"
@@ -125,6 +125,14 @@
 														name="birth_day" class="inputTypeText" placeholder="일"
 														maxlength="2" value="" type="text"
 														oninput="combineBirth()">
+													</label>
+												</div> -->
+												<div class="day">
+													<p class="form-title active" style="margin-top: 23px;">생년월일*</p>
+													<label title="생년*" class="ePlaceholderEach">
+														<p class="form-title">생년*</p> <input id="birth"
+														name="birth" class="inputTypeText" placeholder="생년"
+														type="date" oninput="clickBirth()">
 													</label>
 												</div>
 											</div>

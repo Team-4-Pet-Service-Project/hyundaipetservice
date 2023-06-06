@@ -7,15 +7,20 @@ $(document).ready(function() {
 	mobile2.on("input", combinePhone);
 	mobile3.on("input", combinePhone);
 
-	var birth_year = $("#birth_year");
+	/*var birth_year = $("#birth_year");
 	var birth_month = $("#birth_month");
 	var birth_day = $("#birth_day");
 
 	birth_year.on("input", combineBirth);
 	birth_month.on("input", combineBirth);
-	birth_day.on("input", combineBirth);
-
+	birth_day.on("input", combineBirth);*/
 });
+
+function clickBirth() {
+	var birth = $('#birth').val();
+	console.log(birth);
+	console.log(typeof(birth));
+}
 
 function combinePhone() {
 	var mobile1 = $("#mobile1").val();
@@ -33,15 +38,14 @@ function SendCombinePhone() {
 	return phoneNumber;
 }
 
-function combineBirth() {
-	var birth_year = $("#birth_year").val();
+/*function combineBirth() {
+	var birth_year = $("f#birth_year").val();
 	var birth_month = $("#birth_month").val();
 	var birth_day = $("#birth_day").val();
 	var birth = birth_year + "-" + birth_month + "-" + birth_day;
 
 	$("#birthInput").val(birth);
-
-}
+}*/
 
 function checkEmail(str) {
 	var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -68,6 +72,7 @@ var idPass = false;
 function frmSubmit() {
 
 	let pw = $("#passwd").val();
+	let birth = $("#birth").val();
 
 	if (idPass == false) {
 		alert("아이디 중복 확인을 해주세요.");
@@ -98,7 +103,7 @@ function frmSubmit() {
 		$("#name").focus();
 		return;
 	}
-	if ($("#birth_year").val() == '' || $("#birth_month").val() == ''
+	/*if ($("#birth_year").val() == '' || $("#birth_month").val() == ''
 			|| $("#birth_day").val() == '') {
 		alert("생년월일을 입력해주세요.");
 		if ($("#birth_year").val() == '') {
@@ -111,7 +116,14 @@ function frmSubmit() {
 			$("#birth_day").focus();
 		}
 		return;
+	}*/
+	
+	if($('#birth').val() == ''){
+		alert("생년 월일을 입력해주세요.");
 	}
+	
+	console.log(birth);
+	
 	$("#joinForm").submit();
 }
 

@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hyundai.thepet.member.service.MemberService;
 import com.hyundai.thepet.member.vo.MemberVO;
@@ -35,13 +33,20 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "register")
-	public String register(MemberVO member, RedirectAttributes rttr) {
+	public String register(@ModelAttribute("member") MemberVO member, Model model) {
 
 		log.debug("register method : " + member);
+		
+		member.setBirth(member.getBirth().split(",")[0]);
+		log.debug("controller register : birth " + member.getBirth());
+		System.out.println("controller birth :   " + member.getBirth());
+		
 		service.register(member);
-		rttr.addFlashAttribute("member", member);
+		
+		model.addAttribute("member", member);
 
-		return "redirect:/member/registerResult";
+
+		return "/member/registerResult";
 	}
 
 	@PostMapping(value = "checkId")
