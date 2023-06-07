@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
 		<div class="gap"></div>
 		<main>
 			<div class="main_container">
-				<jsp:include page="../mainform/side.jsp" />
+				<jsp:include page="../mainform/admin_side.jsp" />
 				<div class="main_info">
 					<div class="admin_container">
 						<div class="admin_title">
@@ -48,6 +49,7 @@
 							<div class="review_tab admin_tab non_select_form">리뷰 관리</div>
 							<div class="remain_menu_bar"></div>
 						</div>
+
 						<div class="reservation_management_container">
 							<div class="information_summary_container">
 								<div class="location_select">
@@ -131,6 +133,7 @@
 							</div>
 						</div>
 						
+						
 						<!-- 여기 아래부터는 리뷰 관리 클릭 시 나오는 영역 -->
 						<div class="review_management_container">
 							<div class="review_no_comment_container">
@@ -190,6 +193,7 @@
 							</div>
 						
 						</div>
+					
 					</div>
 				</div>
 			</div>
