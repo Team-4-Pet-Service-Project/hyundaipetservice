@@ -36,7 +36,7 @@
 						<c:when test="${admin eq 1}">
 							<p class="name_main">${member.name}님</p>
 							<a href="admin/main" class="admin_page">관리자 페이지</a>
-							<a href="member/logout" class="logout">로그아웃</a>
+							<a href="http://localhost:8080/thepet/member/logout" class="logout">로그아웃</a>
 							<div class="bell1">
 								<span class="material-symbols-outlined">notifications</span>
 							</div>
