@@ -307,5 +307,33 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
  		]]>
  	</select>
  	
+ 	<select id="totalSeoul" parameterType="ReivewTotal" resultType="int">
+ 		<![CDATA[
+ 			select 
+			    count(*)
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id= 3 || locations.id=43
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<select id="totalDaegu" parameterType="ReivewTotal" resultType="int">
+ 		<![CDATA[
+ 			select 
+			    count(*)
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id= 6 || locations.id=41
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
  	
  </mapper>

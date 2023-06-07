@@ -85,6 +85,13 @@
 .menu_bar_a:visited {
 	color : gray;
 }
+
+.menu_bar_b {
+	text-decoration: none;
+}
+.menu_bar_b:visited {
+	color : gray;
+}
 .logo_container {
     /* width: 100%; */
     height: 75px;

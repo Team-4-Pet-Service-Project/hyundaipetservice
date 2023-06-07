@@ -177,4 +177,14 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getTotal(reviewTotalListVO);
 	}
 
+	@Override
+	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO) {
+		return dao.getTotalSeoul(reviewTotalListVO);
+	}
+
+	@Override
+	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO) {
+		return dao.getTotalDaegu(reviewTotalListVO);
+	}
+
 }
