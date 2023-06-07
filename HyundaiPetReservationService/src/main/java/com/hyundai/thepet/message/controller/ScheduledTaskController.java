@@ -24,7 +24,7 @@ public class ScheduledTaskController {
   private final SmsController smsController;
   private final SelectService selectService;
 
-  @Scheduled(cron = "0 50 * * * *", zone= "Asia/Seoul")
+  @Scheduled(cron = "0 1 * * * *", zone= "Asia/Seoul")
   public void runEveryFiftyMinutes() throws InvalidKeyException, JsonProcessingException,  UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException {
    List<ReservationVO> reservations = selectService.findReservations();
    for (ReservationVO reserv: reservations) {

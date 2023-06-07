@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="/thepet/resources/mypage/css/mypage.css">
 <title>The Hyundai : 예약확인</title>
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+ <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
  <script src="/thepet/resources/mypage/js/mypage.js"></script>
      
 </head>
@@ -43,28 +44,28 @@
                  	<div class="table-container">
 	                 	<table class="board-table">
 							<thead id="theadA">
-								    <tr>
-								        <th>위치</th>
-								        <th>구분</th>
-								        <th>이용인원</th>
-								        <th>예약견</th>
-								        <th>이용일자</th>
-								        <th>이용금액</th>
-								        <th>예약 상세</th>
-								    </tr>
-								</thead>
+							    <tr>
+							        <th>위치</th>
+							        <th>구분</th>
+							        <th>이용인원</th>
+							        <th>예약견</th>
+							        <th>이용일자</th>
+							        <th>이용금액</th>
+							        <th>예약 상세</th>
+							    </tr>
+							</thead>
 								
-								<thead id="theadB">
-								    <tr>
-								        <th>위치</th>
-								        <th>구분</th>
-								        <th>이용인원</th>
-								        <th>예약견</th>
-								        <th>이용일자</th>
-								        <th>이용금액</th>
-								        <th>리뷰작성</th>
-								    </tr>
-								</thead>
+							<thead id="theadB">
+							    <tr>
+							        <th>위치</th>
+							        <th>구분</th>
+							        <th>이용인원</th>
+							        <th>예약견</th>
+							        <th>이용일자</th>
+							        <th>이용금액</th>
+							        <th>리뷰작성</th>
+							    </tr>
+							</thead>
 							<tbody>
 								<c:forEach var="reserv" items="${Reserv}">
 									<tr>

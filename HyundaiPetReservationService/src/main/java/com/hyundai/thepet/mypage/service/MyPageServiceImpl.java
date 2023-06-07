@@ -26,8 +26,8 @@ public class MyPageServiceImpl implements MyPageService{
 	
 	//예약확인 누르면 나오는 리스트 창
 	@Override
-	public List<ReservVO> print(ReservVO reservVO) {
-		List<ReservVO> vo = dao.print(reservVO); 
+	public List<ReservVO> print(String loginId) {
+		List<ReservVO> vo = dao.print(loginId);
 		return vo;
 	}
 
@@ -39,8 +39,8 @@ public class MyPageServiceImpl implements MyPageService{
 	
 	//지난예약부분
 	@Override
-	public List<ReservVO> lastprint(ReservVO reservVO) {
-		List<ReservVO> vo = dao.lastprint(reservVO); 
+	public List<ReservVO> lastprint(String loginId) {
+		List<ReservVO> vo = dao.lastprint(loginId); 
 		return vo;
 	}
 

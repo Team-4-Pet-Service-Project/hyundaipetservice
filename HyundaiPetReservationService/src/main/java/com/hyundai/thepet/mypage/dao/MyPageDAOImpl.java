@@ -20,10 +20,10 @@ public class MyPageDAOImpl implements MyPageDAO{
 	
 	//예약확인 누르면 나오는 리스트 창
 	@Override
-	public List<ReservVO> print(ReservVO reservVO) {
+	public List<ReservVO> print(String loginId) {
 		
 		String statement = "page.selectList";
-		List<ReservVO> vo =session.selectList(statement,reservVO);
+		List<ReservVO> vo =session.selectList(statement, loginId);
 		return vo;
 	}
 	
@@ -36,9 +36,9 @@ public class MyPageDAOImpl implements MyPageDAO{
 	}
 
 	@Override
-	public List<ReservVO> lastprint(ReservVO reservVO) {
+	public List<ReservVO> lastprint(String loginId) {
 		String statement = "page.selectList1";
-		List<ReservVO> vo =session.selectList(statement,reservVO);
+		List<ReservVO> vo =session.selectList(statement,loginId);
 		return vo;
 	}
 
