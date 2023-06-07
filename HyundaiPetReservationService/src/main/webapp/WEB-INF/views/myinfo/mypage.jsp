@@ -30,10 +30,10 @@
 			<div class="main_info">
                     <!-- 여기다가 구현 -->
                     
-                    <span>예약확인</span><br><br>
+                    <span style="font-weight: bold;">예약확인</span><br><br>
                     <div class="button-container">
-        				<button id="buttonA" name="buttonA">예약목록</button>
-        				<button id="buttonB" name="buttonB">지난예약</button>
+        				<button id="buttonA" name="buttonA" class="active" style="width: 100px;">예약목록</button>
+        				<button id="buttonB" name="buttonB" class="non_active" style="width: 100px;">지난예약</button>
         				<div class="side"></div>
     				</div><br><br>
     				<div>
@@ -63,7 +63,7 @@
 							        <th>예약견</th>
 							        <th>이용일자</th>
 							        <th>이용금액</th>
-							        <th>리뷰작성</th>
+							        <th>리뷰 작성</th>
 							    </tr>
 							</thead>
 							<tbody>
@@ -79,7 +79,7 @@
 											<form action="/thepet/reservation/detail" method="GET">
 												<input type="hidden" name="id" value="${reserv.id}">
 												<input type="hidden" name="reservationId" value="${reserv.reservationId}">
-  												<button type="submit">예약상세</button>
+  												<button type="submit" class="reservation_detail_button">예약상세</button>
 											</form>
 										</td>
 										

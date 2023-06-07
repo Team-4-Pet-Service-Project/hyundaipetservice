@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="/thepet/resources/basic/css/container.css">
 <link rel="stylesheet" href="/thepet/resources/mainpage/css/mainPage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="/thepet/resources/review/css/reviewdetail.css">
 <title>The Hyundai : 리뷰 상세</title>
 
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -39,33 +39,34 @@
                     	<div class="first_1">[${name}]님</div>
                     	<div class="rating">
                     		<div>평점 :</div>
-    						<i class="far fa-star" data-rate="1"></i>
-    						<i class="far fa-star" data-rate="2"></i>
-    						<i class="far fa-star" data-rate="3"></i>
-    						<i class="far fa-star" data-rate="4"></i>
-    						<i class="far fa-star" data-rate="5"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
   						</div>
                     	<div class="first_3">${Review.createdTime}</div>
                     </div>
                     
                     <div class="second">
-                    	<div class="service">
-                    		<div class="service_1">서비스</div>
-                    		<div class="service_2">${Review.serviceBt}</div>
+                    	<div class="evaluation_list_container">
+	                    	<div class="evaluation_list_box">
+	                    		<div class="evaluation_list_box_p">서비스</div>
+	                    		<div class="evaluation_list_box_score">${Review.serviceBt}</div>
+	                    	</div>
+	                    	<div class="evaluation_list_box">
+	                    		<div class="evaluation_list_box_p">공간</div>
+	                    		<div class="evaluation_list_box_score">${Review.spaceBt}</div>
+	                    	</div>
+	                    	<div class="evaluation_list_box">
+	                    		<div class="evaluation_list_box_p">환경</div>
+	                    		<div class="evaluation_list_box_score">${Review.cleanBt}</div>
+	                    	</div>
+							<div class="evaluation_list_box">
+								<div class="evaluation_list_box_p">재방문의사</div>
+								<div class="evaluation_list_box_score">${Review.revisitBt}</div>
+							</div>                    	
                     	</div>
-                    	<div class="space">
-                    		<div class="space_1">공간</div>
-                    		<div class="space_2">${Review.spaceBt}</div>
-                    	</div>
-                    	<div class="environment">
-                    		<div class="environment_1">환경</div>
-                    		<div class="environment_2">${Review.cleanBt}</div>
-                    	</div>
-						<div class="revisit">
-							<div class="revisit_1">재방문의사</div>
-							<div class="revisit_2">${Review.revisitBt}</div>
-						</div>                    	
-                    	
                     </div>
                     
                     	
@@ -116,7 +117,7 @@
 			                    			<input type="hidden" id="reviewId" name="reviewId" value="${Review.reviewId}">
 			                    			<input type="hidden" name="uploadpath" value="${Review1.uploadpath}">
 			                    			<input type="hidden" name="name" value="${name}">
-			                    			<input type="submit" value="수정">
+			                    			<input type="submit" value="수정" class="review_update_button">
 			                			</form>
 	                				</div>
 	                				

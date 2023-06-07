@@ -23,7 +23,7 @@
 	</jsp:include>
 	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
-	<main>
+	<main style="margin-bottom: 20px;">
 		<div class="main_container">
 			<jsp:include page="../mainform/side.jsp"/>
 			<div class="main_info">
@@ -32,62 +32,63 @@
                     
                     <div class="reservinfo">예약자 정보</div>
                     
-                    <table>
-                    	<tr>
-						    <th>이름</th>
-						    <th>핸드폰</th>
-						    <th>이메일</th>
+                    <table class="reservation_info_detail_table">
+                    	<tr class="reservation_info_detail_table_head">
+						    <th class="reservation_info_detail_head_cell">이름</th>
+						    <th class="reservation_info_detail_head_cell">핸드폰</th>
+						    <th class="reservation_info_detail_head_cell">이메일</th>
 					    </tr>
-					    <tr>
-					      <td>${Reservationdetail.name}</td>
-					      <td>${Reservationdetail.phone}</td>
-					      <td>${Reservationdetail.email}</td>
+					    <tr class="reservation_info_detail_table_row">
+					      <td class="reservation_info_detail_row_cell">${Reservationdetail.name}</td>
+					      <td class="reservation_info_detail_row_cell">${Reservationdetail.phone}</td>
+					      <td class="reservation_info_detail_row_cell">${Reservationdetail.email}</td>
 					    </tr>
                     </table>
                     
                     
                     <div class="reservdog">예약견 정보</div>
-                    <table>
-                    	<tr>
-						    <th>이름</th>
-						    <th>나이</th>
-						    <th>분류</th>
-							<th>견종</th>
-							<th>특이사항</th>
+                    <table class="reservation_info_detail_table">
+                    	<tr class="reservation_info_detail_table_head">
+						    <th class="reservation_info_detail_head_cell">이름</th>
+						    <th class="reservation_info_detail_head_cell">나이</th>
+						    <th class="reservation_info_detail_head_cell">분류</th>
+							<th class="reservation_info_detail_head_cell">견종</th>
+							<th class="reservation_info_detail_head_cell">특이사항</th>
 					    </tr>
-					    <tr>
-					      <td>${Reservationdetail.dogName}</td>
-					      <td>${Reservationdetail.dogAge}</td>
-					      <td>${Reservationdetail.dogSize}</td>
-						  <td>${Reservationdetail.breed}</td>
-						  <td>${Reservationdetail.specialNote}</td>
+					    <tr class="reservation_info_detail_table_row">
+					      <td class="reservation_info_detail_row_cell">${Reservationdetail.dogName}</td>
+					      <td class="reservation_info_detail_row_cell">${Reservationdetail.dogAge}</td>
+					      <td class="reservation_info_detail_row_cell">${Reservationdetail.dogSize}</td>
+						  <td class="reservation_info_detail_row_cell">${Reservationdetail.breed}</td>
+						  <td class="reservation_info_detail_row_cell">${Reservationdetail.specialNote}</td>
 					    </tr>
                     </table>
                     
                     <div class="reservlist">예약내역</div>
-                    <div class="reservlist_1">
-                    	<div class="num">
-                    		<div>예약번호</div>
-                    		<div>${Reservationdetail.reservationId}</div>
-                    		<input type="hidden" id="reservationId" name="reservationId" value="${Reservationdetail.reservationId}">
-                    	</div>
-                    	<div class="loc">
-                    		<div>위치</div>
-                    		<div>${Reservationdetail.address} ${Reservationdetail.addressDetail}</div>
-                    	</div>
-                    	<div class="classfication">
-                    		<div>구분</div>
-                    		<div>${Reservationdetail.dogFacilities}</div>
-                    	</div>
-                    	<div class="date">
-                    		<div>이용일자</div>
-                    		<div>${Reservationdetail.reservationDate} ${Reservationdetail.reservationStartTime} ~ ${Reservationdetail.reservationEndTime}</div>
-                    	</div>
-                    	<div class="plus">
-                    		<div>추가인원</div>
-                    		<div>${Reservationdetail.customerCount}</div>
-                    	</div>
-                    </div>
+                    
+                    <table class="reservation_history_table">
+                    	<tr class="reservation_history_table_row">
+                    		<td class="reservation_history_table_head_cell">예약번호</td>
+                    		<td class="reservation_history_table_cell">${Reservationdetail.reservationId}</td>
+                    		<td style="display: none;" class="reservationId">${Reservationdetail.reservationId}</td>
+                    	</tr>
+                    	<tr class="reservation_history_table_row">
+                    		<td class="reservation_history_table_head_cell">위치</td>
+                    		<td class="reservation_history_table_cell">${Reservationdetail.address} ${Reservationdetail.addressDetail}</td>
+                    	</tr>
+                    	<tr class="reservation_history_table_row">
+                    		<td class="reservation_history_table_head_cell">구분</td>
+                    		<td class="reservation_history_table_cell">${Reservationdetail.dogFacilities}</td>
+                    	</tr>
+                    	<tr class="reservation_history_table_row">
+                    		<td class="reservation_history_table_head_cell">이용일자</td>
+                    		<td class="reservation_history_table_cell">${Reservationdetail.reservationDate} ${Reservationdetail.reservationStartTime} ~ ${Reservationdetail.reservationEndTime}</td>
+                    	</tr>
+                    	<tr class="reservation_history_table_row" style="border-bottom: 1px solid #666666;">
+                    		<td class="reservation_history_table_head_cell">추가인원</td>
+                    		<td class="reservation_history_table_cell">${Reservationdetail.customerCount}</td>
+                    	</tr>
+                    </table>
                  	
                  	<div class="total">총 이용금액</div>
                  	<div class="total_1">
