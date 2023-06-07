@@ -62,6 +62,7 @@ $(function () {
 	$('.review_tab').on('click', function() {
 		$('.review_tab').removeClass('non_select_form').addClass('select_form');
 		$('.reservation_tab').removeClass('select_form').addClass('non_select_form');
+
 		/*
 		 * $('.mypet').show(); $('.dog_form').hide();
 		 */
@@ -145,6 +146,10 @@ function reservationClickEvent() {
 }
 
 function reviewClickEvent() {
+	console.log($('.review_comment_table_row'));
+	$('.review_tab').removeClass('non_select_form').addClass('select_form');
+	$('.reservation_tab').removeClass('select_form').addClass('non_select_form');
+	
 	$('.review_management_container').show();
 	$('.review_comment_table_row').remove();
 	
