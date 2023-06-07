@@ -6,57 +6,63 @@
  <mapper namespace="page">
  	
  	<!-- 여기에서 나중에 members.id는 세션에서 받아온 사람의 id -->
- 	<select id="selectList" parameterType="Mypage" resultType="Mypage">
+ 	<select id="selectList" parameterType="String" resultType="Mypage">
  		<![CDATA[
  		select 
-    		locations.address, 
-    		locations.address_detail, 
-    		locations.dog_facilities, 
-    		reservations.reservation_date, 
-    		reservations.reservation_start_time, 
-    		reservations.reservation_end_time,
-    		reservations.price, 
-    		reservations.customer_count,
-			reservations.dog_id as dog_id,
-			reservations.id as reservation_id,
-			members.id as id,
-            (select name from dogs where dogs.id=dog_id) as dog_name
-    	from 
-        	members
-		JOIN 
-    	reservations ON members.id = reservations.member_id
-		JOIN
-    	locations ON reservations.location_id = locations.id
-		where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') > sysdate
- 		order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
- 		]]>
+          locations.address, 
+          locations.address_detail, 
+          locations.dog_facilities, 
+          reservations.customer_count,
+          reservations.reservation_date, 
+          reservations.reservation_start_time, 
+          reservations.reservation_end_time,
+          reservations.price, 
+          reservations.dog_id as dog_id,
+          members.id as id,
+          reservations.id as reservation_id,
+          (select name from dogs where dogs.id=dog_id) as dog_name,
+          reviews.id as reviewId
+          from 
+            members
+          JOIN 
+            reservations ON members.id = reservations.member_id
+          JOIN
+            locations ON reservations.location_id = locations.id
+          left join
+            reviews on reviews.reservation_id =  reservations.id
+          where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') >= sysdate
+          order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
+          ]]>
  	</select>
  	
  	<!-- 이건 지난 예약 -->
- 	<select id="selectList1" parameterType="Mypage" resultType="Mypage">
- 		<![CDATA[
+ 	<select id="selectList1" parameterType="String" resultType="Mypage">
+ 	<![CDATA[
  		select 
-    		locations.address, 
-    		locations.address_detail, 
-    		locations.dog_facilities, 
-    		reservations.reservation_date, 
-    		reservations.reservation_start_time, 
-    		reservations.reservation_end_time,
-    		reservations.price, 
-    		reservations.customer_count,
-			reservations.dog_id as dog_id,
-			reservations.id as reservation_id,
-			members.id as id,
-            (select name from dogs where dogs.id=dog_id) as dog_name
-    	from 
-        	members
-		JOIN 
-    	reservations ON members.id = reservations.member_id
-		JOIN
-    	locations ON reservations.location_id = locations.id
-		where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
- 		order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
- 		]]>
+          locations.address, 
+          locations.address_detail, 
+          locations.dog_facilities, 
+          reservations.customer_count,
+          reservations.reservation_date, 
+          reservations.reservation_start_time, 
+          reservations.reservation_end_time,
+          reservations.price, 
+          reservations.dog_id as dog_id,
+          members.id as id,
+          reservations.id as reservation_id,
+          (select name from dogs where dogs.id=dog_id) as dog_name,
+          reviews.id as reviewId
+          from 
+            members
+          JOIN 
+            reservations ON members.id = reservations.member_id
+          JOIN
+            locations ON reservations.location_id = locations.id
+          left join
+            reviews on reviews.reservation_id =  reservations.id
+          where members.id = #{id} and TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_end_time, 'YYYY-MM-DD HH24:MI') <= sysdate
+          order by TO_DATE(TO_CHAR(reservations.reservation_date, 'YYYY-MM-DD') || ' ' || reservations.reservation_start_time, 'YYYY-MM-DD HH24:MI')
+          ]]>
  	</select>
  	
  	<!-- 여기에서 나중에 members.id는 세션에서 받아온 사람의 id -->

@@ -1,22 +1,23 @@
 @charset "UTF-8";
 .active {
-			width : 53.4px;
-			height : 53.4px;
-			border-top : 2px solid black;
-			border-left : 2px solid black;
-			border-right : 2px solid black;	
-			border-bottom : none;
-			background-color: #FFFFFF;
-        }
+	width : 53.4px;
+	height : 53.4px;
+	border-top : 2px solid black;
+	border-left : 2px solid black;
+	border-right : 2px solid black;	
+	border-bottom : none;
+	background-color: #FFFFFF;
+}
         
-		.button-container button.active {
-    		border-bottom: none; /* 활성화된 버튼의 선을 제거 */
-		}
-		
-		.main_info span,
-        .main_info .table-container {
-            margin-left: 30px;
-        }
+.button-container button.active {
+  		border-bottom: none; /* 활성화된 버튼의 선을 제거 */
+}
+
+.main_info span,
+.main_info .table-container {
+    margin-left: 30px;
+}
+
 span{
 	font-size: 25px;
 }
@@ -75,17 +76,26 @@ span{
 .board-table th, .board-table td {
 	padding: 8px;
 	border: 1px solid #ddd;
+	text-align: center;
+	vertical-align: middle;
+	font-size : 16px;
 }
 
 .board-table th {
 	background-color: #F6F6F6;
-	text-align: center;
+	font-weight: bold;	
 }
 
-.board-table td {
-	text-align: center;
+.board-table thead tr,
+.board-table thead tr {
+	height: 45px;
 }
 
+/* .board-table td {
+	text-align: center;
+	vertical-align: middle;
+}
+ */
 .board-table a {
 	color: #333;
 }

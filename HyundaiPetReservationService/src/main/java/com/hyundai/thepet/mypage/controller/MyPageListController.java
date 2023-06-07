@@ -1,5 +1,6 @@
 package com.hyundai.thepet.mypage.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,10 +8,13 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,45 +42,39 @@ public class MyPageListController {
 		return new MemberVO(0,"","","","","",0,"");
 	}
 	
-	//예약확인 누르면 나오는 리스트 창
+	  //예약확인 누르면 나오는 리스트 창
+	  
 	@GetMapping(value = "reservlist")
-	public String ReservList(@ModelAttribute(value = "member") MemberVO memberVO, ReservVO reservVO, Model model) {
-		if(memberVO.getId() == 0) {
+	public String ReservList(@ModelAttribute(value = "member") MemberVO memberVO, Model model) {
+		if (memberVO.getId() == 0) {
 			return "redirect:/main";
 		}
-		reservVO.setId(memberVO.getId());
-		List<ReservVO> vo = service.print(reservVO);
-		//여기부분은 총 예약한 수를 구하기 위한 곳
-		int total = service.count(reservVO);
-		model.addAttribute("cnt",total);
-		model.addAttribute("Reserv",vo);
+		List<ReservVO> vo = service.print(String.valueOf(memberVO.getId())); // 여기부분은 총 예약한 수를 구하기 위한 곳 
+		int total = vo.size();
+		model.addAttribute("cnt", total);
+		model.addAttribute("Reserv", vo);
 		return "myinfo/mypage";
 	}
 	
-	//예약목록과 지난목록을 누르는 ajax처리
-	@GetMapping(value = "reservajax")
+	@PostMapping(value = "getReservationList")
 	@ResponseBody
-    public Map<String, Object> getReservList(@RequestParam("buttonId") String buttonId,ReservVO reservVO) {
-        Map<String, Object> response = new HashMap<>();
-        if(buttonId.equals("buttonA")) {
-        	//여기 부분은 나중에 세션에서 값을 받아와야한다
-    		List<ReservVO> vo = service.print(reservVO);
-    		int cnt = service.count(reservVO);
-    		response.put("cnt", cnt);
-            response.put("reservList", vo);
-            response.put("button", buttonId);
-            return response;
-        }else {
-        	//여기 부분은 나중에 세션에서 값을 받아와야한다
-    		List<ReservVO> vo = service.lastprint(reservVO);
-    		int cnt = service.lastcount(reservVO);
-    		//여기는 리뷰작성에서 리뷰확인을 보여줄지 리뷰작성을 보여줄지
-    		response.put("cnt", cnt);
-            response.put("reservList", vo);
-            response.put("button", buttonId);
-            return response;
-        }
-    }
+	public ResponseEntity<List<ReservVO>> getAllReservationList(String loginId) {
+		List<ReservVO> list = new ArrayList<>();
+		list = service.print(loginId);
+		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
+	}
+	
+	@PostMapping(value = "getPrevReservationList")
+	@ResponseBody
+	public ResponseEntity<List<ReservVO>> getAllPrevReservationList(String loginId) {
+		List<ReservVO> list = new ArrayList<>();
+		list = service.lastprint(loginId);
+		return new ResponseEntity<> (list, HttpStatus.ACCEPTED);
+	}
+	
+	
+	
+	
 	
 	//리뷰작성 or 리뷰확인버튼 나오는 것(리뷰가 있는지 없는지 확인하느 로직)
 	@GetMapping(value = "reviewcheck")
