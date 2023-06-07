@@ -177,4 +177,31 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.getTotal(reviewTotalListVO);
 	}
 
+	@Override
+	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO) {
+		return dao.getTotalSeoul(reviewTotalListVO);
+	}
+
+	@Override
+	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO) {
+		return dao.getTotalDaegu(reviewTotalListVO);
+	}
+
+	@Override
+	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO) {
+		// TODO Auto-generated method stub
+		return dao.reviewTotalListAll(reviewTotalListVO);
+	}
+
+	@Override
+	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO) {
+		// TODO Auto-generated method stub
+		return dao.reviewTotalListAll1(reviewTotalListVO);
+	}
+
+	@Override
+	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO) {
+		return dao.reviewTotalList(reviewTotalListVO);
+	}
+
 }

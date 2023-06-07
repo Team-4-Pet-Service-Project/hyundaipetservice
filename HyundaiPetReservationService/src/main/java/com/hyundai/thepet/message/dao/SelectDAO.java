@@ -3,6 +3,8 @@ package com.hyundai.thepet.message.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,7 @@ import com.hyundai.thepet.message.vo.ReservationVO;
 public class SelectDAO {
 	@Autowired
 	private SqlSession session;
+	Logger log = LogManager.getLogger("case3");
 
 	public MemberVO selectMemberInfo(int memberId) {
 		MemberVO result = session.selectOne("forSms.selectMemberInfo", memberId);
@@ -27,13 +30,12 @@ public class SelectDAO {
 	
 	public List<ReservationVO> findReservations() {
         List<ReservationVO> result = session.selectList("forSms.findReservations");
+        log.debug("result:" + result);
         return result;
     }
 
 	public ReservationVO selectReservation(int reservationId) {
-		System.out.println(reservationId);
 		ReservationVO result = session.selectOne("forSms.selectReservation", reservationId);
-		System.out.println(result);
 		return result;
 	}
 

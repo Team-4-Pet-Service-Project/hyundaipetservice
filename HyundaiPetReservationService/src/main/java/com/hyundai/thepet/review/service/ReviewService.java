@@ -45,5 +45,15 @@ public interface ReviewService {
 	
 	public int getTotal(ReviewTotalListVO reviewTotalListVO);
 
+	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO);
+
+	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO);
+
+	public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO);
+
 
 }

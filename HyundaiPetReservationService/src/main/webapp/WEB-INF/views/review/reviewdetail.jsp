@@ -101,7 +101,7 @@
                  	<!-- 수정삭제나오는 부분(여기서 관리자 조건 걸어주면 됨 -->
                  	<!--  나중에 조건 넣어준다  ${Id} eq 세션아이디 같은 조건 걸어주기-->
                  	 <c:choose>
-	            			<c:when test="${Id eq 1}"> <!-- member Id가 현재 로그인한 사용자 Id라면 아래 내용 보이도록 수정 -->
+	            			<c:when test="${Id eq member.id}"> <!-- member Id가 현재 로그인한 사용자 Id라면 아래 내용 보이도록 수정 -->
 	            				<div class="five">
 	            					<div class="five_1">
 			                			<form action="/thepet/review/update" method="GET">

@@ -46,4 +46,14 @@ public interface ReviewDAO {
 	public List<ReviewTotalListVO> reviewTotalListSeoul(Criteria cri, ReviewTotalListVO reviewTotalListVO);
 
 	public List<ReviewTotalListVO> reviewTotalList1Daegu(Criteria cri, ReviewTotalListVO reviewTotalListVO);
+
+	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO);
+
+	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO);
+
+	List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO);
+
+	List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO);
+
+	List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO);
 }

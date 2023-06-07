@@ -157,5 +157,43 @@ public class ReviewDAOImpl implements ReviewDAO{
 		int cnt = session.selectOne(statement,reviewTotalListVO);
 		return cnt;
 	}
+
+	@Override
+	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.totalSeoul";
+		int cnt = session.selectOne(statement,reviewTotalListVO);
+		return cnt;
+	}
+
+	@Override
+	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.totalDaegu";
+		int cnt = session.selectOne(statement,reviewTotalListVO);
+		return cnt;
+	}
+	
+	//리뷰 전체리스트 출력하는 곳
+		@Override
+		public List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO) {
+			String statement = "review.totallist";
+			List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
+			return vo;
+		}
+		
+		//서울(미용, 스파)
+		@Override
+		public List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO) {
+			String statement = "review.totallistAll";
+			List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
+			return vo;
+		}
+		
+		//대구(미용, 스파)
+		@Override
+		public List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO) {
+			String statement = "review.totallistAll1";
+			List<ReviewTotalListVO> vo =  session.selectList(statement, reviewTotalListVO);
+			return vo;
+		}
 	
 }

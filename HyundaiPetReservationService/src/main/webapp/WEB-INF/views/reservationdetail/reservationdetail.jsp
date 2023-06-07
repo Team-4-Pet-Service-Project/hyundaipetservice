@@ -105,11 +105,11 @@
 								        <div class="modal-window">
 								        	<div class="modal-topwindow">
 								        		<div class="close-area1"></div>
-								        		<div class="title">예약삭제</div>
+								        		<div class="title">예약 취소</div>
 								            	<div class="close-area">X</div>
 								        	</div>
 								        	<span class="material-symbols-outlined" style="font-size:80px; margin-left : 160px;">check_circle</span>
-								            <div class="reviewmodal">예약을 삭제하시겠습니까?</div>
+								            <div class="reviewmodal">예약을 취소하시겠습니까?</div>
 								            <div class="content">
 								                <button id="cancelButton">취소</button>
 												<button id="confirmButton">확인</button>

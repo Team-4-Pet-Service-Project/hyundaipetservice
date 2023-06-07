@@ -36,6 +36,7 @@ $(document).ready(function() {
             }
         });
     });
+    
 });
 
 function updateList(response,location,facilities){
@@ -59,8 +60,9 @@ function updateList(response,location,facilities){
     	var review_1 = $('<div></div>').addClass('review_1');
     	var name = $('<div>[' + review.name + ']님</div>').addClass('name');
     	var rating = $('<div></div>').addClass('rating');
+    
     	var rating_1 = $('<div>평점 : </div>').addClass('rating_1');
-    	var starGroup = $('<div>').addClass('star-group');
+    	var starGroup = $('<div></div>').addClass('star-group');
 
     	starGroup.append($('<input>').attr('type', 'hidden').attr('id', 'hidList').val(review.rate));
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '1'));
@@ -104,6 +106,7 @@ function updateList(response,location,facilities){
     	
     	review_1.append(name);
     	review_1.append(rating);
+    	
     	review_2.append(image);
     	review_2.append(contents);
     	

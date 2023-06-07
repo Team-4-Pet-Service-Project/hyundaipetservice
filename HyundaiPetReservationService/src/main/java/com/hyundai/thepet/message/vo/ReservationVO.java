@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class ReservationVO {
-    private int reservationId;
+    private int id;
     private Date reservationDate;
     private String reservationStartTime;
     private String reservationEndTime;

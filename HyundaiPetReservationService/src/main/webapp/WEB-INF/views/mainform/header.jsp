@@ -18,41 +18,51 @@
 </style>
 </head>
 <body>
-	<header class="top_container">
-		<div class="header_container">
-			<!-- <div class="header_container"> -->
-			<div class="logo_container">
-				<a class="logo" href="/thepet/main">
-					<img class="logo" src="/thepet/resources/basic/img/thehyundai.png" alt="">
-				</a>
-				<div class="user_box">
-					<c:set var="email" value="${member.email}" />
-					<c:choose>
-						<c:when test="${empty email}">
-							<a href="/thepet/member/login_bt" class="login_main">로그인 </a>
-							<a href="/thepet/member/register_bt" class="register_main">회원가입</a>
-						</c:when>
-						<c:otherwise>
-							<p class="name_main">${member.name}님 </p>
-							<a href="/thepet/mypage/reservlist" class="mypage_main">마이페이지</a>
-							<div class="bell1">
-								<span class="material-symbols-outlined">notifications </span>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</div>
-				<!-- </div> -->
-			</div>
-			<div class="menu_container">
-				<div class="menu_bar">
-					<a class="menu-trigger" href="#"> <span></span> <span></span> <span></span>
-					</a> <span>Gift</span> <span>New</span> <span>Store In</span> <span>Show-Room</span><span>Re.Green</span>
-					<span>Event</span>
-				</div>
-				<div class="user_box1"></div>
-			</div>
-		</div>
-	</header>
-	<script src="/thepet/resources/basic/js/rotate.js"></script>
+   <header class="top_container">
+      <div class="header_container">
+         <!-- <div class="header_container"> -->
+         <div class="logo_container">
+            <a class="logo" href="/thepet/main"> <img class="logo"
+               src="/thepet/resources/basic/img/thehyundai.png" alt="">
+            </a>
+            <div class="user_box">
+               <c:set var="email" value="${member.email}" />
+               <c:set var="admin" value="${member.admin}" />
+               <c:choose>
+                  <c:when test="${empty email}">
+                     <a href="/thepet/member/login" class="login_main">로그인 </a>
+                     <a href="/thepet/member/register" class="register_main">회원가입</a>
+                  </c:when>
+                  <c:when test="${admin eq 1}">
+                     <p class="name_main">${member.name}님</p>
+                     <a href="admin/main" class="admin_page">관리자 페이지</a>
+                     <a href="http://localhost:8080/thepet/member/logout" class="logout">로그아웃</a>
+                     <div class="bell1">
+                        <span class="material-symbols-outlined">notifications</span>
+                     </div>
+                  </c:when>
+                  <c:otherwise>
+                     <p class="name_main">${member.name}님</p>
+                     <a href="http://localhost:8080/thepet/mypage/reservlist" class="mypage_main">마이페이지</a>
+                     <a href="http://localhost:8080/thepet/member/logout" class="logout">로그아웃</a>
+                     <div class="bell1">
+                        <span class="material-symbols-outlined">notifications</span>
+                     </div>
+                  </c:otherwise>
+               </c:choose>
+            </div>
+         </div>
+         <div class="menu_container">
+            <div class="menu_bar">
+               <a class="menu-trigger" href="#"> <span></span> <span></span> <span></span>
+               </a> <span>Gift</span> <span>New</span> <span>Store In</span> <span>Show-Room</span><span>Re.Green</span>
+               <span>Event</span>
+            </div>
+            <div class="user_box1"></div>
+         </div>
+      </div>
+   </header>
+   <script src="/thepet/resources/basic/js/rotate.js"></script>
 </body>
+
 </html>
