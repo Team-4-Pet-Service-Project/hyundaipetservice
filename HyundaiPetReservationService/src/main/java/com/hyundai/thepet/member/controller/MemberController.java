@@ -1,5 +1,8 @@
 package com.hyundai.thepet.member.controller;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
+import com.hyundai.thepet.interceptor.annotation.Auth;
 import com.hyundai.thepet.member.service.MemberService;
 import com.hyundai.thepet.member.vo.MemberVO;
 
@@ -27,25 +32,22 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
-	@ModelAttribute(value="member")
+	@ModelAttribute(value = "member")
 	public MemberVO setMemberVO() {
-		return new MemberVO(0,"","","","","",0,"");
+		return new MemberVO(0, "", "", "", "", "", 0, "");
 	}
-	
+
 	@PostMapping(value = "register")
 	public String register(@ModelAttribute("member") MemberVO member, Model model) {
 
 		log.debug("register method : " + member);
-		
+
 		member.setBirth(member.getBirth().split(",")[0]);
 		log.debug("controller register : birth " + member.getBirth());
 		System.out.println("controller birth :   " + member.getBirth());
-		
+
 		service.register(member);
-		
 		model.addAttribute("member", member.getEmail());
-
-
 		return "/member/registerResult";
 	}
 
@@ -71,15 +73,16 @@ public class MemberController {
 		return result;
 	}
 
+	@Auth
 	@PostMapping(value = "login")
 	@ResponseBody
 	public ResponseEntity<MemberVO> login(@ModelAttribute("member") MemberVO member, Model model) throws Exception {
-		
+
 		log.debug("login method : " + member);
 		MemberVO result = service.login(member);
-		model.addAttribute("member",result);
+		model.addAttribute("member", result);
 		log.debug("controller : " + result);
-		
+
 		try {
 			if (result == null) {
 				return new ResponseEntity<MemberVO>(result, HttpStatus.UNAUTHORIZED);
@@ -87,7 +90,7 @@ public class MemberController {
 				model.addAttribute(result);
 				return new ResponseEntity<MemberVO>(result, HttpStatus.ACCEPTED);
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			return null;
 		}
 	}
@@ -106,5 +109,16 @@ public class MemberController {
 	public String registerCompleteBt() {
 		return "member/registerResult";
 	}
+
+	@GetMapping(value = "logout")
+	public String logout(SessionStatus sessionStatus) {
+
+		log.info("logout 실행");
+		sessionStatus.setComplete();
+		/* session.invalidate(); */
+
+		return "redirect:/main";
+	}
 	
+
 }
