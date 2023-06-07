@@ -140,11 +140,10 @@
                     	<div class="seven_1"><textarea class="seven_1" name="userContents" rows="8" cols="60" required></textarea></div>
                     	<div class="eight"><input type="submit" value="리뷰 작성" onclick="validateForm(event)"></div>
                     </div> 
-                    
+                    </div>
                     </form>    
  
                 </div>
-            </div>		
 		</div>
 	</main>
 	<jsp:include page="../mainform/footer.jsp"/>

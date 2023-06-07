@@ -55,12 +55,16 @@
 .rating{
 	display: flex;
 	flex-direction: row;
-	margin-right:130px;
+	margin-right:120px;
+	
 }
 
 .star-group{
-	margin-right: 365px;
+	margin-right: 375px;
 	margin-left: 10px;
+}
+
+.date{
 }
 
 .rating .fa-star.fas {

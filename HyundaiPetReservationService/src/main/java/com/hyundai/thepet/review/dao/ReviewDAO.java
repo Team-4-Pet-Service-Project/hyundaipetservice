@@ -50,4 +50,10 @@ public interface ReviewDAO {
 	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO);
 
 	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO);
+
+	List<ReviewTotalListVO> reviewTotalList(ReviewTotalListVO reviewTotalListVO);
+
+	List<ReviewTotalListVO> reviewTotalListAll(ReviewTotalListVO reviewTotalListVO);
+
+	List<ReviewTotalListVO> reviewTotalListAll1(ReviewTotalListVO reviewTotalListVO);
 }
