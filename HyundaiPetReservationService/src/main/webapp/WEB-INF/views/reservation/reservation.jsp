@@ -16,7 +16,7 @@
 <script type="text/javascript" src="/thepet/resources/reservation/js/reservation.js"></script>
 <!-- <script type="text/javascript" src="/thepet/resources/reservation/js/playground_add_option.js"></script> -->
 <!-- <script type="text/javascript" src="/thepet/resources/reservation/js/beauty_add_option.js"></script> -->
-<title>Insert title here</title>
+<title>The Hyundai : 예약</title>
 </head>
 <body style="display: flex; justify-content: center;">
 <jsp:include page="./modal.jsp" />
