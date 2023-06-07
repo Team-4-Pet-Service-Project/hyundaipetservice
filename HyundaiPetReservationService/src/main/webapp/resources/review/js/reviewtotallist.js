@@ -24,6 +24,7 @@ $(document).ready(function() {
             success: function(response) {
                 // 요청이 성공한 경우에 대한 처리
                 console.log("AJAX 요청 성공");
+                console.log(response);
                 // 응답 데이터를 가지고 추가 작업을 수행하세요.
                 updateList(response,location,facilities);
                 
@@ -64,7 +65,10 @@ function updateList(response,location,facilities){
     	var name = $('<div>[' + review.name + ']님</div>').addClass('name');
     	var rating = $('<div></div>').addClass('rating');
     	var rating_1 = $('<div>평점 : </div>').addClass('rating_1');
-    	var starGroup = $('<div>').addClass('star-group');
+    	//최대로 해서 바꾼거
+    	var starGroup = $('<div>').addClass('star-group').css({
+    		'margin-right' : '400px'
+    	});
 
     	starGroup.append($('<input>').attr('type', 'hidden').attr('id', 'hidList').val(review.rate));
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '1'));
@@ -73,7 +77,7 @@ function updateList(response,location,facilities){
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '4'));
     	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '5'));
     	
-    	var date = $('<div>작성날짜 : ' + formattedDate+ '</div>').addClass('date').css({
+    	var date = $('<div>작성날짜 : ' + review.createdTime + '</div>').addClass('date').css({
 			
 		});
     	var review_2 = $('<div></div>').addClass('review_2').css({
@@ -93,13 +97,12 @@ function updateList(response,location,facilities){
     	    image.append(img2);
     	}
     	var contents = $('<div>' + review.userContents+'</div>').addClass('contents').css({
-    		'border' : '1px solid black',
     		'width' : '700px'
     	});
     	
     	var admin = $('<div></div>').addClass('admin');
     	var admin_1 = $('<div>관리자 답글</div>').addClass('admin_1').css({
-    		'margin-right' : '50px',
+    		'margin-right' : '70px',
 	});
     	
     	if (review.adminContents === null) {

@@ -242,7 +242,7 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
         JOIN locations ON reservations.location_id = locations.id
         JOIN members ON members.id = reservations.member_id
         LEFT JOIN review_imgs ON review_imgs.review_id = reviews.id
-        WHERE locations.id = 3 or locations.id = 43
+        WHERE locations.id = #{reviewTotalListVO.locationId} or locations.id = 44
         ORDER BY reviews.created_time DESC
     )
 )
@@ -285,7 +285,7 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
         JOIN locations ON reservations.location_id = locations.id
         JOIN members ON members.id = reservations.member_id
         LEFT JOIN review_imgs ON review_imgs.review_id = reviews.id
-        WHERE locations.id = 6 or locations.id = 41
+        WHERE locations.id = #{reviewTotalListVO.locationId} or locations.id = 42
         ORDER BY reviews.created_time DESC
     )
 )
@@ -317,7 +317,7 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
 				join locations on reservations.location_id=locations.id
 				join members on members.id=reservations.member_id
 				left JOIN review_imgs ON review_imgs.review_id = reviews.id
-				where locations.id= 3 || locations.id=43
+				where locations.id=#{locationId} or locations.id=44
 				order by reviews.created_time desc
  		]]>
  	</select>
@@ -332,7 +332,84 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
 				join locations on reservations.location_id=locations.id
 				join members on members.id=reservations.member_id
 				left JOIN review_imgs ON review_imgs.review_id = reviews.id
-				where locations.id= 6 || locations.id=41
+				where locations.id=#{locationId} or locations.id=42
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	
+ 	
+ 	<!--전체 리뷰 출력하는 곳-->
+ 	<select id="totallist" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			SUBSTR(reviews.created_time, 1, 17) as createdTime
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId}
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+
+<!-- 서울(미용, 스파)-->
+ 	<select id="totallistAll" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			SUBSTR(reviews.created_time, 1, 17) as createdTime
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId} or locations.id=44
+				order by reviews.created_time desc
+ 		]]>
+ 	</select>
+ 	
+ 	<!-- 대구(미용, 스파)-->
+ 	<select id="totallistAll1" parameterType="ReivewTotal" resultType="ReivewTotal">
+ 		<![CDATA[
+ 			select 
+			    members.name,
+			    members.id,
+			    reservations.id as reservationId,
+			    reviews.rate,
+			    reviews.admin_contents,
+			    reviews.user_contents,
+			    reviews.id as reviewId,
+			    review_imgs.filename,
+    			review_imgs.uploadpath,
+    			review_imgs.uuid,
+    			SUBSTR(reviews.created_time, 1, 17) as createdTime
+			from reservations
+				join reviews on reservations.id = reviews.reservation_id
+				join locations on reservations.location_id=locations.id
+				join members on members.id=reservations.member_id
+				left JOIN review_imgs ON review_imgs.review_id = reviews.id
+				where locations.id=#{locationId} or locations.id=42
 				order by reviews.created_time desc
  		]]>
  	</select>

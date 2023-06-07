@@ -8,8 +8,10 @@
 }
 
 .location_1{
-	font-size: 20px;
+	font-size: 15px;
 	margin-right: 20px;
+	text-align: center;
+	padding-top : 12px;
 }
 
 .facility{
@@ -19,21 +21,22 @@
 }
 
 .facility_1{
-	font-size: 20px;
+	font-size: 15px;
 	margin-right: 20px;
 	margin-bottom: 30px;
+	padding-top : 12px;
 }
 
 .spec{
-	font-size : 20px;
-	padding-bottom: 25px;
+	font-size : 15px;
+	padding-bottom: 10px;
 	margin-left : 40px;
 }
 
 .review{
-	border-top : 1px solid black;
+	border-top : 1px solid #A8A4A4;
 	margin-left : 40px;
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-bottom : 30px;
 	margin-top: 20px;
 }
@@ -41,8 +44,7 @@
 .review_1{
 	display: flex;
 	flex-direction: row;
-	font-size: 20px;
-	
+	font-size: 15px;
 }
 
 .review_1 .name{
@@ -53,16 +55,20 @@
 .rating{
 	display: flex;
 	flex-direction: row;
-	margin-right:200px;
+	margin-right:120px;
+	
 }
 
 .star-group{
-	margin-right: 200px;
+	margin-right: 375px;
 	margin-left: 10px;
 }
 
+.date{
+}
+
 .rating .fa-star.fas {
-  color: #ffd700;
+  color: #FAE100;
   margin-left: 5px;
 }
 
@@ -79,20 +85,20 @@
 
 .contents{
 	width : 750px;
-	border : 1px solid black;
 	padding-left: 10px;
 	padding-top: 10px;
+	background-color: #F6F6F6;
 }
 
 .admin{
-	margin-left : 90px;
+	margin-left : 100px;
 	display: flex;
 	flex-direction: row;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 .admin .admin_1{
-	margin-right: 90px;
+	margin-right: 110px;
 }
 
 
@@ -116,7 +122,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
+  width: 55px;
   height: 30px;
   border: 3px solid #666666;
   background-color: white;
@@ -124,7 +130,7 @@
   cursor: pointer;
   text-align: center;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 15px;
   line-height: 20px;
   color : #666666;
 }
@@ -149,7 +155,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
+  width: 60px;
   height: 30px;
   border: 3px solid #666666;
   background-color: white;
@@ -157,24 +163,16 @@
   cursor: pointer;
   text-align: center;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 15px;
   line-height: 20px;
   color : #666666;
 }
 
-.radio-custom2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 30px;
-  border: 3px solid #666666;
-  background-color: white;
-  border-radius : 20px;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.2em;
-  line-height: 20px;
-  color : #666666;
-}
+
+
+
+
+
+
+
+
