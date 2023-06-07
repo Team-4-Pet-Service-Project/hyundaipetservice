@@ -63,18 +63,21 @@ table {
     margin-right: auto;
     /* 또는 text-align: center; */
     width: 975px;
-} 
+}
+
+
 
 table tr th{
 	background-color: #F6F6F6;
-	height: 35px;
+	height: 50px;
 	line-height: 33px;
 }
 
 table tr td{
 	text-align: center;
 	padding-top: 5px;
-	padding-bottom: 5px; 
+	padding-bottom: 5px;
+	height: 50px; 
 }
 
 
