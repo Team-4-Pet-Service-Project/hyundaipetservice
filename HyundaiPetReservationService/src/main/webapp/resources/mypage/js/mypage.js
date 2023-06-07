@@ -12,6 +12,9 @@ $(document).ready(function() {
         
         $(this).addClass('active'); // 버튼 A를 활성화 상태로 표시
         $('#buttonB').removeClass('active'); // 버튼 B의 활성화 상태 제거
+        $('#buttonB').addClass('non_active');
+        
+        $('#buttonA').removeClass('non_active');
         $('#theadA').show();
         $('#theadB').hide();
         
@@ -22,6 +25,8 @@ $(document).ready(function() {
         buttonId = $(this).attr('id'); // 버튼 B의 ID 값을 가져와서 buttonId에 할당
         $(this).addClass('active'); // 버튼 B를 활성화 상태로 표시
         $('#buttonA').removeClass('active'); // 버튼 A의 활성화 상태 제거
+        $('#buttonA').addClass('non_active');
+        $('#buttonB').removeClass('non_active');
         // ... AJAX 요청 등 버튼 B에 대한 추가 동작 수행
         $('#theadB').show();
         $('#theadA').hide();
@@ -67,7 +72,7 @@ function reservationList () {
 	            row.append('<td>' + reserv['dogName'] + '</td>');
 	            row.append('<td>' + formattedDate + '  '+ reserv.reservationStartTime+' ~ ' + reserv.reservationEndTime +'</td>');
 	            row.append('<td>' + cn1 + '원' + '</td>');
-	            row.append('<td><form action="/thepet/reservation/detail" method="GET"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit">예약상세</button></form></td>');
+	            row.append('<td><form action="/thepet/reservation/detail" method="GET"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit" class="reservation_detail_button">예약상세</button></form></td>');
 	            tbody.append(row);
 		    }
 		}
@@ -116,9 +121,9 @@ function prevReservationList () {
 	             var buttonCell = $('<td></td>');
 	            
 	             if (reserv.reviewId !== null) {
-                	 buttonCell.append('<form action="/thepet/review/detail1" method="GET"><input type="hidden" name="dogId" value="' + reserv.dogId + '"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit">리뷰확인</button></form>');
+                	 buttonCell.append('<form action="/thepet/review/detail1" method="GET"><input type="hidden" name="dogId" value="' + reserv.dogId + '"><input type="hidden" name="id" value="' + reserv.id + '"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><button type="submit" class="reservation_detail_button">리뷰확인</button></form>');
                  } else {
-                	 buttonCell.append('<form action="/thepet/review/write" method="GET"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><input type="hidden" name="dogFacilities" value="' + reserv.dogFacilities + '"><input type="hidden" name="reservationDate" value="' + formattedDate + '"><input type="hidden" name="reservationStartTime" value="' + reserv.reservationStartTime + '"><input type="hidden" name="reservationEndTime" value="' + reserv.reservationEndTime + '"><button type="submit">리뷰작성</button></form>');
+                	 buttonCell.append('<form action="/thepet/review/write" method="GET"><input type="hidden" name="reservationId" value="' + reserv.reservationId + '"><input type="hidden" name="dogFacilities" value="' + reserv.dogFacilities + '"><input type="hidden" name="reservationDate" value="' + formattedDate + '"><input type="hidden" name="reservationStartTime" value="' + reserv.reservationStartTime + '"><input type="hidden" name="reservationEndTime" value="' + reserv.reservationEndTime + '"><button type="submit" class="reservation_detail_button">리뷰작성</button></form>');
                  }
                  row.append(buttonCell);
 		         

@@ -37,17 +37,17 @@
                     <div class="two">
                     	<div class="two_1">[${member.name}님] 시설은 어떠셨나요??</div>
                     	<div class="rating">
-    						<i class="far fa-star" data-rate="1"></i>
-    						<i class="far fa-star" data-rate="2"></i>
-    						<i class="far fa-star" data-rate="3"></i>
-    						<i class="far fa-star" data-rate="4"></i>
-    						<i class="far fa-star" data-rate="5"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
+    						<i class="fa-solid fa-star fas zero_star"></i>
   						</div>
                     	  <input type="hidden" id="selected-rate" name="rate" value="0">
                     </div>
                     <div class="three">
                     	<div class="three_1">
-                    		<div >서비스</div>
+                    		<div class="evaluation_category">서비스</div>
                     		<div class="radio-container">
                         		<label class="radio-label" > 
                            			<input class="radio-input" type="radio" name="serviceBt" value="친절해요" checked>
@@ -65,7 +65,7 @@
                     </div>
                     	
                     	<div class="three_2">
-                    		<div>공간</div>
+                    		<div class="evaluation_category">공간</div>
                     		<div class="radio-container1">
                         		<label class="radio-label1"> 
                            			<input class="radio-input" type="radio" name="spaceBt" value="넓어요" checked>
@@ -83,7 +83,7 @@
                     	</div>
                     	
                     	<div class="three_3">
-                    		<div>청결도</div>
+                    		<div class="evaluation_category">청결도</div>
                     		<div class="radio-container">
                         		<label class="radio-label1"> 
                            			<input class="radio-input" type="radio" name="cleanBt" value="쾌적해요" checked>
@@ -101,7 +101,7 @@
                     	</div>
                     	
                     	<div class="three_4">
-                    		<div>재방문의사</div>
+                    		<div class="evaluation_category">재방문의사</div>
                     		<div class="radio-container2">
                         		<label class="radio-label"> 
                            			<input class="radio-input" type="radio" name="revisitBt" value="무조건이죠" checked>
@@ -119,7 +119,7 @@
                     	</div>
                     </div>
                     <div class="four">
-                    	<div class="four_1">이미지</div>
+                    	<div class="four_1 evaluation_category">이미지</div>
                     	<div class="four_2">
                     		<input type="file" id="uploadFile" name="uploadFile">
                     		<div id="uploadResult"></div>
@@ -128,21 +128,21 @@
                     </div>
                     
                     <div class="five">
-                    	<div>이용시설</div>
+                    	<div class="evaluation_category">이용시설</div>
                     	<div class="five_1">${Reserv.dogFacilities}</div>
                     </div>
                     <div class="six">
-                    	<div>이용일자</div>
+                    	<div class="evaluation_category">이용일자</div>
                     	<div class="six_1">${Reserv.reservationDate} ${Reserv.reservationStartTime} ~ ${Reserv.reservationEndTime}</div>
                     </div>
                     <div class="seven">
-                    	<div>리뷰작성</div>
+                    	<div class="evaluation_category">리뷰작성</div>
                     	<div class="seven_1"><textarea class="seven_1" name="userContents" rows="8" cols="60" required></textarea></div>
-                    	<div class="eight"><input type="submit" value="리뷰 작성" onclick="validateForm(event)"></div>
+  
                     </div> 
+                    <div class="eight"><input type="submit" value="리뷰 작성" onclick="validateForm(event)" class="review_update_button_input"></div>
                     </div>
                     </form>    
- 
                 </div>
 		</div>
 	</main>

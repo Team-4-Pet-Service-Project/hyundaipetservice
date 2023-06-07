@@ -47,7 +47,8 @@ $('#cancelButton').click(function() {
 });
 
 $('#confirmButton').click(function() {
-	var reservationId = document.getElementById("reservationId").value;
+	
+	var reservationId = $('.reservationId').text();
     // AJAX 호출
     $.ajax({
       url: '/thepet/reservation/delete',  // 실제 서버 URL로 대체해야 합니다.

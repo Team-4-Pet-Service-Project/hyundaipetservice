@@ -14,14 +14,26 @@
 
 .two{
 	display : flex;
-	justify-content: center;
 }
 
 
 .two_1{
-	font-size: 30px;
+	/* font-size: 30px;
 	margin-right: 15px;
-	margin-left: 70px;
+	margin-left: 70px; */
+	display : flex;
+	align-items : center;
+	font-size: 20px;
+	font-weight: bold;
+	margin-right: 15px;
+	margin-left: 170px;
+}
+
+.evaluation_category {
+	width : 130px;
+	
+	color : #242424;
+	font-size : 20px;
 }
 
 .three{
@@ -75,13 +87,12 @@
 }
 
 .four_1{
-	font-size:20px;
 	margin-left: 170px;
 	margine-top:50px;
 }
 
 .four_2{
-	margin-left: 80px;
+	/* margin-left: 80px; */
 }
 
 .five{
@@ -89,69 +100,88 @@
 	display : flex;
 	flex-direction: row;
 	margin-left: 170px;
-	font-size:20px;
+	font-size:15px;
 	margin-top:10px;
 }
 
 
-.five_1{
+/* .five_1{
 	margin-left:80px;
-}
+} */
 
 .six{
 	height:50px;
 	display : flex;
 	flex-direction: row;
 	margin-left: 170px;
-	font-size:20px;
+	font-size:15px;
 	margin-top:2px;
 }
 
 .seven_1{
-	margin-left: 40px;
+	resize: none;
 }
 
-.six_1{
+/* .six_1{
 	margin-left:80px;
-}
+} */
 
 .seven{
 	height:150px;
 	display : flex;
 	flex-direction: row;
-	font-size:20px;
+	font-size:15px;
 	margin-left: 170px;
 }
 
 .eight{
-	text-align: center;
-	justify-content: center;
-	margin-top:100px;
-	margin-left: 20px;
+	margin-left: 130px;
+	width: 585px;
+	
+	display: flex;
+	justify-content: flex-end;
 }
 
 
 
 
  .rating i {
-      cursor: pointer;
-      font-size: 30px; /* 아이콘의 크기를 조절합니다. */
-    }
-    .rating .fas {
-      color: #ffd700;
-    }
+   cursor: pointer;
+   font-size: 30px; /* 아이콘의 크기를 조절합니다. */
+}
+
+
+.radio-label {
+  padding-top : 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.radio-label1 {
+	padding-top : 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.full_star {
+  color: #ffd700;
+}
+
+.zero_star {
+  color: #E6E6EA;
+}
 
 
 .radio-container {
-  margin-left: 70px;
+  width : 310px;
 }
 
 .radio-container1 {
-  margin-left: 90px;
+  width : 310px;
 }
 
 .radio-container2 {
-  margin-left: 30px;
+  width : 310px;
 }
 
 .radio-label {
@@ -182,17 +212,15 @@
   justify-content: center;
   align-items: center;
   width: 90px;
-  height: 25px;
-  border: 2px solid #666666;
+  height: 30px;
+  border: 1px solid #333333;
   background-color: white;
   border-radius : 20px;
   cursor: pointer;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 12px;
   line-height: 30px;
   color : #666666;
-  padding: 3px;
-  text-align: center;
 }
 
 .radio-label1 .radio-input:checked + .radio-custom1 {
@@ -205,18 +233,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
-  height: 25px;
-  border: 2px solid #666666;
+  width: 80px;
+  height: 30px;
+  border: 1px solid #333333;
   background-color: white;
   border-radius : 20px;
   cursor: pointer;
   text-align: center;
-  font-size: 0.8em;
+  font-size: 12px;
   line-height: 30px;
   color : #666666;
-  padding: 3px;
-  text-align: center;
 }
 
 
@@ -247,4 +273,13 @@
 	    display: block;
 	    cursor: pointer;	
 	}
+	
+.review_update_button_input {
+	width: 80px;
+	height: 40px;
+	
+	background-color: #FAFAFA;
+	border : 1px solid #B7B7B7;
+	color : #646464;
+}
   
