@@ -30,7 +30,7 @@ public class SmsController {
 	// 예약 즉시
 	public SmsResponseDTO submitMessage(ReservationVO reservation) throws UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
 		
-		ReservationVO reserv = selectService.selectReservation(reservation.getReservationId());
+		ReservationVO reserv = selectService.selectReservation(reservation.getId());
 		MemberVO memberInfo = selectService.selectMemberInfo(reserv.getMemberId());
 		LocationVO locationInfo = selectService.selectLocationInfo(reserv.getLocationId());
 		
@@ -62,15 +62,13 @@ public class SmsController {
 	// 예약 취소
 	public SmsResponseDTO cancelMessage(ReservationVO reservation) throws UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
 
-		ReservationVO reserv = selectService.selectReservation(reservation.getReservationId());
+		ReservationVO reserv = selectService.selectReservation(reservation.getId());
 		MemberVO memberInfo = selectService.selectMemberInfo(reserv.getMemberId());
 		LocationVO locationInfo = selectService.selectLocationInfo(reserv.getLocationId());
 		
 		String phone = memberInfo.getPhone();
 		String name = memberInfo.getName();
 		String locationFacility = locationInfo.getDogFacilities();
-		String address = locationInfo.getAddress();
-		String addressDetail = locationInfo.getAddressDetail();
 
 		
 		Date reservationDate = reserv.getReservationDate();
@@ -92,7 +90,7 @@ public class SmsController {
 	
 	// 예약 10분 전
 	public SmsResponseDTO scheduledMessage(ReservationVO reservation) throws UnsupportedEncodingException, URISyntaxException, NoSuchAlgorithmException, InvalidKeyException, JsonProcessingException {
-		ReservationVO reserv = selectService.selectReservation(reservation.getReservationId());
+		ReservationVO reserv = selectService.selectReservation(reservation.getId());
 		MemberVO memberInfo = selectService.selectMemberInfo(reserv.getMemberId());
 		LocationVO locationInfo = selectService.selectLocationInfo(reserv.getLocationId());
 		

@@ -46,7 +46,7 @@ public class ReservationDetailController {
 	public String reservDelete(ReservationDetailVO reservationDetailVO) throws InvalidKeyException, JsonProcessingException, UnsupportedEncodingException, NoSuchAlgorithmException, URISyntaxException {
 		
 		ReservationVO reservation = new ReservationVO();
-		reservation.setReservationId(reservationDetailVO.getReservationId());
+		reservation.setId(reservationDetailVO.getReservationId());
 		smsController.cancelMessage(reservation);
 		
 		
