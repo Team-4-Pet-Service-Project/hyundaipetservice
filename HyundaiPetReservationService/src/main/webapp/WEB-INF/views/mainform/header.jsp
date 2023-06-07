@@ -43,7 +43,7 @@
 						</c:when>
 						<c:otherwise>
 							<p class="name_main">${member.name}님</p>
-							<a href="mypage/reservlist" class="mypage_main">마이페이지</a>
+							<a href="http://localhost:8080/thepet/mypage/reservlist" class="mypage_main">마이페이지</a>
 							<a href="http://localhost:8080/thepet/member/logout" class="logout">로그아웃</a>
 							<div class="bell1">
 								<span class="material-symbols-outlined">notifications</span>
