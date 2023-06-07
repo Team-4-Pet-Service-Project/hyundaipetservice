@@ -20,7 +20,8 @@ public class ReservationController {
 	}
 	
 	@GetMapping(value = "")
-	public String Test(Model model, @SessionAttribute(value = "member") MemberVO member) {		
+	public String Test(Model model, @SessionAttribute(value = "member") MemberVO member) {	
+		System.out.println("타나요!");
 		model.addAttribute("member", member);
 		return "reservation/reservation"; 
 	}

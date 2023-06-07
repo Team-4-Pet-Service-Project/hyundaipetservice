@@ -307,6 +307,7 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
  		]]>
  	</select>
  	
+ 	<!-- OR 수정 -->
  	<select id="totalSeoul" parameterType="ReivewTotal" resultType="int">
  		<![CDATA[
  			select 
@@ -321,6 +322,7 @@ WHERE rn > (#{criteria.pageNum} -1) * #{criteria.amount} AND rn <= #{criteria.pa
  		]]>
  	</select>
  	
+ 	<!-- OR 수정 -->
  	<select id="totalDaegu" parameterType="ReivewTotal" resultType="int">
  		<![CDATA[
  			select 
