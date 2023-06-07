@@ -74,7 +74,7 @@
 															<p>아직 회원이 아니신가요?</p>
 															<p></p>
 														</div>
-														<a href="/thepet/member/register_bt"
+														<a href="/thepet/member/register"
 															class="btn btn-lg btn-white btn-full"> <span>회원가입
 																후 혜택받기</span>
 														</a>

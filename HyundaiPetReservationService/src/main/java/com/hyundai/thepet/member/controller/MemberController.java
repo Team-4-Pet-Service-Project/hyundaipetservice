@@ -32,13 +32,13 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
-	@ModelAttribute(value = "member")
-	public MemberVO setMemberVO() {
-		return new MemberVO(0, "", "", "", "", "", 0, "");
-	}
+	/*
+	 * @ModelAttribute(value = "member") public MemberVO setMemberVO() { return new
+	 * MemberVO(0, "", "", "", "", "", 0, ""); }
+	 */
 
 	@PostMapping(value = "register")
-	public String register(@ModelAttribute("member") MemberVO member, Model model) {
+	public String register(MemberVO member, Model model) {
 
 		log.debug("register method : " + member);
 
@@ -47,7 +47,6 @@ public class MemberController {
 		System.out.println("controller birth :   " + member.getBirth());
 
 		service.register(member);
-		model.addAttribute("member", member.getEmail());
 		return "/member/registerResult";
 	}
 
@@ -76,18 +75,17 @@ public class MemberController {
 	@Auth
 	@PostMapping(value = "login")
 	@ResponseBody
-	public ResponseEntity<MemberVO> login(@ModelAttribute("member") MemberVO member, Model model) throws Exception {
+	public ResponseEntity<MemberVO> login(MemberVO member, Model model) throws Exception {
 
 		log.debug("login method : " + member);
 		MemberVO result = service.login(member);
-		model.addAttribute("member", result);
 		log.debug("controller : " + result);
 
 		try {
 			if (result == null) {
 				return new ResponseEntity<MemberVO>(result, HttpStatus.UNAUTHORIZED);
 			} else {
-				model.addAttribute(result);
+				model.addAttribute("member", result);
 				return new ResponseEntity<MemberVO>(result, HttpStatus.ACCEPTED);
 			}
 		} catch (Exception e) {
@@ -95,12 +93,13 @@ public class MemberController {
 		}
 	}
 
-	@GetMapping(value = "register_bt")
+	@GetMapping(value = "register")
 	public String registerBt() {
+
 		return "member/register";
 	}
 
-	@GetMapping(value = "login_bt")
+	@GetMapping(value = "login")
 	public String logintBt() {
 		return "member/login";
 	}
@@ -112,13 +111,10 @@ public class MemberController {
 
 	@GetMapping(value = "logout")
 	public String logout(SessionStatus sessionStatus) {
-
+		
 		log.info("logout 실행");
 		sessionStatus.setComplete();
-		/* session.invalidate(); */
-
+		
 		return "redirect:/main";
 	}
-	
-
 }

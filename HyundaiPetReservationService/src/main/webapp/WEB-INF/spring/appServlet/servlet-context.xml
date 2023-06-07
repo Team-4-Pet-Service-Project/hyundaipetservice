@@ -38,9 +38,8 @@
 			반드시명시 , 하지만 여기에선 context-root 명시 X <beans:bean class="com.hyundai.thepet.interceptor.LoginInterceptor" 
 			/> </interceptor> -->
 		<interceptor>
-			<mapping path="/**" />
-			<exclude-mapping path="/member/login" />
-			<exclude-mapping path="/main" />
+			<mapping path="/mypage/**" />
+			<mapping path="/reservation/**" />
 			<beans:bean class="com.hyundai.thepet.interceptor.AuthInterceptor" />
 		</interceptor>
 	</interceptors>
