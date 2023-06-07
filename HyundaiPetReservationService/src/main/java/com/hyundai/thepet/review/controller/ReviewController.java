@@ -207,14 +207,14 @@ public class ReviewController {
 		//이 경우 서울 미용 or 스파 다 불러오는곳
 		if(locationId==3 || locationId==43) {
 			response.put("review",service.reviewTotalListSeoul(new Criteria(),reviewTotalListVO));
-			int total = service.getTotal(reviewTotalListVO);
+			int total = service.getTotalSeoul(reviewTotalListVO);
 			PageMakerDTO pageMake = new PageMakerDTO(new Criteria(), total);
 			response.put("pageMaker", pageMake);
 			response.put("location",locationId);
 			return response;
 		}else if(locationId==6 || locationId==41) {
 			response.put("review",service.reviewTotalList1Daegu(new Criteria(),reviewTotalListVO));
-			int total = service.getTotal(reviewTotalListVO);
+			int total = service.getTotalDaegu(reviewTotalListVO);
 			PageMakerDTO pageMake = new PageMakerDTO(new Criteria(), total);
 			response.put("pageMaker", pageMake);
 			response.put("location",locationId);

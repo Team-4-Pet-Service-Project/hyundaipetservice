@@ -33,6 +33,7 @@
 				<a>케어</a>
 				<a>푸드</a>
 				<a href="/thepet/reservation" class="menu_bar_a">예약</a>
+				<a href="/thepet/review/totallist1?locationId=1" class="menu_bar_b">예약전체리뷰</a>
 			</div>
 			<div class="menu_detail_sub_category">
 				<a>몽슈슈</a>

@@ -157,5 +157,19 @@ public class ReviewDAOImpl implements ReviewDAO{
 		int cnt = session.selectOne(statement,reviewTotalListVO);
 		return cnt;
 	}
+
+	@Override
+	public int getTotalSeoul(ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.totalSeoul";
+		int cnt = session.selectOne(statement,reviewTotalListVO);
+		return cnt;
+	}
+
+	@Override
+	public int getTotalDaegu(ReviewTotalListVO reviewTotalListVO) {
+		String statement = "review.totalDaegu";
+		int cnt = session.selectOne(statement,reviewTotalListVO);
+		return cnt;
+	}
 	
 }
