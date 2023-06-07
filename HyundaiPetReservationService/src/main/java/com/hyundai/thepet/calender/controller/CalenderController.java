@@ -89,7 +89,7 @@ public class CalenderController {
 			int id = reserv.getReservationId();
 			log.debug("가져온 예약 아이디" + id);
 			ReservationVO msgreserv = new ReservationVO();
-			msgreserv.setReservationId(id);
+			msgreserv.setId(id);
 			smsController.submitMessage(msgreserv);
 		}
 		
