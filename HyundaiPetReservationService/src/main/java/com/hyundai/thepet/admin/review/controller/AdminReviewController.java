@@ -2,6 +2,8 @@ package com.hyundai.thepet.admin.review.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,24 +20,30 @@ import com.hyundai.thepet.admin.review.vo.UserReviewVO;
 import com.hyundai.thepet.member.vo.MemberVO;
 
 @Controller
-// @SessionAttributes(value = { "member" })
+@SessionAttributes(value = { "member" })
 public class AdminReviewController {
 	
 	@Autowired
 	AdminReviewService service;
 	
+	Logger log = LogManager.getLogger("case3");
+	
 	
 	@GetMapping(value="admin/review")
 	@ResponseBody
-	public List<AdminReviewVO> reviewList(AdminReviewVO reviewVO, Model model) { // , @SessionAttribute(value="member") MemberVO member
-		// String adminAddress = member.getAdminAddress(); // 들어온다고 생각하고...! 합치고 나서 리테스트
-		// System.out.println("adminAddress: " + adminAddress);
+	public List<AdminReviewVO> reviewList(AdminReviewVO reviewVO, Model model, @SessionAttribute(value="member") MemberVO member) {
 		
-		System.out.println(reviewVO);
-		String adminAddress = "더현대 서울"; // 테스트용
+		String adminAddress = member.getAdminAddress();
+		int admin = member.getAdmin();
+		log.debug("Session에 저장된 admin: " + admin);
+		log.debug("Session에 저장된 adminAddress: " + adminAddress);
+		log.debug("들어온 reviewVO: " + reviewVO);
+		
+		//System.out.println(reviewVO);
+		//String adminAddress = "더현대 서울"; // 테스트용
 		
 		List<AdminReviewVO> review = service.selectReview(adminAddress);
-		System.out.println(review);
+		log.debug("selectReview 결과: "+review);
 		
 		return review;
 	}
