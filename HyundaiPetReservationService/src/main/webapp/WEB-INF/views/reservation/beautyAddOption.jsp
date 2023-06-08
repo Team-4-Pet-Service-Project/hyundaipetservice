@@ -19,9 +19,9 @@
 				<label for="spar" class="add_option_radio_label">스파</label>
 			</div>
 		</div>
-		<div class="add_style_button_box">
+		<!-- <div class="add_style_button_box">
 			<button class="add_dog_style_button">스타일 추가하기</button>
-		</div>
+		</div> -->
 	</div>
 </body>
 </html>

@@ -12,6 +12,7 @@
 				 JOIN reservations res ON rev.reservation_id = res.id
 				 JOIN locations loc ON res.location_id = loc.id
 		WHERE loc.address = #{adminAddress}
+		ORDER BY res.reservation_date
 		
 	]]>
 

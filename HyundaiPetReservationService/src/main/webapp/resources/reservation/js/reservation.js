@@ -102,9 +102,6 @@ function drawAddOption(category) {
 					</label>
 				</div>
 			</div>
-			<div class="add_style_button_box">
-				<button class="add_dog_style_button">스타일 추가하기</button>
-			</div>
 		`)
 	}
 }

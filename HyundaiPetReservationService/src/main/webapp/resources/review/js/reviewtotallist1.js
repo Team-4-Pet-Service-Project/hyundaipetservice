@@ -27,7 +27,7 @@ $(document).ready(function() {
                 console.log(response);
                 // 응답 데이터를 가지고 추가 작업을 수행하세요.
                 updateList(response,location,facilities);
-                
+                console.log('updateList 끝');
             },
             error: function(xhr, status, error) {
                 // 요청이 실패한 경우에 대한 처리
@@ -40,7 +40,7 @@ $(document).ready(function() {
 });
 
 function updateList(response,location,facilities){
-	
+	console.log(response, location, facilities);
 	$('.spec').empty();
 	$('.total').empty(); // 기존 내용을 제거
 	$('.spec').text(location + " > " + facilities);
@@ -65,11 +65,24 @@ function updateList(response,location,facilities){
     	var starGroup = $('<div></div>').addClass('star-group');
 
     	starGroup.append($('<input>').attr('type', 'hidden').attr('id', 'hidList').val(review.rate));
-    	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '1'));
-    	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '2'));
-    	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '3'));
-    	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '4'));
-    	starGroup.append($('<i>').addClass('far fa-star').attr('data-rate', '5'));
+    	starGroup.append($('<i>').addClass('fa-solid fa-star fas zero_star').attr('data-rate', '1'));
+    	starGroup.append($('<i>').addClass('fa-solid fa-star fas zero_star').attr('data-rate', '2'));
+    	starGroup.append($('<i>').addClass('fa-solid fa-star fas zero_star').attr('data-rate', '3'));
+    	starGroup.append($('<i>').addClass('fa-solid fa-star fas zero_star').attr('data-rate', '4'));
+    	starGroup.append($('<i>').addClass('fa-solid fa-star fas zero_star').attr('data-rate', '5'));
+    	console.log(starGroup);
+    	const starGroups = document.querySelectorAll('.star-group');
+	    for (const group of starGroups) {
+	      const initial = group.querySelector('#hidList');
+	      if (initial) {
+	        const initialRate = parseInt(initial.value);
+	        const stars = group.querySelectorAll('i');
+	        for (let i = 0; i < initialRate; i++) {
+	          stars[i].classList.add('full_star'); // fas 클래스 추가
+	          stars[i].classList.remove('zero_star'); // far 클래스 제거
+	        }
+	      }
+	    }
     	
     	var date = $('<div>작성날짜 : ' + review.createdTime + '</div>').addClass('date');
 		
@@ -102,7 +115,7 @@ function updateList(response,location,facilities){
     	
     	rating.append(rating_1);
     	rating.append(starGroup);
-    	rating.append(date);
+    	$('.review_1').append(date);
     	
     	review_1.append(name);
     	review_1.append(rating);

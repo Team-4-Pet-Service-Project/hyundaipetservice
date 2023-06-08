@@ -10,26 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   }); 
 
-$(document).ready(function() {
-      $('.rating i').on('click', function() {
-        var selectedRate = parseInt($(this).data('rate'));
 
-        if ($(this).hasClass('fas')) {
-          // 클릭한 별이 이미 칠해져 있는 경우
-          $(this).nextAll().removeClass('fas').addClass('far');
-          $(this).removeClass('fas').addClass('far');
-          selectedRate = 0; // 선택된 평점 초기화
-        } else {
-          // 클릭한 별이 칠해져 있지 않은 경우
-          $('.rating i').removeClass('fas').addClass('far');
-          $(this).prevAll().removeClass('far').addClass('fas');
-          $(this).removeClass('far').addClass('fas');
-        }
-        
-        $('#selected-rate').val(selectedRate);
-        console.log('Selected rate: ' + selectedRate);
-      });
+$(document).ready(function() {
+    $('.rating i').on('click', function() {
+      var selectedRate = $(this).index() + 1;
+
+      $('.rating i').removeClass('full_star zero_star');
+      $(this).prevAll().addBack().addClass('full_star');
+      $(this).nextAll().addClass('zero_star');
+
+      $('#selected-rate').val(selectedRate);
+      console.log('Selected rate: ' + selectedRate);
     });
+  });
 
  
  function validateForm(event) {

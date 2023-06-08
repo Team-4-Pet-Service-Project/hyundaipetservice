@@ -8,11 +8,25 @@
 }
 
 .location_1{
-	font-size: 15px;
+	font-size: 17px;
+	font-weight : 550;
 	margin-right: 20px;
-	text-align: center;
-	padding-top : 12px;
+	/* text-align: center; */
+	
+	display: flex;
+	align-items: center;
 }
+
+.radio-container {
+	display: flex;
+	align-items: center;
+}
+
+.radio-container1 {
+	display: flex;
+	align-items: center;
+}
+
 
 .facility{
 	display: flex;
@@ -21,15 +35,17 @@
 }
 
 .facility_1{
-	font-size: 15px;
+	font-size: 17px;
+	font-weight : 550;
 	margin-right: 20px;
-	margin-bottom: 30px;
-	padding-top : 12px;
+	
+	display: flex;
+	align-items: center;
 }
 
 .spec{
 	font-size : 15px;
-	padding-bottom: 10px;
+	margin-top: 30px;
 	margin-left : 40px;
 }
 
@@ -47,8 +63,19 @@
 	font-size: 15px;
 }
 
+
 .review_1 .name{
 	margin-right: 20px;
+	font-size : 16px;
+}
+
+.rating_1 {
+	font-size : 16px;
+}
+
+
+.date{
+	font-size: 16px;
 }
 
 
@@ -56,21 +83,40 @@
 	display: flex;
 	flex-direction: row;
 	margin-right:120px;
-	
+}
+
+.rating i {
+  cursor: pointer;
+  font-size: 15px; /* 아이콘의 크기를 조절합니다. */
+}
+/* .rating .fas {
+  color: #ffd700;
+} */
+
+.full_star {
+  color: #ffd700;
+}
+
+.zero_star {
+  color: #E6E6EA;
 }
 
 .star-group{
 	margin-right: 375px;
 	margin-left: 10px;
+	height: 15px;
+	width: 110px;
+	
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
 }
 
-.date{
-}
-
-.rating .fa-star.fas {
+/* .rating .fa-star.fas {
   color: #FAE100;
   margin-left: 5px;
-}
+} */
 
 .review_2{
 	display: flex;
@@ -100,13 +146,17 @@
 
 .admin .admin_1{
 	margin-right: 110px;
+	font-size : 16px;
 }
 
+.admin_2 {
+	font-size : 16px;
+}
 
 
 .radio-label {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-right: 5px;
 }
 
 .radio-input {
@@ -115,7 +165,7 @@
 
 .radio-label .radio-input:checked + .radio-custom {
   background-color: #333333;
-  border: 3px solid #333333;
+  border: 1px solid #333333;
   color: #fff;
 }
 
@@ -125,7 +175,7 @@
   align-items: center;
   width: 55px;
   height: 30px;
-  border: 3px solid #666666;
+  border: 1px solid #666666;
   background-color: white;
   border-radius : 20px;
   cursor: pointer;
@@ -139,7 +189,7 @@
 
 .radio-label1 {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-right: 5px;
 }
 
 .radio-input {
@@ -148,7 +198,7 @@
 
 .radio-label1 .radio-input:checked + .radio-custom1 {
   background-color: #333333;
-  border: 3px solid #333333;
+  border: 1px solid #333333;
   color: #fff;
 }
 
@@ -158,7 +208,7 @@
   align-items: center;
   width: 60px;
   height: 30px;
-  border: 3px solid #666666;
+  border: 1px solid #666666;
   background-color: white;
   border-radius : 20px;
   cursor: pointer;
@@ -188,11 +238,21 @@
 .pageInfo_btn {
   list-style-type: none;
   display: inline-block;
-  font-size: 20px;
-  margin-left: 18px;
-  padding: 7px;
-  font-weight: 500;
-  border: 1px solid #A8A4A4;
+  
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  
+  font-size: 18px;
+  margin-left: 15px;
+  
+  width: 25px;
+  height: 25px;
+  
+  border: 1px solid #B7B7B7;
+  background-color: #FAFAFA;
+  color : #646464;
+  
 }
 
 .pageInfo_btn a {

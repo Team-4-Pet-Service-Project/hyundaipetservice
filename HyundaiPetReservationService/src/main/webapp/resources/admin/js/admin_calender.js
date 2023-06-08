@@ -114,6 +114,9 @@ $(function () {
             }
         });
     });
+	
+	$('.left').on('click', prevMonth);
+	$('.right').on('click', nextMonth);
 });
 
 
@@ -372,7 +375,7 @@ function dateClickEvent(e) {
 			console.log(result)
 			
 			$('.total_check').append(
-				`<tr>
+				`<tr class="total_check_table_row">
 					<td class="total_check_column">총 결제 금액</td>
 					<td>${result.totalPrice}</td>
 				</tr>
@@ -382,17 +385,17 @@ function dateClickEvent(e) {
 				</tr>`
 			)
 			$('.total_check_detail').append(
-				`<tr class="care">
+				`<tr class="care total_check_detail_table_row">
 					<td class="detail_td_title">케어</td>
 					<td>${result.totalCareNum}</td>
 					<td>${result.totalCarePrice}</td>
 				</tr>
-				<tr class="beauty">
+				<tr class="beauty total_check_detail_table_row">
 					<td class="detail_td_title">미용</td>
 					<td>${result.totalBeautyNum}</td>
 					<td>${result.totalBeautyPrice}</td>
 				</tr>
-				<tr class="playground">
+				<tr class="playground total_check_detail_table_row">
 					<td class="detail_td_title">놀이터</td>
 					<td>${result.totalPlaygroundNum}</td>
 					<td>${result.totalPlaygroundPrice}</td>

@@ -63,6 +63,7 @@ function addAllReservation() {
 		contentType: 'application/json',
 		data: JSON.stringify(data),
 		success : function(data) {
+			alert('예약이 완료되었습니다.');
 			window.location.href = '/thepet/mypage/reservlist';
 		}
 	})

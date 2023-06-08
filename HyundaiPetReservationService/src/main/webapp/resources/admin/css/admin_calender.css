@@ -63,7 +63,7 @@
     justify-content: center;
 }
 
-.arrow {
+/* .arrow {
     color:#ffffff;
     border-radius: 50%;
 }
@@ -76,7 +76,30 @@
 .disable_arrow {
     background-color: #808080;
     pointer-events: none;
+} */
+
+.arrow {
+    /* color:#ffffff; */
+    /* background-color : #ffffff; */
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    width : 25px;
+    height: 25px;
+    background-color:black;
+    border-radius: 50%;
 }
+
+.active_arrow {
+    background-color: #222222;
+    cursor: pointer;
+}
+
+.disable_arrow {
+    background-color: #808080;
+    pointer-events: none;
+}
+
 
 .ym {
 	font-size : 20px;
