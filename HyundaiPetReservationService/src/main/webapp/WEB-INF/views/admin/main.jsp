@@ -34,7 +34,7 @@
 		</jsp:include>
 		<jsp:include page="../mainform/menubar.jsp" />
 		<div class="gap"></div>
-		<main>
+		<main style="margin-bottom: 15px;">
 			<div class="main_container">
 				<jsp:include page="../mainform/admin_side.jsp" />
 				<div class="main_info">
