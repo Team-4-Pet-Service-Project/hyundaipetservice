@@ -454,3 +454,42 @@ background-color: #333333; /* 배경색 */
 이부분 span있어서 직접 인라인으로 줌 */
 
 
+.add-button {
+	width: 90px;
+	height: 45px;
+	border : 1px solid #B7B7B7;
+	color : #646464;
+	background-color: #FAFAFA;
+}
+
+.cancel-button {
+	width: 90px;
+	height: 45px;
+	border : 1px solid #B7B7B7;
+	color : #646464;
+	background-color: #FAFAFA;
+}
+
+.update-button {
+	width: 90px;
+	height: 45px;
+	border : 1px solid #B7B7B7;
+	color : #646464;
+	background-color: #FAFAFA;
+}
+
+.modify-button {
+	width: 90px;
+	height: 45px;
+	border : 1px solid #B7B7B7;
+	color : #646464;
+	background-color: #FAFAFA;
+}
+
+.delete-button {
+	width: 90px;
+	height: 45px;
+	border : 1px solid #B7B7B7;
+	color : #646464;
+	background-color: #FAFAFA;
+}

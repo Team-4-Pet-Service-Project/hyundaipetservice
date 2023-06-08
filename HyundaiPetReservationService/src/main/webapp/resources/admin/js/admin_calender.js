@@ -54,6 +54,7 @@ $(function () {
 	$('.reservation_tab').on('click', function() {
 		$('.reservation_tab').removeClass('non_select_form').addClass('select_form');
 		$('.review_tab').removeClass('select_form').addClass('non_select_form');
+		$('.main_info').css('height', 900);
 		/*
 		 * $('.dog_form').show(); $('.mypet').hide();
 		 */
@@ -62,7 +63,7 @@ $(function () {
 	$('.review_tab').on('click', function() {
 		$('.review_tab').removeClass('non_select_form').addClass('select_form');
 		$('.reservation_tab').removeClass('select_form').addClass('non_select_form');
-
+		$('.main_info').css('height', 'auto');
 		/*
 		 * $('.mypet').show(); $('.dog_form').hide();
 		 */
