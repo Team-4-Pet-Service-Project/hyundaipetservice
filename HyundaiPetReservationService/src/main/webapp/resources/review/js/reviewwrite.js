@@ -1,6 +1,6 @@
 $(document).ready(function() {
       $('.rating i').on('click', function() {
-        var selectedRate = parseInt($(this).data('rate'));
+/*        var selectedRate = parseInt($(this).data('rate'));
         if ($(this).hasClass('full_star')) {
           // 클릭한 별이 이미 칠해져 있는 경우
           $(this).nextAll().removeClass('full_star').addClass('zero_star');
@@ -14,7 +14,15 @@ $(document).ready(function() {
         }
         
         $('#selected-rate').val(selectedRate);
-        console.log('Selected rate: ' + selectedRate);
+        console.log('Selected rate: ' + selectedRate);*/
+    	  var selectedRate = $(this).index() + 1;
+
+          $('.rating i').removeClass('full_star zero_star');
+          $(this).prevAll().addBack().addClass('full_star');
+          $(this).nextAll().addClass('zero_star');
+
+          $('#selected-rate').val(selectedRate);
+          console.log('Selected rate: ' + selectedRate);
       });
     });
 
