@@ -55,8 +55,27 @@ span{
 	width: 100%;
 	border-collapse: collapse;
 	margin-top: 20px;
+	border-top : 1px solid #666666;
 }
 
+.board-table_head_row {
+	height: 45px;
+	background-color: #F6F6F6;
+	
+	font-weight: bold;
+}
+
+.board-table_common_row {
+	height: 45px;
+	border-top : 1px solid #E0E0E0;
+}
+
+
+.board-table_common_cell {
+	text-align: center;
+	vertical-align: middle;
+}
+/* 
 .board-table th, .board-table td {
 	padding: 8px;
 	border: 1px solid #ddd;
@@ -71,7 +90,16 @@ span{
 .board-table td {
 	text-align: center;
 }
-
-.board-table a {
+ */
+.board-table_review_detail_button {
 	color: #333;
+	
+	width: 70px;
+	height: 30px;
+	
+	border : 1px solid #B7B7B7;
+	
+	color : #646464;
+	
+	background-color: #FAFAFA;
 }

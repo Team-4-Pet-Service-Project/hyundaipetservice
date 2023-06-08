@@ -25,7 +25,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
-<title>관리자 페이지</title>
+<title>The Hyundai : 관리자</title>
 </head>
 <body class="container_body">
 	<div class="container">
@@ -64,25 +64,25 @@
 									<h2 class="information_summary_title">요약 정보</h2>
 									<table class="reservation_table">
 										<tbody>
-											<tr>
+											<tr class="reservation_table_row reservation_table_common_row">
 												<td class="this_month_reservation td_title">이번달 예약</td>
 												<td class="this_month_reservation_data td_class information_data"></td>
 												<td class="last_month_reservation td_title">지난달 예약</td>
 												<td class="last_month_reservation_data td_class information_data"></td>
 											</tr>
-											<tr>
+											<tr class="reservation_table_row reservation_table_common_row">
 												<td class="this_month_sales td_title">이번달 매출</td>
 												<td class="this_month_sales_data information_data"></td>
 												<td class="last_month_sales td_title">지난달 매출</td>
 												<td class="last_month_sales_data information_data"></td>
 											</tr>
-											<tr>
+											<tr class="reservation_table_row reservation_table_common_row">
 												<td class="this_month_customers td_title">이번달 이용 고객 수</td>
 												<td class="this_month_customers_data information_data"></td>
 												<td class="last_month_customers td_title">지난달 이용 고객 수</td>
 												<td class="last_month_customers_data information_data"></td>
 											</tr>
-											<tr>
+											<tr class="reservation_table_common_row">
 												<td class="this_month_puppies td_title">이번달 이용 강아지 수</td>
 												<td class="this_month_puppies_data information_data"></td>
 												<td class="last_month_puppies td_title">지난달 이용 강아지 수</td>
@@ -99,12 +99,28 @@
 										style="display: flex; justify-content: flex-start; width: 490px; margin-top: 20px; margin-left: 10px;">
 										<div class="calender">
 											<div class="date_header">
-												<span
+												<!-- <span
 													class="material-symbols-rounded arrow active_arrow left"
-													onclick="prevMonth()">chevron_left</span> <span class="ym"></span>
+													onclick="prevMonth()">chevron_left</span> <span class="ym"></span> -->
+												<span class="arrow active_arrow left"> <svg
+														xmlns="http://www.w3.org/2000/svg" height="40"
+														viewBox="0 -960 960 960" width="40">
+														<path
+															d="M561-240 320-481l241-241 43 43-198 198 198 198-43 43Z"
+															style="fill:rgb(255, 255, 255);" /></svg>
+												</span>
+												<span class="ym"></span> 
 												<span
+													class="arrow active_arrow right"> <svg
+														xmlns="http://www.w3.org/2000/svg" height="40"
+														viewBox="0 -960 960 960" width="40">
+														<path
+															d="m375-240-43-43 198-198-198-198 43-43 241 241-241 241Z"
+															style="fill:rgb(255, 255, 255);" /></svg>
+												</span>
+												<!-- <span
 													class="material-symbols-rounded arrow active_arrow right"
-													onclick="nextMonth()">chevron_right</span>
+													onclick="nextMonth()">chevron_right</span> -->
 											</div>
 											<div class="main">
 												<div class="days">

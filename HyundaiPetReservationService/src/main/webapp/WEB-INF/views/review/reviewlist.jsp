@@ -38,33 +38,33 @@
                  	<div class = "cntt">총 ${cnt}건</div>
                  	<!--테이블-->
                  	<div class="table-container">
-	                 	<table class="board-table">
+	                 	<table class="board-table" style="border-bottom : 1px solid #666666;">
 							<thead>
-								    <tr>
-								        <th>위치</th>
-								        <th>구분</th>
-								        <th>이용인원</th>
-								        <th>예약견</th>
-								        <th>이용일자</th>
-								        <th>이용금액</th>
-								        <th>리뷰상세</th>
+								    <tr class="board-table_head_row">
+								        <th class="board-table_common_cell">위치</th>
+								        <th class="board-table_common_cell">구분</th>
+								        <th class="board-table_common_cell">이용인원</th>
+								        <th class="board-table_common_cell">예약견</th>
+								        <th class="board-table_common_cell">이용일자</th>
+								        <th class="board-table_common_cell">이용금액</th>
+								        <th class="board-table_common_cell">리뷰상세</th>
 								    </tr>
 								</thead>
 							<tbody>
 								<c:forEach var="review" items="${Review}">
-									<tr>
-										<td>${review.address} ${review.addressDetail}</td>
-										<td>${review.dogFacilities}</td>
-										<td>${review.customerCount}</td>
-										<td>${review.dogName}</td>
-										<td>${review.reservationDate}  ${review.reservationStartTime} ~ ${review.reservationEndTime}</td>
-										<td><fmt:formatNumber value="${review.price}" pattern="#,###"/>원</td>
-										<td>
+									<tr class="board-table_common_row">
+										<td class="board-table_common_cell">${review.address} ${review.addressDetail}</td>
+										<td class="board-table_common_cell">${review.dogFacilities}</td>
+										<td class="board-table_common_cell">${review.customerCount}</td>
+										<td class="board-table_common_cell">${review.dogName}</td>
+										<td class="board-table_common_cell">${review.reservationDate}  ${review.reservationStartTime} ~ ${review.reservationEndTime}</td>
+										<td class="board-table_common_cell"><fmt:formatNumber value="${review.price}" pattern="#,###"/>원</td>
+										<td class="board-table_common_cell">
 											<form action="/thepet/review/detail2" method="GET">
 												<input type="hidden" name="reviewId" value="${review.reviewId}">
 												<input type="hidden" name="reservationId" value="${review.reservationId}">
 												<input type="hidden" name="id" value="${review.id}">
-												<button type="submit">리뷰상세</button>
+												<button type="submit" class="board-table_review_detail_button">리뷰상세</button>
 											</form>
 										</td>
 									</tr>

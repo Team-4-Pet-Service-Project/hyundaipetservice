@@ -25,7 +25,7 @@
 	</jsp:include>
 	<jsp:include page="../mainform/menubar.jsp" />
 	<div class="gap"></div>
-	<main>
+	<main style="margin-bottom: 20px;">
 		<div class="main_container">
 			<jsp:include page="../mainform/side.jsp"/>
 			<div class="main_info">
@@ -82,11 +82,11 @@
 		                    			<div class="rating_1">평점 : </div>
 		                    			<div class="star-group">
 			                    			<input type="hidden" id="hidList" value="${review.rate}" />
-				    						<i class="far fa-star" data-rate="1"></i>
-				    						<i class="far fa-star" data-rate="2"></i>
-				    						<i class="far fa-star" data-rate="3"></i>
-				    						<i class="far fa-star" data-rate="4"></i>
-				    						<i class="far fa-star" data-rate="5"></i>
+				    						<i class="fa-solid fa-star fas zero_star" data-rate="1"></i>
+				    						<i class="fa-solid fa-star fas zero_star" data-rate="2"></i>
+				    						<i class="fa-solid fa-star fas zero_star" data-rate="3"></i>
+				    						<i class="fa-solid fa-star fas zero_star" data-rate="4"></i>
+				    						<i class="fa-solid fa-star fas zero_star" data-rate="5"></i>
 			  							</div>
 			  						</div>
 			  						<div class="date">작성날짜 : ${review.createdTime}</div>
@@ -122,14 +122,14 @@
 		                <script>
 							  document.addEventListener('DOMContentLoaded', function() {
 							    const starGroups = document.querySelectorAll('.star-group');
-							    for (let group of starGroups) {
+							    for (const group of starGroups) {
 							      const initial = group.querySelector('#hidList');
 							      if (initial) {
 							        const initialRate = parseInt(initial.value);
 							        const stars = group.querySelectorAll('i');
 							        for (let i = 0; i < initialRate; i++) {
-							          stars[i].classList.add('fas'); // fas 클래스 추가
-							          stars[i].classList.remove('far'); // far 클래스 제거
+							          stars[i].classList.add('full_star'); // fas 클래스 추가
+							          stars[i].classList.remove('zero_star'); // far 클래스 제거
 							        }
 							      }
 							    }
