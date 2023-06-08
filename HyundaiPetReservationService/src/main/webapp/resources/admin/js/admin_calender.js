@@ -75,7 +75,6 @@ $(function () {
 	
 	$('.myDropdown').change(function() {
         var selectedOption = $(this).val();
-       console.log(selectedOption);
         $.ajax({
             url: '/thepet/admin/reservationLocation',
             method: 'POST', 
@@ -108,7 +107,6 @@ $(function () {
     		      $('.last_month_puppies_data').text(response.lastMonthDogCount);
             	
             	
-            	console.log(response);
             },
             error: function(xhr, status, error) {
                 console.log(error);  // 에러 발생 시 콘솔에 에러를 출력합니다.
@@ -126,7 +124,6 @@ function reservationClickEvent() {
 		type:'Get',
 		url: "/thepet/admin/reservationManagement",
 		success : function (data) {
-			console.log("예약 관리 선택");
 			$('.reservation_management_container').show();
 		},
 		error : function (request, status, error) {
@@ -135,22 +132,9 @@ function reservationClickEvent() {
 	})
 	$('.reservation_management_container').show();
 	$('.review_management_container').hide();
-//	$.ajax({
-//		type:'Get',
-//		url: "/thepet/admin/reservationManagement",
-//		success : function (data) {
-//			console.log("예약 관리 선택");
-//			$('.reservation_management_container').show();
-//			window.location("");
-//		},
-//		error : function (request, status, error) {
-//            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-//        }
-//	})
 }
 
 function reviewClickEvent() {
-	console.log($('.review_comment_table_row'));
 	$('.review_tab').removeClass('non_select_form').addClass('select_form');
 	$('.reservation_tab').removeClass('select_form').addClass('non_select_form');
 	
@@ -162,8 +146,6 @@ function reviewClickEvent() {
 		type:'GET',
 		url: "/thepet/admin/review",
 		success : function (response) {
-			console.log("리뷰 관리 선택");
-			console.log(response);
 			$('.reservation_management_container').hide();
 			let no_cnt = 0;
             let cnt = 0;
@@ -358,9 +340,6 @@ function dateClickEvent(e) {
 
 	let selectedOption = $('.myDropdown').val();
 	
-	console.log(date);
-	console.log(selectedOption);
-	
 	$.ajax({
 		type:"post",
 		url:"/thepet/admin/reservationDetial",
@@ -373,7 +352,6 @@ function dateClickEvent(e) {
 			$('.total_check').empty()
 			$('.total_check_detail').empty()
 			
-			console.log(result)
 			
 			$('.total_check').append(
 				`<tr class="total_check_table_row">
