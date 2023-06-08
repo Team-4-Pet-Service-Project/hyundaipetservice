@@ -10,6 +10,7 @@ function reservationInfoReset() {
 	$('.total_price_box').empty();
 	$('.total_price_box').css('display', 'none');
 	sessionStorage.clear();
+	sessionStorage.setItem("reservationRemain", JSON.stringify({}));
 }
 
 function addAllReservation() {
