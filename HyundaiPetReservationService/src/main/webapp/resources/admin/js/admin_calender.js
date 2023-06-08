@@ -211,7 +211,7 @@ function reviewClickEvent() {
 			}
 			
 			$('.review_no_comment_p').text(`답변하지 않은 고객 리뷰 ${no_cnt} 건`);
-			$('.review_commented_p').text(`답변하지 않은 고객 리뷰 ${cnt} 건`);
+			$('.review_commented_p').text(`답변한 고객 리뷰 ${cnt} 건`);
 			
 		},
 		error : function (request, status, error) {
