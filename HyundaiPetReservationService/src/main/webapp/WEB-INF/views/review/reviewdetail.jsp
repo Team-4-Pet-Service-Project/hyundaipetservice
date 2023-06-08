@@ -28,8 +28,17 @@
 	<div class="gap"></div>
 	<main>
 		<div class="main_container">
-			<jsp:include page="../mainform/side.jsp"/>
-			<div class="main_info">
+
+				<c:choose>
+					<c:when test="${admin eq 1}">
+						<jsp:include page="../mainform/admin_side.jsp" />
+					</c:when>
+					<c:otherwise>
+						<jsp:include page="../mainform/side.jsp" />
+					</c:otherwise>
+        		</c:choose>
+
+				<div class="main_info">
                     <!-- 여기다가 구현 -->
                     <input type="hidden" id="hidList" value="${Review.rate}" />
                     <span>리뷰상세</span><br><br>
