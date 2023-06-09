@@ -15,8 +15,8 @@ $(document).ready(function() {
         
         $('#selected-rate').val(selectedRate);
         console.log('Selected rate: ' + selectedRate);*/
-    	  var selectedRate = $(this).index() + 1;
-
+    	  var selectedRate = Number($(this).index()) + 1;
+    	  console.log(selectedRate);
           $('.rating i').removeClass('full_star zero_star');
           $(this).prevAll().addBack().addClass('full_star');
           $(this).nextAll().addClass('zero_star');

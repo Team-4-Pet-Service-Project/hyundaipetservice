@@ -138,7 +138,7 @@
 						
 						<div class="pageInfo_wrap" >
 					        <div class="pageInfo_area">
-					        	<ul id="pageInfo" class="pageInfo no_dot" ></ul>
+					        	<ul id="pageInfo" class="pageInfo no_dot" >
 					 			 <!-- 이전페이지 버튼 -->
 					                <c:if test="${pageMaker.prev}">
 					                    <li class="pageInfo_btn previous"><a href="/thepet/review/totallist1?locationId=1&pageNum=${pageMaker.startPage-1}">Previous</a></li>
@@ -152,7 +152,8 @@
 				                	 <!-- 다음페이지 버튼 -->
 					                <c:if test="${pageMaker.next}">
 					                    <li class="pageInfo_btn next"><a href="/thepet/review/totallist1?locationId=1&pageNum=${pageMaker.endPage + 1 }">Next</a></li>
-					                </c:if>  
+					                </c:if> 
+					                </ul>
 					        </div>
 					    </div>
 						
