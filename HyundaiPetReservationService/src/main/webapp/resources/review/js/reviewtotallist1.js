@@ -145,7 +145,7 @@ function updateList(response,location,facilities){
  // 페이지 정보 영역 생성
     var pageInfoWrap = $('<div>').addClass('pageInfo_wrap');
     var pageInfoArea = $('<div>').addClass('pageInfo_area');
-    var pageInfoList = $('<ul>').addClass('pageInfo');
+    var pageInfoList = $('<li>').addClass('pageInfo');
     
     // 이전페이지 버튼
     if (pageMaker.prev) {
@@ -157,6 +157,7 @@ function updateList(response,location,facilities){
     
     // 각 번호 페이지 버튼
     for (var num = pageMaker.startPage; num <= pageMaker.endPage; num++) {
+    	console.log('111');
         var pageInfoBtn = $('<li>').addClass('pageInfo_btn');
         var pageInfoLink = $('<a>').attr('href', '/thepet/review/totallist1?locationId=' + locationId+ '&pageNum=' + num).text(num);
         pageInfoBtn.append(pageInfoLink);
@@ -170,6 +171,8 @@ function updateList(response,location,facilities){
         nextBtn.append(nextLink);
         pageInfoList.append(nextBtn);
     }
+    
+    console.log(pageInfoList);
     
     pageInfoArea.append(pageInfoList);
     pageInfoWrap.append(pageInfoArea);
